@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mhj_cheque_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-15 19:25+0000\n"
+"PO-Revision-Date: 2019-07-15 21:27+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar_EG\n"
+"X-Generator: Poedit 2.2.3\n"
+
+#. module: mhj_cheque_management
+#: model:ir.model,name:mhj_cheque_management.model_account_move_line_reconcile
+msgid "Account move line reconcile"
+msgstr "تسوية خط التحرك للحساب"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_payment_tree_view
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_view_tree
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_create_view
+msgid "Cheque Amount"
+msgstr "قيمة الشيك"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_move_line__cheque_bank
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_payment__cheque_bank
+msgid "Cheque Bank"
+msgstr "البنك"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_move_line__cheque_date
+msgid "Cheque Date"
+msgstr "تاريخ الشيك"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_create_view
+msgid "Cheque Due Date"
+msgstr "تاريخ الاستحقاق"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_move_line__cheque_no
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_payment__cheque_no
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.chq_search_view
+msgid "Cheque No"
+msgstr "رقم الشيك"
+
+#. module: mhj_cheque_management
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheques
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_view_tree
+msgid "Cheques"
+msgstr "شيكات"
+
+#. module: mhj_cheque_management
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheques_history
+msgid "Cheques history"
+msgstr "سجل الشيكات"
+
+#. module: mhj_cheque_management
+#: model:ir.actions.act_window,name:mhj_cheque_management.cheque_received_list_action
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheque_received_action
+msgid "Cheques received"
+msgstr "شيكات مستلمة"
+
+#. module: mhj_cheque_management
+#: model:ir.actions.act_window,name:mhj_cheque_management.cheque_sent_list_action
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheque_sent_action
+msgid "Cheques sent"
+msgstr "شيكات مرسلة"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_journal__is_cheque
+msgid "Cheques?"
+msgstr "شيك؟"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_create_view
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_payment_tree_view
+msgid "Customer"
+msgstr "العميل"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_payment__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: mhj_cheque_management
+#: model:ir.actions.act_window,name:mhj_cheque_management.cheque_payment_list_action
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_draft_cheques
+msgid "Draft Cheques"
+msgstr "شيكات مسودة"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_move_line__is_cheque
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_payment__is_cheque
+msgid "Is Cheque"
+msgstr "شيك؟"
+
+#. module: mhj_cheque_management
+#: model:ir.model,name:mhj_cheque_management.model_account_journal
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_payment__cheque_journal_id
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_create_view
+msgid "Journal"
+msgstr "يومية"
+
+#. module: mhj_cheque_management
+#: model:ir.model,name:mhj_cheque_management.model_account_move
+msgid "Journal Entries"
+msgstr "قيود يومية"
+
+#. module: mhj_cheque_management
+#: model:ir.model,name:mhj_cheque_management.model_account_move_line
+msgid "Journal Item"
+msgstr "عناصر يومية"
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,help:mhj_cheque_management.field_account_journal__is_cheque
+msgid ""
+"On Cash journals this will be a Cheques wallet or notes receivable/payable journal. \n"
+"        On other journal types this have no meaning."
+msgstr ""
+
+#. module: mhj_cheque_management
+#: model:ir.model.fields,field_description:mhj_cheque_management.field_account_payment__communication
+msgid "Payment Reference"
+msgstr "مرجع السداد"
+
+#. module: mhj_cheque_management
+#: model:ir.model,name:mhj_cheque_management.model_account_payment
+msgid "Payments"
+msgstr "مدفوعات"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_create_view
+msgid "Receive Cheque"
+msgstr "استلام شيك"
+
+#. module: mhj_cheque_management
+#: model:ir.actions.act_window,name:mhj_cheque_management.cheque_receive_action
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheque_receive_action
+msgid "Receive Cheques"
+msgstr "استلام شيك"
+
+#. module: mhj_cheque_management
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheques_register
+msgid "Register Cheques"
+msgstr "تسجيل الشيكات"
+
+#. module: mhj_cheque_management
+#: model:ir.actions.act_window,name:mhj_cheque_management.cheque_send_action
+#: model:ir.ui.menu,name:mhj_cheque_management.menu_cheque_send_action
+msgid "Send Cheques"
+msgstr "ارسال شيك"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_view_tree
+msgid "Status"
+msgstr "الحاله "
+
+#. module: mhj_cheque_management
+#: sql_constraint:account.payment:0
+msgid "The cheque number must be unique.!"
+msgstr "رقم الشيك يجب ان يكون فريد ولم يستخدم من قبل.!"
+
+#. module: mhj_cheque_management
+#: model_terms:ir.ui.view,arch_db:mhj_cheque_management.cheque_view_tree
+msgid "balance"
+msgstr "الرصيد"
