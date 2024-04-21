@@ -16,7 +16,8 @@ class OwnerShip(models.Model):
 
     @api.onchange("adv_pay_value")
     def calculate_adv_pay_value(self):
-        self.adv_pay = (self.adv_pay_value / self.pricing) * 100
+        if self.pricing > 0:
+            self.adv_pay = (self.adv_pay_value / self.pricing) * 100
 
     @api.onchange("handover_inst")
     def onchange_handover_inst(self):
@@ -24,4 +25,5 @@ class OwnerShip(models.Model):
 
     @api.onchange("handover_inst_value")
     def calculate_handover_inst_value(self):
-        self.handover_inst = (self.handover_inst_value / self.pricing) * 100
+        if self.pricing > 0:
+            self.handover_inst = (self.handover_inst_value / self.pricing) * 100
