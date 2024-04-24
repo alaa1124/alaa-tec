@@ -10,6 +10,8 @@ class BankStatementLine(models.Model):
 class Move(models.Model):
     _inherit = 'account.move'
 
+    account_id = fields.Many2one('account.account', string='Account')
+
     def action_post(self):
         res = super(Move, self).action_post()
         for record in self:
