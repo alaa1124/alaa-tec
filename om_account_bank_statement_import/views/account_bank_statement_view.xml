@@ -31,16 +31,16 @@
                         <field name="state" invisible="1"/>
                         <field name="company_id" invisible="1"/>
                         <field name="suitable_journal_ids" invisible="1"/>
-                        <field name="statement_id" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="date" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="payment_ref" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="ref" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="partner_id" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="amount" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="sequence" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="narration" string="Notes" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="transaction_type" attrs="{'readonly': [('state', '!=', 'open')]}"/>
-                        <field name="move_id" attrs="{'readonly': [('state', '!=', 'open')]}"/>
+                        <field name="statement_id" readonly ="state != 'open'"/>
+                        <field name="date" readonly ="state != 'open'"/>
+                        <field name="payment_ref" readonly ="state != 'open'"/>
+                        <field name="ref" readonly ="state != 'open'"/>
+                        <field name="partner_id" readonly ="state != 'open'"/>
+                        <field name="amount" readonly ="state != 'open'"/>
+                        <field name="sequence" readonly ="state != 'open'"/>
+                        <field name="narration" string="Notes" readonly ="state != 'open'"/>
+                        <field name="transaction_type" readonly ="state != 'open'"/>
+                        <field name="move_id" readonly ="state != 'open'"/>
                     </group>
                 </sheet>
             </form>
