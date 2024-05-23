@@ -90,7 +90,7 @@ class rental_contract(models.Model):
     city= fields.Many2one('cities','City', )
     user_id= fields.Many2one('res.users','Salesman', default=lambda self: self.env.user,)
     partner_id= fields.Many2one('res.partner','Tenant', required=True)
-    building_area= fields.Integer ('Building Unit Area m²',)
+    building_area= fields.Float ('Building Unit Area m²',)
     loan_line= fields.One2many('loan.line.rs.rent', 'loan_id')
     region= fields.Many2one('regions','Region', )
     country= fields.Many2one('countries','Country', )

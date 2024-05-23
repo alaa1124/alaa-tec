@@ -43,7 +43,7 @@ class building(models.Model):
     floor= fields.Char    ('Floor', size=16)
     pricing= fields.Integer   ('Price',)
     balcony= fields.Integer   ('Balconies m²',)
-    building_area= fields.Integer   ('Building Area m²',)
+    building_area= fields.Float('Building Area m²',)
     land_area= fields.Integer   ('Land Area m²',)
     garden= fields.Integer   ('Garden m²',)
     terrace= fields.Integer   ('Terraces m²',)

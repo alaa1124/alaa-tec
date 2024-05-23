@@ -63,7 +63,7 @@ class unit_reservation(models.Model):
     region= fields.Many2one('regions','Region',)
     user_id= fields.Many2one('res.users','Responsible', default=lambda self: self.env.user,)
     partner_id= fields.Many2one('res.partner','Partner')
-    building_area= fields.Integer ('Building Unit Area m²',)
+    building_area= fields.Float ('Building Unit Area m²',)
     loan_line= fields.One2many('loan.line.rs', 'loan_id')
     state= fields.Selection([('draft','Draft'),
                              ('confirmed','Confirmed'),
