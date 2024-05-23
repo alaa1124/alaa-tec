@@ -27,7 +27,7 @@ class countries(models.Model):
     _inherit = ['mail.thread']
 
     name= fields.Char ('Country Name')
-    population_density= fields.Integer('Population Density')
-    land_area= fields.Float('Land Area m²')
+    population_density = fields.Integer('Population Density')
+    land_area = fields.Float('Land Area m²')
     
 

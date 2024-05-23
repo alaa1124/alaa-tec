@@ -48,7 +48,7 @@ class cities(models.Model):
     country_id= fields.Many2one('countries','Country', )
     city_id= fields.Many2one('cities','Parent City', ondelete='cascade')
     population_density= fields.Integer('Population Density')
-    land_area= fields.Float('Land Area m²')
+    land_area = fields.Float('Land Area m²')
     type= fields.Many2one('cities.type','Type', )
     latlng_ids= fields.One2many('latlng.line', 'city_id', string='LatLng List',copy=True)
     map= fields.Char('Map', digits=(9, 6))
