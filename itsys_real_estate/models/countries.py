@@ -28,6 +28,6 @@ class countries(models.Model):
 
     name= fields.Char ('Country Name')
     population_density= fields.Integer('Population Density')
-    land_area= fields.Integer('Land Area m²')
+    land_area= fields.Float('Land Area m²')
     
 

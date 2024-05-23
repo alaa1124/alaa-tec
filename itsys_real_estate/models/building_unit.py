@@ -78,7 +78,7 @@ class building_unit(models.Model):
     balcony= fields.Integer('Balconies m²',)
     building_area = fields.Float ('Building Unit Area m²',)
     building_area_net = fields.Float ('Net Area m²',)
-    land_area= fields.Integer('Land Area m²',)
+    land_area= fields.Float('Land Area m²',)
     garden= fields.Integer('Garden m²',)
     terrace= fields.Integer('Terraces m²',)
     garage= fields.Integer('Garage included')
