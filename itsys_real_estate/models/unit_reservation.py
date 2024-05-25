@@ -42,18 +42,18 @@ class unit_reservation(models.Model):
     account_analytic_id= fields.Many2one('account.analytic.account','Analytic Account')
     contract_count= fields.Integer(compute='_contract_count', string='Contract Count',store=True)
     #Reservation Info
-    name= fields.Char    ('Name', size=64, readonly=True)
-    date= fields.Datetime    ('Date')
-    date_payment= fields.Date    ('First Payment Date')
+    name= fields.Char('Name', size=64, readonly=True)
+    date= fields.Datetime('Date')
+    date_payment= fields.Date('First Payment Date')
     #Building Info
     building= fields.Many2one('building','Building',)
-    building_code= fields.Char    ('Code', size=16)
+    building_code= fields.Char('Code', size=16)
     #Building Unit Info
     building_unit= fields.Many2one('product.template','Building Unit',domain=[('is_property', '=', True),('state', '=', 'free')],required=True)
-    unit_code= fields.Char    ('Code', size=16)
-    floor= fields.Char    ('Floor', size=16)
-    address= fields.Char    ('Address')
-    pricing= fields.Integer   ('Price', required=True)
+    unit_code= fields.Char('Code', size=16)
+    floor= fields.Char('Floor', size=16)
+    address= fields.Char('Address')
+    pricing= fields.Integer('Price', required=True)
     template_id= fields.Many2one('installment.template','Payment Template',)
     contract_id= fields.Many2one('ownership.contract','Ownership Contract',)
     type= fields.Many2one('building.type','Building Unit Type',)
@@ -63,7 +63,7 @@ class unit_reservation(models.Model):
     region= fields.Many2one('regions','Region',)
     user_id= fields.Many2one('res.users','Responsible', default=lambda self: self.env.user,)
     partner_id= fields.Many2one('res.partner','Partner')
-    building_area= fields.Float ('Building Unit Area m²',)
+    building_area= fields.Float('Building Unit Area m²', digits=(12,3))
     loan_line= fields.One2many('loan.line.rs', 'loan_id')
     state= fields.Selection([('draft','Draft'),
                              ('confirmed','Confirmed'),

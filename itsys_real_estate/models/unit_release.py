@@ -49,7 +49,7 @@ class unit_release(models.Model):
     partner_id1= fields.Many2one('res.partner','Partner', required=True)
     partner_id2= fields.Many2one('res.partner','Release to: ', required=True)
     contract_id= fields.Many2one('ownership.contract','Contract ', required=True, domain=[('state', '=', 'confirmed')])
-    building_area= fields.Float ('Building Unit Area m²',)
+    building_area= fields.Float ('Building Unit Area m²', digits=(12,3))
     state= fields.Selection([('draft','Draft'),
                              ('confirmed','Confirmed'),
                              ('contracted','Contracted')
