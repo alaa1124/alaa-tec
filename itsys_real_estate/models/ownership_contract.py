@@ -178,11 +178,17 @@ class ownership_contract(models.Model):
         rem_inst_amount = amount - adv_pay - handover_inst
         # g1_inst_amount = (rem_inst_amount*0.67) / round(inst_count/2)
         # g2_inst_amount = (rem_inst_amount*0.33) / round(inst_count/2)
+
+        # g1_inst_amount = (rem_inst_amount*0.60) / round(inst_count/2)
+        # g2_inst_amount = (rem_inst_amount*0.40) / round(inst_count/2)
+
         g_inst_amount = rem_inst_amount * 0.5 / round(inst_count / 2)
+        print('g_inst_amount', g_inst_amount)
         if inst_count % 2 > 0:
             inst_count += 1
             # self.inst_count = inst_count
             # self._cr.commit()
+
         inst_months = round(month_count / inst_count)
         # self.inst_count = month_count / inst_months
 
@@ -199,14 +205,19 @@ class ownership_contract(models.Model):
                 'npv': adv_pay,
             }),
         )
+        if self.handover_seq:
+            irng = range(1, int(inst_count) + 2)
+        else:
+            irng = range(1, int(inst_count) + 1)
 
-        irng = range(1, int(inst_count) + 2)
+
+        print('irng', irng)
         for ili in irng:
             iseq = ili
             mns = iseq * inst_months
             idate = start_date + rd(months=mns)
             amount = 0
-            name = f'Inst # {str(iseq)} / {mns} months'
+            # name = f'Inst # {str(iseq)} / {mns} months'
             # if iseq <= (len(irng)/2)+1:
             #     amount = g1_inst_amount
             # else:
@@ -215,11 +226,22 @@ class ownership_contract(models.Model):
             amount = g_inst_amount
 
             if iseq == self.handover_seq:
+                mns = iseq * inst_months
                 amount = handover_inst
-                name += ' (Handover)'
+                name = f'{mns} months (Handover)'
+            elif iseq < self.handover_seq:
+                mns = iseq * inst_months
+                name = f'Inst # {str(iseq)} / {mns} months'
 
+            elif iseq > self.handover_seq:
+                iseq = iseq -1
+                mns = iseq * inst_months
+                name = f'Inst # {str(iseq)} / {mns} months'
+
+            print('npv', npv)
+            print('amount', amount)
             inpv = amount / (1 + (npv / 12)) ** mns
-
+            print('name', self.name)
             inst_lines.append(
                 (0, 0, {
                     'number': (self.name + ' / ' + str(iseq)),
