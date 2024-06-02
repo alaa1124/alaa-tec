@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sotto_res_config_settings_contacts_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.restrict.duplicate.contact.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@id='contacts_settings']" position="inside">
+                <div id="duplicate_contact_settings">
+                    <div class='row mt16 o_settings_container'>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="stop_duplicate_contact"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Duplicate Contacts
+                                </span>
+                                <div class="row mt16"
+                                    invisible = "stop_duplicate_contact == False">
+                                     <label for="duplicate_contact_fields"
+                                        class="col-lg-4 o_light_label"/>
+                                    <field name="duplicate_contact_fields"
+                                           widget="many2many_tags"
+                                           class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
