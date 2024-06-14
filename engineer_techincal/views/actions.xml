@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_engineer_template_owner" model="ir.actions.act_window">
+            <field name="name">Engineer Template Owner</field>
+            <field name="type">ir.actions.act_window</field>
+         <field name="res_model">project.engineer.techincal</field>
+           <field name="domain">[('type','=','owner') ]</field>
+            <field name="context">{'default_type':'owner'}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <record id="action_engineer_template_subcontarctor" model="ir.actions.act_window">
+            <field name="name">Engineer Template SubContarctor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.engineer.techincal</field>
+           <field name="domain">[('type','=','subconstructor') ]</field>
+            <field name="context">{'default_type':'subconstructor'}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="wbs_action" model="ir.actions.act_window">
+            <field name="name">WBS</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.wbs</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <record id="wbs_action_line" model="ir.actions.act_window">
+            <field name="name">WBS Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.wbs.line</field>
+            <field name="view_mode">tree,form</field>
+             <field name="domain">[('state','=','confirm')]</field>
+        </record>
+         <record id="wbs_action_build" model="ir.actions.act_window">
+            <field name="name">WBS Builds</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.build</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

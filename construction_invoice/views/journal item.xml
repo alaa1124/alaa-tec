@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_account_move_line_filter_contract" model="ir.ui.view">
+            <field name="name">view_account_move_line_filter_contract</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//filter[@name='group_by_account']" position="after">
+                    <filter string="Project" name="group_by_project" domain="[]"
+                            context="{'group_by': 'project_id'}"/>
+                     <filter string="Contract" name="group_by_contract_id" domain="[]"
+                            context="{'group_by': 'contract_id'}"/>
+
+                </xpath>
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name="project_id"/>
+                    <field name="contract_id"/>
+                    <!-- Add your fields or attributes here -->
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

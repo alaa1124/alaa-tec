@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="job_cost_view_tree" model="ir.ui.view">
+        <field name="name">job_cost_view_tree</field>
+        <field name="model">construction.job.cost</field>
+        <field name="arch" type="xml">
+            <tree string="job_cost_tree">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="code"/>
+                <field name="item_id" optional="show"/>
+                <field name="qty" optional="show"/>
+                <field name="state" optional="show"/>
+                <field name="note" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <record id="job_cost_view_form" model="ir.ui.view">
+        <field name="name">job_cost_view_form</field>
+        <field name="model">construction.job.cost</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="is_template" invisible="1"/>
+                    <field name="techical_type" invisible="1"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve"
+                          invisible = "is_template==True"/>
+                    <button name="action_confirm" type="object" string="Confirm"
+                            invisible = "is_template==True or state!='draft' "/>
+                    <button name="action_approve" type="object" string="Approve"
+                            invisible = "is_template==True or state!='confirm' "/>
+                   <button name="action_quotation" type="object" string="Crate Final Offer"
+                     invisible = "techical_type==True or state!='approve'"/>
+                </header>
+                <sheet>
+                    <field name="is_template" invisible="1"/>
+                    <h2>
+                        <field name="name"/>
+                    </h2>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                            <field name="item_id" invisible = "is_template==True" readonly="1"/>
+                            <field name="uom_id" invisible = "is_template==True" readonly="1"/>
+                            <field name="unit_type"/>
+                            <field name="previous_qty" invisible = "techical_type!=True" readonly="1"/>
+                            <field name="actual_qty" invisible = "techical_type!=True" readonly="1"/>
+                            <field name="qty" invisible = "is_template==True" readonly="state!='draft' or techical_type!=True"/>
+                            <field name="project_id" invisible = "is_template==True" readonly="1"/>
+                            <field name="partner_id" invisible = "is_template==True" readonly="1"/>
+                            <field name="template_id" context="{'default_is_template':True}"
+                                  invisible = "is_template==True" readonly="state!='draft' "/>
+
+                        </group>
+                        <group>
+                            <field name="note"
+                                  invisible = "is_template==True" readonly="state!='draft' "/>
+                            <field name="start_date"
+                                  invisible = "is_template==True" readonly="state!='draft' "/>
+                            <field name="end_date"
+                                  invisible = "is_template==True" readonly="state!='draft' "/>
+                            <field name="dif" invisible="is_template==True"/>
+
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Material">
+                            <field name="material_ids" readonly="state!='draft'">
+                                <tree editable="bottom">
+                                    <field name="product_id" required="1" context="{'default_material':True}"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="total_qty_as_total" sum="total"
+                                           column_invisible="parent.unit_type!='total'"
+                                          />
+                                    <field name="qty" sum="total"/>
+                                    <field name="waste" sum="total"/>
+                                    <field name="planned_qty" sum="total"/>
+                                    <field name="price_unit" sum="total"/>
+                                    <field name="currancy_id"/>
+                                    <field name="ratio" sum="total"/>
+                                    <field name="subtotal" sum="total"/>
+                                    <field name="total_qty" sum="total"/>
+                                    <field name="total_cost" sum="total"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Labour">
+                            <field name="labour_ids" readonly="state!='draft'">
+                                <tree editable="bottom">
+                                    <field name="product_id" required="1" context="{'default_labour':True}"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="qty" sum="total"/>
+                                    <field name="price_unit" sum="total"/>
+                                    <field name="subtotal" sum="total"/>
+                                    <field name="total_qty" sum="total"/>
+                                    <field name="total_cost" sum="total"/>
+
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Expenses" readonly="state!='draft'">
+                            <field name="expense_ids" readonly="state!='draft'">
+                                <tree editable="bottom">
+                                    <field name="product_id" required="1" context="{'default_expenses':True}"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="qty" sum="total"/>
+                                    <field name="price_unit" sum="total"/>
+                                    <field name="subtotal" sum="total"/>
+                                    <field name="total_qty" sum="total"/>
+                                    <field name="total_cost" sum="total"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Equipment">
+                            <field name="equipment_ids" readonly="state!='draft'">
+                                <tree editable="bottom">
+                                    <field name="product_id" required="1" context="{'default_equipment':True}"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="qty" sum="total"/>
+                                    <field name="price_unit" sum="total"/>
+                                    <field name="subtotal" sum="total"/>
+                                    <field name="total_qty" sum="total"/>
+                                    <field name="total_cost" sum="total"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Subconstractor">
+                            <field name="subconstractor_ids" readonly="state!='draft'">
+                                <tree editable="bottom">
+                                    <field name="product_id" required="1" context="{'default_subconstructor':True}"/>
+                                    <field name="name"/>
+                                    <field name="uom_id"/>
+                                    <field name="qty" sum="total"/>
+                                    <field name="price_unit" sum="total"/>
+                                    <field name="subtotal" sum="total"/>
+                                    <field name="total_qty" sum="total"/>
+                                    <field name="total_cost" sum="total"/>
+
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                    <group class="oe_subtotal_footer oe_right">
+                        <group string="Total Per Unit" class="oe_inline">
+                            <field name="total_material"/>
+                            <field name="total_labour"/>
+                            <field name="total_expense"/>
+                            <field name="total_subconstractor"/>
+                            <field name="total_equipment"/>
+                            <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                <label for="total_value_all"/>
+                            </div>
+                            <field name="total_value_all" nolabel="1" class="oe_subtotal_footer_separator"
+                                   widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group string="Total With Quantity" class="oe_inline">
+                            <field name="total_material_with_qty"/>
+                            <field name="total_labour_with_qty"/>
+                            <field name="total_expense_with_qty"/>
+                            <field name="total_subcontractor_with_qty"/>
+                            <field name="total_equipment_with_qty"/>
+                            <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                <label for="total_value_all_with_qty"/>
+                            </div>
+                            <field name="total_value_all_with_qty" nolabel="1" class="oe_subtotal_footer_separator"
+                                   widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="job_cost_search" model="ir.ui.view">
+        <field name="name">job_cost_search</field>
+        <field name="model">construction.job.cost</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="name" string="name"/>
+                <field name="code" string="Code"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Hold" name="inactive" domain="[('active', '=', False)]"/>
+                <filter string="Version" name="version" context="{'group_by': 'version'}"/>
+                <field name="material_ids" string="Product"
+                       filter_domain="[('material_ids.product_id', 'ilike', self)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

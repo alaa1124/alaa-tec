@@ -1,0 +1,68 @@
+<odoo>
+    <record id="account_reports.partner_ledger_report" model="account.report">
+        <field name="column_ids">
+            <record id="partner_ledger_report_contract_id" model="account.report.column">
+                <field name="name">Contract</field>
+                <field name="expression_label">contract_id</field>
+                <field name="figure_type">string</field>
+            </record>
+            <record id="partner_ledger_report_project_id" model="account.report.column">
+                <field name="name">Project</field>
+                <field name="expression_label">project_id</field>
+                <field name="figure_type">string</field>
+            </record>
+        </field>
+    </record>
+
+
+<!--    <template id="report_invoice_document" inherit_id="account.report_invoice_document">-->
+
+<!--        <xpath expr="/t/t/div[2]/div[1]/h2" position="after">-->
+<!--            <div class="row">-->
+<!--                <div class="col-3">-->
+<!--                    <span>-->
+<!--                        <strong>Project:</strong>-->
+<!--                        <br/>-->
+<!--                    </span>-->
+<!--                    <span t-field="o.project_id.name"/>-->
+<!--                </div>-->
+<!--                <div class="col-3"/>-->
+<!--                <div class="col-3"/>-->
+<!--                <div class="col-3"/>-->
+<!--            </div>-->
+<!--        </xpath>-->
+<!--        <xpath expr="/t/t/div[2]/div[1]/div[1]/div[2]" position="inside">-->
+<!--            <span>-->
+<!--                <strong>Contract:</strong>-->
+<!--                <br/>-->
+<!--            </span>-->
+<!--        </xpath>-->
+<!--        <xpath expr="/t/t/div[2]/div[1]/div[1]/div[2]" position="inside">-->
+<!--            <span t-field="o.contract_id"/>-->
+<!--        </xpath>-->
+<!--        &lt;!&ndash;            <xpath expr="/t/t/div[2]/div[1]/div[1]/div[3]" position="inside">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <span>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <strong>SupContract:</strong>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <br/>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </span>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </xpath>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <xpath expr="/t/t/div[2]/div[1]/div[1]/div[3]" position="inside">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <span t-field="o.write_uid"/>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </xpath>&ndash;&gt;-->
+
+<!--        <xpath expr="/t/t/div[2]/div[1]/table/thead/tr/th[1]" position="after">-->
+<!--            <th>-->
+<!--                <span>Stage</span>-->
+<!--            </th>-->
+<!--        </xpath>-->
+<!--        <xpath expr="/t/t/div[2]/div[1]/table/tbody/t[3]/tr/t[1]/td[1]" position="after">-->
+<!--            <td>-->
+<!--                <span t-field="line.stage_id.name"/>-->
+<!--            </td>-->
+<!--        </xpath>-->
+<!--        <xpath expr="/t/t/div[2]/div[1]/table/tbody/t[3]/t[3]/tr/td" position="attributes">-->
+<!--            <attribute name="colspan">100</attribute>-->
+<!--        </xpath>-->
+
+<!--    </template>-->
+</odoo>

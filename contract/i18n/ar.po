@@ -1,0 +1,921 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-10 17:36+0000\n"
+"PO-Revision-Date: 2023-08-10 17:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__access_warning
+#: model:ir.model.fields,field_description:contract.field_project_contract__access_warning
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_needaction
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_needaction
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_exception_decoration
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_exception_decoration
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_state
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_state
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_type_icon
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_type_icon
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Add Item"
+msgstr "اضافة بند"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Add Stage"
+msgstr "اضافة مرحلة"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Add a note"
+msgstr "اضافة ملاحظة"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Add a section"
+msgstr "اضافة قسم"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.action_contract_allowance
+#: model:ir.model.fields,field_description:contract.field_project_contract__allowance_ids
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_allowance__subtype__allowance
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Allowance"
+msgstr "الاضافات"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_allowance
+msgid "Allowance "
+msgstr "الاضافات"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__amount
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_allowance__calculation_type__amount
+msgid "Amount"
+msgstr "القيمة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__amount_subtotal
+msgid "Amount Subtotal"
+msgstr "قيمة اجمالي الفرعي"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__amount_tax
+msgid "Amount Tax"
+msgstr "قيمة الضريبة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__amount_total_contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__amount_total_contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__amount_total
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__amount_total
+msgid "Amount Total"
+msgstr "اجمالي القيمة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_attachment_count
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_attachment_count
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__calculation_type
+msgid "Calculation Type"
+msgstr "نوع الحساب"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__code
+msgid "Code"
+msgstr "الكود"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__company_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__company_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__company_id
+#: model:ir.model.fields,field_description:contract.field_project_stage__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_conf
+msgid "Configuration"
+msgstr "الاعدادات"
+
+#. module: contract
+#: model:ir.model,name:contract.model_project_contract_conf
+msgid "Configuration accountin contract"
+msgstr "اعدادات حسابات العقد "
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__project_contract__state__confirm
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Confirm"
+msgstr "التأكيد"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_construction
+msgid "Construction"
+msgstr "المقاولات"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__contarct_line_ids
+msgid "Contarct Line"
+msgstr "بند العقد"
+
+#. module: contract
+#: model:ir.model,name:contract.model_project_contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__contract_id
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__contract_id
+#: model:ir.model.fields,field_description:contract.field_contract_stage__contract_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__contract_id
+#: model:ir.ui.menu,name:contract.menu_contract
+msgid "Contract"
+msgstr "العقد"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__contract_line_id
+msgid "Contract Line"
+msgstr "بند العقد"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__revenue_account_id
+#: model_terms:ir.ui.view,arch_db:contract.contract_conf_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Cost Account"
+msgstr "حساب الايراد"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__count_subcontract
+msgid "Count Subcontract"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__counterpart_account_id
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__counterpart_account_id
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__counterpart_account_id
+msgid "Counterpart Account"
+msgstr "الحساب"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__create_uid
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__create_uid
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__create_uid
+#: model:ir.model.fields,field_description:contract.field_contract_stage__create_uid
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__create_uid
+#: model:ir.model.fields,field_description:contract.field_project_contract__create_uid
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__create_uid
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__create_uid
+#: model:ir.model.fields,field_description:contract.field_project_stage__create_uid
+msgid "Created by"
+msgstr "انشأ بواسطة "
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__create_date
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__create_date
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__create_date
+#: model:ir.model.fields,field_description:contract.field_contract_stage__create_date
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__create_date
+#: model:ir.model.fields,field_description:contract.field_project_contract__create_date
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__create_date
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__create_date
+#: model:ir.model.fields,field_description:contract.field_project_stage__create_date
+msgid "Created on"
+msgstr "انشأ في "
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__access_url
+#: model:ir.model.fields,help:contract.field_project_contract__access_url
+#: model:ir.model.fields,help:contract.field_project_contract_conf__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.action_contract_deduction
+#: model:ir.model.fields,field_description:contract.field_project_contract__deduction_ids
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_allowance__subtype__deduction
+#: model:ir.ui.menu,name:contract.menu_contract_deduction
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Deduction"
+msgstr "الاستقطاعات"
+
+#. module: contract
+#: model:ir.model,name:contract.model_contract_deduction_allowance
+msgid "Deduction Allowance"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Desciption"
+msgstr "الوصف"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__description
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__name
+msgid "Description"
+msgstr "الوصف"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__display_name
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__display_name
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__display_name
+#: model:ir.model.fields,field_description:contract.field_contract_stage__display_name
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__display_name
+#: model:ir.model.fields,field_description:contract.field_project_contract__display_name
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__display_name
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__display_name
+#: model:ir.model.fields,field_description:contract.field_project_stage__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__display_type
+msgid "Display Type"
+msgstr "النوع المعروض"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__down_payment
+msgid "Down Payment"
+msgstr "الدفعة المقدمة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__down_payment_value
+msgid "Down Payment "
+msgstr "الدفعة المقدمة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__down_payment
+msgid "Down Payment %"
+msgstr "الدفعة المقدمة%"
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__project_contract__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_follower_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_follower_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_partner_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_partner_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__activity_type_icon
+#: model:ir.model.fields,help:contract.field_project_contract__activity_type_icon
+#: model:ir.model.fields,help:contract.field_project_contract_conf__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__has_message
+#: model:ir.model.fields,field_description:contract.field_project_contract__has_message
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__id
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__id
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__id
+#: model:ir.model.fields,field_description:contract.field_contract_stage__id
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__id
+#: model:ir.model.fields,field_description:contract.field_project_contract__id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__id
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__id
+#: model:ir.model.fields,field_description:contract.field_project_stage__id
+msgid "ID"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_exception_icon
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_exception_icon
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__activity_exception_icon
+#: model:ir.model.fields,help:contract.field_project_contract__activity_exception_icon
+#: model:ir.model.fields,help:contract.field_project_contract_conf__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__message_needaction
+#: model:ir.model.fields,help:contract.field_project_contract__message_needaction
+#: model:ir.model.fields,help:contract.field_project_contract_conf__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__message_has_error
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__message_has_sms_error
+#: model:ir.model.fields,help:contract.field_project_contract__message_has_error
+#: model:ir.model.fields,help:contract.field_project_contract__message_has_sms_error
+#: model:ir.model.fields,help:contract.field_project_contract_conf__message_has_error
+#: model:ir.model.fields,help:contract.field_project_contract_conf__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_is_follower
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_is_follower
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__is_precentage
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__is_precentage
+msgid "Is Precentage"
+msgstr "نسبة؟"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__is_subcontract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__is_subcontract
+msgid "Is Subcontract"
+msgstr "عقد فرعي؟"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__item
+msgid "Item"
+msgstr "بند"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_item
+msgid "Item "
+msgstr "بند"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.contract_item_action
+msgid "Items"
+msgstr "بنود"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines____last_update
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance____last_update
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines____last_update
+#: model:ir.model.fields,field_description:contract.field_contract_stage____last_update
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line____last_update
+#: model:ir.model.fields,field_description:contract.field_project_contract____last_update
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf____last_update
+#: model:ir.model.fields,field_description:contract.field_project_contract_line____last_update
+#: model:ir.model.fields,field_description:contract.field_project_stage____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل في "
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__write_uid
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__write_uid
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__write_uid
+#: model:ir.model.fields,field_description:contract.field_contract_stage__write_uid
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__write_uid
+#: model:ir.model.fields,field_description:contract.field_project_contract__write_uid
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__write_uid
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__write_uid
+#: model:ir.model.fields,field_description:contract.field_project_stage__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل بواسطة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__write_date
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__write_date
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__write_date
+#: model:ir.model.fields,field_description:contract.field_contract_stage__write_date
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__write_date
+#: model:ir.model.fields,field_description:contract.field_project_contract__write_date
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__write_date
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__write_date
+#: model:ir.model.fields,field_description:contract.field_project_stage__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل في "
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Lines"
+msgstr "السطور"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_main_attachment_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_main_attachment_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_has_error
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_has_error
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__my_activity_date_deadline
+#: model:ir.model.fields,field_description:contract.field_project_contract__my_activity_date_deadline
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__name
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__name
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__name
+#: model:ir.model.fields,field_description:contract.field_project_contract__name
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__name
+#: model:ir.model.fields,field_description:contract.field_project_stage__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_calendar_event_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_calendar_event_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_date_deadline
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_date_deadline
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_summary
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_summary
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_type_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_type_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__note
+#: model:ir.model.fields.selection,name:contract.selection__project_contract_line__display_type__line_note
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_needaction_counter
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_needaction_counter
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الانشطة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_has_error_counter
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_has_error_counter
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الاخطاء"
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__message_needaction_counter
+#: model:ir.model.fields,help:contract.field_project_contract__message_needaction_counter
+#: model:ir.model.fields,help:contract.field_project_contract_conf__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__message_has_error_counter
+#: model:ir.model.fields,help:contract.field_project_contract__message_has_error_counter
+#: model:ir.model.fields,help:contract.field_project_contract_conf__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_allowance__type__owner
+#: model:ir.model.fields.selection,name:contract.selection__project_contract_conf__type__owner
+msgid "Owner"
+msgstr "مالك"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.action_contract_owner
+#: model:ir.actions.act_window,name:contract.action_contract_owner_conf
+#: model:ir.ui.menu,name:contract.menu_contract_owner
+msgid "Owner Contract"
+msgstr "عقد المالك"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_owner_conf
+msgid "Owner Contract "
+msgstr "عقد المالك"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__parent_contract_id
+msgid "Parent Contract"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__partner_id
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_tree
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_tree_sub
+msgid "Partner Account"
+msgstr "حساب الشريك"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__parent_account_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__parent_account_id
+msgid "Partner account"
+msgstr "حساب الشريك"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__percentage
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__percentage
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_allowance__calculation_type__percentage
+msgid "Percentage"
+msgstr "النسبة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__access_url
+#: model:ir.model.fields,field_description:contract.field_project_contract__access_url
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_stage__prec
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__prec
+msgid "Prec"
+msgstr "النسبة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__price_unit
+msgid "Price Unit"
+msgstr "سعر الوحدة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__project_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__project_id
+msgid "Project"
+msgstr "المشروع"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__qty
+msgid "Qty"
+msgstr "الكمية"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__received_date
+msgid "Received Date"
+msgstr "تاريخ الاستلام"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__referance
+msgid "Referance"
+msgstr "المرجع"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.contract_related_job_action
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__related_job_id
+msgid "Related Job"
+msgstr "الوظيفة المرتبطة"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_related
+msgid "Related Job "
+msgstr "الوظيفة المرتبطة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__activity_user_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__activity_user_id
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسئول"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__revenue_account_id
+#: model_terms:ir.ui.view,arch_db:contract.contract_conf_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+msgid "Revenue Account"
+msgstr "حساب الايراد"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__message_has_sms_error
+#: model:ir.model.fields,field_description:contract.field_project_contract__message_has_sms_error
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__project_contract_line__display_type__line_section
+msgid "Section"
+msgstr "القسم"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__access_token
+#: model:ir.model.fields,field_description:contract.field_project_contract__access_token
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Set Draft"
+msgstr "اجعله مسودة"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.action_contract_stage
+#: model:ir.model,name:contract.model_project_stage
+#: model:ir.model.fields,field_description:contract.field_contract_stage__stage_id
+#: model:ir.model.fields,field_description:contract.field_contract_stage_line__stage_id
+#: model:ir.model.fields,field_description:contract.field_project_contract__stage_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__stage_ids
+msgid "Stage"
+msgstr "المرحلة"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_stage
+msgid "Stage "
+msgstr "المرحلة"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Stages"
+msgstr "المراحل"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__state
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__activity_state
+#: model:ir.model.fields,help:contract.field_project_contract__activity_state
+#: model:ir.model.fields,help:contract.field_project_contract_conf__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_subconstruct_conf
+msgid "Sub-Contractors  "
+msgstr "مقاولين الباطن"
+
+#. module: contract
+#: model:ir.ui.menu,name:contract.menu_contract_subconstructor
+msgid "Sub-constructors Contract"
+msgstr "عقد مقاول الباطن"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "Sub-contract"
+msgstr "العقد الفرعي"
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_allowance__type__subconstructor
+#: model:ir.model.fields.selection,name:contract.selection__project_contract_conf__type__subconstructor
+msgid "Subconstructor"
+msgstr "مقاول الباطن"
+
+#. module: contract
+#: model:ir.actions.act_window,name:contract.action_contract_supcontractor
+#: model:ir.actions.act_window,name:contract.action_contract_supcontractor_conf
+msgid "Subcontract Contract"
+msgstr "العقد الفرعي"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract__subcontractor
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__subcontractor
+msgid "Subcontractor"
+msgstr "مقاول الباطن"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__tax_ids
+msgid "Tax"
+msgstr "الضريبة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__contract_type
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__type
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__contract_type
+#: model:ir.model.fields,field_description:contract.field_project_contract__type
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__type
+msgid "Type of Contract"
+msgstr "نوع العقد"
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__activity_exception_decoration
+#: model:ir.model.fields,help:contract.field_project_contract__activity_exception_decoration
+#: model:ir.model.fields,help:contract.field_project_contract_conf__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_allowance_lines__value
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_lines__value
+msgid "Value"
+msgstr "القيمة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__website_message_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract__website_message_ids
+#: model:ir.model.fields,field_description:contract.field_project_contract_conf__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields,help:contract.field_contract_deduction_allowance__website_message_ids
+#: model:ir.model.fields,help:contract.field_project_contract__website_message_ids
+#: model:ir.model.fields,help:contract.field_project_contract_conf__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_tree
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_tree_sub
+msgid "_tree"
+msgstr ""
+
+#. module: contract
+#: model:ir.model,name:contract.model_contract_allowance_lines
+msgid "contract.allowance.lines"
+msgstr "بنود الاضافات للعقد"
+
+#. module: contract
+#: model:ir.model,name:contract.model_contract_deduction_lines
+msgid "contract.deduction.lines"
+msgstr "بنود الاستقطاعات للعقد"
+
+#. module: contract
+#: model:ir.model,name:contract.model_contract_stage
+msgid "contract.stage"
+msgstr "مرحلة العقد"
+
+#. module: contract
+#: model:ir.model,name:contract.model_contract_stage_line
+msgid "contract.stage.line"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_conf_view_deduction_allowance_tree
+#: model_terms:ir.ui.view,arch_db:contract.contract_conf_view_tree
+msgid "contract_conf_tree"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "contract_form"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_stage_line_view_form
+msgid "contract_stage_line_form"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "create Sub-contract"
+msgstr "انشاء ملحق للعقد"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_contract_deduction_allowance__subtype
+msgid "main Type"
+msgstr "النوع الاساسي"
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__contract_allowance_lines__contract_type__owner
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_lines__contract_type__owner
+#: model:ir.model.fields.selection,name:contract.selection__project_contract__type__owner
+msgid "owner"
+msgstr "مالك"
+
+#. module: contract
+#: model:ir.model,name:contract.model_project_contract_line
+msgid "project.contract.line"
+msgstr ""
+
+#. module: contract
+#: model:ir.model.fields.selection,name:contract.selection__contract_allowance_lines__contract_type__subconstructor
+#: model:ir.model.fields.selection,name:contract.selection__contract_deduction_lines__contract_type__subconstructor
+#: model:ir.model.fields.selection,name:contract.selection__project_contract__type__subconstructor
+msgid "subconstructor"
+msgstr "مقاول الباطن"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "total"
+msgstr "الاجمالي"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__uom_id
+msgid "unit of measure"
+msgstr "وحدة القياس"
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "بند المفايسه"
+msgstr "بند المقايسة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__item_sub_id
+msgid "بند المقاول"
+msgstr ""
+
+#. module: contract
+#: model_terms:ir.ui.view,arch_db:contract.contract_view_form_sub
+msgid "وصف بند المفايسه"
+msgstr "وصف بند المقايسة"
+
+#. module: contract
+#: model:ir.model.fields,field_description:contract.field_project_contract_line__desc_item
+msgid "وصف بند المقاول"
+msgstr ""

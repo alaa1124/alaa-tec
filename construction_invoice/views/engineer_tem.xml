@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="invoice_en_template_view_form" model="ir.ui.view">
+            <field name="name">invoice_en_template_view_form</field>
+            <field name="model">project.engineer.techincal</field>
+            <field name="inherit_id" ref="engineer_techincal.en_template_view_form"/>
+            <field name="arch" type="xml">
+
+                  <xpath expr="//field[@name='name']" position="before">
+                       <div class="oe_button_box" name="button_box">
+                              <button name="action_view_invoice"   invisible="state!='confirm'"   type="object"
+                                      class="oe_stat_button"  icon="fa-file-text-o">
+                                     Invoice
+                              </button>
+                          </div>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="eng_contract_owner" model="ir.sequence">
+        <field name="name">Eng Template</field>
+        <field name="code">project.engineer.techincal</field>
+        <field name="prefix">ENG/</field>
+        <field name="padding">5</field>
+    </record>
+    <record id="enginner_tem_view_tree" model="ir.ui.view">
+        <field name="name">enginner_tem_view_tree</field>
+        <field name="model">project.engineer.techincal</field>
+        <field name="arch" type="xml">
+            <tree string="enginner_tem_tree">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="referance"/>
+                <field name="referance"/>
+                <field name="date"/>
+                <field name="sub_type"/>
+                <field name="type" invisible="1"/>
+                <field name="subcontractor"   invisible="type=='owner'"  optional="hide"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="en_template_view_form" model="ir.ui.view">
+        <field name="name">en_template_view_form</field>
+        <field name="model">project.engineer.techincal</field>
+        <field name="arch" type="xml">
+            <form string="en_template_form">
+                <header>
+                    <button string="Confirm" name="action_confirm"  invisible="state!='draft'"  type="object"/>
+                    <button string="Set Draft" name="action_draft"  invisible="state!='confirm'"  type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+
+                </header>
+                <sheet>
+
+                    <field name="name" readonly="1"/>
+                    <group>
+                        <field name="project_id"   readonly="state!='draft'"  required="1"/>
+                        <field name="contract_id"   readonly="state!='draft'"  required="1"/>
+                        <field name="subcontractor"  force_save="1"
+                                invisible="type=='owner'"  readonly="1"/>
+                        <field name="date"   readonly="state!='draft'"/>
+                        <field name="referance"   readonly="state!='draft'"/>
+                        <field name="sub_type"   readonly="state!='draft'"/>
+                        <field name="type" invisible="1"/>
+
+
+                    </group>
+                    <button name="select_item" type="object" string="Select Item"  invisible="state!='draft'" />
+                    <notebook>
+                        <page string="lines">
+                            <field name="line_ids"  readonly="state!='draft'"
+                                   widget="section_and_note_one2many">
+                                <tree editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Add Item"/>
+                                        <create name="add_section_control" string="Add a section"
+                                                context="{'default_display_type': 'line_section'}"/>
+                                        <create name="add_note_control" string="Add a note"
+                                                context="{'default_display_type': 'line_note'}"/>
+                                    </control>
+                                    <field name="display_type" invisible="1"  optional="hide"/>
+                                    <field name="type"  invisible="1" optional="hide"/>
+                                    <field name="sequence" widget="handle" optional="show"/>
+
+
+                                    <field name="name"  required="display_type==False"
+                                           widget="section_and_note_text" optional="show" width="100px"/>
+                                    <field name="item"  required="display_type==False"
+                                           optional="show" width="100px"/>
+                                    <field name="stage_id"  required="display_type==False"
+                                           optional="show" width="100px"/>
+
+                                    <field name="related_job_id" optional="show" width="100px"/>
+                                    <field name="uom_id" string="Unit Of Measure"
+                                            required="display_type==False"
+                                           optional="show" width="100px"/>
+                                    <field name="previous_quanity"  required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="contract_quanity"
+                                            readonly="1" required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="qty"  required="display_type==False"
+                                           string="Current Qty" optional="show" width="100px" sum="total"/>
+                                    <field name="price_unit" force_save="1"
+                                            readonly="1" required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="total_quanity"  required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="stage_prec" string="Precentage Stage" force_save="1"
+                                            readonly="1" required="display_type==False"
+                                           optional="show" width="100px"/>
+                                    <field name="amount"  required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="precentage"  required="display_type==False"
+                                           optional="show" width="100px"/>
+                                    <field name="price"  required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="previous_amount"  force_save="1"  readonly="1" required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+                                    <field name="differance"  required="display_type==False"
+                                           optional="show" width="100px" sum="total"/>
+
+
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="display_type"
+                                        invisible="1"/>
+                                        <field name="name"
+                                        />
+                                        <field name="item"
+                                        />
+                                        <field name="stage_id"
+                                        />
+
+                                        <field name="related_job_id"/>
+                                        <field name="uom_id"
+                                        />
+                                        <field name="previous_quanity"
+
+                                        />
+                                        <field name="contract_quanity"
+                                                readonly="1" required="display_type==False"
+                                        />
+                                        <field name="qty"
+                                        />
+                                        <field name="price_unit"
+                                        />
+                                        <field name="total_quanity"
+                                        />
+
+                                    </group>
+                                    <group>
+                                        <field name="stage_prec" string="Precentage Stage"
+
+                                        />
+                                        <field name="amount"
+                                        />
+                                        <field name="precentage"
+                                        />
+                                        <field name="price" force_save="1" readonly="1"
+                                        />
+                                        <field name="previous_amount"
+                                   force_save="1" readonly="1"
+                                        />
+                                        <field name="differance"
+                                        />
+                                    </group>
+                                </form>
+                            </field>
+
+                        </page>
+
+                        <page string="Deduction">
+                            <field name="deduction_ids"  readonly="state!='draft'"
+                                   context="{'default_contract_type':type}">
+                                <tree editable="bottom">
+                                    <field name="name" required="1"/>
+                                    <field name="contract_type" invisible="1"/>
+
+
+                                    <field name="counterpart_account_id"/>
+                                    <field name="is_precentage"/>
+                                    <field name="percentage" force_save="1" readonly="is_precentage==False"/>
+                                    <field name="value" force_save="1"
+                                           readonly="is_precentage!=False"/>
+
+                                </tree>
+                            </field>
+
+                        </page>
+                        <page string="Allowance">
+                            <field name="allowance_ids"  readonly="state!='draft'"
+                                   context="{'default_contract_type':type}">
+                                <tree editable="bottom">
+                                    <field name="name" required="1"/>
+                                    <field name="contract_type" invisible="1"/>
+                                    <field name="counterpart_account_id"/>
+                                    <field name="is_precentage"/>
+                                    <field name="percentage" force_save="1" readonly="is_precentage==False"/>
+                                    <field name="value" force_save="1"
+                                           readonly="is_precentage!=False"/>
+
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                    <group class="oe_subtotal_footer oe_right">
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                            <label for="total_allowance"/>
+                        </div>
+                        <field name="total_allowance" nolabel="1" class="oe_subtotal_footer_separator"/>
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                            <label for="total_deduction"/>
+                        </div>
+                        <field name="total_deduction" nolabel="1" class="oe_subtotal_footer_separator"/>
+
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                            <label for="amount_total"/>
+                        </div>
+                        <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

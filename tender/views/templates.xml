@@ -1,0 +1,135 @@
+<odoo>
+    <template id="report_saleorder_document_cons">
+        <t t-call="web.external_layout">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+
+
+            <div class="page">
+                <div class="oe_structure"/>
+
+                <h2 class="mt-4">
+                    <span t-field="doc.name"/>
+                </h2>
+
+                <div class="row mt-4 mb-4" id="informations">
+                    <div class="col-auto col-3 mw-100 mb-2" name="informations_reference">
+                        <strong>Customer:</strong>
+                        <p class="m-0" t-field="doc.partner_id.name"/>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2" name="informations_date">
+
+                        <strong>Date:</strong>
+                        <p class="m-0" t-field="doc.create_date" t-options='{"widget": "date"}'/>
+                    </div>
+                    <div
+                            class="col-auto col-3 mw-100 mb-2"
+                    >
+                        <strong>Version:</strong>
+                        <p class="m-0" t-field="doc.version"/>
+                    </div>
+                    <div class="col-auto col-3 mw-100 mb-2">
+                        <strong>Project:</strong>
+                        <p class="m-0" t-field="doc.project_id.name"/>
+                    </div>
+                </div>
+
+                <!-- Is there a discount on at least one line? -->
+
+                <table class="table table-sm o_main_table mt-4">
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th name="th_description" class="text-start">Code</th>
+                            <th name="th_quantity" class="text-end">Item</th>
+                            <th name="th_quantity" class="text-end">Des</th>
+                            <th name="th_quantity" class="text-end">Quantity</th>
+
+                            <th name="th_priceunit" class="text-end">Unit Price</th>
+
+                            <th name="th_taxes" class="text-end">Sales Price</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+
+                        <t t-set="current_subtotal" t-value="0"/>
+
+                        <t t-foreach="doc.order_lines" t-as="line">
+
+
+                            <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                <t t-if="not line.display_type">
+
+                                    <td name="td_name">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <td  class="text-end">
+                                        <span t-field="line.item.name"/>
+
+                                    </td>
+                                    <td   class="text-end">
+                                        <span t-field="line.description"/>
+                                    </td>
+
+                                    <td name="td_priceunit" class="text-end">
+                                        <span t-field="line.qty"/>
+                                    </td>
+                                    <td name="td_priceunit" class="text-end">
+                                        <span t-field="line.price"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-field="line.price_unit"/>
+                                    </td>
+                                </t>
+                                <t t-elif="line.display_type == 'line_section'">
+                                    <td name="td_section_line" colspan="99">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <t t-set="current_section" t-value="line"/>
+                                    <t t-set="current_subtotal" t-value="0"/>
+                                </t>
+                                <t t-elif="line.display_type == 'line_note'">
+                                    <td name="td_note_line" colspan="99">
+                                        <span t-field="line.name"/>
+                                    </td>
+                                </t>
+
+
+                            </tr>
+
+
+                        </t>
+                        <t>
+                            <tr class="is-subtotal text-end">
+                                <td name="td_section_subtotal" colspan="99">
+                                    <strong class="mr16">Total</strong>
+                                    <span t-esc="doc.total"
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </t>
+    </template>
+    <template id="report_saleorder_cons">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="tender.report_saleorder_document_cons" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_saleorder" model="ir.actions.report">
+        <field name="name">Quotation / Order</field>
+        <field name="model">construction.sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tender.report_saleorder_cons</field>
+        <field name="report_file">tender.report_saleorder_cons</field>
+        <field name="print_report_name">'%s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_construction_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

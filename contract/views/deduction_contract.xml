@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="contract_conf_view_deduction_allowance_tree" model="ir.ui.view">
+            <field name="name">contract_conf_view_deduction_allowance_tree</field>
+            <field name="model">contract.deduction.allowance</field>
+            <field name="arch" type="xml">
+                <tree string="contract_conf_tree">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="subtype"/>
+                    <field name="counterpart_account_id"/>
+                    <field name="calculation_type"/>
+                    <field name="amount"/>
+                    <field name="down_payment"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="contract_conf_view_deduction_allowance_form" model="ir.ui.view">
+            <field name="name">contract_conf_view_deduction_allowance_form</field>
+            <field name="model">contract.deduction.allowance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                              <group>
+                            <field name="name" required="1"/>
+                            <field name="type" />
+                            <field name="subtype" readonly="1"/>
+
+
+                        </group>
+                        <group>
+                            <field name="counterpart_account_id" required="1"/>
+                            <field name="calculation_type" required="1"/>
+                            <field name="amount" required="1"/>
+                            <field name="down_payment"  invisible ="subtype!='owner'" />
+                        </group>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+
+            </field>
+        </record>
+    </data>
+</odoo>

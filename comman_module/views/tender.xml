@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mutli_edit_tender_view_tree" model="ir.ui.view">
+            <field name="name">_view_tree</field>
+            <field name="model">project.tender</field>
+            <field name="arch" type="xml">
+
+                    <tree editable="bottom">
+
+                                <field name="display_type" invisible="1" optional="show"/>
+                                <field name="sequence" widget="handle" optional="show"/>
+
+
+                                <field name="code" required="display_type==False"
+                                       optional="show" width="100px"/>
+                                <!--                            <field name="parent_item"/>-->
+                                <field name="item" required="display_type==False"
+                                       optional="show" width="100px"/>
+                                <field name="name" required="display_type==False"
+                                       widget="section_and_note_text"
+                                       optional="show" width="100px"/>
+                                <field name="related_job_id"
+                                       optional="show" width="100px"/>
+                                <field name="uom_id" required="display_type==False"
+                                       optional="show" width="100px"/>
+                                <field name="qty" required="display_type==False"
+                                       optional="show" width="100px"/>
+
+                                <field name="price_unit" optional="show" width="100px"/>
+                                <field name="cost_unit" optional="show" width="100px"/>
+                                <field name="state" optional="show" width="100px"/>
+                                <field name="total_direct" optional="show" width="100px"/>
+                                <field name="total_indirect" optional="show" width="100px"/>
+                                <field name="total_profit" optional="show" width="100px"/>
+                                <field name="profit" optional="show" width="100px"/>
+                                <field name="sale_price" optional="show" width="100px"/>
+                                <field name="tax_ids" widget="many2many_tags" optional="show" width="100px"/>
+                                <field name="note" optional="show" width="100px"/>
+
+
+                            </tree>
+
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_engineer_template" name="Engineer Template" parent="contract.menu_construction"
+                  sequence="6"/>
+        <menuitem id="menu_engineer_template_owner" name="Engineer Template Owner"
+                  parent="engineer_techincal.menu_engineer_template"
+                  sequence="1" action="engineer_techincal.action_engineer_template_owner"/>
+        <menuitem id="menu_engineer_template_subcontarctor" name="Engineer Template SubContarctor"
+                  parent="engineer_techincal.menu_engineer_template"
+                  sequence="2" action="engineer_techincal.action_engineer_template_subcontarctor"/>
+
+        <menuitem id="menu_engineer_wbs_root" name="WBS" parent="contract.menu_construction"
+                  sequence="7"/>
+         <menuitem id="menu_engineer_wbs" name="WBS"
+                  parent="engineer_techincal.menu_engineer_wbs_root"
+                  sequence="1" action="engineer_techincal.wbs_action"/>
+        <menuitem id="menu_engineer_wbs_line" name="WBS Line"
+                  parent="engineer_techincal.menu_engineer_wbs_root"
+                  sequence="2" action="engineer_techincal.wbs_action_line"/>
+        <menuitem id="menu_engineer_builds" name="WBS Builds"
+                  parent="engineer_techincal.menu_engineer_wbs_root"
+                  sequence="3" action="engineer_techincal.wbs_action_build"/>
+
+
+    </data>
+</odoo>

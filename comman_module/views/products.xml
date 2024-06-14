@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="product_template_only_form_view_tender" model="ir.ui.view">
+            <field name="name">product_template_only_form_view_tender</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="expenses"/>
+                            <field name="material"/>
+                            <field name="labour"/>
+                            <field name="equipment"/>
+                        </group>
+                        <group>
+                            <field name="indirect_cost"/>
+                            <field name="subconstructor"/>
+                            <field name="top_sheet"/>
+
+                        </group>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+        <record id="product_normal_form_view_tender" model="ir.ui.view">
+            <field name="name">product_normal_form_view_tender</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <form position="attributes">
+                    <attribute name="duplicate">True</attribute>
+                </form>
+
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="expenses"/>
+                            <field name="material"/>
+                            <field name="labour"/>
+                            <field name="equipment"/>
+                        </group>
+                        <group>
+                            <field name="indirect_cost"/>
+                            <field name="subconstructor"/>
+                            <field name="top_sheet"/>
+
+                        </group>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

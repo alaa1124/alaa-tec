@@ -1,0 +1,826 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* comman_module
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-10 17:37+0000\n"
+"PO-Revision-Date: 2023-08-10 17:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__active
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_search
+msgid "Active"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__actual_qty
+msgid "Actual Qty"
+msgstr "الكمية الفعلية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__amount_tax
+msgid "Amount Tax"
+msgstr "قيمة الضريبة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__amount_total
+msgid "Amount Total"
+msgstr "القيمة الكلية"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__construction_job_cost__state__approve
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Approve"
+msgstr "موافقة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__project_tender__state__job_cost
+msgid "Break Down"
+msgstr "التكسير"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__project_tender__state__job_estimate
+msgid "Break Down Estimate"
+msgstr "التكسير المتوقع"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__template_id
+msgid "Break Down Template"
+msgstr "قالب التكسير"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__code
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__code
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__code
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_search
+msgid "Code"
+msgstr "الكود"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__construction_job_cost__state__confirm
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__cost_unit
+msgid "Cost Unit"
+msgstr "تكلفة الوحدة"
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Crate Final Offer"
+msgstr "انشاء عرض سعر"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_project_item__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__create_uid
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__create_uid
+msgid "Created by"
+msgstr "انشأ بواسطة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__create_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__create_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__create_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__create_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__create_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__create_date
+#: model:ir.model.fields,field_description:comman_module.field_project_item__create_date
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__create_date
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__create_date
+msgid "Created on"
+msgstr "انشأ في "
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__currancy_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__currancy_id
+msgid "Currancy"
+msgstr "العملة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__description
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__name
+msgid "Description"
+msgstr "الوصف"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__dif
+msgid "Dif"
+msgstr "الفرق"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__display_name
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__display_name
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__display_name
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__display_name
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__display_name
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__display_name
+#: model:ir.model.fields,field_description:comman_module.field_project_item__display_name
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__display_name
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__display_type
+msgid "Display Type"
+msgstr "النوع"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__email_cc
+msgid "Email cc"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__end_date
+msgid "End Date"
+msgstr "تاريخ النهاية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__equipment_ids
+#: model:ir.model.fields,field_description:comman_module.field_product_product__equipment
+#: model:ir.model.fields,field_description:comman_module.field_product_template__equipment
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Equipment"
+msgstr "المعدات"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__expense_ids
+msgid "Expense"
+msgstr "المصروف"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_product_product__expenses
+#: model:ir.model.fields,field_description:comman_module.field_product_template__expenses
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Expenses"
+msgstr "المصروفات"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__construction_job_cost__state__quotation
+msgid "Financial Offer"
+msgstr "العرض المالي"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_search
+msgid "Hold"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__id
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__id
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__id
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__id
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__id
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__id
+#: model:ir.model.fields,field_description:comman_module.field_project_item__id
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__id
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__id
+msgid "ID"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__message_has_error
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_product_product__indirect_cost
+#: model:ir.model.fields,field_description:comman_module.field_product_template__indirect_cost
+msgid "Indirect Cost"
+msgstr "التكاليف غير المباشرة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__is_template
+msgid "Is Template"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_project_item
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__item_id
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__item
+msgid "Item"
+msgstr "البند"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__job_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__job_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__job_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__job_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__job_id
+msgid "Job"
+msgstr "الوظيفة"
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_construction_equipment
+#: model:ir.model,name:comman_module.model_construction_expense
+#: model:ir.model,name:comman_module.model_construction_labour
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__labour_ids
+#: model:ir.model.fields,field_description:comman_module.field_product_product__labour
+#: model:ir.model.fields,field_description:comman_module.field_product_template__labour
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Labour"
+msgstr "العمالة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment____last_update
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense____last_update
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost____last_update
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour____last_update
+#: model:ir.model.fields,field_description:comman_module.field_construction_material____last_update
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor____last_update
+#: model:ir.model.fields,field_description:comman_module.field_project_item____last_update
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job____last_update
+#: model:ir.model.fields,field_description:comman_module.field_project_tender____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل في "
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_project_item__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__write_uid
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__write_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__write_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__write_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__write_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__write_date
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__write_date
+#: model:ir.model.fields,field_description:comman_module.field_project_item__write_date
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__write_date
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__project_tender__state__main
+msgid "Main"
+msgstr "الاساسي"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_construction_material
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__material_ids
+#: model:ir.model.fields,field_description:comman_module.field_product_product__material
+#: model:ir.model.fields,field_description:comman_module.field_product_template__material
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Material"
+msgstr "المواد"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__name
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__name
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__name
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__name
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__name
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__name
+#: model:ir.model.fields,field_description:comman_module.field_project_item__name
+#: model:ir.model.fields,field_description:comman_module.field_project_related_job__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__note
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__note
+#: model:ir.model.fields.selection,name:comman_module.selection__project_tender__display_type__line_note
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__partner_id
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__planned_qty
+msgid "Planned Qty"
+msgstr "الكمية المخططة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__previous_qty
+msgid "Previous Qty"
+msgstr "الكمية السابقة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__price_unit
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__price_unit
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__price_unit
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__price_unit
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__price_unit
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__price_unit
+msgid "Price Unit"
+msgstr "سعر الوحدة"
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_product_template
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__product_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__product_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__product_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__product_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__product_id
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_search
+msgid "Product"
+msgstr "المنتج"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__profit
+msgid "Profit"
+msgstr "الربح"
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_project_project
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__project_id
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__project_id
+msgid "Project"
+msgstr "المشروع"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__qty
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__qty
+msgid "Qty"
+msgstr "الكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__ratio
+msgid "Ratio"
+msgstr "النسبة"
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_project_related_job
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__related_job_id
+#: model:ir.model.fields,field_description:comman_module.field_project_item__related_job_id
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__related_job_id
+msgid "Related Job"
+msgstr "الوظيفة المرتبطة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسئول"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__sale_price
+msgid "Sale Price"
+msgstr "سعر البيع"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__project_tender__display_type__line_section
+msgid "Section"
+msgstr "القسم"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__start_date
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__state
+#: model:ir.model.fields,field_description:comman_module.field_project_project__state
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__subconstractor_ids
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Subconstractor"
+msgstr "المقاول"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_product_product__subconstructor
+#: model:ir.model.fields,field_description:comman_module.field_product_template__subconstructor
+msgid "Subconstructor"
+msgstr "المقاول"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__subtotal
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__subtotal
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__subtotal
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__subtotal
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__subtotal
+msgid "Subtotal"
+msgstr "الاجمالي الفرعي"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__tax_ids
+msgid "Tax"
+msgstr "الضريبة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__techical_type
+msgid "Techical Type"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_project_tender__display_type
+msgid "Technical field for UX purpose."
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_project_tender
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__tender_id
+msgid "Tender"
+msgstr "المناقصة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_product_product__top_sheet
+#: model:ir.model.fields,field_description:comman_module.field_product_template__top_sheet
+msgid "Top Sheet"
+msgstr "الربح"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__construction_job_cost__unit_type__total
+msgid "Total"
+msgstr "الاجمالي"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__total_direct
+msgid "Total Direct"
+msgstr "اجمالي المباشر"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_equipment
+msgid "Total Equipment"
+msgstr "اجمالي المعدات"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_equipment_with_qty
+msgid "Total Equipment With Qty"
+msgstr "اجمالي المعدات للكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_expense
+msgid "Total Expense"
+msgstr "اجمالي المصروفات"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_expense_with_qty
+msgid "Total Expense With Qty"
+msgstr "اجمالي المصروفات مع الكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__total_indirect
+msgid "Total Indirect"
+msgstr "اجمالي غير المباشر"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_labour
+msgid "Total Labour"
+msgstr "اجمالي العمالة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_labour_with_qty
+msgid "Total Labour With Qty"
+msgstr "اجمالي العمالة للكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_material
+msgid "Total Material"
+msgstr "اجمالي المواد"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_material_with_qty
+msgid "Total Material With Qty"
+msgstr "اجمالي المواد للكمية"
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Total Per Unit"
+msgstr "الاجمالي للوحدة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__total_profit
+msgid "Total Profit"
+msgstr "اجمالي الربح"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__total_qty_as_total
+msgid "Total Qty As Total"
+msgstr "اجمالي الكمية للاجمالي"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__total_qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__total_qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__total_qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__total_qty
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__total_qty
+msgid "Total Quantity"
+msgstr "اجمالي الكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_subconstractor
+msgid "Total Subconstractor"
+msgstr "اجمالي المقاولين"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_subcontractor_with_qty
+msgid "Total Subcontractor With Qty"
+msgstr "اجمالي المقاولين للكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__total_cost
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__total_cost
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__total_cost
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__total_cost
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__total_cost
+msgid "Total Value"
+msgstr "اجمالي القيمة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_value_all
+msgid "Total Value All"
+msgstr "اجمالي القيمة للكل"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__total_value_all_with_qty
+msgid "Total Value All With Qty"
+msgstr "اجمالي القيمة للكمية"
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "Total With Quantity"
+msgstr "الاجمالي للكمية"
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__unit_type
+msgid "Unit Type"
+msgstr "نوع الوحدة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__uom_id
+msgid "Unit of Measure"
+msgstr "وحدة القياس"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_equipment__uom_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_expense__uom_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_labour__uom_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__uom_id
+#: model:ir.model.fields,field_description:comman_module.field_construction_subconstractor__uom_id
+msgid "Uom"
+msgstr "وحدة القياس"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__version
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_search
+msgid "Version"
+msgstr "الاصدار"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__version_num
+msgid "Version Num"
+msgstr "رقم الاصدار"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_material__waste
+msgid "Waste"
+msgstr "الهالك"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_construction_job_cost__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields,help:comman_module.field_construction_job_cost__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__project_project__state__confirm
+msgid "confirm"
+msgstr "التأكيد"
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_construction_job_cost
+msgid "construction.job.cost"
+msgstr ""
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__construction_job_cost__state__draft
+#: model:ir.model.fields.selection,name:comman_module.selection__project_project__state__draft
+msgid "draft"
+msgstr "مسودة"
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.item_view_form
+#: model_terms:ir.ui.view,arch_db:comman_module.item_view_tree
+#: model_terms:ir.ui.view,arch_db:comman_module.related_job_view_form
+#: model_terms:ir.ui.view,arch_db:comman_module.related_job_view_tree
+msgid "item_tree"
+msgstr ""
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_tree
+msgid "job_cost_tree"
+msgstr ""
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_search
+msgid "name"
+msgstr "الاسم"
+
+#. module: comman_module
+#: model:ir.model,name:comman_module.model_construction_subconstractor
+msgid "subconstractor"
+msgstr "المقاول"
+
+#. module: comman_module
+#: model_terms:ir.ui.view,arch_db:comman_module.job_cost_view_form
+msgid "total"
+msgstr "الاجمالي"
+
+#. module: comman_module
+#: model:ir.model.fields.selection,name:comman_module.selection__construction_job_cost__unit_type__unit
+msgid "unit"
+msgstr "الوحدة"
+
+#. module: comman_module
+#: model:ir.model.fields,field_description:comman_module.field_project_item__uom_id
+#: model:ir.model.fields,field_description:comman_module.field_project_tender__uom_id
+msgid "unit of measure"
+msgstr "وحدة القياس"

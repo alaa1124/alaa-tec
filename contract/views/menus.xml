@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_construction" name="Construction" sequence="10"  web_icon="contract,static/description/download.png"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_contract" name="Contract" parent="contract.menu_construction" sequence="1"/>
+        <menuitem id="menu_contract_owner" name="Owner Contract" parent="contract.menu_contract"
+                  action="contract.action_contract_owner" sequence="1"/>
+        <menuitem id="menu_contract_subconstructor" name="Sub-constructors Contract" parent="contract.menu_contract"
+                  action="contract.action_contract_supcontractor" sequence="2"/>
+
+
+        <!--        Configuration-->
+        <menuitem id="menu_contract_conf" name="Configuration" parent="contract.menu_construction" sequence="100"/>
+        <menuitem id="menu_contract_owner_conf" name="Owner Contract " parent="contract.menu_contract_conf"
+                  action="contract.action_contract_owner_conf" sequence="1"/>
+        <menuitem id="menu_contract_subconstruct_conf" name="Sub-Contractors  " parent="contract.menu_contract_conf"
+                  action="contract.action_contract_supcontractor_conf" sequence="2"/>
+
+
+        <menuitem id="menu_contract_deduction" name="Deduction" parent="contract.menu_contract_conf"
+                  action="contract.action_contract_deduction" sequence="3"/>
+        <menuitem id="menu_contract_allowance" name="Allowance " parent="contract.menu_contract_conf"
+                  action="contract.action_contract_allowance" sequence="4"/>
+        <menuitem id="menu_stage" name="Stage " parent="contract.menu_contract_conf"
+                  action="contract.action_contract_stage" sequence="5"/>
+        <menuitem id="menu_contract_item" name="Item " parent="contract.menu_contract_conf"
+                  action="contract.contract_item_action" sequence="6"/>
+        <menuitem id="menu_contract_related" name="Related Job " parent="contract.menu_contract_conf"
+                  action="contract.contract_related_job_action" sequence="7"/>
+
+    </data>
+</odoo>

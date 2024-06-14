@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="wbs_view_tree" model="ir.ui.view">
+            <field name="name">wbs_view_tree</field>
+            <field name="model">project.wbs</field>
+            <field name="arch" type="xml">
+                <tree string="_tree">
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="wbs_view_form" model="ir.ui.view">
+            <field name="name">wbs_view_form</field>
+            <field name="model">project.wbs</field>
+            <field name="arch" type="xml">
+                <form string="wbs_form">
+                    <header>
+                        <button string="Confirm" name="action_confirm"  invisible="state!='draft'"  type="object"/>
+                        <button string="Cancel" name="action_cancel"  invisible="state!='confirm'"  type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="project_id" readonly="state!='draft'" required="1"/>
+                            <field name="partner_id" readonly="state!='draft'" required="1"/>
+                            <field name="lines"  readonly="state!='draft'" >
+                                <tree editable="bottom">
+                                    <field name="bulid_id"  required="1"/>
+                                </tree>
+                            </field>
+
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="wbs_line_view_tree" model="ir.ui.view">
+            <field name="name">wbs_line_view_tree</field>
+            <field name="model">project.wbs.line</field>
+            <field name="arch" type="xml">
+                <tree string="wbs_line_tree" create="0" delete="0">
+                    <field name="bulid_id"/>
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="wbs_view_form_line" model="ir.ui.view">
+            <field name="name">wbs_view_form_line</field>
+            <field name="model">project.wbs.line</field>
+            <field name="arch" type="xml">
+                <form string="wbs_form" create="0" delete="0">
+                    <header>
+                        <field name="is_techincal" invisible="1"/>
+                        <button string="Create Technical Estimation" name="action_create_techincal"
+                                type="object"   invisible="is_techincal==True"/>
+                        <!--                        <button string="Cancel" name="action_cancel"  invisible="state!='confirm'"  type="object"/>-->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+
+                    </header>
+                    <sheet>
+                         <div class="oe_button_box" name="button_box">
+                            <button name="view_techincal" type="object"
+                                    class="oe_stat_button">
+                                View Techicnal Estimation
+                            </button>
+                        </div>
+                        <group>
+                            <field name="bulid_id"  readonly="state!='draft'" />
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+
+
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="saerch_wbs" model="ir.ui.view">
+           <field name="name">saerch_wbs</field>
+           <field name="model">project.wbs.line</field>
+            <field name="arch" type="xml">
+                <search string="">
+                <group expand="0" string="Group By">
+                        <filter string="WBS" name="parent_id" context="{'group_by':'parent_id'}"/>
+                        <filter name="project_id" string="Project" context="{'group_by':'project_id'}"/>
+
+                    </group>
+            </search>
+           </field>
+        </record>
+    </data>
+</odoo>

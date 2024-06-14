@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_contract_contract,contract.contract,model_project_contract,base.group_user,1,1,1,1
+access_contract_contract_line,contract.contract,model_contract_deduction_lines,base.group_user,1,1,1,1
+access_contract_contract_deduction_line,contract.contract.deduction,model_contract_allowance_lines,base.group_user,1,1,1,1
+access_contract_contract_allownace_line,contract.contract.awllowance,model_project_contract_line,base.group_user,1,1,1,1
+access_contract_contract_conf,access_contract_contract_conf,model_project_contract_conf,base.group_user,1,1,1,1
+access_contract_deduction_allownace,access_contract_deduction_allownace,model_contract_deduction_allowance,base.group_user,1,1,1,1
+access_stage,access_stage,model_project_stage,base.group_user,1,1,1,1
+access_stage_contract,access_stage,model_contract_stage,base.group_user,1,1,1,1
+access_stage_contract_line,access_stage_contract_line,model_contract_stage_line,base.group_user,1,1,1,1

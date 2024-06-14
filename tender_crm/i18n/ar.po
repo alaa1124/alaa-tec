@@ -1,0 +1,47 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tender_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-10 17:34+0000\n"
+"PO-Revision-Date: 2023-08-10 17:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tender_crm
+#: model_terms:ir.ui.view,arch_db:tender_crm.crm_lead_view_form_tender
+msgid "Create Project"
+msgstr "انشاء مشروع"
+
+#. module: tender_crm
+#: model:ir.model.fields,field_description:tender_crm.field_crm_lead__is_count_project
+msgid "Is Count Project"
+msgstr ""
+
+#. module: tender_crm
+#: model:ir.model.fields,field_description:tender_crm.field_crm_lead__is_project
+msgid "Is Project"
+msgstr ""
+
+#. module: tender_crm
+#: model:ir.model.fields,field_description:tender_crm.field_project_project__lead_id
+msgid "Lead"
+msgstr ""
+
+#. module: tender_crm
+#: model:ir.model,name:tender_crm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr ""
+
+#. module: tender_crm
+#: model:ir.model,name:tender_crm.model_project_project
+#: model_terms:ir.ui.view,arch_db:tender_crm.crm_lead_view_form_tender
+msgid "Project"
+msgstr "المشروع"

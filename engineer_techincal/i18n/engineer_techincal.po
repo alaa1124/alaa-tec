@@ -1,0 +1,900 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* engineer_techincal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-10 17:35+0000\n"
+"PO-Revision-Date: 2023-08-10 17:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__access_warning
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__access_warning
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_needaction
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_needaction
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_exception_decoration
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_exception_decoration
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_state
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_state
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_type_icon
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_type_icon
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Add Item"
+msgstr "اضافة بند"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Add a note"
+msgstr "اضافة ملاحظة"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Add a section"
+msgstr "اضافة قسم"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__allowance_ids
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Allowance"
+msgstr "الاضافات"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__amount
+msgid "Amount"
+msgstr "القيمة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__amount_total
+msgid "Amount Total"
+msgstr "القيمة الاجمالية"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__amount_total_contract
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__amount_total_contract
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__amount_total_without_ded_allowance
+msgid "Amount Total Without Ded Allowance"
+msgstr "القيمة الاجمالية"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_attachment_count
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_attachment_count
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__bulid_id
+msgid "Bulid"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.template_eng_view_form
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_engineer_techincal__state__confirm
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_wbs__state__confirm
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_form
+msgid "Confirm"
+msgstr "التأكيد"
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_project_contract
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__contract_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__contract_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__contract_id
+msgid "Contract"
+msgstr "العقد"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__contract_items
+msgid "Contract Items"
+msgstr "بنود العقد"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__contract_quanity
+msgid "Contract Quanity"
+msgstr "كمية العقد"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_contract__count_template
+msgid "Count Template"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__counterpart_account_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__counterpart_account_id
+msgid "Counterpart Account"
+msgstr "الحساب"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_form_line
+msgid "Create Technical Estimation"
+msgstr "انشاء Techmical Estimation"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__create_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__create_uid
+msgid "Created by"
+msgstr "أنشأ بواسطة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__create_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__create_date
+msgid "Created on"
+msgstr "انشأ في "
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Current Qty"
+msgstr "الكمية الحالية"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__access_url
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__access_url
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__deduction_ids
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Deduction"
+msgstr "الاستقطاعات"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__name
+msgid "Description"
+msgstr "الوصف"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__differance
+msgid "Differance"
+msgstr "الفرق"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__display_name
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__display_type
+msgid "Display Type"
+msgstr "النوع"
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_engineer_techincal__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__eng_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__eng_id
+msgid "Eng"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__engineer_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__engineer_id
+msgid "Engineer"
+msgstr "الهندسي"
+
+#. module: engineer_techincal
+#. odoo-python
+#: code:addons/engineer_techincal/models/contract.py:0
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_template
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.contract_view_form_eng_template
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.contract_view_form_eng_template_sudp
+#, python-format
+msgid "Engineer Template"
+msgstr "المستخلص الهندسي"
+
+#. module: engineer_techincal
+#: model:ir.actions.act_window,name:engineer_techincal.action_engineer_template_owner
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_template_owner
+msgid "Engineer Template Owner"
+msgstr "المستلخص الهندسي للمالك"
+
+#. module: engineer_techincal
+#: model:ir.actions.act_window,name:engineer_techincal.action_engineer_template_subcontarctor
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_template_subcontarctor
+msgid "Engineer Template SubContarctor"
+msgstr "المستخلص الهندسي لمقاول الباطن"
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_project_engineer_techincal
+msgid "EngineerTemplate"
+msgstr "المستخلص الهندسي"
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_engineer_techincal__sub_type__final
+msgid "Final"
+msgstr "ختامي"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_follower_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_follower_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_partner_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_partner_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__activity_type_icon
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__activity_type_icon
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.saerch_wbs
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__has_message
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__has_message
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__id
+msgid "ID"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_exception_icon
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_exception_icon
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__activity_exception_icon
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__activity_exception_icon
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__message_needaction
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__message_needaction
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__message_has_error
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__message_has_sms_error
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__message_has_error
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__message_has_sms_error
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__message_has_error
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_is_follower
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_is_follower
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__is_pre_update
+msgid "Is Pre Update"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__is_precentage
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__is_precentage
+msgid "Is Precentage"
+msgstr "نسبة؟"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__is_techincal
+msgid "Is Techincal"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__item_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__item
+msgid "Item"
+msgstr "بند"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs____last_update
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل في"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__write_uid
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل بواسطة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_eng_wizard__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__write_date
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل في"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__line_ids
+msgid "Line"
+msgstr "السطر"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__lines
+msgid "Lines"
+msgstr "السطور"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_main_attachment_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_main_attachment_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_has_error
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_has_error
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__my_activity_date_deadline
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__my_activity_date_deadline
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__name
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__name
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_build__name
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_calendar_event_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_calendar_event_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_date_deadline
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_date_deadline
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_summary
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_summary
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_type_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_type_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__engineer_techincal_lines__display_type__line_note
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_needaction_counter
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_needaction_counter
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_has_error_counter
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_has_error_counter
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__message_needaction_counter
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__message_needaction_counter
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__message_has_error_counter
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__message_has_error_counter
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_construction_job_cost__wbs_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__parent_id
+msgid "Parent"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__partner_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__partner_id
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__percentage
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__percentage
+msgid "Percentage"
+msgstr "النسبة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__access_url
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__access_url
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__precentage
+msgid "Precentage"
+msgstr "النسبة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__stage_prec
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Precentage Stage"
+msgstr "نسبة المرحلة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__previous_amount
+msgid "Previous Amount"
+msgstr "القيمة السابقة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_construction_job_cost__previous_qty
+msgid "Previous Qty"
+msgstr "الكمية السابقة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__previous_quanity
+msgid "Previous Quanity"
+msgstr "الكمية السابقة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__price
+msgid "Price"
+msgstr "السعر"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__price_unit
+msgid "Price Unit"
+msgstr "سعر الوحدة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_engineer_techincal__sub_type__process
+msgid "Process"
+msgstr "جاري"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__project_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__project_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__project_id
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.saerch_wbs
+msgid "Project"
+msgstr "المشروع"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__referance
+msgid "Referance"
+msgstr "المرجع"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__related_job_id
+msgid "Related Job"
+msgstr "الوظيفة المرتبطة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__activity_user_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__activity_user_id
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسئول"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__message_has_sms_error
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__message_has_sms_error
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__engineer_techincal_lines__display_type__line_section
+msgid "Section"
+msgstr "القسم"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__access_token
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__access_token
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: engineer_techincal
+#. odoo-python
+#: code:addons/engineer_techincal/models/engineer_techincal.py:0
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+#, python-format
+msgid "Select Item"
+msgstr "اختيار بند"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Set Draft"
+msgstr "اجعله مسودة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__stage_id
+msgid "Stage"
+msgstr "المرحلة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__state
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__state
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__state
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__state
+msgid "State"
+msgstr "الحالة"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__activity_state
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__activity_state
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__subcontractor
+msgid "Subcontractor"
+msgstr "مقاول الباطن"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__total_allowance
+msgid "Total Allowance"
+msgstr "اجمالي الاضافات"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__total_deduction
+msgid "Total Deduction"
+msgstr "اجمالي الاستقطاعات"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__total_quanity
+msgid "Total Quanity"
+msgstr "اجمالي الكمية"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__sub_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__contract_type
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__contract_type
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__type
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__type
+msgid "Type of Contract"
+msgstr "نوع العقد"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__activity_exception_decoration
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__activity_exception_decoration
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "Unit Of Measure"
+msgstr "وحدة القياس"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_allowance_lines__value
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_deduction_lines__value
+msgid "Value"
+msgstr "القيمة"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_form_line
+msgid "View Techicnal Estimation"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.actions.act_window,name:engineer_techincal.wbs_action
+#: model:ir.model,name:engineer_techincal.model_project_wbs
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_wbs
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_wbs_root
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.saerch_wbs
+msgid "WBS"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.actions.act_window,name:engineer_techincal.wbs_action_build
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_builds
+msgid "WBS Builds"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.actions.act_window,name:engineer_techincal.wbs_action_line
+#: model:ir.ui.menu,name:engineer_techincal.menu_engineer_wbs_line
+msgid "WBS Line"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_construction_job_cost__wbs_line_id
+msgid "Wbs Line"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_engineer_techincal__website_message_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs__website_message_ids
+#: model:ir.model.fields,field_description:engineer_techincal.field_project_wbs_line__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,help:engineer_techincal.field_project_engineer_techincal__website_message_ids
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs__website_message_ids
+#: model:ir.model.fields,help:engineer_techincal.field_project_wbs_line__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.template_eng_view_form
+msgid "_form"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_tree
+msgid "_tree"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_wbs__state__cancel
+msgid "cancel"
+msgstr "الغاء"
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_construction_job_cost
+msgid "construction.job.cost"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__qty
+msgid "current Quantity"
+msgstr "الكمية الحالية"
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_wbs__state__draft
+msgid "draft"
+msgstr "مسودة"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "en_template_form"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_eng_wizard
+msgid "eng.wizard"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_engineer_allowance_lines
+msgid "engineer.allowance.lines"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_engineer_deduction_lines
+msgid "engineer.deduction.lines"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_engineer_techincal_lines
+msgid "engineer.techincal.lines"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.enginner_tem_view_tree
+msgid "enginner_tem_tree"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "lines"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.template_eng_view_form
+msgid "or"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__engineer_allowance_lines__contract_type__owner
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__engineer_deduction_lines__contract_type__owner
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_engineer_techincal__type__owner
+msgid "owner"
+msgstr "المالك"
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_project_build
+msgid "project.build"
+msgstr ""
+
+#. module: engineer_techincal
+#: model:ir.model,name:engineer_techincal.model_project_wbs_line
+msgid "project.wbs.line"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.template_eng_view_form
+msgid "save"
+msgstr "حفظ"
+
+#. module: engineer_techincal
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__engineer_allowance_lines__contract_type__subconstructor
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__engineer_deduction_lines__contract_type__subconstructor
+#: model:ir.model.fields.selection,name:engineer_techincal.selection__project_engineer_techincal__type__subconstructor
+msgid "subconstructor"
+msgstr "مقاول الباطن"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.en_template_view_form
+msgid "total"
+msgstr "الاجمالي"
+
+#. module: engineer_techincal
+#: model:ir.model.fields,field_description:engineer_techincal.field_engineer_techincal_lines__uom_id
+msgid "unit of measure"
+msgstr "وحدة القياس"
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_form
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_view_form_line
+msgid "wbs_form"
+msgstr ""
+
+#. module: engineer_techincal
+#: model_terms:ir.ui.view,arch_db:engineer_techincal.wbs_line_view_tree
+msgid "wbs_line_tree"
+msgstr ""

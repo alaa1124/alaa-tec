@@ -1,0 +1,400 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* construction_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-10 17:36+0000\n"
+"PO-Revision-Date: 2023-08-10 17:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: construction_invoice
+#: model_terms:ir.ui.view,arch_db:construction_invoice.report_invoice_document
+msgid ""
+"<span>\n"
+"                        <strong>Project:</strong>\n"
+"                        <br/>\n"
+"                    </span>"
+msgstr ""
+
+#. module: construction_invoice
+#: model_terms:ir.ui.view,arch_db:construction_invoice.report_invoice_document
+msgid ""
+"<span>\n"
+"                <strong>Contract:</strong>\n"
+"                <br/>\n"
+"            </span>"
+msgstr ""
+
+#. module: construction_invoice
+#: model_terms:ir.ui.view,arch_db:construction_invoice.report_invoice_document
+msgid "<span>Stage</span>"
+msgstr "المرحلة"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__allowance_ids
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__allowance_ids
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__allowance_ids
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move_line__type_deduction_allownace__allowance
+#: model_terms:ir.ui.view,arch_db:construction_invoice.view_move_form_construct
+msgid "Allowance"
+msgstr "الاضافات"
+
+#. module: construction_invoice
+#: model:ir.actions.act_window,name:construction_invoice.construction_allowance_report_action
+#: model:ir.ui.menu,name:construction_invoice.construction_allownace_report
+msgid "Allownace Journal Item"
+msgstr "بند القيد للاضافة"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__amount_allowance
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__amount_allowance
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__amount_allowance
+msgid "Amount Allowance"
+msgstr "قيمة الاضافات"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__amount_deduction
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__amount_deduction
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__amount_deduction
+msgid "Amount Deduction"
+msgstr "قيمة الاستقطاعات"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__amount_due_value
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__amount_due_value
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__amount_due_value
+msgid "Amount Due Value"
+msgstr "قيمة المبلغ المستحق"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__amount_total_contract
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__amount_total_contract
+msgid "Amount Total Contract"
+msgstr "قيمة الاجمالي للعقد"
+
+#. module: construction_invoice
+#: model:account.report.column,name:construction_invoice.partner_ledger_report_contract_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__contract_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_invoice_report__contract_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__contract_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__contract_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__contract_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment_register__contract_id
+#: model_terms:ir.ui.view,arch_db:construction_invoice.view_account_move_line_filter_contract
+msgid "Contract"
+msgstr "العقد"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__counterpart_account_id
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__counterpart_account_id
+msgid "Counterpart Account"
+msgstr "الحساب"
+
+#. module: construction_invoice
+#: model_terms:ir.actions.act_window,help:construction_invoice.action_move_out_invoice_type_owner
+msgid "Create a customer invoice"
+msgstr "انشاء فاتورة عميل"
+
+#. module: construction_invoice
+#: model_terms:ir.actions.act_window,help:construction_invoice.action_move_in_invoice_type_subconstructo
+msgid "Create a vendor bill"
+msgstr "انشاء فاتورة مورد"
+
+#. module: construction_invoice
+#: model_terms:ir.actions.act_window,help:construction_invoice.action_move_out_invoice_type_owner
+msgid ""
+"Create invoices, register payments and keep track of the discussions with "
+"your customers."
+msgstr ""
+
+#. module: construction_invoice
+#: model_terms:ir.actions.act_window,help:construction_invoice.action_move_in_invoice_type_subconstructo
+msgid ""
+"Create invoices, register payments and keep track of the discussions with "
+"your vendors."
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__create_uid
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__create_uid
+msgid "Created by"
+msgstr "انشأ بواسطة"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__create_date
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__create_date
+msgid "Created on"
+msgstr "انشأ في "
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__deduction_ids
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__deduction_ids
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__deduction_ids
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move_line__type_deduction_allownace__deduction
+#: model_terms:ir.ui.view,arch_db:construction_invoice.view_move_form_construct
+msgid "Deduction"
+msgstr "الاستقطاعات"
+
+#. module: construction_invoice
+#: model:ir.actions.act_window,name:construction_invoice.construction_deduction_report_action
+#: model:ir.ui.menu,name:construction_invoice.construction_deduction_report
+msgid "Deduction Journal Item"
+msgstr "بند قيد الاسقطاع"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__display_name
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__eng_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__eng_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__eng_id
+msgid "Eng"
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_project_engineer_techincal
+msgid "EngineerTemplate"
+msgstr "المستخلص الهندسي"
+
+#. module: construction_invoice
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move__sub_type__final
+msgid "Final"
+msgstr "الختامي"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__id
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__id
+msgid "ID"
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__invoice_id
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__invoice_id
+#: model_terms:ir.ui.view,arch_db:construction_invoice.invoice_en_template_view_form
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__invoice_line_id
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__invoice_line_id
+msgid "Invoice Line"
+msgstr "بند الفاتورة"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__invoice_line_ids
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__invoice_line_ids
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__invoice_line_ids
+msgid "Invoice lines"
+msgstr "بنود الفاتورة"
+
+#. module: construction_invoice
+#: model:ir.ui.menu,name:construction_invoice.menu_constrruction_invoice
+msgid "Invoices"
+msgstr "الفواتير"
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "إحصائيات الفواتير"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__is_ded_allow
+msgid "Is Ded Allow"
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__is_precentage
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__is_precentage
+msgid "Is Precentage"
+msgstr "هل هو نسبة؟"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_invoice_report__item
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__item
+msgid "Item"
+msgstr "البند"
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_account_move_line
+msgid "Journal Item"
+msgstr "عنصر اليومية"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines____last_update
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل في "
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__write_uid
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل بواسطة"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__write_date
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل في "
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__name
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: construction_invoice
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move__type__owner
+msgid "Owner"
+msgstr "المالك"
+
+#. module: construction_invoice
+#: model:ir.ui.menu,name:construction_invoice.menu_owner_invoice
+msgid "Owner Invoice"
+msgstr "فاتورة المالك"
+
+#. module: construction_invoice
+#: model:ir.actions.act_window,name:construction_invoice.action_move_out_invoice_type_owner
+msgid "Owner Invoices"
+msgstr "فواتير العملاء"
+
+#. module: construction_invoice
+#: model:ir.ui.menu,name:construction_invoice.menu_parner_ledger
+msgid "Partner Ledger"
+msgstr "كشف الحساب للشركاء"
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_account_partner_ledger_report_handler
+msgid "Partner Ledger Custom Handler"
+msgstr "المعالج المخصص لدفتر الأستاذ العام الخاص بالشريك "
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_account_payment
+msgid "Payments"
+msgstr "الدفعات"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__percentage
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__percentage
+msgid "Percentage"
+msgstr "النسبة"
+
+#. module: construction_invoice
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move__sub_type__process
+msgid "Process"
+msgstr "جاري"
+
+#. module: construction_invoice
+#: model:account.report.column,name:construction_invoice.partner_ledger_report_project_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__project_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_invoice_report__project_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__project_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__project_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__project_id
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment_register__project_id
+#: model_terms:ir.ui.view,arch_db:construction_invoice.view_account_move_line_filter_contract
+msgid "Project"
+msgstr "المشروع"
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_account_payment_register
+msgid "Register Payment"
+msgstr "تسجيل الدفع "
+
+#. module: construction_invoice
+#: model:ir.ui.menu,name:construction_invoice.menu_constrruction_report
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__stage_id
+msgid "Stage"
+msgstr "المرحلة"
+
+#. module: construction_invoice
+#: model:ir.actions.act_window,name:construction_invoice.action_move_in_invoice_type_subconstructo
+msgid "Sub-Constructor"
+msgstr "مقاول الباطن"
+
+#. module: construction_invoice
+#: model:ir.ui.menu,name:construction_invoice.menu_owner_subcontractor
+msgid "Sub-Constructor Invoice"
+msgstr "فاتورة مقاول الباطن"
+
+#. module: construction_invoice
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move__type__subconstructor
+msgid "Subcontractor"
+msgstr "المقاول"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__sub_type
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__sub_type
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__sub_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__type_deduction_allownace
+msgid "Type Deduction Allownace"
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_account_bank_statement_line__type
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move__type
+#: model:ir.model.fields,field_description:construction_invoice.field_account_move_line__contract_type
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment__type
+#: model:ir.model.fields,field_description:construction_invoice.field_account_payment_register__type
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__contract_type
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__contract_type
+msgid "Type of Contract"
+msgstr "نوع العقد"
+
+#. module: construction_invoice
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_allowance_lines__value
+#: model:ir.model.fields,field_description:construction_invoice.field_invoice_deduction_lines__value
+msgid "Value"
+msgstr "القيمة"
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_invoice_allowance_lines
+msgid "invoice.allowance.lines"
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model,name:construction_invoice.model_invoice_deduction_lines
+msgid "invoice.deduction.lines"
+msgstr ""
+
+#. module: construction_invoice
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move_line__contract_type__owner
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_payment__type__owner
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_payment_register__type__owner
+#: model:ir.model.fields.selection,name:construction_invoice.selection__invoice_allowance_lines__contract_type__owner
+#: model:ir.model.fields.selection,name:construction_invoice.selection__invoice_deduction_lines__contract_type__owner
+msgid "owner"
+msgstr "المالك"
+
+#. module: construction_invoice
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_move_line__contract_type__subconstructor
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_payment__type__subconstructor
+#: model:ir.model.fields.selection,name:construction_invoice.selection__account_payment_register__type__subconstructor
+#: model:ir.model.fields.selection,name:construction_invoice.selection__invoice_allowance_lines__contract_type__subconstructor
+#: model:ir.model.fields.selection,name:construction_invoice.selection__invoice_deduction_lines__contract_type__subconstructor
+msgid "subconstructor"
+msgstr "المقاول"

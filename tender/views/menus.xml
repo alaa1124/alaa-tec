@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_root_tender" name="Tender" sequence="10" web_icon="tender,static/description/icon.png" />
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_projects_tender" name="Projects" parent="menu_root_tender" sequence="1"/>
+    <menuitem id="menu_projects_actual_tender" name="Actual Projects" action="tender.tender_project_main_action"
+              parent="menu_projects_tender" sequence="1"/>
+    <menuitem id="menu_projects_draft_tender" name="Draft Projects" action="tender.tender_project_draft_action"
+              parent="menu_projects_tender" sequence="2"/>
+    <!--    Configuration-->
+
+
+    <menuitem id="menu_configurations_tender" name="Configuration" parent="menu_root_tender"
+              sequence="2"/>
+    <menuitem id="menu_configurations_setting_tender" name="Setting" parent="menu_configurations_tender" sequence="1"
+              action="tender.tender_config_settings_action"/>
+    <menuitem id="menu_setting_item" name="Items" parent="menu_configurations_tender" sequence="2"
+              action="tender.tender_item_action"/>
+    <menuitem id="menu_setting_related_job" name="Related Job" parent="menu_configurations_tender" sequence="3"
+              action="tender.tender_related_job_action"/>
+    <menuitem id="menu_setting_products" name="Products" parent="menu_configurations_tender" sequence="3"
+              action="tender.products_action"/>
+
+    <menuitem id="menu_setting_break_down_template" name="BreakDown Template"
+              parent="menu_configurations_tender" sequence="4"
+              action="tender.break_down_template_action"/>
+
+    <menuitem id="menu_setting_top_sheet" name="Top Sheet"
+              parent="menu_configurations_tender" sequence="7"
+              action="tender.top_sheet_action"/>
+
+    <menuitem id="menu_setting_indirect_cost" name="Indirect Cost"
+              parent="menu_configurations_tender" sequence="8"
+              action="tender.indirect_cost_action"/>
+     <menuitem id="menu_setting_sale_order" name="Offers"
+              parent="menu_configurations_tender" sequence="8"
+              action="tender.offers_action"/>
+</odoo>

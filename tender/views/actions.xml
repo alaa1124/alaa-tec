@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tender_project_main_action" model="ir.actions.act_window">
+        <field name="name">Actual Projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.project</field>
+        <field name="context">{'default_is_tender':True}</field>
+        <field name="domain">[('is_tender','=',True),('state','=','confirm')]</field>
+
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="tender_project_draft_action" model="ir.actions.act_window">
+        <field name="name">Draft Projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.project</field>
+         <field name="context">{'default_is_tender':True}</field>
+        <field name="domain">[('is_tender','=',True),('state','=','draft')]</field>
+
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--     <record id="project.open_view_project_all" model="ir.actions.act_window">-->
+<!--            <field name="domain">[('is_tender','=',False)]</field>-->
+<!--     </record>-->
+    <record id="tender_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'tender', 'bin_size': False}</field>
+    </record>
+    <record id="tender_item_action" model="ir.actions.act_window">
+        <field name="name">Items</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.item</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="tender_related_job_action" model="ir.actions.act_window">
+        <field name="name">Related Job</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.related.job</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="products_action" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+    <record id="break_down_template_action" model="ir.actions.act_window">
+        <field name="name">Breakdown Template</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">construction.job.cost</field>
+        <field name="context">{'default_is_template':True}</field>
+        <field name="domain">[('is_template','=',True)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="top_sheet_action" model="ir.actions.act_window">
+        <field name="name">Top Sheet</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">top.sheet</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <record id="indirect_cost_action" model="ir.actions.act_window">
+        <field name="name">Indirect Cost</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">indirect.cost</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <record id="offers_action" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">construction.sale.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

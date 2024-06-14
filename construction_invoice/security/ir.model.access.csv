@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_invoice_deductione,construction_invoice.access_construction_invoice_deductione,model_invoice_deduction_lines,base.group_user,1,1,1,1
+access_construction_invoice_allowance,construction_invoice.access_construction_invoice_allowance,model_invoice_allowance_lines,base.group_user,1,1,1,1

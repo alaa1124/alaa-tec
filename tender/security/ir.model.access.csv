@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_top_sheet,tender.tender,model_top_sheet,,1,1,1,1
+access_top_sheet_line,tender.tender.line,model_top_sheet_lines,,1,1,1,1
+access_indirect_cost,tender.tender,model_indirect_cost,,1,1,1,1
+access_indirect_cost_line,access_indirect_cost_line,model_indirect_cost_lines,,1,1,1,1
+access_construction_sale_order,access_indirect_cost_line,model_construction_sale_order,,1,1,1,1
+access_construction_sale_order_lines,access_indirect_cost_line,model_construction_sale_order_line,,1,1,1,1
+access_construction_currency,access_construction_currency,model_project_currency,,1,1,1,1

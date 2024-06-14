@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_model_item,access_model_item,model_project_item,,1,1,1,1
+access_model_related_job,access_model_related_job,model_project_related_job,,1,1,1,1
+access_model_cost_job,access_model_cost_job,model_construction_job_cost,,1,1,1,1
+access_model_material,access_model_material,model_construction_material,,1,1,1,1
+access_model_labour,access_model_labour,model_construction_labour,,1,1,1,1
+access_model_expense,access_model_expense,model_construction_expense,,1,1,1,1
+access_model_equip,access_model_expense,model_construction_equipment,,1,1,1,1
+access_model_subconstruco,access_model_expense,model_construction_subconstractor,,1,1,1,1
+access_model_tender,access_model_expense,model_project_tender,,1,1,1,1

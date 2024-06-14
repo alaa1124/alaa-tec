@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="contract_view_form_eng_template" model="ir.ui.view">
+            <field name="name">contract_view_form_eng_template</field>
+            <field name="model">project.contract</field>
+            <field name="inherit_id" ref="contract.contract_view_form"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//button[@name='action_view_subcontract']" position="after">
+                     <button name="action_view_Template" type="object" class="oe_stat_button">
+                                  <field name="count_template"/>   Engineer Template
+                              </button>
+                    <!-- Add your fields or attributes here -->
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="contract_view_form_eng_template_sudp" model="ir.ui.view">
+            <field name="name">contract_view_form_eng_template</field>
+            <field name="model">project.contract</field>
+            <field name="inherit_id" ref="contract.contract_view_form_sub"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//button[@name='action_view_subcontract']" position="after">
+                     <button name="action_view_Template" type="object" class="oe_stat_button">
+                                  <field name="count_template"/>   Engineer Template
+                              </button>
+                    <!-- Add your fields or attributes here -->
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
