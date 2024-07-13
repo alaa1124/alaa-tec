@@ -6,13 +6,13 @@ import odoo.tools
 class res_partner(models.Model):
     _inherit = 'res.partner'
     
-    ss_number=fields.Char(string = 'SSN', required=False, size=50)
-    cheque_count=fields.Integer('Cheques',compute="_compute_chqs")
-    unit_count=fields.Integer('Units',compute="_compute_units")
+    ss_number = fields.Char(string='SSN', required=False, size=50)
+    cheque_count = fields.Integer('Cheques',compute="_compute_chqs")
+    unit_count = fields.Integer('Units',compute="_compute_units")
 
     def _compute_chqs(self):
         for r in self:
-            chqs = self.env['account.move.line'].search([
+            chqs = self.env['account.payment'].search([
                 ('is_cheque', '=', 1),
                 ('partner_id', '=', self.id),
                 ])
@@ -46,9 +46,9 @@ class res_partner(models.Model):
             'type': 'ir.actions.act_window',
             'view_mode': 'tree,form',
             'res_id': 'mhj_cheques.cheque_received_list_action',
-            'res_model': 'account.move.line',
+            'res_model': 'account.payment',
             'views': [
-                [self.env.ref('mhj_cheques.cheque_view_tree').id, 'list'], 
+                [self.env.ref('mhj_cheques.cheque_payment_tree_view').id, 'list'],
                 # [self.env.ref('mhj_cheques.cheque_view_form').id, 'form']
                 ],
             'domain': [

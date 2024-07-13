@@ -45,6 +45,7 @@ class report_ownership_contract_bi(models.Model):
                 (lro.amount - lro.total_paid_amount) as unpaid
                 FROM loan_line_rs_own lro
                 LEFT JOIN ownership_contract oc ON oc.id = lro.loan_id
+                where oc.building_unit is not null    
                 GROUP BY
                     oc.state,
                     lro.total_paid_amount, 

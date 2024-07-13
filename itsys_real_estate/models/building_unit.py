@@ -158,7 +158,8 @@ class building_unit(models.Model):
         ('unique_property_code', 'UNIQUE (code,building_id,region_id,city_id,country_id)', 'property code must be unique!'),
         ('unique_property_building_code', 'UNIQUE (code,building_id)', 'property code must be unique!'),
     ]
-
+    def action_draft(self):
+        self.write({'state': 'free'})
     def make_reservation(self):            
         ctx={
             'default_building_unit':self.id,

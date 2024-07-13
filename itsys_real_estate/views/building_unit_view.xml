@@ -11,6 +11,8 @@
                         <button name="make_reservation"
                                 invisible = "state !='free'"
                                 string="Reservation" type="object"/>
+                        <button string="Reset to Free" name="action_draft" type="object" class="btn btn-secondary"
+                invisible="state =='free'" data-hotkey="r"/>
                         <field name="state"
                                widget="statusbar"
                                clickable="true"

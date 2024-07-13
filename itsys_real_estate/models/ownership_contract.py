@@ -99,7 +99,10 @@ class ownership_contract(models.Model):
                                  help="Installment Plan Duration or Total number of months \n ex. 120 months / 10 years")
     inst_count = fields.Integer(string='Installments count', default=40,
                                 help="Total number of intallments \n ex. 40 means every 3 months for the 120 months plan")
+    active = fields.Boolean('Active', default=True, tracking=True)
 
+    def action_draft(self):
+        self.write({'state': 'draft'})
     def replace_unit(self):
         adv_pay = (100 * self.paid) / self.rplc_building_unit.pricing
         vals = {
@@ -233,10 +236,16 @@ class ownership_contract(models.Model):
                 mns = iseq * inst_months
                 name = f'Inst # {str(iseq)} / {mns} months'
 
-            elif iseq > self.handover_seq:
-                iseq = iseq -1
+            elif iseq > self.handover_seq and self.handover_seq > 0:
+                iseq = iseq - 1
                 mns = iseq * inst_months
                 name = f'Inst # {str(iseq)} / {mns} months'
+
+            elif self.handover_seq == 0:
+                iseq = iseq
+                mns = iseq * inst_months
+                name = f'Inst # {str(iseq)} / {mns} months'
+
 
             print('npv', npv)
             print('amount', amount)
