@@ -10,6 +10,7 @@ class res_partner(models.Model):
     cheque_count = fields.Integer('Cheques',compute="_compute_chqs")
     unit_count = fields.Integer('Units',compute="_compute_units")
 
+
     def _compute_chqs(self):
         for r in self:
             chqs = self.env['account.payment'].search([
