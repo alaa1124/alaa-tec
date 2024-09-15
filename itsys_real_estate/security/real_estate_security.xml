@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- Module Real Estate Category -->
         <record model="ir.module.category" id="module_real_estate_category">
-                <field name="name">Real Estate</field>
-                <field name="sequence">0</field>
-                <field name="visible" eval="1" />
+            <field name="name">Real Estate</field>
+            <field name="sequence">0</field>
+            <field name="visible" eval="1" />
         </record>
 
+        <!-- Manage Reservations Group -->
         <record id="group_reservation" model="res.groups">
             <field name="name">Manage Reservations</field>
             <field name="category_id" ref="module_real_estate_category"/>
         </record>
 
+        <!-- Manage Ownership/Rental Contracts Group -->
         <record id="group_ownership_rental_contracts" model="res.groups">
             <field name="name">Manage Ownership/Rental Contracts</field>
             <field name="category_id" ref="module_real_estate_category"/>
         </record>
 
+        <!-- Manage Property Structure Group -->
         <record id="group_units_structure" model="res.groups">
             <field name="name">Manage Property Structure</field>
             <field name="category_id" ref="module_real_estate_category"/>
-        </record>       
-        
+        </record>
+
+        <!-- Manage Payments Group -->
         <record id="group_payments" model="res.groups">
             <field name="name">Manage Payments</field>
             <field name="category_id" ref="module_real_estate_category"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>            
         </record>
 
+        <!-- Send notifications to clients Group -->
         <record id="group_notification_control" model="res.groups">
             <field name="name">Send notifications to clients</field>
             <field name="category_id" ref="module_real_estate_category"/>
         </record>
-        
+
+        <!-- Real Estate Reports Group -->
         <record id="group_real_estate_reports" model="res.groups">
             <field name="name">Real Estate Reports</field>
             <field name="category_id" ref="module_real_estate_category"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>            
         </record>   
              
+        <!-- Real Estate Admin Group -->
         <record id="group_real_estate_admin" model="res.groups">
             <field name="name">Real Estate Admin</field>
             <field name="category_id" ref="module_real_estate_category"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
-          <record id="group_show_all_contracts" model="res.groups">
+        <!-- Show All Contracts Group -->
+        <record id="group_show_all_contracts" model="res.groups">
             <field name="name">Show All Contracts</field>
         </record>
 
-         <record id="group_create_reservation" model="res.groups">
+        <!-- Create Reservations Group -->
+        <record id="group_create_reservation" model="res.groups">
             <field name="name">Create Reservations</field>
         </record>
 
-          <record id="all_contracts_rule" model="ir.rule">
-            <field name="name">Show All Contracts For Admin</field>
-            <field name="model_id" ref="itsys_real_estate.model_ownership_contract"/>
-            <field name="groups" eval="[(4, ref('itsys_real_estate.group_show_all_contracts'))]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="True"/>
-        You are not allowed to access 'Config Settings' (res.config.settings) records.
-</record>
-
-          <record id="ownership_contract_rule_user" model="ir.rule">
+        <!-- Ownership Contract Rule -->
+        <record id="ownership_contract_rule_user" model="ir.rule">
             <field name="name">Ownership Contract</field>
             <field name="model_id" ref="model_ownership_contract"/>
             <field name="groups" eval="[(4, ref('itsys_real_estate.group_create_reservation'))]"/>
