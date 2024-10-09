@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form" model="ir.ui.view">
+        <field name="name">view_users_form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <group name="preferences" position="after">
+                <group string="Journal Restrictions" >
+                    <field name="journal_ids" widget="many2many_tags"
+                           domain="[('company_id','=',company_id)]"
+                           context="{'default_company_id':company_id}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+<!--    <record id="account.open_account_journal_dashboard_kanban" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True)]</field>-->
+
+<!--    </record>-->
+<!--    <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('move_type', '=', 'out_invoice'),('is_show','=',True)]</field>-->
+<!--    </record>-->
+
+<!--    <record id="account.action_move_out_refund_type" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('move_type', '=', 'out_refund'),('is_show','=',True)]</field>-->
+<!--    </record>-->
+<!--    <record id="account.action_move_in_invoice_type" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('move_type', '=', 'in_invoice'),('is_show','=',True)]</field>-->
+<!--    </record>-->
+<!--    <record id="account.action_move_in_refund_type" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('move_type', '=', 'in_refund'),('is_show','=',True)]</field>-->
+<!--    </record>-->
+<!--    <record id="account.action_move_journal_line" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True)]</field>-->
+<!--    </record>-->
+
+<!--    <record id="account.action_account_payments" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True),('is_cheque','=',False)]</field>-->
+
+<!--    </record>-->
+<!--    <record id="account.action_account_payments_payable" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True),('is_cheque','=',False)]</field>-->
+
+<!--    </record>-->
+<!--    <record id="account.action_account_moves_all" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True),('display_type', 'not in', ('line_section', 'line_note')),-->
+<!--            ('parent_state', '!=', 'cancel')]-->
+<!--        </field>-->
+
+<!--    </record>-->
+
+<!--    <record id="check_management.action_payment_account" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True),('type_cheq','=','recieve_chq')]</field>-->
+
+<!--    </record>-->
+<!--    <record id="check_management.action_payment_account_send" model="ir.actions.act_window">-->
+<!--        <field name="domain">[('is_show','=',True),('type_cheq','=','send_che')]</field>-->
+
+<!--    </record>-->
+</odoo>
