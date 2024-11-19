@@ -1,0 +1,198 @@
+<odoo>
+    <data>
+        <template id="custom_external_layout_standard">
+
+
+
+            <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+
+
+                <div class="row">
+
+                    <div class="col-9">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px;"
+                             alt="Logo"/>
+
+                    </div>
+                    <div>
+
+                        <t t-if="o.amount>0">
+                            <span class="text-right">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;استلام
+                                نقدية
+                            </span>
+                        </t>
+                        <t t-else="">
+                            <span class="text-right">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;دفع
+                                نقدية
+                            </span>
+                        </t>
+                        <br/>
+                        <span class="text-right">
+                            <t t-esc="o.date"/>
+                            ‫اليوم‬
+                        </span>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}"
+                 t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else ''}});"
+                 t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <div class="pt-5">
+                    <!-- This div ensures that the address is not cropped by the header. -->
+                    <t t-call="web.address_layout"/>
+                </div>
+                <t t-out="0"/>
+            </div>
+
+            <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <ul class="list-inline mb4">
+                        <div t-field="company.report_footer"/>
+                    </ul>
+
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="receipt_payment_temp2">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="line">
+                    <t t-set="company" t-value="line.company_id"/>
+                    <t t-set="o" t-value="line"/>
+                    <t t-call="receipt_print.custom_external_layout_standard">
+                        <div class="page" style="font-family:">
+                            <style>
+                                .table {
+                                --bs-table-bg: transparent;
+                                --bs-table-accent-bg: transparent;
+                                --bs-table-striped-color: #212529;
+                                --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+                                --bs-table-active-color: #212529;
+                                --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+                                --bs-table-hover-color: #212529;
+                                --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+                                width: 100%;
+                                margin-bottom: 1rem;
+                                color: #212529;
+                                vertical-align: top;
+                                border-color: #dee2e6;
+                                border: 3px solid black;
+                                }
+                                table {
+                                caption-side: bottom;
+                                border-collapse: collapse;
+                                }
+
+
+                            </style>
+
+                            <t t-if="line.amount>0">
+                                <center>
+                                    <span t-esc="line.move_id.name"/>
+                                    ‫‫ايصال استلام نقدية رقم
+                                </center>
+                            </t>
+                            <t t-else="">
+                                <center>
+                                    <span t-esc="line.move_id.name"/>
+                                    ‫‫ايصال دفع نقدية رقم
+                                </center>
+                            </t>
+
+
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="text-right">
+                                            <span t-field="line.recipient_id"/>
+                                        </th>
+                                        <th class="text-right">/وصلنا من السيد</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+
+                                            <span t-esc="abs(line.amount)"/>
+                                            <br/>
+                                            <span t-esc="line.amount_to_text()"/>
+
+                                        </td>
+                                        <td class="text-right">‫مبلغ‬</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="line.payment_ref"/>
+                                        </td>
+                                        <td class="text-right">وذلك قيمة</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="line.date"/>
+                                        </td>
+                                        <td class="text-right">تحريرا في</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <center>
+                                <table style="width:100%;border:0px">
+                                    <thead style="width:100%;border:0px">
+                                        <tr style="width:100%;border:0px">
+                                            <th style="width:25%;border:0px" text-align="right">المستلم</th>
+
+                                            <th style="width:25%;border:0px" text-align="right">المدير المالى</th>
+                                            <th style="width:25%;border:0px" text-align="right">رئيس الحسابات</th>
+                                            <th style="width:25%;border:0px" text-align="right">امين الخزينة</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody style="width:100%;border:0px">
+                                        <tr style="width:100%;border:0px">
+                                            <th style="width:25%;border:0px" text-align="right">---------------</th>
+
+                                            <th style="width:25%;border:0px" text-align="right">---------------</th>
+                                            <th style="width:25%;border:0px" text-align="right">---------------</th>
+                                            <th style="width:25%;border:0px" text-align="right">---------------</th>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </center>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report
+                id="receipt_payment_action"
+                model="account.bank.statement"
+                report_type="qweb-pdf"
+                string="‫استلام/دفع نقدية‬"
+                name="receipt_print.receipt_payment_temp"
+                file="receipt_print.receipt_payment_temp"
+        />
+
+        <record id="receipt_payment_action2" model="ir.actions.report">
+            <field name="name">‫استلام/دفع نقدية</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">receipt_print.receipt_payment_temp2</field>
+            <field name="report_file">receipt_print.receipt_payment_temp2</field>
+        </record>
+
+    </data>
+</odoo>
