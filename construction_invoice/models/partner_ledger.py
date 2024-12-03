@@ -66,9 +66,9 @@ class PartnerLedgerCustomHandler(models.AbstractModel):
                         col_class = ''
                     formatted_value = report.format_value(
                         value=col_value, 
-                        figure_type=column.get('figure_type')
-                    )
-
+                        figure_type=column.get('figure_type'), 
+                        options=options  # تمرير الوسيط options المطلوب
+                     )
                 columns.append({
                     'name': formatted_value,
                     'no_format': col_value,
