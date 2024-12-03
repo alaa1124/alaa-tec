@@ -49,13 +49,15 @@ class PartnerLedgerCustomHandler(models.AbstractModel):
                     currency = self.env['res.currency'].browse(aml_query_result['currency_id'])
                     formatted_value = report.format_value(
                         value=col_value, 
-                        currency=currency, 
+                        currency=currency,
+                        options=options,
                         figure_type=column.get('figure_type')
                     )
                 elif col_expr_label == 'balance':
                     col_value += init_bal_by_col_group[column.get('column_group_key', '')]
                     formatted_value = report.format_value(
-                        value=col_value, 
+                        value=col_value,
+                        options=options,
                         figure_type=column.get('figure_type'), 
                         blank_if_zero=column.get('blank_if_zero', False)
                     )
