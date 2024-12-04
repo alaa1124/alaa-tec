@@ -16,6 +16,8 @@ except ImportError:
 class Projects(models.Model):
     _inherit = "project.project"
 
+    open_task_count = fields.Integer()
+
     def _default_currency_id(self):
         return self.env.user.company_id.currency_id
 
@@ -83,7 +85,7 @@ class Projects(models.Model):
                 raise ValidationError("Total Indirect cost must equal %s" % (round(self.indirect_id.total, 2)))
         if self.profit_id:
             total_profit = sum(self.tender_ids.mapped('total_profit'))
-            if self.profit_id.total < total_profit:
+            if int(self.profit_id.total) < int(total_profit):
                 raise ValidationError("Total Profit cost must equal %s" % (round(self.profit_id.total, 2)))
 
     @api.depends('tender_ids')
