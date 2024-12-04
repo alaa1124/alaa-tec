@@ -97,7 +97,7 @@
 
 
 
-                                        <!--                            <field name="parent_item"/>-->
+                                                                    <field name="code"/>
                                         <field name="item" string="بند المفايسه"  required="display_type==False"
                                                optional="show" width="100px"/>
                                         <field name="name" string=" وصف بند المفايسه"  required="display_type==False"

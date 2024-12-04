@@ -167,7 +167,7 @@ class ownership_contract(models.Model):
             self.loan_line = loan_lines
 
     def compute_installments(self):
-        npv = float(self.env['ir.config_parameter'].get_param('itsys_real_estate.npv')) / 100
+        npv = float(self.env['ir.config_parameter'].sudo().get_param('itsys_real_estate.npv')) / 100
         # _logger.error(f'>>>>>>>>>>>>>>>> NPV: {npv}')
         inst_lines = []
         name = self.name or 'new'
