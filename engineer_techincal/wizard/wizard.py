@@ -13,24 +13,26 @@ class wizard(models.TransientModel):
     contract_items = fields.Many2many("project.item", "contract_items_lines", "item_id", "id")
     item_ids = fields.Many2many("project.item", "eng_contract_items_lines", "item_id", "id",
                                 domain="[('id','in',contract_items)]")
+    contract_line_ids = fields.Many2many('project.contract.line', 'contract_id', 'id',
+                                         domain="[('contract_id','=',contract_id)]")
 
     def save_payment(self):
-        for rec in self.item_ids:
-            if self.eng_id.type == 'owner':
-                contract_line = self.env['project.contract.line'] \
-                    .search(
-                    [('state', '=', 'confirm'), ('item', '=', rec.id), '|', ('contract_id', '=', self.contract_id.id),
-                     ('contract_id.parent_contract_id', '=', self.contract_id.id)])
-            else:
-                contract_line = self.env['project.contract.line'] \
-                    .search(
-                    [('state', '=', 'confirm'), ('item_sub_id', '=', rec.id), '|',
-                     ('contract_id', '=', self.contract_id.id),
-                     ('contract_id.parent_contract_id', '=', self.contract_id.id)])
-
-            for line in contract_line:
-                if line.display_type == False:
-                    self.create_eng_line(line)
+        # for rec in self.item_ids:
+        #     if self.eng_id.type == 'owner':
+        #         contract_line = self.env['project.contract.line'] \
+        #             .search(
+        #             [('state', '=', 'confirm'), ('item', '=', rec.id), '|', ('contract_id', '=', self.contract_id.id),
+        #              ('contract_id.parent_contract_id', '=', self.contract_id.id)])
+        #     else:
+        #         contract_line = self.env['project.contract.line'] \
+        #             .search(
+        #             [('state', '=', 'confirm'), ('item_sub_id', '=', rec.id), '|',
+        #              ('contract_id', '=', self.contract_id.id),
+        #              ('contract_id.parent_contract_id', '=', self.contract_id.id)])
+        contract_line = self.contract_line_ids
+        for line in contract_line:
+            if line.display_type == False:
+                self.create_eng_line(line)
 
     def get_previous_amount(self, eng_line):
         previous_amount = 0

@@ -98,7 +98,9 @@ class EngineerTemplate(models.Model):
                 print("========================22222")
                 if rec.item_sub_id:
                     item_ids.append(rec.item_sub_id.id)
-
+        contract_line_ids = False
+        if self.contract_id.contarct_line_ids:
+            contract_line_ids = self.contract_id.contarct_line_ids.ids
         return {
             'name': _('Select Item'),
             'view_type': 'form',
@@ -106,7 +108,8 @@ class EngineerTemplate(models.Model):
             'res_model': 'eng.wizard',
             'type': 'ir.actions.act_window',
             'context': {'default_contract_id': self.contract_id.id, \
-                        'default_eng_id': self.id, 'default_contract_items': [(4, rec) for rec in item_ids]},
+                        'default_eng_id': self.id, 'default_contract_items': [(4, rec) for rec in item_ids],
+                        'default_contract_line_ids': contract_line_ids},
             'target': 'new',
         }
 
