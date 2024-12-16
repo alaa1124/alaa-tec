@@ -12,8 +12,8 @@
                 <xpath expr="//field[@name='id']" position="before">
                     <field name="allowed_item_ids" column_invisible="1"/>
                     <field name="project_id"/>
-                    <field name="item_id"/>
-                    <field name="item_line"/>
+                    <field name="item_id" readonly="not project_id"/>
+                    <field name="item_line" readonly="not item_id"/>
                 </xpath>
             </field>
         </record>
