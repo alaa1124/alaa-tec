@@ -7,7 +7,7 @@ class Tender(models.Model):
 
     def _compute_display_name(self):
         for record in self:
-            record.display_name = f"[{record.code}] name"
+            record.display_name = f"[{record.code}] {record.name}"
 
     state = fields.Selection([('main', 'Main'), ('job_cost', 'Break Down'), \
                               ('job_estimate', 'Break Down Estimate')],
