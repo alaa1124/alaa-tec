@@ -20,6 +20,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
+        'views/bank_statement.xml',
     ],
 
 }
