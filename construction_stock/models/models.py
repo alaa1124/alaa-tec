@@ -11,8 +11,7 @@ class construction_stock(models.Model):
 class StockMove(models.Model):
     _inherit = "stock.move"
     project_id = fields.Many2one('project.project', related='picking_id.project_id')
-    # item_id = fields.Many2one("project.item", domain="[('id','in',allowed_item_ids)]")
-    item_id = fields.Many2one("project.item", domain="[('project_id','=?',project_id)]")
+    item_id = fields.Many2one("project.item", domain="[('id','in',allowed_item_ids)]")
     item_line = fields.Many2one('project.tender', domain="[('project_id','=?',project_id), ('item_id','=?',item_id)]")
     allowed_item_ids = fields.Many2many("project.item", "stock_move_item", "item", "id", compute="get_allowed_item_ids")
 
