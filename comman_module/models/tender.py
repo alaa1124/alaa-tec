@@ -4,12 +4,17 @@ from odoo import fields, models, api
 class Tender(models.Model):
     _name = 'project.tender'
     _description = 'Tender'
+
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = f"[{record.code}] name"
+
     state = fields.Selection([('main', 'Main'), ('job_cost', 'Break Down'), \
                               ('job_estimate', 'Break Down Estimate')],
                              string="State", default="main")
     project_id = fields.Many2one("project.project")
     name = fields.Char(required=True, string="Description")
-    code = fields.Char( )
+    code = fields.Char()
     sequence = fields.Integer(string='Sequence', default=10)
     item = fields.Many2one("project.item")
     related_job_id = fields.Many2one("project.related.job")
