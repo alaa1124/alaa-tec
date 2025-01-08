@@ -5,8 +5,8 @@ class AccountMove(models.Model):
 
     @api.onchange('name')
     def _onchange_name(self):
-        if self.name:
-            for line in self.line_ids:
+        for move in self:
+            for line in move.line_ids:
                 if line.name:
                     line.name = f"{line.name} - Updated"
 
