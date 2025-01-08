@@ -16,7 +16,7 @@
                         <t t-foreach="docs" t-as="line">
                             <tr>
                                 <td t-esc="line.date"/>
-                                <td t-esc="line.description"/>
+                                <td t-esc="line.name"/>
                                 <td t-esc="line.amount"/>
                             </tr>
                         </t>
