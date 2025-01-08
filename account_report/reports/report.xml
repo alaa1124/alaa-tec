@@ -37,7 +37,7 @@
         <field name="report_name">stock_picking_invoice.action_report_analytic_template</field>
         <field name="report_file">stock_picking_invoice.action_report_analytic_template</field>
         <field name="print_report_name">"Analytic Report- " + object.name</field>
-        <field name="binding_model_id" ref="stock.report_analytic_template"/>
+        <field name="binding_model_id" ref="account.report_analytic_template"/>
         <field name="binding_type">report</field>
     </record>
 </odoo>
