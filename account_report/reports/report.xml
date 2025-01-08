@@ -2,8 +2,10 @@
     <template id="action_report_analytic_template">
         <t t-call="web.basic_layout">
           <div class="header" style="direction: rtl; text-align: center; border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 20px;">
-                <h1 style="margin: 0;">  Logo</h1>
-                <p style="margin: 0;">شركة XYZ</p>
+                  <t t-foreach="docs" t-as="doc">
+                 <img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,' + doc.company_id.logo" alt="Company Logo" style="max-height: 100px;"/>
+                <p style="margin: 0;">   <td t-esc="doc.company_id.name"/></p>
+                </t>
             </div>
             <div class="page" style="direction: rtl; text-align: left;">
                 <h2 class="text-center">Analytic Report</h2>
