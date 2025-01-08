@@ -1,11 +1,8 @@
-
 <odoo>
     <template id="action_report_analytic_template">
         <t t-call="web.basic_layout">
             <div class="page" style="direction: rtl; text-align: right;">
-                <h2 class="text-center">Analytic Report  </h2>
-
-   
+                <h2 class="text-center">Analytic Report</h2>
 
                 <table class="table table-sm mt32" style="border-collapse: collapse; width: 100%; text-align: right;">
                     <thead>
@@ -16,28 +13,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                         <t t-foreach="docs" t-as="line">
-                <tr>
-                    <td t-esc="line.date" />
-                    <td t-esc="line.description" />
-                    <td t-esc="line.amount" />
-                </tr>
-            </t>
+                        <t t-foreach="docs" t-as="line">
+                            <tr>
+                                <td t-esc="line.date"/>
+                                <td t-esc="line.description"/>
+                                <td t-esc="line.amount"/>
+                            </tr>
+                        </t>
                     </tbody>
                 </table>
-
             </div>
         </t>
     </template>
 
     <record id="action_report_analytic" model="ir.actions.report">
-        <field name="name"> Analytic Report</field>
+        <field name="name">Analytic Report</field>
         <field name="model">account.analytic.line</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">stock_picking_invoice.action_report_analytic_template</field>
         <field name="report_file">stock_picking_invoice.action_report_analytic_template</field>
         <field name="print_report_name">"Analytic Report- " + object.name</field>
-        <field name="binding_model_id" ref="account.report_analytic_template"/>
         <field name="binding_type">report</field>
     </record>
 </odoo>
