@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <template id="custom_report_general_ledger_header" inherit_id="account.report_financial">
+        <template id="custom_report_general_ledger_header" inherit_id="account_reports.action_account_report_general_ledger">
             <xpath expr="//div[@class='o_account_reports_header']" position="replace">
                 <div class="o_account_reports_header">
                     <h1 style="text-align: center;">Ledger Report</h1>
