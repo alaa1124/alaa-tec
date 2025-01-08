@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_general_ledger_custom" inherit_id="account.report_financial">
+        <xpath expr="//div[@class='o_account_reports_header']" position="replace">
+            <div class="o_account_reports_header">
+                <h1>hello General Ledger</h1>
+
+            </div>
+        </xpath>
+    </template>
+</odoo>
