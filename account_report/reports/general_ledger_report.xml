@@ -1,16 +1,18 @@
 <odoo>
-    <template id="custom_report_general_ledger_header" inherit_id="account.report_financial">
-        <xpath expr="//div[@class='o_account_reports_header']" position="replace">
-            <div class="o_account_reports_header">
-                <h1 style="text-align: center;"> Ledger Report</h1>
-            </div>
-        </xpath>
-    </template>
-      <record id="action_report_general_ledger_custom" model="ir.actions.report">
+    <data>
+        <template id="custom_report_general_ledger_header" inherit_id="account.report_financial">
+            <xpath expr="//div[@class='o_account_reports_header']" position="replace">
+                <div class="o_account_reports_header">
+                    <h1 style="text-align: center;">Ledger Report</h1>
+                </div>
+            </xpath>
+        </template>
+        <record id="action_report_general_ledger_custom" model="ir.actions.report">
             <field name="name">Custom General Ledger</field>
             <field name="model">account.report</field>
             <field name="report_name">account.report_general_ledger</field>
             <field name="report_type">qweb-pdf</field>
             <field name="template">account_report.custom_report_general_ledger_header</field>
         </record>
+    </data>
 </odoo>
