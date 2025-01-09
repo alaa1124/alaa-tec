@@ -1,18 +1,46 @@
 <odoo>
-    <data>
-        <template id="custom_report_general_ledger_header" inherit_id="account_reports.action_account_report_general_ledger">
-            <xpath expr="//div[@class='o_account_reports_header']" position="replace">
-                <div class="o_account_reports_header">
-                    <h1 style="text-align: center;">Ledger Report</h1>
-                </div>
-            </xpath>
-        </template>
-        <record id="action_report_general_ledger_custom" model="ir.actions.report">
-            <field name="name">Custom General Ledger</field>
-            <field name="model">account.report</field>
-            <field name="report_name">account.report_general_ledger</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="template">account_report.custom_report_general_ledger_header</field>
-        </record>
-    </data>
+<template id="custom_external_layout_standard" inherit_id="web.external_layout_standard">
+    <xpath expr="//div[contains(@t-attf-class, 'header')]" position="attributes">
+        <attribute name="style">font-size: 90px;</attribute>
+    </xpath>
+
+    <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="attributes">
+        <attribute name="style">font-size: 90px;</attribute>
+    </xpath>
+
+    <xpath expr="//div[contains(@t-attf-class, 'article')]" position="attributes">
+        <attribute name="style">font-size: 89px;</attribute>
+    </xpath>
+</template>
+
+
+<template id="custom_internal_layout" inherit_id="web.internal_layout">
+    <xpath expr="//div[@class='header']" position="attributes">
+        <attribute name="style">font-size: 90px;</attribute>
+    </xpath>
+    <xpath expr="//div[@class='article']" position="attributes">
+        <attribute name="style">font-size: 90px;</attribute>
+    </xpath>
+</template>
+
+<template id="custom_basic_layout" inherit_id="web.basic_layout">
+    <xpath expr="//div[@class='article']" position="attributes">
+        <attribute name="style">font-size: 90px;</attribute>
+    </xpath>
+</template>
+
+
+   <template id="custom_external_layout_bold" inherit_id="web.external_layout_bold">
+        <!-- تكبير الخط في القالب الخارجي (Bold) -->
+        <xpath expr="//div[contains(@class, 'o_clean_header')]" position="attributes">
+            <attribute name="style">font-size: 88px;</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'article')]" position="attributes">
+            <attribute name="style">font-size: 88px;</attribute>
+        </xpath>
+        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="attributes">
+            <attribute name="style">font-size: 88px;</attribute>
+        </xpath>
+    </template>
+
 </odoo>
