@@ -3,7 +3,7 @@ from odoo import models, fields, api
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    @api.onchange('name')
+    @api.onchange('line_ids.name')
     def _onchange_name(self):
         for move in self:
             for line in move.line_ids:
