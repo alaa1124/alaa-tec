@@ -7,6 +7,6 @@ class GeneralLedgerReport(models.Model):
         styles = super()._get_styles()
         # Customize font size
         styles.update({
-            'font_size': 24,  # Change font size as needed
+            'font_size': 50,  # Change font size as needed
         })
         return styles
