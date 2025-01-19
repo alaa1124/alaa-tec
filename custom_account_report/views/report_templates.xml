@@ -5,9 +5,7 @@
                 table, th, td {
                     font-size: 50px !important; /* Adjust the size as needed */
                 }
-            table, th, td {
-                font-size: 50px !important; /* Adjust the size as needed */
-            }</style>
+           </style>
         </xpath>
     </template>
 </odoo>
