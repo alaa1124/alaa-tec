@@ -7,5 +7,7 @@ class GeneralLedgerReport(models.AbstractModel):
         html = super().get_html(options, line_id, additional_context)
         # Inject custom styles for font size
         custom_style = "<style>table, th, td { font-size: 50px !important; }</style>"
+
         html = custom_style + html
+        print(custom_style)
         return html
