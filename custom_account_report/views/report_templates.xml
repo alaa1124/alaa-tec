@@ -3,9 +3,10 @@
         <xpath expr="//style" position="inside">
             <style>
                 table, th, td {
-                    font-size: 50px !important; /* Adjust the size as needed */
+                    font-size: 50px !important;
                 }
-           </style>
+            </style>
         </xpath>
     </template>
 </odoo>
+
