@@ -3,7 +3,7 @@
         <xpath expr="." position="inside">
             <style>
                 
-                .o_account_reports_table th, .o_account_reports_table td {
+                #custom_general_ledger_report .table thead th {
                     font-size: 50px !important; 
                 }
             </style>
