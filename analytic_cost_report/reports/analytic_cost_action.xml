@@ -1,0 +1,9 @@
+<report 
+    id="action_report_analytic_costs"
+    model="account.analytic.line"
+    string="Analytic Costs Report"
+    report_type="qweb-pdf"
+    name="your_module.report_analytic_costs"
+    file="your_module.report_analytic_costs"
+    attachment_use="False"
+/>
