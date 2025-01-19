@@ -1,12 +1,11 @@
 from odoo import models
 
-class GeneralLedgerReport(models.Model):
+class GeneralLedgerReport(models.AbstractModel):
     _inherit = 'account.report'
 
-    def _get_styles(self):
-        styles = super()._get_styles()
-        # Customize font size
-        styles.update({
-            'font_size': 50 ,  # Change font size as needed
-        })
-        return styles
+    def get_html(self, options, line_id=None, additional_context=None):
+        html = super().get_html(options, line_id, additional_context)
+        # Inject custom styles for font size
+        custom_style = "<style>table, th, td { font-size: 50px !important; }</style>"
+        html = custom_style + html
+        return html

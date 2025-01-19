@@ -1,12 +1,10 @@
 <odoo>
-    <template id="custom_general_ledger_report" inherit_id="account_reports.general_ledger_report">
-        <xpath expr="." position="inside">
-            <style>
-                
-                .o_account_reports_table th, .o_account_reports_table td {
-                    font-size: 24px !important; 
-                }
-            </style>
+    <template id="custom_financial_report_pdf" inherit_id="account_reports.report_financial_pdf">
+        <xpath expr="//style" position="inside">
+            /* Custom CSS for font size */
+            table, th, td {
+                font-size: 50px !important; /* Adjust the size as needed */
+            }
         </xpath>
     </template>
 </odoo>

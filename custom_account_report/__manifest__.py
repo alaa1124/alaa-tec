@@ -3,7 +3,7 @@
     'version': '1.0',
     'depends': ['account_reports'],
     'data': [
-        'views/report_templates.xml',  # Include the XML file you created
+        'views/report_templates.xml',
     ],
     'installable': True,
     'application': False,
