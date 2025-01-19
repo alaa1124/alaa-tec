@@ -1,5 +1,5 @@
 <odoo>
-    <template id="custom_financial_report_pdf" inherit_id="account_reports.report_financial_pdf">
+    <template id="custom_general_ledger_report" inherit_id="account_reports.general_ledger_report">
         <xpath expr="//style" position="inside">
             /* Custom CSS for font size */
             table, th, td {
