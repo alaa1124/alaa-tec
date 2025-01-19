@@ -1,0 +1,12 @@
+<odoo>
+    <template id="custom_general_ledger_report" inherit_id="account_reports.general_ledger_report">
+        <xpath expr="." position="inside">
+            <style>
+                
+                .o_account_reports_table th, .o_account_reports_table td {
+                    font-size: 24px !important; 
+                }
+            </style>
+        </xpath>
+    </template>
+</odoo>
