@@ -1,1 +1,1 @@
-from . import analytic_cost_report
+from . import report_analytic_costs
