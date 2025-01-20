@@ -1,4 +1,4 @@
-<odoo>
+<!-- <odoo>
     
         <record id="analytic_cost_report_action" model="ir.actions.report">
             <field name="name">Analytic Reporting</field>
@@ -14,4 +14,4 @@
         </template>
 
 
-</odoo>
+</odoo> -->
