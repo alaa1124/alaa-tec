@@ -1,7 +1,7 @@
 from odoo import models, fields, api
 
-class ReportAnalyticCosts(models.AbstractModel):
-    _name = 'report.your_module.report_analytic_costs'
+class ReportAnalytic(models.AbstractModel):
+    _name = 'report_analytic'
     _description = 'Analytic Costs Report'
 
     @api.model
@@ -14,3 +14,4 @@ class ReportAnalyticCosts(models.AbstractModel):
             'docs': docs,
             'date_today': fields.Date.today(),
         }
+
