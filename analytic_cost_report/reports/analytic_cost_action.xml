@@ -4,7 +4,7 @@
             <field name="name">Analytic Reporting</field>
             <field name="model">account.analytic.line</field>
             <field name="report_type">qweb-pdf</field>
-            <!-- <field name="binding-model-id" ref="model_report_analytic"/> -->
+            <field name="binding-model-id" ref="model_account.analytic.line"/>
             <field name="binding_type" >report</field>
             <field name="report_name" >analytic_cost_report.report_analytic_template</field>
         </record>
