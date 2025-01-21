@@ -2,7 +2,7 @@
     <record id="analytic_cost_report_action" model="ir.actions.report">
         <field name="name">Analytic Reporting</field>
         <!-- Reference the account.analytic.line model -->
-        <field name="model_id" ref="account.model_account_analytic_line"/>
+        <field name="model_id" ref="account.account_analytic_line"/>
         <field name="report_type">qweb-pdf</field>
         <field name="binding_model_id" ref="account.model_account_analytic_line"/>
         <field name="binding_type">report</field>
@@ -10,11 +10,11 @@
     </record>
 
     <template id="report_analytic_template">
-        <t t-name="analytic_cost_report.report_analytic_template">
+        <!-- <t t-name="analytic_cost_report.report_analytic_template">
             <div>
                 <h1>Analytic Costs Report</h1>
             </div>
-        </t>
+        </t> -->
     </template>
 </odoo>
 
