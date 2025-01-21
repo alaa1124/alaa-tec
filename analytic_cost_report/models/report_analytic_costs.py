@@ -15,3 +15,5 @@ class ReportAnalytic(models.AbstractModel):
             'docs': docs,
             'date_today': fields.Date.today(),
         }
+
+
