@@ -1,17 +1,16 @@
 <odoo>
-    <!-- Define the report action -->
     <record id="analytic_cost_report_action" model="ir.actions.report">
-        <field name="name">Analytic Costs Report</field>
-        <!-- Correct the model reference -->
+        <field name="name">Analytic  Report 1</field>
         <field name="model">account.analytic.line</field>
         <field name="report_type">qweb-pdf</field>
         <field name="binding_model_id" ref="account.model_account_analytic_line"/>
         <field name="binding_type">report</field>
-        <!-- Use the correct report name format -->
-        <field name="report_name">analytic_cost_report.report_analytic_template</field>
+        <field name="report_name">account_report.report_analytic_template</field>
+        <field name="report_file">account_report.report_analytic_template</field>
+        <field name="print_report_name">"Analytic Report- " + object.name</field>
     </record>
 
-    <!-- Define the report template -->
+    
     <template id="report_analytic_template">
         <t t-name="analytic_cost_report.report_analytic_template">
             <div>
@@ -20,5 +19,6 @@
         </t>
     </template>
 </odoo>
+
 
 
