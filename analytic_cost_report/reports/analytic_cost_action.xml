@@ -12,37 +12,8 @@
 
 
     
-   <template id="action_report_analytic_template">
-        <t t-call="web.basic_layout">
-          <div class="header" style="direction: rtl; text-align: center; border-bottom: 1px solid black; padding-bottom: 10px; margin-bottom: 20px;">
-                  <t t-foreach="docs" t-as="doc">
-                 
-                <p style="margin: 0;">   <td t-esc="doc.company_id.name"/></p>
-                </t>
-            </div>
-            <div class="page" style="direction: rtl; text-align: left;">
-                <h2 class="text-center">Analytic Report</h2>
-
-                <table class="table table-sm mt32" style="border-collapse: collapse; width: 100%; text-align: right;">
-                    <thead>
-                        <tr style="border: 1px solid black;">
-                            <th style="border: 1px solid black;">Date</th>
-                            <th style="border: 1px solid black;">Description</th>
-                            <th style="border: 1px solid black;">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t t-foreach="docs" t-as="line">
-                            <tr>
-                                <td t-esc="line.date"/>
-                                <td t-esc="line.name"/>
-                                <td t-esc="line.amount"/>
-                            </tr>
-                        </t>
-                    </tbody>
-                </table>
-            </div>
-        </t>
+    <template id="action_report_analytic_template">
+        
     </template>
 </odoo>
 
