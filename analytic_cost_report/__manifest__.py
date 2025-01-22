@@ -6,6 +6,7 @@
     'depends': ['account'],  
     'data': [
         'reports/analytic_cost_action.xml',
+        'reports/analytic_report_line.xml',
     ],
     'installable': True,
     'application': False,
