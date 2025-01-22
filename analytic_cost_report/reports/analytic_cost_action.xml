@@ -5,18 +5,15 @@
         <field name="report_type">qweb-pdf</field>
         <field name="binding_model_id" ref="account.model_account_analytic_line"/>
         <field name="binding_type">report</field>
-        <field name="report_name">account_report.report_analytic_template</field>
-        <field name="report_file">account_report.report_analytic_template</field>
-        <field name="print_report_name">"Analytic Report- " + object.name</field>
+        <field name="report_name">account_report.action_report_analytic_template</field>
+        <field name="report_file">account_report.action_report_analytic_template</field>
+        <field name="print_report_name">"Analytic Report 1- " + object.name</field>
     </record>
 
+
     
-    <template id="report_analytic_template">
-        <t t-name="analytic_cost_report.report_analytic_template">
-            <div>
-                <h1>Analytic Costs Report</h1>
-            </div>
-        </t>
+    <template id="action_report_analytic_template">
+        
     </template>
 </odoo>
 
