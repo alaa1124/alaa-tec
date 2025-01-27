@@ -13,4 +13,21 @@
             </xpath>
         </field>
     </record>
+    <record id="view_picking_tree_inherit_backdate" model="ir.ui.view">
+    <field name="name">stock.picking.tree.inherit.backdate</field>
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.vpicktree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//tree" position="inside">
+            <header>
+                <button name="%(model_stock_picking_action_open_backdate_wizard)d"
+                        string="Backdate Picking"
+                        type="action"
+                        class="btn-primary"
+                        icon="fa-calendar" />
+            </header>
+        </xpath>
+    </field>
+</record>
+
 </odoo>
