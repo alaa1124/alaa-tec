@@ -119,7 +119,6 @@
                             <page string="E-Commerce">
                                 <group>
                                     <field name="type" invisible="1"/>
-                                    <field name="website_url" invisible="1"/>
                                     <field name="website_sequence" invisible="1"/>
                                     <field name="public_categ_ids" widget="many2many_tags" string="Categories"/>
                                     <label for="allow_out_of_stock_order" invisible="type in ['service', 'consu']"
