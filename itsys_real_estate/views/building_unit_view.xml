@@ -120,12 +120,6 @@
                                 <group>
                                     <field name="type" invisible="1"/>
                                     <field name="public_categ_ids" widget="many2many_tags" string="Categories"/>
-                                    <label for="allow_out_of_stock_order" invisible="type in ['service', 'consu']"
-                                           string="Out-of-Stock"/>
-                                    <div invisible="type in ['service', 'consu']">
-                                        <field name="allow_out_of_stock_order" class="oe_inline"/>
-                                        Continue Selling
-                                    </div>
 
                                     <label for="show_availability" invisible="type in ['service', 'consu']"
                                            string="Show Available Qty"/>
