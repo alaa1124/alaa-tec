@@ -53,7 +53,6 @@
         'views/commission_view.xml',
         'views/real_estate_reports_view.xml',
         'views/configuration.xml',
-        'views/product_template_website.xml',
         # 'views/template.xml',
         'views/crm.xml',
         'sequences/ownership_contract_sequence.xml',
