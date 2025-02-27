@@ -221,3 +221,30 @@ class WebsiteProductImage(http.Controller):
         if category:
             values['main_object'] = category
         return request.render("website_sale.products", values)
+    
+
+    @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True, csrf=False)
+    def cart_update_json(self, product_id, line_id=None, add_qty=None, set_qty=None, display=True, **kw):
+
+        order = request.website.sale_get_order(force_create=1)
+        if order.state != 'draft':
+            request.website.sale_reset()
+            if kw.get('force_create'):
+                order = request.website.sale_get_order(force_create=1)
+            else:
+                return {}
+
+        existing_line = order.order_line.filtered(lambda l: l.product_id.id == int(product_id))
+        if existing_line:
+            return {
+                'error': 'this product is already in the cart '
+            }
+
+        return request.env['website.sale'].cart_update_json(
+            product_id=product_id,
+            line_id=line_id,
+            add_qty=add_qty,
+            set_qty=set_qty,
+            display=display,
+            **kw
+        )
