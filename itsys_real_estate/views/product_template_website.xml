@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="custom_products_item" inherit_id="website_sale.products_item">
+        <xpath expr="//form[@action='/shop/cart/update']" position="attributes">
+            <attribute name="action">/shop/cart/updates</attribute>
+        </xpath>
+    </template>
+</odoo>

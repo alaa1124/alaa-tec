@@ -28,7 +28,7 @@ class CustomWebsiteSale(WebsiteSale):
             **kw
         )
 
-    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True)
+    @http.route(['/shop/cart/updates'], type='http', auth="public", methods=['POST'], website=True)
     def custom_cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
         sale_order = request.website.sale_get_order(force_create=True)
 
