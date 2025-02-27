@@ -5,9 +5,9 @@
             <attribute name="action">/shop/cart/updates</attribute>
         </xpath>
     </template>
-    <template id="custom_products_items" inherit_id="website_sale.products">
-        <xpath expr="//form[@action='/shop/cart/update']" position="attributes">
-            <attribute name="action">/shop/cart/updates</attribute>
+     <template id="custom_products_items" inherit_id="website_sale.products">
+        <xpath expr="//form[contains(@action, '/shop/cart/update')]" position="attributes">
+            <attribute name="t-att-action">'/shop/cart/updates'</attribute>
         </xpath>
     </template>
 </odoo>
