@@ -3,6 +3,7 @@
 
 from odoo import http
 from odoo.http import request
+from odoo.addons.website.controllers import main
 from odoo.addons.website.controllers.main import QueryURL
 from odoo.addons.http_routing.models.ir_http import slug
 
@@ -223,6 +224,7 @@ class WebsiteProductImage(http.Controller):
         return request.render("website_sale.products", values)
     
 
+class CustomWebsiteSale(main.Website):
     @http.route(['/shop/cart/update_json'], type='json', auth="public", methods=['POST'], website=True, csrf=False)
     def cart_update_json(self, product_id, line_id=None, add_qty=None, set_qty=None, display=True, **kw):
 
