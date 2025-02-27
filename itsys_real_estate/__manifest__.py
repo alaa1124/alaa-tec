@@ -22,7 +22,7 @@
     'price': 500,
     'currency': 'EUR',
     'website': 'https://www.it-syscorp.com',
-    'depends': ['base', 'sale', 'mhj_cheques', 'crm', 'helpdesk', 'stock', 'web', 'website_sale_stock' ],
+    'depends': ['base', 'sale', 'mhj_cheques', 'crm', 'helpdesk', 'stock', 'web', 'website_sale_stock' ,'website_sale'],
     'data': [
         'security/real_estate_security.xml',
         'security/ir.model.access.csv',
