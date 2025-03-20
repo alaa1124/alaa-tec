@@ -1,0 +1,15 @@
+<odoo>
+
+
+    <template id="website_sale_address_custom" inherit_id="website_sale.address">
+
+
+
+    </template>
+
+
+
+
+
+
+</odoo>
