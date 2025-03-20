@@ -7,4 +7,4 @@
         'views/templates.xml',
     ],
 
-}
+} 
