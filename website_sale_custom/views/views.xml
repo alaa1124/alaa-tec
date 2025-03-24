@@ -1,16 +1,25 @@
 <odoo>
-  <data>
-        <record id="view_bank_statement_line_tree_bank_rec_widget_inherit_print" model="ir.ui.view">
-        <field name="name">account.bank.statement.tree</field>
-        <field name="model">account.bank.statement.line</field>
-        <field name="inherit_id" ref="account_accountant.view_bank_statement_line_tree_bank_rec_widget"/>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_company_form_inherit" model="ir.ui.view">
+        <field name="name">view_company_form_inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='id']" position="before">
-                 <button name="print_receipt" type="object" string="Print"/>
+            <xpath expr="//notebook" position="inside">
+                <page name="form" string="Website Form">
+                    <group>
+                        <field name="form_file_name" invisible="True"/>
+                        <field name="form_file" filename="form_file_name"/>
+                        <field name="terms_and_conditions"/>
+                    </group>
+                </page>
             </xpath>
+
         </field>
     </record>
 
-  </data>
+
 </odoo>
