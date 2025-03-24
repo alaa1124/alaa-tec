@@ -6,7 +6,7 @@
       <field name="name">ownership.contract.tree</field>
       <field name="model">ownership.contract</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree default_order="date desc">
           <field name="name" />
           <field name="date" />
           <field name="partner_id" />

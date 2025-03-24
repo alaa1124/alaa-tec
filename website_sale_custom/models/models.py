@@ -14,10 +14,15 @@ class ProductTemplate(models.Model):
 
 
 class OwnershipContract(models.Model):
+    _name = "ownership.contract"
     _inherit = "ownership.contract"
 
     sale_order_line = fields.Many2one('sale.order.line', ondelete='cascade')
     sale_order = fields.Many2one(related='sale_order_line.order_id')
+    documents = fields.Many2many('ir.attachment', relation='ownership_att_rel')
+
+    attachment_ids = fields.One2many('ir.attachment', 'res_id',
+                                     domain=[('res_model', '=', _name)], string='Attachments')
 
 
 class SaleOrderLine(models.Model):
@@ -27,12 +32,19 @@ class SaleOrderLine(models.Model):
 
     def create_reservation(self):
         order = self.order_id
-        self.reservation.create({
+        r =self.reservation.create({
             'sale_order_line': self.id,
             'partner_id': order.partner_id.id,
             'building_unit': self.product_template_id.id,
             'date_payment': order.date_order.date()
         })
+
+        # print(order.attachment_ids)
+        #
+        # order.attachment_ids.write({
+        #     'res_id': r.id,
+        #     'res_model': r._name,
+        # })
 
     @api.model
     def create(self, vals):
@@ -44,7 +56,19 @@ class SaleOrderLine(models.Model):
 
 
 class SaleOrder(models.Model):
+    _name = 'sale.order'
     _inherit = 'sale.order'
+
+    def send_attachment(self):
+        r = self.order_line.reservation
+        print(r)
+        print(self.attachment_ids)
+        if self.website_id and r:
+            r.documents = [(6, 0, self.attachment_ids.ids)]
+            self.attachment_ids.write({
+                'res_id': r[0].id,
+                'res_model': r._name,
+            })
 
     def _cart_update_order_line(self, *args, **kwargs):
         order = super()._cart_update_order_line(*args, **kwargs)
@@ -52,3 +76,6 @@ class SaleOrder(models.Model):
             'product_uom_qty': 1
         })
         return order
+
+    attachment_ids = fields.One2many('ir.attachment', 'res_id',
+                                     domain=[('res_model', '=', _name)], string='Attachments')
