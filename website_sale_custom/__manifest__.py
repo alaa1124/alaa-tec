@@ -3,7 +3,7 @@
     'name': "Website Sale Custom",
     'depends': ['website_sale', 'itsys_real_estate'],
     'data': [
-        'views/views.xml'
+        'views/views.xml',
         'views/templates.xml'
     ],
 
