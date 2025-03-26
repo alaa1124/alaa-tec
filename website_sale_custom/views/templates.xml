@@ -1,11 +1,18 @@
 <odoo>
 
 
-<!--    <template id="website_sale_address_custom" inherit_id="website_sale.address">-->
+    <template id="header_cart_link_house" inherit_id="website_sale.header_cart_link">
+
+
+        <xpath expr="//i[1]" position="replace">
+            <i t-if="_icon" class="fa fa-home fa-stack"/>
+        </xpath>
+
+
+    </template>
 
 
 
-<!--    </template>-->
 
 
 
