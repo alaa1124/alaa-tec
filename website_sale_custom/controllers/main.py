@@ -40,6 +40,10 @@ class WebsiteSaleFormCustom(WebsiteSaleForm):
 
         order.send_attachment()
 
+        order.order_line.write({'active': False})
+
+        order.cart_quantity = 0
+
         return res
 
 

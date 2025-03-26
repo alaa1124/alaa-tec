@@ -28,6 +28,8 @@ class OwnershipContract(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    active = fields.Boolean(default=True)
+
     reservation = fields.One2many('ownership.contract', 'sale_order_line')
 
     def create_reservation(self):
@@ -58,6 +60,8 @@ class SaleOrderLine(models.Model):
 class SaleOrder(models.Model):
     _name = 'sale.order'
     _inherit = 'sale.order'
+
+    active = fields.Boolean(default=True)
 
     def send_attachment(self):
         r = self.order_line.reservation
