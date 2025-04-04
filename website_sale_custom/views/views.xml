@@ -10,7 +10,7 @@
 
             <xpath expr="//notebook" position="inside">
                 <page name="form" string="Website Form">
-                    <group>
+                    <group invisible="True">
                         <field name="form_file_name" invisible="True"/>
                         <field name="form_file" filename="form_file_name"/>
                         <field name="terms_and_conditions"/>
