@@ -54,10 +54,34 @@ class WebsiteSaleCustom(WebsiteSale):
 
         company_id = request.env['res.company'].sudo().browse(company_id)
 
+
         if company_id and company_id.form_file:
             filename = company_id.form_file_name or 'form.pdf'  # Provide a default filename
             return request.make_response(
                 company_id.form_file,
+                headers=[
+                    ('Content-Type', 'application/octet-stream'),
+                    ('Content-Disposition', content_disposition(filename))
+                ]
+            )
+        else:
+            return request.not_found()
+
+    @http.route('/website/download/form/form_file', type='http', auth="public", website=True)
+    def download_product_form2(self, **kw):
+
+        product_template_id = request.env['product.template']
+
+        order = request.website.sale_get_order()
+        products = order.order_line.product_template_id
+
+        if products:
+            product_template_id = products[0]
+
+        if product_template_id and product_template_id.form_file:
+            filename = product_template_id.form_file_name or 'form.pdf'  # Provide a default filename
+            return request.make_response(
+                product_template_id.form_file,
                 headers=[
                     ('Content-Type', 'application/octet-stream'),
                     ('Content-Disposition', content_disposition(filename))
