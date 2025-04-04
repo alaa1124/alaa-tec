@@ -90,3 +90,5 @@ class ProductTemplate(models.Model):
 
     form_file = fields.Binary()
     form_file_name = fields.Char(string='Form File Name')
+
+    terms_and_conditions = fields.Html()

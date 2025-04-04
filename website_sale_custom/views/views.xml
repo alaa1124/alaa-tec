@@ -32,6 +32,7 @@
                     <group>
                         <field name="form_file_name" invisible="True"/>
                         <field name="form_file" filename="form_file_name"/>
+                        <field name="terms_and_conditions"/>
                     </group>
                 </page>
             </xpath>
