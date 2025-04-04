@@ -4,7 +4,7 @@ from odoo import models, fields, api
 from num2words import num2words
 
 
-class ProductTemplate(models.Model):
+class ResCompany(models.Model):
     _inherit = 'res.company'
 
     form_file = fields.Binary()
@@ -34,7 +34,7 @@ class SaleOrderLine(models.Model):
 
     def create_reservation(self):
         order = self.order_id
-        r =self.reservation.create({
+        r = self.reservation.create({
             'sale_order_line': self.id,
             'partner_id': order.partner_id.id,
             'building_unit': self.product_template_id.id,
@@ -83,3 +83,10 @@ class SaleOrder(models.Model):
 
     attachment_ids = fields.One2many('ir.attachment', 'res_id',
                                      domain=[('res_model', '=', _name)], string='Attachments')
+
+
+class ProductTemplate(models.Model):
+    _inherit = 'product.template'
+
+    form_file = fields.Binary()
+    form_file_name = fields.Char(string='Form File Name')
