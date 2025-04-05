@@ -182,7 +182,6 @@ class building_unit(models.Model):
         ])
         for unit in units_to_free:
             unit.write({'state': 'free', 'reserved': False, 'reservation_end_date': False})
-            self.env.logger.info(f"Product '{unit.name}' (ID: {unit.id}) set to 'free' by cron.")
 
     _sql_constraints = [
         ('unique_property_code', 'UNIQUE (code,building_id,region_id,city_id,country_id)',
