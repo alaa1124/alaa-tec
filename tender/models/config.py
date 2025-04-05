@@ -27,6 +27,11 @@ class Company(models.Model):
 class KSResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
     crm = fields.Boolean(string="Crm",related='company_id.crm', readonly=False)
+    recaptcha_min_score = fields.Char("recaptcha_min_score")
+    recaptcha_public_key = fields.Char("reCAPTCHA Public Key")
+
+    hr_expense_alias_domain_id = fields.Integer()
+
     # ks_middle_journal_owner = fields.Many2one('account.journal', string="Owner Journal",
     #                                     related='company_id.ks_middle_journal_owner', readonly=False)
     # ks_middle_account_sup = fields.Many2one('account.journal', string="sub contractor",

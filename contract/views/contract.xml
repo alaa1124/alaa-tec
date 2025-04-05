@@ -169,6 +169,22 @@
                             </page>
                             <!--                          SUBCONTACTOR PAGE-->
 
+                            <page string="Detailed Lines">
+                                <field name="stage_lines" readonly="True">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="item"/>
+                                        <field name="description"/>
+                                        <field name="related_job_id"/>
+                                        <field name="qty"/>
+                                        <field name="price_unit"/>
+                                        <field name="percent"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+
                             <page string="Deduction">
                                 <field name="deduction_ids" readonly="state!='draft'"
                                        context="{'default_contract_type':type}">

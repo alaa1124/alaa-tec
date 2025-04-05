@@ -1,8 +1,8 @@
-
-
 from datetime import datetime
 
 from odoo import fields, models, api
+
+
 class Projects(models.Model):
     _inherit = "project.project"
 
@@ -52,8 +52,8 @@ class JobCost(models.Model):
     active = fields.Boolean(default=True)
     version_num = fields.Integer()
     version = fields.Char()
-    start_date = fields.Date( )
-    end_date = fields.Date( )
+    start_date = fields.Date()
+    end_date = fields.Date()
     dif = fields.Char(compute='get_differance')
     template_id = fields.Many2one("construction.job.cost", string="Break Down Template",
                                   domain="[('is_template','=',True)]")
@@ -66,7 +66,12 @@ class JobCost(models.Model):
 
         values = []
         if 'template_id' in vals:
-            print("=========================",vals)
+            print("=========================", vals)
+            self.material_ids.unlink()
+            self.labour_ids.unlink()
+            self.expense_ids.unlink()
+            self.subconstractor_ids.unlink()
+            self.equipment_ids.unlink()
             for rec in self.template_id:
                 if rec.material_ids:
                     for mat in rec.material_ids:
@@ -75,7 +80,8 @@ class JobCost(models.Model):
                             'name': mat.name,
                             'uom_id': mat.uom_id.id, 'qty': mat.qty,
                             'waste': mat.waste, 'price_unit': mat.price_unit,
-                            'job_id':rec.id,
+                            'job_id': rec.id,
+                            'ratio': mat.ratio,
 
                         }))
 
@@ -89,7 +95,7 @@ class JobCost(models.Model):
                             'name': lab.name,
                             'uom_id': lab.uom_id.id, 'qty': lab.qty,
                             'price_unit': lab.price_unit,
-                            'job_id':rec.id,
+                            'job_id': rec.id,
 
                         }))
                     self.labour_ids = values
@@ -103,7 +109,7 @@ class JobCost(models.Model):
                             'name': exp.name,
                             'uom_id': exp.uom_id.id, 'qty': exp.qty,
                             'price_unit': exp.price_unit,
-                            'job_id':rec.id,
+                            'job_id': rec.id,
 
                         }))
                     self.expense_ids = values
@@ -115,7 +121,7 @@ class JobCost(models.Model):
                             'name': sub.name,
                             'uom_id': sub.uom_id.id, 'qty': sub.qty,
                             'price_unit': sub.price_unit,
-                            'job_id':rec.id,
+                            'job_id': rec.id,
 
                         }))
                     self.subconstractor_ids = values
@@ -123,12 +129,11 @@ class JobCost(models.Model):
                     values = []
                     for equip in rec.equipment_ids:
                         values.append((0, 0, {
-                            'product_id': sub.product_id.id,
-                            'name': sub.name,
-                            'uom_id': sub.uom_id.id, 'qty': sub.qty,
-                            'price_unit': sub.price_unit,
-                            'job_id':rec.id,
-
+                            'product_id': equip.product_id.id,
+                            'name': equip.name,
+                            'uom_id': equip.uom_id.id, 'qty': equip.qty,
+                            'price_unit': equip.price_unit,
+                            'job_id': rec.id,
                         }))
                     self.equipment_ids = values
         return res
@@ -147,7 +152,6 @@ class JobCost(models.Model):
 
     def action_confirm(self):
         self.state = 'confirm'
-
 
     def action_approve(self):
         self.state = 'approve'

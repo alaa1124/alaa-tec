@@ -81,7 +81,7 @@ class Projects(models.Model):
     def _check_tender_ids(self):
         if self.indirect_id:
             total_indirect = sum(self.tender_ids.mapped('total_indirect'))
-            if self.indirect_id.total < total_indirect:
+            if int(self.indirect_id.total) < int(total_indirect):
                 raise ValidationError("Total Indirect cost must equal %s" % (round(self.indirect_id.total, 2)))
         if self.profit_id:
             total_profit = sum(self.tender_ids.mapped('total_profit'))

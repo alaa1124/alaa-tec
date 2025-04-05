@@ -14,11 +14,15 @@ class Contract(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirm')], default='draft')
     company_id = fields.Many2one('res.company', string='Company', index=True, default=lambda self: self.env.company)
 
-    project_id = fields.Many2one("project.project", string="Project",domain="[('state','=','confirm')]")
+    project_id = fields.Many2one("project.project", string="Project", domain="[('state','=','confirm')]")
     partner_id = fields.Many2one("res.partner")
     type = fields.Selection([('owner', 'owner'), ('subconstructor', 'subconstructor')], default='owner',
                             string="Type of Contract")
+
     contarct_line_ids = fields.One2many("project.contract.line", "contract_id")
+
+    stage_lines = fields.One2many('project.contract.stage.line', 'contract_id')
+
     date = fields.Date(default=datetime.today())
     received_date = fields.Date(default=datetime.today())
     contract = fields.Many2one("project.contract.conf", domain="[('type', '=', type)]")
@@ -78,7 +82,7 @@ class Contract(models.Model):
     def unlink(self):
         for rec in self:
             if rec.state != 'draft':
-                raise ValidationError("You Cann't delete confirmed contract")
+                raise ValidationError("You Can't delete confirmed contract")
         res = super(Contract, self).unlink()
 
         return res
@@ -86,19 +90,18 @@ class Contract(models.Model):
     @api.constrains('stage_ids')
     def _check_stage_ids(self):
         if sum(self.stage_ids.mapped('prec')) != 100 and self.stage_ids:
-            raise ValidationError("Precentage stage must be 100")
+            raise ValidationError("Percentage stage must be 100")
 
     @api.onchange('amount_total', 'down_payment')
     def _onchnage_down_payment(self):
 
-        if self.down_payment > 0 :
+        if self.down_payment > 0:
             self.down_payment_value = (self.down_payment / 100) * self.amount_total
 
     @api.onchange('amount_total', 'down_payment_value')
     def _onchnage_down_payment_value(self):
         if self.down_payment_value > 0:
             self.down_payment = (self.down_payment_value / self.amount_total) * 100 if self.amount_total > 0 else 0
-
 
     @api.depends('contarct_line_ids')
     def _compute_amount_total(self):
@@ -114,14 +117,13 @@ class Contract(models.Model):
                 self.partner_id = self.project_id.partner_id.id
 
     def action_confirm(self):
+
         self.state = 'confirm'
 
-        if not self.stage_ids:
-            for rec in self.contarct_line_ids:
-                if not rec.stage_ids:
-                    raise ValidationError("please add stage ")
-            raise ValidationError("please add stage  ")
+        if not self.stage_ids and not self.contarct_line_ids.stage_ids:
+            raise ValidationError("please add stages")
 
+        self.contarct_line_ids.create_stage_lines()
 
     @api.onchange('project_id', 'is_subcontract')
     def _onchnage_project_id(self):
@@ -146,7 +148,7 @@ class Contract(models.Model):
 
     @api.constrains('project_id')
     def check_project_id(self):
-        if self.type=='owner':
+        if self.type == 'owner':
             contract_ids = self.env['project.contract'].search(
                 [('type', '=', self.type), ('is_subcontract', '=', False),
                  ('project_id', '=', self.project_id.id)])
@@ -155,6 +157,7 @@ class Contract(models.Model):
 
     def action_draft(self):
         self.state = 'draft'
+        self.stage_lines.unlink()
 
     @api.model
     def create(self, vals):
@@ -168,8 +171,58 @@ class Contract(models.Model):
         return res
 
 
-class Lines(models.Model):
+# lines with stages
+class StageLines(models.Model):
+    _name = 'project.contract.stage.line'
+
+    name = fields.Char(compute='compute_name')
+
+    @api.depends('contract_line_id', 'stage_id')
+    def compute_name(self):
+        for rec in self:
+            rec.name = f'{rec.percent}% - {rec.item.name if rec.item else ""} - {rec.description}'
+
+    contract_line_id = fields.Many2one('project.contract.line', required=True, ondelete='cascade')
+    code = fields.Char(related='contract_line_id.code')
+    item = fields.Many2one(related='contract_line_id.item')
+    description = fields.Char(related='contract_line_id.name')
+
+    related_job_id = fields.Many2one(related='contract_line_id.related_job_id')
+    qty = fields.Float(related='contract_line_id.qty')
+    price_unit = fields.Float(store=True)
+
+    stage_id = fields.Many2one("contract.stage.line", required=True)
+    percent = fields.Float(related='stage_id.prec')
+
+    contract_id = fields.Many2one(related='contract_line_id.contract_id', store=True)
+
+
+# العقد
+class ContractLines(models.Model):
     _name = 'project.contract.line'
+
+    def create_stage_lines(self):
+
+        for rec in self:
+            global_stages = rec.contract_id.stage_ids
+            print(global_stages)
+            if not rec.stage_ids:
+                rec.stage_ids = [(0, 0, {
+                    'stage_id': stg.stage_id.id,
+                    'prec': stg.prec,
+                }) for stg in global_stages]
+
+            print(rec.stage_ids)
+            if rec.display_type:
+                continue
+            res = self.env['project.contract.stage.line']
+            for stage in rec.stage_ids:
+                # print(rec, stage)
+                res.create({
+                    'contract_line_id': rec.id,
+                    'stage_id': stage.id,
+                    'price_unit': rec.price_unit * stage.prec / 100,
+                })
 
     contract_id = fields.Many2one("project.contract")
     project_id = fields.Many2one("project.project", related="contract_id.project_id")
@@ -190,13 +243,14 @@ class Lines(models.Model):
     display_type = fields.Selection([
         ('line_section', "Section"),
         ('line_note', "Note")], default=False)
-    tax_ids = fields.Many2many("account.tax",  )
+    tax_ids = fields.Many2many("account.tax", )
     amount_tax = fields.Float(compute='_compute_tax_amount')
     note = fields.Char()
     stage_ids = fields.One2many("contract.stage.line", "contract_line_id")
     state = fields.Selection(related='contract_id.state')
     subcontractor = fields.Many2one(related='contract_id.subcontractor', domain=[('supplier_rank', '!=', 0)])
     is_subcontract = fields.Boolean(related='contract_id.is_subcontract', )
+
     def add_stage(self):
         return {
             'name': 'Add Stage',
@@ -232,12 +286,12 @@ class Lines(models.Model):
             self.name = self.item.name
             self.related_job_id = self.item.related_job_id.id if self.item.related_job_id else ''
         if self.subcontractor and self.contract_id.project_id and self.contract_id.partner_id:
-            item_ids = self.env['project.contract.line']\
-                .search([\
+            item_ids = self.env['project.contract.line'] \
+                .search([ \
                 ('contract_id.project_id', '=', self.contract_id.project_id.id),
                 ('contract_id.partner_id', '=', self.contract_id.partner_id.id),
             ])
-            return {'domain': {'item':[('id','in',item_ids.item.ids)] }}
+            return {'domain': {'item': [('id', 'in', item_ids.item.ids)]}}
 
     @api.onchange('item_sub_id')
     def _onchnage_item_sub_id(self):
@@ -262,7 +316,7 @@ class Deduction(models.Model):
     counterpart_account_id = fields.Many2one("account.account", related='name.counterpart_account_id')
     amount_total_contract = fields.Float(related='contract_id.amount_total')
 
-    @api.onchange('contract_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name','value')
+    @api.onchange('contract_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name', 'value')
     def _onchange_is_precentage(self):
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         if self.name and self.percentage == 0:
@@ -272,13 +326,12 @@ class Deduction(models.Model):
             else:
                 self.value = self.name.amount
 
-
         if self.is_precentage == True:
 
             self.value = self.amount_total_contract * (self.percentage / 100)
         else:
 
-            self.percentage = self.value* 100/(self.amount_total_contract )   if self.value > 0 else 0
+            self.percentage = self.value * 100 / (self.amount_total_contract) if self.value > 0 else 0
 
 
 class Allownace(models.Model):
@@ -296,7 +349,7 @@ class Allownace(models.Model):
 
     amount_total_contract = fields.Float(related='contract_id.amount_total')
 
-    @api.onchange('contract_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name','value')
+    @api.onchange('contract_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name', 'value')
     def _onchange_is_precentage(self):
         if self.name and self.percentage == 0:
             if self.name.calculation_type == 'percentage':
@@ -304,7 +357,6 @@ class Allownace(models.Model):
                 self.is_precentage = True
             else:
                 self.value = self.name.amount
-
 
         if self.is_precentage == True:
 

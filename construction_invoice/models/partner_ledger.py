@@ -11,6 +11,13 @@ from datetime import timedelta
 from collections import defaultdict
 
 
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    hide_peppol_fields = fields.Boolean()
+    is_coa_installed = fields.Boolean()
+
+
 # class PartnerLedgerCustomHandler(models.AbstractModel):
 #     _inherit = 'account.partner.ledger.report.handler'
 #

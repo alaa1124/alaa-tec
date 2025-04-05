@@ -12,28 +12,18 @@
                             <field name="contract_id" invisible="1"/>
                             <field name="eng_id" invisible="1"/>
                             <field name="contract_items" invisible="1"/>
-                            <field name="item_ids" invisible="1">
-                                <tree >
-                                    <field name="name"/>
-                                    <field name="related_job_id"/>
-                                    <field name="uom_id"/>
 
-                                </tree>
-                            </field>
-                            <field name="contract_line_ids" string="Contract Lines"
-                                   options="{'no_create': True, 'no_quick_create': True, 'no_open': True,'no_create_edit':True}">
-                                <tree editable="bottom" create="0" edit="0">
-                                    <field name="code"/>
-                                    <field name="item"/>
-                                    <field name="name"/>
-                                    <field name="related_job_id"/>
-                                    <field name="uom_id"/>
-                                    <field name="qty"/>
-                                    <field name="price_unit"/>
-                                    <field name="amount_subtotal"/>
-                                    <field name="amount_total"/>
-                                </tree>
-                            </field>
+                            <field name="stage_lines" invisible="1"/>
+
+<!--                            <field name="item_ids">-->
+<!--                                <tree >-->
+<!--                                    <field name="name"/>-->
+<!--                                    <field name="related_job_id"/>-->
+<!--                                    <field name="uom_id"/>-->
+
+<!--                                </tree>-->
+<!--                            </field>-->
+                            <field name="select_lines"/>
 
                         </group>
                     </sheet>

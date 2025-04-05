@@ -8,6 +8,13 @@ from odoo.exceptions import UserError, ValidationError
 
 class Account_move(models.Model):
     _inherit = "account.move"
+
+    show_commercial_partner_warning = fields.Boolean()
+    show_update_fpos = fields.Boolean()
+
+    def action_update_fpos_values(self):
+        pass
+
     project_id = fields.Many2one("project.project", domain=[('state', '=', 'confirm')])
     contract_id = fields.Many2one("project.contract",
                                   domain="[('is_subcontract','=',False),('project_id','=',project_id)]")
@@ -19,6 +26,7 @@ class Account_move(models.Model):
     amount_deduction = fields.Monetary(compute='_compute_deduction_allowane')
     amount_allowance = fields.Monetary(compute='_compute_deduction_allowane')
     amount_due_value = fields.Monetary(compute='_compute_amount_due_value')
+    account_id = fields.Many2one('account.account')
 
     @api.depends('amount_deduction','amount_allowance','amount_total')
     def _compute_amount_due_value(self):
@@ -78,17 +86,27 @@ class Account_move(models.Model):
     #         'active_ids': self.ids,
 
 
-
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
-    item = fields.Many2one("project.item")
+
+    has_abnormal_deferred_dates = fields.Boolean()
+
+
     is_ded_allow = fields.Boolean()
     type_deduction_allownace = fields.Selection([('deduction','Deduction'),('allowance','Allowance')])
     project_id = fields.Many2one("project.project", related='move_id.project_id', store=True, index=True)
     contract_id = fields.Many2one("project.contract", related='move_id.contract_id', store=True, index=True)
     contract_type = fields.Selection([('owner', 'owner'), ('subconstructor', 'subconstructor')], default='owner',
                                      string="Type of Contract")
-    stage_id = fields.Many2one("project.stage")
+
+    detailed_line = fields.Many2one('project.contract.stage.line', domain="[('contract_id','=',parent.contract_id)]")
+    item = fields.Many2one("project.item", related='detailed_line.item')
+    stage_id = fields.Many2one("project.stage", related='detailed_line.stage_id.stage_id')
+
+    @api.onchange('detailed_line')
+    def onchange_detailed_line(self):
+        if self.detailed_line:
+            self.name = self.detailed_line.name
 
     @api.constrains('account_id', 'display_type')
     def _check_payable_receivable(self):

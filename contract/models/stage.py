@@ -12,11 +12,11 @@ class Stage(models.Model):
 class contractstage(models.Model):
     _name = "contract.stage"
     stage_id = fields.Many2one("project.stage",string="Stage", )
-    prec = fields.Float()
+    prec = fields.Float('Percent')
     contract_id = fields.Many2one("project.contract", )
 
 class contractstageline(models.Model):
     _name = "contract.stage.line"
     stage_id = fields.Many2one("project.stage",string="Stage", )
-    prec = fields.Float()
+    prec = fields.Float('Percent')
     contract_line_id = fields.Many2one("project.contract.line", )

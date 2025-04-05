@@ -8,13 +8,13 @@ class EngineerTemplate(models.Model):
     _inherit = 'project.engineer.techincal'
 
     def action_draft(self):
-        self.state = 'draft'
+        res = super().action_draft()
         move_id = self.env['account.move'].search([('eng_id', '=', self.id)])
         for rec in move_id:
 
                 if rec.state != 'draft':
                     raise ValidationError("You cann't reset template because have one of invoice")
-
+        return res
     def action_view_invoice(self):
         if self.type == 'owner':
             action = self.env['ir.actions.actions']._for_xml_id('account.action_move_line_form')

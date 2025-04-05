@@ -1,6 +1,8 @@
 from odoo import fields, models, api,_
 
 from odoo.exceptions import UserError, ValidationError
+
+
 class Contract(models.Model):
     _inherit = 'project.contract'
     count_template = fields.Integer(compute='get_eng_template_id')
@@ -35,7 +37,7 @@ class Contract(models.Model):
         if eng_template_id:
             raise ValidationError("this contract have engineer Template")
         else:
-            self.state='draft'
+            super().action_draft()
 
 
 

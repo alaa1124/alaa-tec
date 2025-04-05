@@ -8,3 +8,4 @@ access_contract_deduction_allownace,access_contract_deduction_allownace,model_co
 access_stage,access_stage,model_project_stage,base.group_user,1,1,1,1
 access_stage_contract,access_stage,model_contract_stage,base.group_user,1,1,1,1
 access_stage_contract_line,access_stage_contract_line,model_contract_stage_line,base.group_user,1,1,1,1
+access_project_contract_stage_line,project_contract_stage_line,model_project_contract_stage_line,,1,1,1,1

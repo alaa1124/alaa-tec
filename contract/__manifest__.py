@@ -35,4 +35,4 @@
     'demo': [
         'demo/demo.xml',
     ],
-} 
+}

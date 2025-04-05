@@ -15,6 +15,9 @@ class StockMove(models.Model):
     item_line = fields.Many2one('project.tender', domain="[('project_id','=?',project_id), ('item','=?',item_id)]")
     allowed_item_ids = fields.Many2many("project.item", "stock_move_item", "item", "id", compute="get_allowed_item_ids")
 
+    analytic_distribution = fields.Json(related='purchase_line_id.analytic_distribution')
+    analytic_precision = fields.Integer(related='purchase_line_id.analytic_precision')
+
     @api.depends('picking_id.project_id')
     def get_allowed_item_ids(self):
         for rec in self:

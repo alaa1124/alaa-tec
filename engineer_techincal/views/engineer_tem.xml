@@ -85,14 +85,14 @@
                                            optional="show" width="100px" sum="total"/>
                                     <field name="qty"  required="display_type==False"
                                            string="Current Qty" optional="show" width="100px" sum="total"/>
+                                    <field name="stage_prec" force_save="1"
+                                            readonly="1" required="display_type==False"
+                                           optional="show" width="100px"/>
                                     <field name="price_unit" force_save="1"
                                             readonly="1" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
                                     <field name="total_quanity"  required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="stage_prec" string="Precentage Stage" force_save="1"
-                                            readonly="1" required="display_type==False"
-                                           optional="show" width="100px"/>
                                     <field name="amount"  required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
                                     <field name="precentage"  required="display_type==False"
@@ -135,7 +135,7 @@
 
                                     </group>
                                     <group>
-                                        <field name="stage_prec" string="Precentage Stage"
+                                        <field name="stage_prec"
 
                                         />
                                         <field name="amount"

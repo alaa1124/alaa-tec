@@ -20,17 +20,17 @@
             </field>
         </record>
 
-<record id="contract_view_form_sub" model="ir.ui.view">
+        <record id="contract_view_form_sub" model="ir.ui.view">
             <field name="name">contract_view_form</field>
             <field name="model">project.contract</field>
             <field name="arch" type="xml">
                 <form string="contract_form">
                     <header>
-                        <button string="Confirm" name="action_confirm"  invisible="state!='draft'"  type="object"/>
-                        <button string="Set Draft" name="action_draft"  invisible="state!='confirm'"  type="object"/>
+                        <button string="Confirm" name="action_confirm" invisible="state!='draft'" type="object"/>
+                        <button string="Set Draft" name="action_draft" invisible="state!='confirm'" type="object"/>
                         <field name="is_subcontract" invisible="1"/>
                         <button string="create Sub-contract" name="create_subcontract"
-                                 invisible="is_subcontract==True or state!='confirm'"  
+                                invisible="is_subcontract==True or state!='confirm'"
                                 type="object"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
                     </header>
@@ -50,25 +50,25 @@
                                 <field name="is_subcontract" invisible="1"/>
                                 <field name="type" invisible="1"/>
                                 <field name="subcontractor" context="{'default_supplier_rank': 1}"
-                                        invisible="type!='subconstructor'"  readonly="state!='draft'" required="1"/>
-                                <field name="project_id"   readonly="state!='draft'" required="1"/>
-                                <field name="partner_id"   readonly="state!='draft'" required="1"/>
-                                <field name="date"  readonly="state!='draft'" />
-                                <field name="referance"  readonly="state!='draft'" />
+                                       invisible="type!='subconstructor'" readonly="state!='draft'" required="1"/>
+                                <field name="project_id" readonly="state!='draft'" required="1"/>
+                                <field name="partner_id" readonly="state!='draft'" required="1"/>
+                                <field name="date" readonly="state!='draft'"/>
+                                <field name="referance" readonly="state!='draft'"/>
                                 <field name="type" invisible="1"/>
                             </group>
                             <group>
                                 <field name="contract"
-                                         invisible="is_subcontract==True"  readonly="state!='draft'" required="1"/>
-                                <field name="parent_account_id"  string="Partner Account"
-                                         invisible="is_subcontract==True"  />
+                                       invisible="is_subcontract==True" readonly="state!='draft'" required="1"/>
+                                <field name="parent_account_id" string="Partner Account"
+                                       invisible="is_subcontract==True"/>
                                 <field name="revenue_account_id"
-                                       string="Cost Account"   invisible="is_subcontract==True"  />
-                                <field name="received_date"  readonly="state!='draft'" />
+                                       string="Cost Account" invisible="is_subcontract==True"/>
+                                <field name="received_date" readonly="state!='draft'"/>
                                 <field name="down_payment"
-                                         invisible="is_subcontract==True"  readonly="state!='draft'"/>
+                                       invisible="is_subcontract==True" readonly="state!='draft'"/>
                                 <field name="down_payment_value"
-                                         invisible="is_subcontract==True"  readonly="state!='draft'"
+                                       invisible="is_subcontract==True" readonly="state!='draft'"
                                        force_save="1"/>
 
 
@@ -80,8 +80,8 @@
                             <!--                            OWNER PAGE -->
 
                             <!--                          SUBCONTACTOR PAGE-->
-                            <page string="Lines"  >
-                                <field name="contarct_line_ids"  readonly="state!='draft'"
+                            <page string="Lines">
+                                <field name="contarct_line_ids" readonly="state!='draft'"
                                        widget="section_and_note_one2many">
                                     <tree editable="bottom">
                                         <control>
@@ -96,22 +96,21 @@
                                         <field name="sequence" widget="handle" optional="show"/>
 
 
-
-                                                                    <field name="code"/>
-                                        <field name="item" string="بند المفايسه"  required="display_type==False"
+                                        <!--                            <field name="parent_item"/>-->
+                                        <field name="item" string="بند المفايسه" required="display_type==False"
                                                optional="show" width="100px"/>
-                                        <field name="name" string=" وصف بند المفايسه"  required="display_type==False"
+                                        <field name="name" string=" وصف بند المفايسه" required="display_type==False"
                                                widget="section_and_note_text"
                                                optional="show" width="100px"/>
-                                        <field name="item_sub_id"  required="display_type==False"
+                                        <field name="item_sub_id" required="display_type==False"
                                                optional="show" width="100px"/>
-                                         <field name="desc_item"  required="display_type==False"
+                                        <field name="desc_item" required="display_type==False"
                                                optional="show" width="100px"/>
                                         <field name="related_job_id"
                                                optional="show" width="100px"/>
-                                        <field name="uom_id"  required="display_type==False"
+                                        <field name="uom_id" required="display_type==False"
                                                optional="show" width="100px"/>
-                                        <field name="qty"  required="display_type==False"
+                                        <field name="qty" required="display_type==False"
                                                optional="show" width="100px" sum="total"/>
 
                                         <field name="price_unit" sum="total" optional="show" width="100px"
@@ -128,10 +127,9 @@
                                         <field name="sequence" widget="handle" optional="show"/>
 
 
-
                                         <!--                            <field name="parent_item"/>-->
                                         <field name="item" width="100px"/>
-                                        <field name="name"  required="display_type==False"
+                                        <field name="name" required="display_type==False"
 
                                                width="100px"/>
                                         <field name="related_job_id"
@@ -159,25 +157,36 @@
                                     />
                                 </group>
                             </page>
+                            <page string="Detailed Lines">
+                                <field name="stage_lines" readonly="True">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="item"/>
+                                        <field name="description"/>
+                                        <field name="percent"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page string="Deduction">
-                                <field name="deduction_ids"  readonly="state!='draft'"
+                                <field name="deduction_ids" readonly="state!='draft'"
                                        context="{'default_contract_type':type}">
                                     <tree editable="bottom">
                                         <field name="name" required="1"/>
                                         <field name="contract_type" invisible="1"/>
                                         <field name="counterpart_account_id"/>
                                         <field name="is_precentage"/>
-                                        <field name="percentage"  readonly="is_precentage==False" 
-                                        force_save="1" />
-                                        <field name="value"  readonly="is_precentage!=False" 
-                                        force_save="1"/>
+                                        <field name="percentage" readonly="is_precentage==False"
+                                               force_save="1"/>
+                                        <field name="value" readonly="is_precentage!=False"
+                                               force_save="1"/>
 
                                     </tree>
                                 </field>
 
                             </page>
                             <page string="Allowance">
-                                <field name="allowance_ids"  readonly="state!='draft'"
+                                <field name="allowance_ids" readonly="state!='draft'"
 
                                        context="{'default_contract_type':type}">
                                     <tree editable="bottom">
@@ -185,17 +194,17 @@
                                         <field name="contract_type" invisible="1"/>
                                         <field name="counterpart_account_id"/>
                                         <field name="is_precentage"/>
-                                        <field name="percentage"  readonly="is_precentage==False" 
-                                         force_save="1"/>
-                                        <field name="value"  readonly="is_precentage!=False" 
-                                        force_save="1"/>
+                                        <field name="percentage" readonly="is_precentage==False"
+                                               force_save="1"/>
+                                        <field name="value" readonly="is_precentage!=False"
+                                               force_save="1"/>
 
                                     </tree>
                                 </field>
 
                             </page>
                             <page string="Stages">
-                                <field name="stage_ids"  readonly="state!='draft'" >
+                                <field name="stage_ids" readonly="state!='draft'">
                                     <tree editable="bottom">
                                         <field name="stage_id"></field>
                                         <field name="prec"></field>
@@ -205,7 +214,7 @@
                                 </field>
                             </page>
                             <page string="Desciption">
-                                <field name="description"  readonly="state!='draft'" />
+                                <field name="description" readonly="state!='draft'"/>
                             </page>
 
                         </notebook>

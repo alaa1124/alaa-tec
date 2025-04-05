@@ -8,36 +8,37 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="type" invisible="1"/>
                 <field name="project_id"
-                        readonly ="state!='draft'"  invisible ="type==False"/>
+                       readonly="state!='draft'" invisible="type==False"/>
                 <field name="contract_id"
-                        required ="project_id!=False"  readonly ="state!='draft'"  invisible ="type==False"/>
+                       required="project_id!=False" readonly="state!='draft'" invisible="type==False"/>
                 <field name="type"
-                        required ="project_id!=False" readonly="1" invisible ="type==False"
+                       required="project_id!=False" readonly="1" invisible="type==False"
                        force_save="1"/>
-                <field name="sub_type" readonly="1" invisible ="type==False" force_save="1"/>
+                <field name="sub_type" readonly="1" invisible="type==False" force_save="1"/>
                 <!-- Add your fields or attributes here -->
             </xpath>
             <xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']"
                    position="attributes">
-                <attribute name="column_invisible"> parent.type!=False</attribute>
+                <attribute name="column_invisible">parent.type!=False</attribute>
 
             </xpath>
             <xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']"
                    position="after">
+                <field name="detailed_line"/>
                 <field name="item" column_invisible="parent.type==False"/>
                 <field name="stage_id" column_invisible="parent.type==False"/>
             </xpath>
             <xpath expr="//field[@name='tax_totals']" position="after">
                 <field name="type" invisible="1"/>
-                <field name="amount_allowance" colspan="2"   invisible ="type==False"/>
-                <field name="amount_deduction" colspan="2"   invisible ="type==False"/>
-                <field name="amount_due_value" colspan="2"   invisible ="type==False"/>
-<!--                <field name="amount_total" colspan="2" invisible="1" 'invisible':[('type','=',False)/>-->
+                <field name="amount_allowance" colspan="2" invisible="type==False"/>
+                <field name="amount_deduction" colspan="2" invisible="type==False"/>
+                <field name="amount_due_value" colspan="2" invisible="type==False"/>
+                <!--                <field name="amount_total" colspan="2" invisible="1" 'invisible':[('type','=',False)/>-->
 
             </xpath>
             <xpath expr="//notebook/page[last()]" position="after">
-                <page string="Deduction"  invisible="type==False">
-                    <field name="deduction_ids"  readonly="state!='draft'"
+                <page string="Deduction" invisible="type==False">
+                    <field name="deduction_ids" readonly="state!='draft'"
                            context="{'default_contract_type':type}">
                         <tree editable="bottom">
                             <field name="name" required="1"/>
@@ -53,8 +54,8 @@
                     </field>
 
                 </page>
-                <page string="Allowance"  invisible="type==False">
-                    <field name="allowance_ids"  readonly="state!='draft'"
+                <page string="Allowance" invisible="type==False">
+                    <field name="allowance_ids" readonly="state!='draft'"
 
                            context="{'default_contract_type':type}">
                         <tree editable="bottom">
@@ -77,12 +78,13 @@
         </field>
 
     </record>
-        <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">
-             <field name="domain">[('move_type', '=', 'out_invoice'),('type','!=','owner')]</field>
+    <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">
+        <field name="domain">[('move_type', '=', 'out_invoice'),('type','!=','owner')]</field>
 
-        </record>
-        <record id="account.action_move_in_invoice_type" model="ir.actions.act_window">
-            <field name="domain">[('move_type', '=', 'in_invoice'),('type','!=','subconstructor')]</field>
+    </record>
 
-        </record>
+    <record id="account.action_move_in_invoice_type" model="ir.actions.act_window">
+        <field name="domain">[('move_type', '=', 'in_invoice'),('type','!=','subconstructor')]</field>
+
+    </record>
 </odoo>

@@ -13,7 +13,7 @@
     'category': 'Constructiom',
     'version': '0.1',
 
-    # any  necessary for this one to work correctly
+    # any module necessary for this one to work correctly
     'depends': ['base', 'comman_module', 'tender'],
 
     # always loaded
