@@ -233,7 +233,6 @@
 
         <record model="ir.actions.act_window" id="building_unit_act1">
             <field name="name">Building Unit</field>
-            <field list_price="pricing">Building Unit</field>
             <field name="res_model">product.template</field>
             <field name="view_mode">kanban,tree,form,graph</field>
             <field name="domain">[('is_property','=',True)]</field>
