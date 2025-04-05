@@ -23,11 +23,16 @@ from datetime import datetime, timedelta, date
 import time
 from odoo import api, fields, models
 from odoo.tools.translate import _
+from odoo.exceptions import UserError
 
 
 class building_unit(models.Model):
     _inherit = ['product.template']
     _description = "Property"
+
+    reservations_ids = fields.One2many(
+        comodel_name='ownership.contract',
+        inverse_name='building_unit')
 
     def view_reservations(self):
         reservation_obj = self.env['unit.reservation']
@@ -190,6 +195,8 @@ class building_unit(models.Model):
     ]
 
     def action_draft(self):
+        if self.reservations_ids.filtered(lambda r: r.state != 'cancel'):
+            raise UserError('You must cancel all reservation first')
         self.write({'state': 'free'})
 
     def make_reservation(self):
