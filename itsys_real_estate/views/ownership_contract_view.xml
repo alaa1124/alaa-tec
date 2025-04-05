@@ -86,7 +86,7 @@
               <group>
                 <field name="name" />
                 <field name="partner_id" readonly="state !='draft'" />
-                <field name="building_unit" options="{'no_create': True, 'no_open': True}" readonly="state !='draft'" required="1" />
+                <field name="building_unit" readonly="state !='draft'" required="1" />
                 <field name="date_payment" readonly="state !='draft'" required="1" />
                 <field name="documents" widget="many2many_binary"/>
               </group>
