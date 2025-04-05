@@ -181,7 +181,7 @@ class building_unit(models.Model):
             ('state', '=', 'reserved'),  # Optional: Only process if currently marked as reserved
         ])
         for unit in units_to_free:
-            unit.write({'state': 'free', 'website_ribbon_id': 'free', 'reserved': False, 'reservation_end_date': False})
+            unit.write({'state': 'free', 'website_ribbon_id': None, 'reserved': False, 'reservation_end_date': False})
 
     _sql_constraints = [
         ('unique_property_code', 'UNIQUE (code,building_id,region_id,city_id,country_id)',
