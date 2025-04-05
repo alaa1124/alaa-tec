@@ -133,6 +133,8 @@ class ownership_contract(models.Model):
     def set_unit_reservation(self):
         self.building_unit.partner_id = self.partner_id
         self.building_unit.state = self.partner_id and 'reserved' or 'free'
+        self.building_unit.reservation_date = self.partner_id and self.create_date or None
+        self.building_unit.reservation_end_date = self.create_date and self.create_date + timedelta(days=1) or None
 
     @api.onchange(
         'building_unit',

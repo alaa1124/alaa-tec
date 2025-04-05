@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
+        <record id="cron_set_unit_free" model="ir.cron">
+            <field name="name">Set Expired Unit Reservations to Free</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="code">model._cron_set_product_to_free()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="product_ribbon_form_view_state" model="ir.ui.view">
+            <field name="name">product.ribbon.form</field>
+            <field name="model">product.ribbon</field>
+            <field name="inherit_id" ref="website_sale.product_ribbon_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='html']" position="after">
+                    <field name="state"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
         <record model="ir.ui.view" id="building_unit_form">
             <field name="name">property.form</field>
             <field name="priority" eval="10"/>
@@ -140,6 +168,10 @@
                                     </div>
                                     <field name="out_of_stock_message" invisible="type in ['service', 'consu']"/>
                                     <field name="website_ribbon_id" options="{'no_quick_create': True}"/>
+
+                                    <field name="reservation_date"/>
+                                    <field name="reservation_end_date"/>
+                                    <field name="reserved"/>
                                 </group>
                             </page>
                         </notebook>
