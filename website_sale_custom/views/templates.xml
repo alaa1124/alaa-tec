@@ -1,0 +1,22 @@
+<odoo>
+
+
+    <template id="header_cart_link_house" inherit_id="website_sale.header_cart_link">
+
+
+        <xpath expr="//i[1]" position="replace">
+            <i t-if="_icon" class="fa fa-home fa-stack"/>
+        </xpath>
+
+
+    </template>
+
+
+
+
+
+
+
+
+
+</odoo>

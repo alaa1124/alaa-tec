@@ -6,7 +6,7 @@
       <field name="name">ownership.contract.tree</field>
       <field name="model">ownership.contract</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree default_order="date desc">
           <field name="name" />
           <field name="date" />
           <field name="partner_id" />
@@ -88,6 +88,7 @@
                 <field name="partner_id" readonly="state !='draft'" />
                 <field name="building_unit" options="{'no_create': True, 'no_open': True}" readonly="state !='draft'" required="1" />
                 <field name="date_payment" readonly="state !='draft'" required="1" />
+                <field name="documents" widget="many2many_binary"/>
               </group>
               <group>
                 <field name="pricing" />

@@ -100,7 +100,7 @@ class SalesOrderLine(models.Model):
     discount = fields.Float("Discount % ", )
     total_value = fields.Float("Total value ")
     type = fields.Selection([('main', 'View'), ('transcation', 'Transcation')], string='Type', default='main')
-    tender_id = fields.Many2one('construction.tender', string="Tender ID")
+    tender_id = fields.Many2one('project.tender', string="Tender ID")
     display_type = fields.Selection([
         ('line_section', "Section"),
         ('line_note', "Note")], default=False, help="Technical field for UX purpose.")

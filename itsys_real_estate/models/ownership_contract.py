@@ -17,6 +17,8 @@ class ownership_contract(models.Model):
     _description = "Ownership Contract"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    documents = fields.Many2many('ir.attachment', relation='ownership_att_rel')
+
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].get('ownership.contract')

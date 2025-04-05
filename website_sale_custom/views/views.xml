@@ -1,0 +1,58 @@
+<odoo>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_company_form_inherit" model="ir.ui.view">
+        <field name="name">view_company_form_inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//notebook" position="inside">
+                <page name="form" string="Website Form">
+                    <group invisible="True">
+                        <field name="form_file_name" invisible="True"/>
+                        <field name="form_file" filename="form_file_name"/>
+                        <field name="terms_and_conditions"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="view_building_unit_form_inherit" model="ir.ui.view">
+        <field name="name">view_building_unit_form_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="itsys_real_estate.building_unit_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="form" string="Website Form">
+                    <group>
+                        <field name="form_file_name" invisible="True"/>
+                        <field name="form_file" filename="form_file_name"/>
+                        <field name="terms_and_conditions"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_order_form_inherit_active" model="ir.ui.view">
+        <field name="name">view_order_form_inherit_active</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="active"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>
