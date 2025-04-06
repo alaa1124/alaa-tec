@@ -10,7 +10,7 @@ class Deduction(models.Model):
     name = fields.Many2one("contract.deduction.allowance",
                            domain="[('type','=',contract_type),('subtype','=','deduction')]")
     is_precentage = fields.Boolean()
-    percentage = fields.Float()
+    percentage = fields.Float(string="Percentage", default=100.0)
     value = fields.Float()
     counterpart_account_id = fields.Many2one("account.account", related='name.counterpart_account_id')
     amount_total_contract = fields.Float()
@@ -71,7 +71,7 @@ class Allownace(models.Model):
     name = fields.Many2one("contract.deduction.allowance", domain="[('type','=',contract_type),\
     ('subtype','=','allowance')]")
     is_precentage = fields.Boolean()
-    percentage = fields.Float()
+    percentage = fields.Float(string="Percentage", default=100.0)
     value = fields.Float()
     counterpart_account_id = fields.Many2one("account.account", related='name.counterpart_account_id')
 
