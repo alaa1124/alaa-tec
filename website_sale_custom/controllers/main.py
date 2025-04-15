@@ -14,9 +14,19 @@ from odoo.exceptions import AccessError, MissingError, UserError, ValidationErro
 from odoo.tools import SQL, lazy, str2bool
 from odoo.http import request, content_disposition
 from odoo.addons.website_sale.controllers.main import WebsiteSale, WebsiteSaleForm
+from odoo.addons.sale.controllers.portal import CustomerPortal
 
 
 _logger = logging.getLogger(__name__)
+
+
+class CustomerPortalCustom(WebsiteSale):
+
+    def _prepare_orders_domain(self, partner):
+        return [
+            ('message_partner_ids', 'child_of', [partner.commercial_partner_id.id]),
+            # ('state', '=', 'sale'),
+        ]
 
 
 class WebsiteSaleFormCustom(WebsiteSaleForm):

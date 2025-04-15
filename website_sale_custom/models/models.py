@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from num2words import num2words
+from odoo.exceptions import UserError
 
 
 class ResCompany(models.Model):
@@ -60,6 +61,14 @@ class SaleOrderLine(models.Model):
 class SaleOrder(models.Model):
     _name = 'sale.order'
     _inherit = 'sale.order'
+
+    @api.depends('order_line.product_uom_qty', 'order_line.product_id')
+    def _compute_cart_info(self):
+        for order in self:
+            order.cart_quantity = int(sum(order.mapped('website_order_line.product_uom_qty')))
+            if order.cart_quantity > 1:
+                raise UserError('Please finish the pending order first')
+            order.only_services = all(l.product_id.type == 'service' for l in order.website_order_line)
 
     active = fields.Boolean(default=True)
 
