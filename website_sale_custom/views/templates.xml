@@ -12,11 +12,46 @@
     </template>
 
 
+    <template id="portal_my_reservations">
+
+        <t t-call="portal.portal_layout">
 
 
+            <t t-if="reservations" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Unit Name</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-end">State</th>
+                    </tr>
+                </thead>
+                <t t-foreach="reservations" t-as="r">
+                    <tr>
+
+                        <td class="text-start">
+                            <span t-field="r.building_unit"/>
+                        </td>
+
+                        <td class="text-center">
+                            <span t-field="r.date"/>
+                        </td>
+
+                        <td class="text-center">
+                            <span t-field="r.building_unit.list_price"/>
+                            <span t-field="r.building_unit.currency_id"/>
+                        </td>
+
+                        <td class="text-end">
+                            <span t-field="r.state"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
 
 
-
+    </template>
 
 
 </odoo>

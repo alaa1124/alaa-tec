@@ -15,38 +15,53 @@ from odoo.tools import SQL, lazy, str2bool
 from odoo.http import request, content_disposition
 from odoo.addons.website_sale.controllers.main import WebsiteSale, WebsiteSaleForm
 from odoo.addons.sale.controllers.portal import CustomerPortal
+from odoo.addons.base.models.ir_qweb_fields import nl2br_enclose
+
 
 
 _logger = logging.getLogger(__name__)
 
 
-class CustomerPortalCustom(WebsiteSale):
-
-    def _prepare_orders_domain(self, partner):
-        return [
-            ('message_partner_ids', 'child_of', [partner.commercial_partner_id.id]),
-            # ('state', '=', 'sale'),
-        ]
+# class CustomerPortalCustom(WebsiteSale):
+#
+#     def _prepare_orders_domain(self, partner):
+#         return [
+#             # ('message_partner_ids', 'child_of', [partner.commercial_partner_id.id]),
+#             # ('state', '=', 'sale'),
+#             ('partner_id', '=', partner.id),
+#         ]
 
 
 class WebsiteSaleFormCustom(WebsiteSaleForm):
 
+    @http.route(['/my/reservations'], type='http', auth="user", website=True)
+    def portal_my_reservations(self, **kwargs):
+        values = {'reservations': request.env['ownership.contract'].search([('partner_id', '=', request.env.user.partner_id.id)])}
+        return request.render("website_sale_custom.portal_my_reservations", values)
+
     @http.route()
     def website_form_saleorder(self, **kwargs):
-
-        res = super().website_form_saleorder(**kwargs)
-
         model_record = request.env.ref('sale.model_sale_order')
-        # reservation_model_record = request.env.ref('itsys_real_estate.model_ownership_contract')
-
         try:
             data = self.extract_data(model_record, kwargs)
         except ValidationError as e:
             return json.dumps({'error_fields': e.args[0]})
 
-        order = request.website.sale_get_order()
+        order = request.website.sale_get_order(force_create=True)
         if not order:
             return json.dumps({'error': "No order found; please add a product to your cart."})
+
+        if data['record']:
+            order.write(data['record'])
+
+        if data['custom']:
+            order._message_log(
+                body=nl2br_enclose(data['custom'], 'p'),
+                message_type='comment',
+            )
+
+        if data['attachments']:
+            self.insert_attachment(model_record, order.id, data['attachments'])
 
         order.send_attachment()
 
@@ -54,7 +69,35 @@ class WebsiteSaleFormCustom(WebsiteSaleForm):
 
         order.cart_quantity = 0
 
-        return res
+        # order2 = order.sudo().copy({'order_line': False})
+
+        return json.dumps({'id': order.id})
+
+    # def website_form_saleorder(self, **kwargs):
+    #
+    #     res = super().website_form_saleorder(**kwargs)
+    #
+    #     model_record = request.env.ref('sale.model_sale_order')
+    #     # reservation_model_record = request.env.ref('itsys_real_estate.model_ownership_contract')
+    #
+    #     try:
+    #         data = self.extract_data(model_record, kwargs)
+    #     except ValidationError as e:
+    #         return json.dumps({'error_fields': e.args[0]})
+    #
+    #     order = request.website.sale_get_order(force_create=True)
+    #     if not order:
+    #         return json.dumps({'error': "No order found; please add a product to your cart."})
+    #
+    #     order.send_attachment()
+    #
+    #     order2 = order.sudo().copy({'order_line': False})
+    #
+        # order.order_line.write({'active': False})
+        #
+        # order.cart_quantity = 0
+    #
+    #     return res
 
 
 class WebsiteSaleCustom(WebsiteSale):
