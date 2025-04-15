@@ -17,8 +17,6 @@ from odoo.addons.website_sale.controllers.main import WebsiteSale, WebsiteSaleFo
 from odoo.addons.sale.controllers.portal import CustomerPortal
 from odoo.addons.base.models.ir_qweb_fields import nl2br_enclose
 
-
-
 _logger = logging.getLogger(__name__)
 
 
@@ -36,7 +34,8 @@ class WebsiteSaleFormCustom(WebsiteSaleForm):
 
     @http.route(['/my/reservations'], type='http', auth="user", website=True)
     def portal_my_reservations(self, **kwargs):
-        values = {'reservations': request.env['ownership.contract'].search([('partner_id', '=', request.env.user.partner_id.id)])}
+        values = {'reservations': request.env['ownership.contract'].search(
+            [('state', '!=', 'cancel'), ('partner_id', '=', request.env.user.partner_id.id)])}
         return request.render("website_sale_custom.portal_my_reservations", values)
 
     @http.route()
@@ -93,9 +92,9 @@ class WebsiteSaleFormCustom(WebsiteSaleForm):
     #
     #     order2 = order.sudo().copy({'order_line': False})
     #
-        # order.order_line.write({'active': False})
-        #
-        # order.cart_quantity = 0
+    # order.order_line.write({'active': False})
+    #
+    # order.cart_quantity = 0
     #
     #     return res
 
@@ -106,7 +105,6 @@ class WebsiteSaleCustom(WebsiteSale):
     def download_product_form(self, company_id, **kw):
 
         company_id = request.env['res.company'].sudo().browse(company_id)
-
 
         if company_id and company_id.form_file:
             filename = company_id.form_file_name or 'form.pdf'  # Provide a default filename
