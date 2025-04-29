@@ -108,7 +108,7 @@
                 <!-- Styled Table -->
                 <br/>
                 <div class="table-header">Units</div>
-                <table class="unit-installments-table">
+                <table class="unit-installments-table" style="break-inside: avoid;">
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
