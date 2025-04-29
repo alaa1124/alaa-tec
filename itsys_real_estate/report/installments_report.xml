@@ -59,26 +59,25 @@
 
 
                     <table class="unit-installments-table">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th>Number</th>
-                                <th>Due Date</th>
-                                <th>Name</th>
-                                <th class="text-right">Payment</th>
-                                <th class="text-right">Paid Amount</th>
-                                <th class="text-right">Due Amount</th>
-                                <th class="text-right">NPV</th>
-                            </tr>
-                        </thead>
+               
                         <tbody>
 
                             <t t-foreach="docs" t-as="doc1">
                                 <t t-set="i" t-value="1"/>
                                 <tr>
                                     <td class="text-center" colspan="8">
-                                        <span t-field="doc1.building_unit" />
+                                        <span t-field="doc1.building_unit"/>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Number</th>
+                                    <th>Due Date</th>
+                                    <th>Name</th>
+                                    <th class="text-right">Payment</th>
+                                    <th class="text-right">Paid Amount</th>
+                                    <th class="text-right">Due Amount</th>
+                                    <th class="text-right">NPV</th>
                                 </tr>
 
                                 <t t-foreach="doc1.loan_line" t-as="doc">
