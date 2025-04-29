@@ -128,7 +128,7 @@
                                             <span t-esc="i"/>
                                         </td>
                                         <td>
-                                            <span t-field="doc.name"/>
+                                            <span t-field="doc.building_unit"/>
                                         </td>
                                         <td class="text-right">
                                             <span t-esc="doc.total_amount"/>
