@@ -8,10 +8,10 @@
     'description': """
         Long description of module's purpose
     """,
-    'author': "Mohamed AbdElrhman",
-    'website': "http://www.yourcompany.com",
+    'author': "Emad Adeeb",
+    'website': "http://www.EmadAdeep.co",
     'category': 'account',
-    'version': '17.0.0.0',
+    'version': '1.0',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'account', 'account_accountant'],
@@ -27,10 +27,9 @@
         'views/payment_actions.xml',
         'views/cheque_send_view.xml',
         'views/cheque_document.xml',
-        # 'views/account_bank_statement_views.xml'
-        # 'reports/payment_voucher.xml',
-        # 'reports/receipt_voucher.xml',
-        # 'reports/invoices.xml',
+        'reports/payment_voucher.xml',
+        'reports/receipt_voucher.xml',
+        'reports/invoices.xml',
 
     ],
 

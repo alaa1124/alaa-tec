@@ -30,8 +30,6 @@ class unit_reservation(models.Model):
     _description = "Property Reservation"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-
-
     def _contract_count(self):
         self.contract_count = len(self.contract_id)
 

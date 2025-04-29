@@ -22,59 +22,62 @@
                     <field name="ks_payment_cash_send" invisible="1"/>
 
                     <button class="oe_stat_button" name="open_payment" string="Payments" type="object"
-                            icon="fa-university" invisible ="state_cheque == 'draft'"/>
-                    <field name="check_mid"  invisible="1"/>
+                            icon="fa-university" invisible="state_cheque == 'draft'"/>
+
                     <field name="state_cheque" widget="statusbar"
                            statusbar_visible="draft,sent,reconciled,return" force_save="1"/>
                     <button name="post_cheque_send" class="oe_highlight" string="Confirm" type="object"
-                           invisible ="state_cheque != 'draft'"/>
+                            invisible="state_cheque != 'draft'"/>
 
                     <button name="collect_form_bank" class="oe_highlight"
                             string="Collect" type="object"
-                            invisible ="is_cash == True or state_cheque != 'sent'"/>
+                            invisible="(is_cash == True) or (state_cheque != 'sent')"/>
 
                     <button name="cancel_send" class="oe_highlight" string="Cancel" type="object"
-                            invisible ="state_cheque not in ['sent']"/>
+                            invisible="state_cheque not in ('sent')"/>
                     <button name="close_account_middle" class="oe_highlight" string="close" type="object"
-                            invisible="state_cheque !='reconciled' or check_mid == False"
-                    />
-                    <button name="mass_editing" class="oe_highlight"
-                            invisible="state_cheque == 'draft'" string="Set Draft" type="object"
+                            invisible="(state_cheque != 'reconciled') or (check_mid == False)"/>
+                    <button name="mass_editing" class="oe_highlight" invisible="state_cheque == 'draft'"
+                            string="Set Draft" type="object"
                             groups="check_management.group_draft_cheque"/>
                     <button name="payment_cach" class="oe_highlight" string="Pay Cash " type="object"
-                            invisible="ks_payment_cash_send == False or state_cheque not in ('sent') or is_cash != False"
+                            invisible="(ks_payment_cash_send == False) or (state_cheque not in ('sent')) or (is_cash != False)"
                     />
                     <button name="create_payment_cash" class="oe_highlight" string="Create Payment " type="object"
-                            invisible ="state_cheque not in ('sent') or is_cash == False"
+                            invisible="(state_cheque not in ('sent')) or (is_cash == False)"
                     />
                     <button name="return_send_cheque_cash" class="oe_highlight" string="Return To Vendor"
                             type="object"
-                            invisible ="state_cheque == 'return' or is_cash == False"
+                            invisible="(state_cheque == 'return') or (is_cash == False)"
                     />
+
                 </header>
 
             </xpath>
 
+            <!--            <xpath expr="//field[@name='payment_method_line_id']" position="attributes">-->
+            <!--                <attribute name="invisible">True</attribute></xpath>-->
             <xpath expr="//field[@name='payment_type']" position="after">
-                <field name="document_id" string="Cheque Ledger" readonly = "state != 'draft'"/>
-                <field name="cheque_id" string="cheque Number" required="1"  readonly = "state != 'draft'"/>
+                <field name="document_id" string="Cheque Ledger" readonly="state != 'draft'"/>
+                <field name="cheque_id" string="cheque Number"
+                       readonly="state != 'draft'" required="True"
+                />
             </xpath>
             <xpath expr="//field[@name='cheque_no']" position="replace">
                 <field name="move_id" invisible="1"/>
                 <field name="cheque_no"
-                       readonly ="state_cheque != 'draft'" invisible="1" required="1"/>
+                       readonly="state_cheque != 'draft'" invisible="True" required="True"/>
             </xpath>
             <xpath expr="//field[@name='date']" position="before">
-                <field name="effective_date" readonly ="state_cheque != 'draft'" required="1"/>
-
+                <field name="effective_date" readonly="state_cheque != 'draft'" required="True"/>
             </xpath>
 
             <xpath expr="//field[@name='journal_id']" position="replace">
                 <field name="journal_id" invisible="1"/>
-                <field name="journal_cheque" readonly ="state != 'draft'" required="1"
+                <field name="journal_cheque" readonly="state != 'draft'" required="True"
                        domain="[('cheque_send','=',True)]"/>
                 <field name="journal_collection"
-                      readonly ="state != 'draft'" required="type_cheq == 'send_che'"/>
+                       readonly="state != 'draft'" required="type_cheq == 'send_che'"/>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="required">True</attribute>
@@ -82,6 +85,9 @@
             <xpath expr="//field[@name='move_id']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
+            <!--            <xpath expr="//field[@name='destination_account_id']" position="attributes">-->
+            <!--                <attribute name="invisible">True</attribute>-->
+            <!--            </xpath>-->
             <xpath expr="//field[@name='is_internal_transfer']" position="attributes">
                 <attribute name="invisible">True</attribute>
             </xpath>
@@ -90,27 +96,25 @@
                 <attribute name="invisible">True</attribute>
             </xpath>
             <xpath expr="//field[@name='currency_id']" position="replace">
-                <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="1"
-                       readonly ="state != 'draft'"/>
+                <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="True"
+                       readonly="state != 'draft'"/>
             </xpath>
             <xpath expr="//field[@name='journal_id']" position="after">
-                <field name="cheque_bank" readonly ="state_cheque != 'draft'" invisible="1" required="1"/>
-                <field name="check_mid" invisible ="middle_account_company_id == False"/>
+                <field name="cheque_bank" readonly="state_cheque != 'draft'" required="True"/>
+                <field name="check_mid" invisible="middle_account_company_id == False"/>
                 <field name="account_med_send"
-                       readonly="1" invisible="check_mid == False" required="check_mid ==True"/>
+                       readonly="True" invisible="check_mid == False" required="check_mid == True"/>
             </xpath>
 
             <xpath expr="//field[@name='payment_method_line_id']" position="attributes">
-              <attribute name="invisible">
-               type_cheq == 'send_che'
-                </attribute>
-                 <attribute name="readonly">
-                     state != 'draft'
-                 </attribute>
+                <attribute name="invisible">type_cheq == 'send_che'</attribute>
+                <attribute name="readonly">state != 'draft'</attribute>
             </xpath>
             <xpath expr="//field[@name='ref']" position="replace">
-                <field name="cheque_ref"  readonly ="state != 'draft'"/>
+                <field name="cheque_ref" readonly="state != 'draft'"/>
             </xpath>
+
+
         </field>
     </record>
 

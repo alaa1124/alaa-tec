@@ -14,8 +14,8 @@ class res_partner(models.Model):
     def _compute_chqs(self):
         for r in self:
             chqs = self.env['account.payment'].search([
-                ('is_cheque', '=', 1),
                 ('partner_id', '=', self.id),
+                ('is_cheque', '=', True),
                 ])
             r.cheque_count = len(chqs)
 
@@ -42,22 +42,9 @@ class res_partner(models.Model):
         }
 
     def partner_cheques(self):
-        return{
-            'name': _('Cheques'),
-            'type': 'ir.actions.act_window',
-            'view_mode': 'tree,form',
-            'res_id': 'mhj_cheques.cheque_received_list_action',
-            'res_model': 'account.payment',
-            'views': [
-                [self.env.ref('mhj_cheques.cheque_payment_tree_view').id, 'list'],
-                # [self.env.ref('mhj_cheques.cheque_view_form').id, 'form']
-                ],
-            'domain': [
-                ('is_cheque', '=', 1),
-                ('partner_id', '=', self.id),
-                ],
-            'context': {}
-        }
+        action = self.env["ir.actions.act_window"]._for_xml_id('check_management.action_payment_account')
+        action['domain'] = [('partner_id', '=', self.id)]
+        return action
 
 
 class res_company(models.Model):

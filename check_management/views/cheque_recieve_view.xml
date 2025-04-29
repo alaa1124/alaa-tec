@@ -6,16 +6,16 @@
             <field name="model">account.payment</field>
             <field name="inherit_id" ref="account.view_account_payment_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//button[@name='button_open_invoices']" position="after">
+                <xpath expr="//button[@name='button_open_statement_lines']" position="after">
                     <field name="type_cheq" invisible="1"/>
                     <field name="is_cash" invisible="1"/>
 
 
                     <button class="oe_stat_button" name="get_move_line" string="Journal Items" type="object"
                             groups="account.group_account_user"
-                            invisible = "type_cheq==False or state == 'draft'" icon="fa-bars"/>
+                            invisible="(type_cheq == False) or (state == 'draft')" icon="fa-bars"/>
                     <button class="oe_stat_button" name="get_payment_cheque" string="Payment" type="object"
-                            groups="account.group_account_user" invisible = "is_cash == False"
+                            groups="account.group_account_user" invisible="is_cash == False"
                             icon="fa-bars">
                         <field name="cheque_ref_amount" readonly="1"/>
                     </button>
@@ -23,18 +23,16 @@
                 <field name="date" position="before">
 
                     <field name="cheque_ref_id" invisible="1"/>
-<!--                    <field name="available_partner_bank_ids" invisible="1"/>-->
                     <field name="state_cheque2" invisible="1"/>
                     <field name="middle_account_company_id" invisible="1"/>
 
-                    <field name="cheque_no" string="Cheque Referance" invisible = "state == 'draft'"/>
-                </field>
-                <xpath expr="//header/button[@name='action_draft']" position="attributes">
+                    <field name="cheque_no" string="Cheque Referance" invisible="state == 'draft'"/>
 
-                    <attribute name="invisible">
-                        state != 'posted' or type_cheq in ('recieve_chq','send_che')
-                    </attribute>
-                </xpath>
+
+                    <field name="company_id"/>
+
+
+                </field>
 
 <!--                 <xpath expr="//field[@name='destination_account_id']" position="attributes">-->
 
@@ -43,6 +41,10 @@
 <!--                    </attribute>-->
 <!--                </xpath>-->
 
+                <xpath expr="//header/button[@name='action_draft']" position="attributes">
+                    <attribute name="invisible">(state != 'posted') or (type_cheq in ('recieve_chq', 'send_che'))
+                    </attribute>
+                </xpath>
             </field>
         </record>
 
@@ -59,7 +61,7 @@
                 <xpath expr="//header" position="replace">
                     <header>
                         <field name="state" invisible="1"/>
-<!--                        <field name="available_partner_bank_ids" invisible="1"/>-->
+                        <!--                        <field name="available_partner_bank_ids" invisible="1"/>-->
                         <field name="type_cheq" invisible="1"/>
                         <field name="is_cash" invisible="1"/>
                         <field name="ks_payment_cash" invisible="1"/>
@@ -67,76 +69,83 @@
                         <field name="state_cheque" invisible="1"/>
 
                         <button class="oe_stat_button" name="open_payment" string="Payments" type="object"
-                                icon="fa-university" invisible = "state == 'draft'"/>
+                                icon="fa-university" invisible="state_cheque == 'draft'"/>
 
                         <field name="state_cheque" widget="statusbar"
                                statusbar_visible="draft,posted,cancelled,return,reconciled," force_save="1"/>
                         <button name="post_cheque" class="oe_highlight" string="Confirm" type="object"
-                                invisible = "state_cheque != 'draft'"/>
+                                invisible="state_cheque != 'draft'"/>
                         <button name="create_under_collection_journal" class="oe_highlight"
                                 string="Under collection" type="object"
-                                invisible="is_cash == True or state_cheque not in ('posted','cancelled')"/>
+                                invisible="(is_cash == True) or (state_cheque not in ('posted', 'cancelled'))"/>
+                        <!--                            <button name="collect_send_cheq" class="oe_highlight"-->
+                        <!--                                    string="Collect" type="object"-->
+                        <!--                                    attrs="{'invisible': ['|',('type_cheq','=','recieve_chq'),('state_cheque','!=', 'posted')]}"/>-->
                         <button name="collect_form_bank" class="oe_highlight" string="Collect" type="object"
-                                invisible="type_cheq != 'recieve_chq' or state_cheque != 'under_collect'"/>
+                                invisible="(type_cheq != 'recieve_chq') or (state_cheque != 'under_collect')"/>
                         <button name="rejected_form_bank" class="oe_highlight" string="Reject" type="object"
-                             invisible = "state_cheque not in ['payment_vendor','under_collect']"/>
+                                invisible="state_cheque not in ['payment_vendor', 'under_collect']"/>
                         <button name="returned_to_customer" class="oe_highlight" string="Return" type="object"
-                               invisible = "is_cash == True or state_cheque not in ('posted','cancelled')"
+                                invisible="(is_cash == True) or (state_cheque not in ('posted', 'cancelled'))"
                         />
                         <button name="close_account_middle" class="oe_highlight" string="close" type="object"
-                                invisible= "state_cheque != 'reconciled' or check_mid == False"
+                                invisible="(state_cheque != 'reconciled') or (check_mid == False)"
                         />
 
                         <button name="action_vendor_payment" class="oe_highlight" string="Vendor Payment" type="object"
-                               invisible="is_cash == True or ks_payment_vendor == False or state_cheque not in ('posted','cancelled')"/>
+                                invisible="(is_cash == True) or (ks_payment_vendor == False) or (state_cheque not in ('posted', 'cancelled'))"/>
 
 
                         <field name="payment_done" invisible="1"/>
                         <button name="return_send_cheque_cash" class="oe_highlight" string="Return To Customer"
                                 type="object"
-                                invisible = "state_cheque == 'return' or is_cash == False"
+                                invisible="(state_cheque == 'return') or (is_cash == False)"
                         />
+                        <!--                      <button name="return_send_cheque_cash" class="oe_highlight" string="Return To Customer" type="object"-->
+                        <!--                                    attrs="{'invisible': ['|',('state_cheque','!=','reconciled'),('payment_done','=',False)]}"-->
+                        <!--                            />-->
 
+                        <field name="cheque_ref_amount" invisible="True"/>
                         <button name="return_payment_cach" class="oe_highlight" string="Return Cheque " type="object"
-                                invisible="is_cash == False or state_cheque != 'posted'"
+                                invisible="(cheque_ref_amount > 0) or (is_cash == False) or (state_cheque != 'posted')"
                         />
                         <button name="create_payment_cash" class="oe_highlight" string="Create Payment " type="object"
-                                invisible = "state_cheque not in ('posted','cancelled') or is_cash == False"
+                                invisible="(state_cheque not in ('posted', 'cancelled')) or (is_cash == False)"
                         />
                         <button name="payment_cach" class="oe_highlight" string="Pay Cash " type="object"
-                                 invisible = "ks_payment_cash == False or
-                                    state_cheque not in ('posted','cancelled') or is_cash != False"
+                                invisible="(ks_payment_cash == False) or (state_cheque not in ('posted', 'cancelled')) or (is_cash != False)"
                         />
                         <button name="transfer_journal" class="oe_highlight" string="Transfer"
-                             invisible = "state_cheque not in ('posted') or state == 'draft'"  type="object" groups="check_management.group_transfer_cheque"/>
-                          <button name="mass_editing" class="oe_highlight" string="Set Draft" type="object"
-                            groups="check_management.group_draft_cheque"/>
-
+                                invisible="state_cheque not in ('posted')" type="object"
+                                groups="check_management.group_transfer_cheque"/>
+                        <button name="mass_editing" class="oe_highlight"
+                                invisible="state_cheque == 'draft'" string="Set Draft" type="object"
+                                groups="check_management.group_draft_cheque"/>
                     </header>
 
                 </xpath>
 
                 <xpath expr="//field[@name='cheque_no']" position="replace">
-                    <field name="cheque_no" readonly = "state_cheque != 'draft'" required="1"/>
+                    <field name="cheque_no" readonly="state_cheque != 'draft'" required="True"/>
                 </xpath>
-<!--                <xpath expr="//field[@name='move_id']" position="attributes">-->
-<!--                    <attribute name="invisible">True</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='move_id']" position="attributes">-->
+                <!--                    <attribute name="invisible">True</attribute>-->
+                <!--                </xpath>-->
                 <xpath expr="//field[@name='date']" position="before">
-                    <field name="move_id" invisible="1"/>
-                    <field name="effective_date" required = "1" readonly = "state_cheque != 'draft'"/>
-                    <field name="middle_account_company_id" invisible="1"/>
+                    <field name="move_id" invisible="True"/>
+                    <field name="effective_date" required="True" readonly="state_cheque != 'draft'"/>
+                    <field name="middle_account_company_id" invisible="True"/>
                 </xpath>
 
-                         <xpath expr="//group[@name='group2']/field[@name='payment_method_line_id']" position="replace">
-                             <field name="payment_method_line_id" invisible="1"/>
-                         </xpath>
+                <xpath expr="//group[@name='group2']/field[@name='payment_method_line_id']" position="replace">
+                    <field name="payment_method_line_id" invisible="1"/>
+                </xpath>
                 <xpath expr="//field[@name='payment_method_line_id']" position="replace">
                     <field name="payment_method_line_id" invisible="1" required="0"/>
                 </xpath>
                 <xpath expr="//field[@name='journal_id']" position="replace">
-                    <field name="journal_id" invisible="1"/>
-                    <field name="journal_cheque" readonly = "state_cheque != 'draft'" required="1"
+                    <field name="journal_id" invisible="True"/>
+                    <field name="journal_cheque" readonly="state != 'draft'" required="True"
                            domain="[('cheque_recieve','=',True)]"/>
 
                 </xpath>
@@ -146,29 +155,30 @@
                 </xpath>
                 <xpath expr="//field[@name='partner_id']" position="attributes">
                     <attribute name="required">True</attribute>
-                </xpath><xpath expr="//field[@name='payment_method_line_id']" position="attributes">
+                </xpath>
+                <xpath expr="//field[@name='payment_method_line_id']" position="attributes">
                     <attribute name="required">False</attribute>
                 </xpath>
-<!--                <xpath expr="//field[@name='destination_account_id']" position="attributes">-->
-<!--                    <attribute name="invisible">True</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//field[@name='destination_account_id']" position="attributes">-->
+                <!--                    <attribute name="invisible">True</attribute>-->
+                <!--                </xpath>-->
                 <xpath expr="//field[@name='is_internal_transfer']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
 
                 <xpath expr="//field[@name='currency_id']" position="replace">
-                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="1"
-                          readonly = "state != 'draft'"/>
+                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="True"
+                           readonly="state != 'draft'"/>
                 </xpath>
                 <xpath expr="//field[@name='journal_id']" position="after">
-                    <field name="cheque_bank" readonly = "state_cheque != 'draft'" required="1"/>
-                    <field name="check_mid" invisible ="middle_account_company_id == False"/>
+                    <field name="cheque_bank" required="True" readonly="state_cheque != 'draft'"/>
+                    <field name="check_mid" invisible="middle_account_company_id == False"/>
                     <field name="account_med"
-                          readonly ="1" invisible = "check_mid == False" required = "check_mid == True"/>
+                           readonly="True" invisible="check_mid == False" required="check_mid == True"/>
                 </xpath>
 
-                 <xpath expr="//field[@name='ref']" position="replace">
-                    <field name="cheque_ref" readonly = "state != 'draft'"/>
+                <xpath expr="//field[@name='ref']" position="replace">
+                    <field name="cheque_ref" readonly="state != 'draft'"/>
                 </xpath>
 
 
@@ -204,7 +214,8 @@
 
             <field name="arch" type="xml">
                 <search string="Payments">
-                    <field name="name" string="Payment" filter_domain="['|', ('name', 'ilike', self), ('partner_id', 'ilike', self)]"/>
+                    <field name="name" string="Payment"
+                           filter_domain="['|', ('name', 'ilike', self), ('partner_id', 'ilike', self)]"/>
                     <field name="partner_id" string="Customer/Vendor"/>
 
                     <field name="effective_date" string="Due Date"/>
@@ -261,7 +272,8 @@
             <field name="view_mode">tree,form</field>
             <field name="domain">[('type_cheq','=','recieve_chq')]</field>
             <field name="context">
-               {  'default_move_journal_types': ('bank', 'cash'),     'default_payment_type':'inbound','default_type_cheq':'recieve_chq','default_is_cheque':True}
+                { 'default_move_journal_types': ('bank', 'cash'),
+                'default_payment_type':'inbound','default_type_cheq':'recieve_chq','default_is_cheque':True}
             </field>
             <field name="search_view_id" ref="check_management.view_account_payment_cheque_search"/>
             <field name="view_ids" eval="[(5, 0, 0),(0, 0, {'view_mode': 'tree', 'view_id': ref('view_account_payment_cheque_tree')}),
@@ -270,62 +282,82 @@
         </record>
 
 
+        <record id="view_account_payment_cheque_pop" model="ir.ui.view">
+            <field name="name">view_account_payment_cheque_pop</field>
+            <field name="model">account.payment</field>
 
-      <record id="view_account_payment_cheque_pop" model="ir.ui.view">
-    <field name="name">view_account_payment_cheque_pop</field>
-    <field name="model">account.payment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="state_cheque" invisible="1"/>
+                            <field name="state_cheque2" invisible="1"/>
+                            <field name="is_transfer" invisible="1"/>
+                            <field name="type_cheq" invisible="1"/>
+                            <field name="journal_transfer"
+                                   invisible="is_transfer == False" required="is_transfer == True"/>
+                            <field name="transfer_date"
+                                   invisible="is_transfer == False" required="is_transfer == True"/>
+                            <field name="journal_under_collection"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'under_collect')"
+                                   required="state_cheque2 == 'under_collect'"/>
+                            <field name="date_under_collection"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'under_collect')"
+                                   required="state_cheque2 == 'under_collect'"/>
+                            <field name="journal_collection"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'reconciled')"
+                                   required="state_cheque2 == 'reconciled'"/>
+                            <field name="date_collection"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'reconciled')"
+                                   required="state_cheque2 == 'reconciled'"/>
+                            <field name="journal_reject"
+                                   invisible="(is_transfer == True) or (type_cheq != 'recieve_chq') or (state_cheque2 != 'cancelled')"
+                                   required="(type_cheq == 'recieve_chq') and (state_cheque2 == 'cancelled')"/>
+                            <field name="date_rejected"
+                                   invisible="(is_transfer == True) or (type_cheq != 'recieve_chq') or (state_cheque2 != 'cancelled')"
+                                   required="(type_cheq == 'recieve_chq') and (state_cheque2 == 'cancelled')"/>
+                            <field name="journal_return"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'return')"
+                                   required="state_cheque2 == 'return'"/>
+                            <field name="date_return"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'return')"
+                                   required="state_cheque2 == 'return'"/>
+                            <field name="journal_close"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'close')"
+                                   required="state_cheque2 == 'close'"/>
+                            <field name="date_close"
+                                   invisible="(is_transfer == True) or (state_cheque2 != 'close')"
+                                   required="state_cheque2 == 'close'"/>
+                            <field name="journal_cancel"
+                                   invisible="(is_transfer == True) or (type_cheq == 'recieve_chq') or (state_cheque2 != 'cancelled')"
+                                   required="(type_cheq != 'recieve_chq') and (state_cheque2 == 'cancelled')"/>
+                            <field name="date_cancel"
+                                   invisible="(is_transfer == True) or (type_cheq == 'recieve_chq') or (state_cheque2 != 'cancelled')"
+                                   required="(type_cheq != 'recieve_chq') and (state_cheque2 == 'cancelled')"/>
 
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <group>
-                    <field name="state_cheque"  invisible="1" />
-                    <field name="state_cheque2"  invisible="1" />
-                    <field name="is_transfer" invisible="1" />
-                    <field name="is_vendor_payments" invisible="1"/>
+                            <field name="vendor_id"
+                                   invisible="(is_transfer == True) or (type_cheq != 'recieve_chq') or (state_cheque2 != 'payment_vendor')"
+                                   required="(type_cheq == 'recieve_chq') and (state_cheque2 == 'payment_vendor')"/>
+                            <field name="journal_vendor"
+                                   invisible="(is_transfer == True) or (type_cheq != 'recieve_chq') or (state_cheque2 != 'payment_vendor')"
+                                   required="(type_cheq == 'recieve_chq') and (state_cheque2 == 'payment_vendor')"/>
+                            <field name="date_vendor"
+                                   invisible="(is_transfer == True) or (type_cheq != 'recieve_chq') or (state_cheque2 != 'payment_vendor')"
+                                   required="(type_cheq == 'recieve_chq') and (state_cheque2 == 'payment_vendor')"/>
+                            <field name="is_multi" invisible="1"/>
 
-                    <field name="type_cheq"  invisible="1" />
-                    <field name="journal_transfer" invisible = "is_transfer == False" required = "is_transfer == True"/>
-                    <field name="transfer_date" readonly="1" invisible = "is_transfer == False" required = "is_transfer == True"/>
-                    <field name="journal_under_collection" invisible = "is_transfer == True or state_cheque2 != 'under_collect'" required ="state_cheque2 == 'under_collect'"/>
-                    <field name="date_under_collection" invisible = "is_transfer == True or state_cheque2 != 'under_collect'" required ="state_cheque2 == 'under_collect'"/>
+                        </group>
+                        <footer>
+                            <button name="save_payment" class="oe_highlight" string="save" type="object"
+                            />
 
-                    <field name="journal_collection" invisible = "is_transfer == True or state_cheque2 != 'reconciled'" required= "state_cheque2 == 'reconciled'"/>
-                    <field name="date_collection"  invisible = "is_transfer == True or state_cheque2 != 'reconciled'" required= "state_cheque2 == 'reconciled'"/>
-
-                    <field name="journal_reject" invisible = "is_transfer == True or state_cheque2 !='cancelled' or type_cheq != 'recieve_chq'" required = "type_cheq =='recieve_chq' and state_cheque2 =='cancelled'"/>
-                    <field name="date_rejected" invisible = "is_transfer == True or state_cheque2 !='cancelled' or type_cheq != 'recieve_chq'" required = "type_cheq =='recieve_chq' and state_cheque2 =='cancelled'"/>
-
-                    <field name="journal_return" invisible = "is_transfer == True or state_cheque2 != 'return'" required = "state_cheque2 =='return'"/>
-                    <field name="date_return" invisible = "is_transfer == True or state_cheque2 != 'return'" required = "state_cheque2 =='return'"/>
-
-                    <field name="journal_close" invisible = "is_transfer == True or state_cheque2 != 'close'" required = "state_cheque2 == 'close'"/>
-                    <field name="date_close" invisible = "is_transfer == True or state_cheque2 != 'close'" required = "state_cheque2 == 'close'"/>
-
-                    <field name="journal_cancel" invisible = "is_transfer == True or type_cheq == 'recieve_chq' or state_cheque2 != 'cancelled'" required= "type_cheq != 'recieve_chq' and state_cheque2 == 'cancelled'"/>
-                    <field name="date_cancel" invisible = "is_transfer == True or type_cheq == 'recieve_chq' or state_cheque2 != 'cancelled'" required= "type_cheq != 'recieve_chq' and state_cheque2 == 'cancelled'"/>
-
-                    <field name="vendor_id"  invisible = "is_transfer == True or type_cheq != 'recieve_chq' or state_cheque2 != 'payment_vendor'" required = "type_cheq == 'recieve_chq' and state_cheque2 == 'payment_vendor'"/>
-                    <field name="journal_vendor" invisible = "is_transfer == True or type_cheq != 'recieve_chq' or state_cheque2 != 'payment_vendor'" required = "type_cheq == 'recieve_chq' and state_cheque2 == 'payment_vendor'"/>
-                    <field name="date_vendor" invisible = "is_transfer == True or type_cheq != 'recieve_chq' or state_cheque2 != 'payment_vendor'" required = "type_cheq == 'recieve_chq' and state_cheque2 == 'payment_vendor'"/>
-                    <field name="is_multi" invisible="1"/>
-
-                </group>
-                <footer>
-                    <button name="save_payment" class="oe_highlight" string="save" type="object"
-                          invisible = "is_vendor_payments == True"  />
-
-                    or
-                    <button name="save_payments_mult" class="oe_highlight" string="Save Multi Payments" type="object"
-                          invisible = "is_vendor_payments == False"  />
-
-                    or
-                    <button string="Cancel" class="oe_link" special="cancel" />
-                </footer>
-            </sheet>
-        </form>
-    </field>
-  </record>
+                            or
+                            <button string="Cancel" class="oe_link" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
 
         <record id="account.action_account_payments" model="ir.actions.act_window">

@@ -1,0 +1,21 @@
+<odoo>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_account_payment_cheque_rs" model="ir.ui.view">
+        <field name="name">view_account_payment_cheque_rs</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="check_management.view_account_payment_cheque"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='partner_bank_id'][last()]" position="after">
+                <field name="ownership_line_id" readonly="True"/>
+                <field name="ownership_contract"/>
+                <field name="building_unit"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>

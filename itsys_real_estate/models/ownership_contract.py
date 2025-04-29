@@ -17,9 +17,6 @@ class ownership_contract(models.Model):
     _description = "Ownership Contract"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    def print_installments(self):
-        return self.env.ref('itsys_real_estate.unit_installments_report_pdf').report_action(self)
-
     documents = fields.Many2many('ir.attachment', relation='ownership_att_rel')
 
     @api.model
@@ -46,6 +43,8 @@ class ownership_contract(models.Model):
     currency_id = fields.Many2one('res.currency', store=True, readonly=True, tracking=True, required=True,
                                   string='Currency', default=_get_default_currency)
     entry_count = fields.Integer('Entry Count', compute='_entry_count')
+    check_count = fields.Integer('Entry Count', compute='_entry_count')
+
     paid = fields.Float(compute='_check_amounts', string='Paid', store=True)
     balance = fields.Float(compute='_check_amounts', string='Balance', store=True)
     total_amount = fields.Float(compute='_check_amounts', string='Total Amount', store=True)
@@ -74,7 +73,7 @@ class ownership_contract(models.Model):
     city = fields.Many2one('cities', 'City')
     user_id = fields.Many2one('res.users', 'Responsible', default=lambda self: self.env.user, )
     partner_id = fields.Many2one('res.partner', 'Partner', required=True)
-    building_area= fields.Float ('Building Unit Area m²', digits=(12,3))
+    building_area = fields.Float('Building Unit Area m²', digits=(12, 3))
     loan_line = fields.One2many('loan.line.rs.own', 'loan_id')
     region = fields.Many2one('regions', 'Region')
     country = fields.Many2one('countries', 'Country')
@@ -108,6 +107,7 @@ class ownership_contract(models.Model):
 
     def action_draft(self):
         self.write({'state': 'draft'})
+
     def replace_unit(self):
         adv_pay = (100 * self.paid) / self.rplc_building_unit.pricing
         vals = {
@@ -220,7 +220,6 @@ class ownership_contract(models.Model):
         else:
             irng = range(1, int(inst_count) + 1)
 
-
         print('irng', irng)
         for ili in irng:
             iseq = ili
@@ -253,7 +252,6 @@ class ownership_contract(models.Model):
                 mns = iseq * inst_months
                 name = f'Inst # {str(iseq)} / {mns} months'
 
-
             print('npv', npv)
             print('amount', amount)
             inpv = amount / (1 + (npv / 12)) ** mns
@@ -271,6 +269,8 @@ class ownership_contract(models.Model):
         return inst_lines
 
     def _prepare_lines(self, first_date):
+        pricing = self.pricing
+        loan_lines = []
         if self.template_id:
             ind = 1
             mon = self.template_id.duration_month
@@ -307,7 +307,9 @@ class ownership_contract(models.Model):
     def _entry_count(self):
         move_obj = self.env['account.move']
         move_ids = move_obj.search([('ownership_id', 'in', self.ids)])
+        checks = self.env['account.payment'].search([('ownership_line_id', 'in', self.loan_line.ids)])
         self.entry_count = len(move_ids)
+        self.check_count = len(checks)
 
     def view_entries(self):
         entries = []
@@ -505,60 +507,42 @@ class ownership_contract(models.Model):
             'move_id': move,
         })
 
-    cheque_no = fields.Char(string='1st Cheque #')
+    cheque_no = fields.Integer(string='1st Cheque #')
     cheque_bank = fields.Many2one('res.bank', string='Cheques Bank')
     cheque_acc_id = fields.Many2one('account.account', string='Cheques Account')
+    journal_id = fields.Many2one('account.journal', domain="[('cheque_recieve','=',True)]")
 
-    @api.onchange('cheque_no')
-    def validate_chq_no(self):
-        if self.cheque_no and not self.cheque_no.isnumeric():
-            raise UserError('Cheque number must be digits only')
+    def unit_cheques(self):
+        action = self.env["ir.actions.act_window"]._for_xml_id('check_management.action_payment_account')
+        action['domain'] = [('ownership_contract', '=', self.id), ('is_cheque', '=', True)]
+        return action
 
     def create_cheques(self):
-        journal = self.env['account.journal'].search([('is_cheque', '=', True)], limit=1)
-        if not journal:
-            raise UserError(_('Please create a cheques wallet journal!'))
-        if not self.cheque_no:
-            raise UserError(_('Please enter 1st cheque # '))
-        if not self.cheque_acc_id:
-            self.cheque_acc_id = journal.default_account_id
-        account_move_obj = self.env['account.move']
+
+        if self.check_count > 0:
+            raise UserError('Cheques are already created')
+
         for rec in self:
-            amls = []
-            if not rec.partner_id.property_account_receivable_id:
-                raise UserError(_('Please set receivable account for partner!'))
+            # if not rec.partner_id.property_account_receivable_id:
+            #     raise UserError(_('Please set receivable account for partner!'))
 
-            for line in rec.loan_line:
-                bank = rec.partner_id.bank_ids[:1] or rec.cheque_bank or self.env['res.bank'].search([])[1:]
-                amls.append((0, 0, {
-                    'is_cheque': 1,
-                    'cheque_no': str(int(rec.cheque_no) + rec.loan_line.ids.index(line.id)),
-                    'cheque_bank': bank and bank.id or False,
-                    'cheque_date': line.date,
-                    'name': line.name,
-                    'partner_id': rec.partner_id.id,
-                    'account_id': rec.cheque_acc_id.id,
-                    'date_maturity': line.date,
-                    'debit': round(line.amount, 2),
-                    'credit': 0.0
-                }))
+            cheque_no = self.cheque_no
+            for line in rec.loan_line.filtered(lambda l: l.amount > 0):
+                self.env['account.payment'].create({
+                    'type_cheq': 'recieve_chq',
+                    'payment_type': 'inbound',
+                    'is_cheque': True,
+                    'partner_id': self.partner_id.id,
+                    'cheque_bank': self.cheque_bank.id,
+                    'cheque_no': cheque_no,
+                    'journal_cheque': self.journal_id.id,
+                    'amount': line.amount,
+                    'date': date.today(),
+                    'effective_date': line.date,
+                    'ownership_line_id': line.id,
+                })
 
-            amls.append((0, 0, {
-                'name': rec.name,
-                'partner_id': rec.partner_id.id,
-                'account_id': rec.partner_id.property_account_receivable_id.id,
-                'debit': 0.0,
-                'credit': round(sum(a[2]['debit'] for a in amls), 2)
-            }))
-
-            am = account_move_obj.create({
-                'ref': rec.name,
-                'journal_id': journal.id,
-                'ownership_id': rec.id,
-                'line_ids': amls,
-            })
-
-            am.action_post()
+                cheque_no += 1
 
     def generate_entries(self):
         journal_pool = self.env['account.journal']

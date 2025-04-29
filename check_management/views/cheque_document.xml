@@ -10,7 +10,7 @@
                 <header>
                     <button name="generate_cheques" type="object"
                             string="Generate Cheques"
-                            class="oe_highlight" invisible ="is_created == True"/>
+                            class="oe_highlight" invisible="is_created==True"/>
                 </header>
                 <sheet>
                      <div class="oe_button_box" name="button_box">

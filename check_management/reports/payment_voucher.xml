@@ -2,144 +2,164 @@
 <odoo>
     <data>
 
-        <template id="cheque_external_layout_inherit" inherit_id="web.external_layout">
+        <template id="custom_external_layout_standard_cheque">
+            <div t-attf-class="header o_company_#{o.company_id.id}_layout" t-att-style="report_header_style">
+                <div class="row">
 
+                    <div class="col-9">
+                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
+                             style="max-height: 100px;"
+                             alt="Logo" dir="left"/>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div t-attf-class="article o_report_layout_standard o_company_#{o.company_id.id}_layout {{  'o_layout_background' if o.company_id.layout_background in ['Geometric', 'Custom']  else  '' }}"
+                 t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % o.company_id.layout_background_image.decode('utf-8') if o.company_id.layout_background_image and o.company_id.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if o.company_id.layout_background == 'Geometric' else ''}});"
+                 t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o">
+
+                <div class="pt-5">
+                    <!-- This div ensures that the address is not cropped by the header. -->
+                    <t t-call="web.address_layout"/>
+                </div>
+                <t t-out="0"/>
+            </div>
+
+            <div t-attf-class="footer o_standard_footer o_company_#{o.company_id.id}_layout">
+                <div class="row">
+                    <br/>
+                    <div style="border-top: 2px solid black; direction:rtl" class="col-12 text-center">
+                        <span t-field="o.company_id.street"/>
+                        -
+                        <span t-field="o.company_id.street2"/>
+                        -
+                        <span t-field="o.company_id.city"/>
+                        -
+                        <span t-field="o.company_id.state_id.name"/>
+                        -
+                        <span t-field="o.company_id.country_id.name"/>
+                    </div>
+                </div>
+            </div>
         </template>
 
         <template id="alfath_payment_template">
             <t t-call="web.html_container">
 
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">
+                    <t t-call="check_management.custom_external_layout_standard_cheque">
                         <div style="border: 2px solid black;margin-left:-8px;margin-top:-1px; padding:20px;border-radius:10px">
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
+                            <br></br>
+                            <br></br>
+                            <br></br>
                             <div class="row">
                                 <div class="col-5">
                                     <span>NO.:</span>
                                     <span t-field="o.name"/>
                                 </div>
                                 <div class="col-4">
-                                    <p>سند صرف</p>
-                                    <p>Payment Voucher</p>
+                                    <h3>سند صرف</h3>
+                                    <!--                                    <p>Payment Voucher</p>-->
                                 </div>
                                 <div class="text-right col-3">
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
-                                                <th>جنيه </th>
+                                                <th>جنيه</th>
                                                 <th>قرش</th>
                                             </tr>
                                             <tr>
-                                                <th><span t-esc="int(o.amount)"/></th>
-                                                <th><span t-esc="(o.amount- int(o.amount))*100"/></th>
+                                                <th>
+                                                    <span t-esc="int(o.amount)"/>
+                                                </th>
+                                                <th>
+                                                    <span t-esc="round(((o.amount- int(o.amount))*100),2)"/>
+                                                </th>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6 text-left">
-<!--                                    <span>Date :<span t-field="o.payment_date"/></span>-->
-                                    <span>Date :<span t-field="o.date"/></span>
-                                </div>
-                                <div class="col-6 text-right">
-<!--                                    <span> التاريخ :<span style="direction: rtl;" t-field="o.payment_date"/></span>-->
-                                    <span> التاريخ :<span style="direction: rtl;" t-field="o.date"/></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4 text-left">
-                                    <span>Spent To MR. / Messers :</span>
-                                </div>
-                                <div class="col-4 text-center">
-                                    <span t-field="o.partner_id"/>
-                                </div>
-                                <div class="col-4 text-right">
-                                    : صرفنا لأمر السيد / السادة
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4 text-left">
-                                    The Sum Of :
-                                </div>
-                                <div class="col-4 text-center">
-                                    <span t-field="o.total_in_words"/>
-                                </div>
-                                <div class="col-4 text-right">
-                                    : مبلغ وقدره
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div t-if="o.is_cheque == True" class="col-4 text-left">
-                                    Cheque No. :
-                                </div>
-                                <div t-if="o.is_cheque == False" class="col-4 text-left">
-                                    Cash :
-                                </div>
-                                <div class="col-4">
-                                    <span t-if="o.is_cheque == True" style="float:right">
-                                        : بنك
-                                    </span>
-                                    <span style="float:left">
-                                        : تاريخ
-                                    </span>
-                                </div>
-                                <div t-if="o.is_cheque == False" class="col-4 text-right">
-                                    : نقدا
-                                </div>
-                                <div t-if="o.is_cheque == True" class="col-4 text-right">
-                                    : شيك رقم
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4 text-left">
-                                    For
-                                </div>
-                                <div class="col-4 text-center">
-<!--                                    <span t-field="o.communication"/>-->
-                                    <span t-field="o.ref"/>
-                                </div>
-                                <div class="col-4 text-right">
-                                    : وذلك عن
-                                </div>
-                            </div>
+
+                            <table>
+                                <tbody>
+                                    <tr>
+
+                                        <td class="text-right" style="width:60%">
+                                            <span t-field="o.date"/>
+                                        </td>
+                                        <td class="text-right" style="width:20%">:التاريخ</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td class="text-right" style="width:60%">
+                                            <span t-field="o.partner_id"/>
+                                        </td>
+                                        <td class="text-right" style="width:20%">: صرفنا لأمر السيد / السادة</td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td class="text-right" style="width:60%">
+                                            <span t-field="o.total_in_words"/>
+                                        </td>
+                                        <td class="text-right" style="width:20%">: مبلغ وقدره</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="text-right" style="width:60%">
+                                            <span t-field="o.cheque_no"/>
+                                        </td>
+                                        <td class="text-right" style="width:20%">
+                                            <t t-if="o.type_cheq==False " class="text-right">
+                                                : نقدا
+                                            </t>
+                                            <t t-if="o.type_cheq" class="text-right">
+                                                :شيك رقم
+
+                                            </t>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right" style="width:60%">
+                                            <span t-field="o.cheque_ref"/>
+                                        </td>
+                                        <td class="text-right" style="width:20%">: وذلك عن</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br></br>
+                            <br></br>
+                            <br></br>
                             <div class="row">
                                 <div class="col-3 text-center">
-                                    <p>توقيع المدير</p>
-                                    <p>Manger Sign</p>
+                                    <p>المستلم</p>
                                     <p>..............................</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <p>المندوب</p>
-                                    <p>Delegate</p>
-                                    <p t-field="o.delegate"/>
+
+                                    <p>توقيع المــدير المالي</p>
+                                    <p>..............................</p>
                                 </div>
                                 <div class="col-3 text-center">
-                                    <p>المستلم</p>
-                                    <p>Received By</p>
+                                    <p>المراجعه</p>
                                     <p>..............................</p>
                                 </div>
                                 <div class="col-3 text-center">
                                     <p>أعدهــــــا</p>
-                                    <p>Prepared By</p>
+
                                     <p t-field="o.create_uid"/>
                                 </div>
                             </div>
                             <br/>
-                            <div class="row">
-                                <br/>
-                                <div style="border-top: 2px solid black; direction:rtl" class="col-12 text-center">
-                                    <span t-field="o.company_id.street"/> -
-                                    <span t-field="o.company_id.street2"/> -
-                                    <span t-field="o.company_id.city"/> -
-                                    <span t-field="o.company_id.state_id.name"/> -
-                                    <span t-field="o.company_id.country_id.name"/>
-                                </div>
-                            </div>
+
                         </div>
                     </t>
                 </t>
@@ -148,14 +168,6 @@
         </template>
 
 
-        <report
-                id="alfath_payment_voucher"
-                model="account.payment"
-                report_type="qweb-pdf"
-                string="Payment Voucher"
-                name="check_management.alfath_payment_template"
-                file="check_management.alfath_payment_template"
-        />
         <record id="paperformat_a6_report1" model="report.paperformat">
             <field name="name">Alfath</field>
             <field name="default" eval="True"/>
@@ -169,8 +181,19 @@
             <field name="header_spacing">0</field>
             <field name="dpi">90</field>
         </record>
-        <record id="check_management.alfath_payment_voucher" model="ir.actions.report">
+
+        <record id="alfath_payment_voucher" model="ir.actions.report">
+            <field name="name">Payment Voucher Report</field>
+            <field name="model">account.payment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">check_management.alfath_payment_template</field>
+            <field name="report_file">check_management.alfath_payment_template</field>
+            <field name="print_report_name">Payment Voucher</field>
             <field name="paperformat_id" ref="check_management.paperformat_a6_report1"/>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="account.model_account_payment"/>
         </record>
+
+
     </data>
 </odoo>

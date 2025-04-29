@@ -149,14 +149,7 @@
         </template>
 
 
-        <report
-                id="alfath_receipt_voucher"
-                model="account.payment"
-                report_type="qweb-pdf"
-                string="Receipt Voucher"
-                name="check_management.alfath_receipt_template"
-                file="check_management.alfath_receipt_template"
-        />
+
         <record id="paperformat_a6_report1" model="report.paperformat">
             <field name="name">Alfath</field>
             <field name="default" eval="True"/>
@@ -170,8 +163,19 @@
             <field name="header_spacing">0</field>
             <field name="dpi">90</field>
         </record>
-        <record id="check_management.alfath_receipt_voucher" model="ir.actions.report">
+
+
+        <record id="alfath_receipt_voucher" model="ir.actions.report">
+            <field name="name">Receipt Voucher Report</field>
+            <field name="model">account.payment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">check_management.alfath_receipt_template</field>
+            <field name="report_file">check_management.alfath_receipt_template</field>
+            <field name="print_report_name">Receipt Voucher</field>
             <field name="paperformat_id" ref="check_management.paperformat_a6_report1"/>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="account.model_account_payment"/>
         </record>
+
     </data>
 </odoo>

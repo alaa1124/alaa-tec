@@ -85,6 +85,13 @@
                                     invisible="entry_count == 0">
                                 <field name="entry_count" widget="statinfo" string="Journal Entries"/>
                             </button>
+
+                            <button type="object" name="unit_cheques" class="oe_stat_button" icon="fa-credit-card"
+                                    invisible="check_count == 0">
+                                <field name="check_count" widget="statinfo" string="Cheques"/>
+                            </button>
+
+
                         </div>
                         <group>
                             <group>
@@ -97,6 +104,7 @@
                             <group>
                                 <field name="pricing"/>
                                 <field name="user_id"/>
+                                <field name="team_id"/>
                                 <!-- <field name="reservation_id" /> -->
                                 <field name="date" readonly="state !='draft'"/>
                                 <field name="origin" readonly="state !='draft'"/>
@@ -120,8 +128,6 @@
                                                 class='btn btn-primary'/>
                                     </group>
                                 </group>
-                                <button name="print_installments" type="object" string="Print Installments"
-                                        icon="fa-print"/>
                                 <field name="loan_line" readonly="1">
                                     <tree string="Installments" editable="none">
                                         <field name="number"/>
@@ -141,7 +147,6 @@
                                                 groups="itsys_real_estate.group_payments"/>
                                     </tree>
                                 </field>
-
                             </page>
 
                             <page string="Unit Details">
@@ -175,6 +180,7 @@
                                         <field name="cheque_bank"/>
                                         <field name="cheque_no"/>
                                         <field name="cheque_acc_id"/>
+                                        <field name="journal_id"/>
                                     </group>
                                     <group>
                                         <tr>
@@ -221,6 +227,20 @@
                                         <field name="hoa" readonly="state !='draft'"/>
                                         <field name="monthly_payment" readonly="state !='draft'"/>
                                     </group>
+                                </group>
+                            </page>
+
+                            <page string="Commission">
+                                <group>
+                                    <!--<button type="object" string="Get commission" name="get_commission"/>-->
+                                    <field name="commission_line" widget="one2many_list"
+                                           colspan="4"
+                                           nolabel="1">
+                                        <tree string="Commission Lines" editable="bottom">
+                                            <field name="salesman"/>
+                                            <field name="amount"/>
+                                        </tree>
+                                    </field>
                                 </group>
                             </page>
                         </notebook>

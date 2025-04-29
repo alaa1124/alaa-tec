@@ -3,6 +3,7 @@ from odoo.exceptions import UserError, ValidationError
 from datetime import date, datetime
 from num2words import num2words
 
+
 class wizard(models.Model):
     _name = 'account.payment.wizard'
     journal_under_collection = fields.Many2one('account.journal', string="Under Collection Journal",
@@ -16,17 +17,16 @@ class wizard(models.Model):
                                       ('return', 'Returned'),
                                       ('close', 'Closed'), ('payment_vendor', 'Payment Vendor')],
                                      default='draft', copy=False)
-    payment_id  = fields.Many2many("account.payment","p_id","id")
+    payment_id = fields.Many2many("account.payment","p_id","id")
     is_transfer = fields.Boolean()
     is_pay_cash = fields.Boolean()
     journal_transfer = fields.Many2one('account.journal', string="Transfer Journal", domain=[('transfer', '=', True)])
     transfer_date = fields.Date("Transfer Date ")
     journal_cash = fields.Many2one('account.journal', string="Transfer Journal", domain=[('cheque_cash', '=', True)])
     date_cash = fields.Date("Transfer Date ")
+
     def save_payment_multi(self):
-
         for rec in self.payment_id:
-
             if rec.state_cheque in ('posted','cancelled') and self.is_pay_cash==True \
                     and rec.cheque_ref_amount<rec.amount :
                 rec.payment_cach()
@@ -42,12 +42,10 @@ class wizard(models.Model):
                     'amount':rec.amount,
                     'journal_id':self.journal_cash.id,
                     'payment_date':self.date_cash
-
-
                 })
 
                 # 'default_communication': self.cheque_bank.name + "/" + self.cheque_no
-            if rec.state_cheque=='posted' and self.is_transfer==True:
+            if rec.state_cheque == 'posted' and self.is_transfer==True:
 
                 rec.journal_transfer=self.journal_transfer
                 rec.transfer_date=self.transfer_date

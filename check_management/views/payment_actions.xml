@@ -9,21 +9,35 @@
                 <group>
                     <field name="state_cheque2" invisible="1"/>
                     <field name="is_transfer" invisible="1"/>
-<!--                    <field name="is_vendor_payments" invisible="1" />-->
                     <field name="is_pay_cash" invisible="1"/>
-
-                    <field name="journal_under_collection" invisible = "is_pay_cash == True or is_transfer == True or state_cheque2 != 'under_collect'" required ="state_cheque2 == 'under_collect'"/>
-                    <field name="date_under_collection" invisible = "is_pay_cash == True or is_transfer == True or state_cheque2 != 'under_collect'" required ="state_cheque2 == 'under_collect'"/>
-                    <field name="journal_collection" invisible = "is_pay_cash == True or is_transfer == True or state_cheque2 != 'reconciled'" required = "state_cheque2 == 'reconciled'"/>
-                    <field name="date_collection" invisible = "is_pay_cash == True or is_transfer == True or state_cheque2 !='reconciled'" required = "state_cheque2 == 'reconciled'"/>
-                      <field name="journal_transfer" invisible = "is_pay_cash == True or is_transfer == False" required = "is_transfer == True"/>
-                    <field name="transfer_date" invisible = "is_pay_cash == True or is_transfer == False" required = "is_transfer == True"/>
-                    <field name="journal_cash" invisible = "is_pay_cash == False or is_transfer == True" required = "is_pay_cash == True"/>
-                    <field name="date_cash"  invisible = "is_pay_cash == False or is_transfer == True" required = "is_pay_cash == True"/>
+                    <field name="journal_under_collection"
+       invisible="(is_pay_cash == True) or (is_transfer == True) or (state_cheque2 != 'under_collect')"
+       required="state_cheque2 == 'under_collect'"/>
+                    <field name="date_under_collection"
+       invisible="(is_pay_cash == True) or (is_transfer == True) or (state_cheque2 != 'under_collect')"
+       required="state_cheque2 == 'under_collect'"/>
+                    <field name="journal_collection"
+       invisible="(is_pay_cash == True) or (is_transfer == True) or (state_cheque2 != 'reconciled')"
+       required="state_cheque2 == 'reconciled'"/>
+                    <field name="date_collection"
+       invisible="(is_pay_cash == True) or (is_transfer == True) or (state_cheque2 != 'reconciled')"
+       required="state_cheque2 == 'reconciled'"/>
+<field name="journal_transfer"
+       invisible="(is_pay_cash == True) or (is_transfer == False)"
+       required="is_transfer == True"/>
+<field name="transfer_date"
+       invisible="(is_pay_cash == True) or (is_transfer == False)"
+       required="is_transfer == True"/>
+<field name="journal_cash"
+       invisible="(is_pay_cash == False) or (is_transfer == True)"
+       required="is_pay_cash == True"/>
+<field name="date_cash"
+       invisible="(is_pay_cash == False) or (is_transfer == True)"
+       required="is_pay_cash == True"/>
                 </group>
                 <footer>
 
-                    <button name="save_payment_multi" class="oe_highlight" string="save" type="object" />
+                    <button name="save_payment_multi" class="oe_highlight" string="save" type="object"/>
                     or
                     <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
@@ -76,7 +90,6 @@
         <field name="state">code</field>
         <field name="code">action = records.action_transfer_multi_cheque()</field>
     </record>
-
     <record id="model_pay_cash" model="ir.actions.server">
         <field name="name">Pay Cash</field>
         <field name="model_id" ref="account.model_account_payment"/>
@@ -84,16 +97,6 @@
         <field name="binding_view_types">form,list</field>
         <field name="state">code</field>
         <field name="code">action = records.action_pay_cash_multi_cheque()</field>
-    </record>
-
-     <record id="model_pament_check_vendor_payments" model="ir.actions.server">
-        <field name="name">Vendor Payments</field>
-        <field name="model_id" ref="account.model_account_payment"/>
-        <field name="binding_model_id" ref="account.model_account_payment"/>
-        <field name="binding_view_types">form,list</field>
-        <field name="state">code</field>
-        <field name="code">action = records.action_vendor_payments()</field>
-
     </record>
 
 </odoo>

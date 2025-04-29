@@ -12,8 +12,11 @@ class account_voucher(models.Model):
     _inherit = "account.payment"
 
     real_estate_ref= fields.Char('Real Estate Ref.')
-    ownership_line_id= fields.Many2one('loan.line.rs.own','Ownership Installment')
     rental_line_id= fields.Many2one('loan.line.rs.rent','Rental Contract Installment')
+
+    ownership_line_id= fields.Many2one('loan.line.rs.own','Ownership Installment')
+    ownership_contract = fields.Many2one(related='ownership_line_id.loan_id', string='Contract')
+    building_unit = fields.Many2one(related='ownership_contract.building_unit')
 
     # def post(self):
     #     res = super(account_voucher, self).post()

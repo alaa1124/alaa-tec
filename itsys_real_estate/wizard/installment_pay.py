@@ -2,6 +2,7 @@
 from odoo.exceptions import UserError
 from odoo import api, fields, models, _
 
+
 class installment_payment_check(models.TransientModel):
     _name = 'installment.payment.check'
 
@@ -65,7 +66,7 @@ class installment_payment_check(models.TransientModel):
             'account.account_payment_method_manual_out')
         vals= {
             'journal_id': self.journal.id,
-            'payment_type': 'outbound',
+            'payment_type': 'inbound',
             'date': self.payment_date,
             'amount': self.amount,
             'payment_method_id': payment_method.id,

@@ -3,4 +3,5 @@ from . import models
 from . import config
 from . import wizard
 from . import account_payment
+from . import fix
 
