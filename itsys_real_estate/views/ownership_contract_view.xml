@@ -128,6 +128,8 @@
                                                 class='btn btn-primary'/>
                                     </group>
                                 </group>
+                                <button name="print_installments" type="object" string="Print Installments"
+                                        icon="fa-print"/>
                                 <field name="loan_line" readonly="1">
                                     <tree string="Installments" editable="none">
                                         <field name="number"/>
@@ -147,6 +149,7 @@
                                                 groups="itsys_real_estate.group_payments"/>
                                     </tree>
                                 </field>
+
                             </page>
 
                             <page string="Unit Details">
