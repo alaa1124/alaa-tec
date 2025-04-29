@@ -76,8 +76,8 @@
                             <t t-foreach="docs" t-as="doc1">
                                 <t t-set="i" t-value="1"/>
                                 <tr>
-                                    <td class="text-center">
-                                        <span t-field="doc1.building_unit" colspan="8"/>
+                                    <td class="text-center" colspan="8">
+                                        <span t-field="doc1.building_unit" />
                                     </td>
                                 </tr>
 
