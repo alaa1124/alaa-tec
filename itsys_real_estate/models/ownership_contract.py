@@ -17,6 +17,9 @@ class ownership_contract(models.Model):
     _description = "Ownership Contract"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    def print_installments(self):
+        return self.env.ref('itsys_real_estate.unit_installments_report_pdf').report_action(self)
+
     documents = fields.Many2many('ir.attachment', relation='ownership_att_rel')
 
     @api.model
