@@ -1,151 +1,154 @@
 <odoo>
 
-<template id="unit_installments_template">
-    <t t-call="web.html_container">
-        <t t-call="web.external_layout_standard">
-            <div class="page">
-                <!-- CSS Styling for the table -->
-                <style>
-                    .unit-installments-table {
+    <template id="unit_installments_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout_standard">
+                <div class="page">
+                    <!-- CSS Styling for the table -->
+                    <style>
+                        .unit-installments-table {
                         width: 100%;
                         border-collapse: collapse;
                         margin-bottom: 20px;
                         font-size: 14px;
-                    }
+                        }
 
-                    .unit-installments-table th {
+                        .unit-installments-table th {
                         background-color: #f2f2f2;
                         color: #212529;
                         font-weight: bold;
                         padding: 12px 8px;
                         border: 1px solid #dee2e6;
-                    }
+                        }
 
-                    .unit-installments-table td {
+                        .unit-installments-table td {
                         padding: 10px 8px;
                         border: 1px solid #dee2e6;
                         vertical-align: middle;
-                    }
+                        }
 
-                    .unit-installments-table tr:nth-child(even) {
+                        .unit-installments-table tr:nth-child(even) {
                         background-color: #f9f9f9;
-                    }
+                        }
 
-                    .unit-installments-table tr:hover {
+                        .unit-installments-table tr:hover {
                         background-color: #f5f5f5;
-                    }
+                        }
 
-                    .text-center {
+                        .text-center {
                         text-align: center;
-                    }
+                        }
 
-                    .text-right {
+                        .text-right {
                         text-align: right;
-                    }
+                        }
 
-                    .table-header {
+                        .table-header {
                         font-size: 18px;
                         font-weight: bold;
                         margin-bottom: 15px;
-                    }
-                </style>
+                        }
+                    </style>
 
-                <t t-set="company" t-value="docs.env.company"/>
+                    <t t-set="company" t-value="docs.env.company"/>
 
-                <!-- Table Header -->
-                <div class="table-header">Unit Installments Report</div>
-                <br/>
-                <br/>
+                    <!-- Table Header -->
+                    <div class="table-header">Unit Installments Report</div>
+                    <br/>
+                    <br/>
 
 
-                <table class="unit-installments-table">
-                    <thead>
-                        <tr>
-                            <th class="text-center">#</th>
-                            <th>Number</th>
-                            <th>Due Date</th>
-                            <th>Name</th>
-                            <th class="text-right">Payment</th>
-                            <th class="text-right">Paid Amount</th>
-                            <th class="text-right">Due Amount</th>
-                            <th class="text-right">NPV</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t t-set="i" t-value="1"/>
-                        <t t-foreach="docs.loan_line" t-as="doc">
+                    <table class="unit-installments-table">
+                        <thead>
                             <tr>
-                                <td class="text-center">
-                                    <span t-esc="i"/>
-                                </td>
-                                <td>
-                                    <span t-field="doc.number"/>
-                                </td>
-                                <td>
-                                    <span t-field="doc.date"/>
-                                </td>
-                                <td>
-                                    <span t-field="doc.name"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="doc.amount"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="doc.total_paid_amount"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="doc.total_remaining_amount"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="doc.npv"/>
-                                </td>
+                                <th class="text-center">#</th>
+                                <th>Number</th>
+                                <th>Due Date</th>
+                                <th>Name</th>
+                                <th class="text-right">Payment</th>
+                                <th class="text-right">Paid Amount</th>
+                                <th class="text-right">Due Amount</th>
+                                <th class="text-right">NPV</th>
                             </tr>
-                            <t t-set="i" t-value="i + 1"/>
-                        </t>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="docs.loan_line" t-as="doc">
+                                <tr>
+                                    <td class="text-center">
+                                        <span t-esc="i"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.number"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.total_paid_amount"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.total_remaining_amount"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.npv"/>
+                                    </td>
+                                </tr>
+                                <t t-set="i" t-value="i + 1"/>
+                            </t>
+                        </tbody>
+                    </table>
 
-                <!-- Styled Table -->
-                <br/>
-                <div class="table-header">Units</div>
-                <table class="unit-installments-table" style="break-inside: avoid;">
-                    <thead>
-                        <tr>
-                            <th class="text-center">#</th>
-                            <th class="text-left">Unit Name</th>
-                            <th class="text-right">Total Price</th>
-                            <th class="text-right">Total Paid</th>
-                            <th class="text-right">Total Due Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <t t-set="i" t-value="1"/>
-                        <t t-foreach="docs" t-as="doc">
-                            <tr>
-                                <td class="text-center">
-                                    <span t-esc="i"/>
-                                </td>
-                                <td>
-                                    <span t-field="doc.name"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-esc="doc.total_amount"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="doc.paid"/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="doc.balance"/>
-                                </td>
-                            </tr>
-                            <t t-set="i" t-value="i + 1"/>
-                        </t>
-                    </tbody>
-                </table>
-            </div>
+                    <!-- Styled Table -->
+                    <br/>
+
+                    <div style="break-inside: avoid !important;">
+                        <div class="table-header">Units</div>
+                        <table class="unit-installments-table" >
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-left">Unit Name</th>
+                                    <th class="text-right">Total Price</th>
+                                    <th class="text-right">Total Paid</th>
+                                    <th class="text-right">Total Due Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1"/>
+                                <t t-foreach="docs" t-as="doc">
+                                    <tr>
+                                        <td class="text-center">
+                                            <span t-esc="i"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="doc.total_amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="doc.paid"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="doc.balance"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="i" t-value="i + 1"/>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
         </t>
-    </t>
-</template>
+    </template>
 
     <record id="unit_installments_report_pdf" model="ir.actions.report">
         <field name="name">Unit Installments</field>
