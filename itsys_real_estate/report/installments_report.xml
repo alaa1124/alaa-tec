@@ -72,35 +72,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-set="i" t-value="1"/>
-                            <t t-foreach="docs.loan_line" t-as="doc">
+
+                            <t t-foreach="docs" t-as="doc1">
+                                <t t-set="i" t-value="1"/>
                                 <tr>
                                     <td class="text-center">
-                                        <span t-esc="i"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="doc.number"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="doc.date"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="doc.name"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.amount"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.total_paid_amount"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.total_remaining_amount"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.npv"/>
+                                        <span t-field="doc1.building_unit" colspan="8"/>
                                     </td>
                                 </tr>
-                                <t t-set="i" t-value="i + 1"/>
+
+                                <t t-foreach="doc1.loan_line" t-as="doc">
+                                    <tr>
+                                        <td class="text-center">
+                                            <span t-esc="i"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.number"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="doc.amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="doc.total_paid_amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="doc.total_remaining_amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="doc.npv"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="i" t-value="i + 1"/>
+                                </t>
                             </t>
                         </tbody>
                     </table>
@@ -110,7 +119,7 @@
 
                     <div style="page-break-inside: avoid !important;">
                         <div class="table-header">Units</div>
-                        <table class="unit-installments-table" >
+                        <table class="unit-installments-table">
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
