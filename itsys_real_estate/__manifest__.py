@@ -22,7 +22,8 @@
     'price': 500,
     'currency': 'EUR',
     'website': 'https://www.it-syscorp.com',
-    'depends': ['base', 'sale', 'crm', 'stock', 'web', 'website_sale_stock', 'website_sale', 'check_management'],
+    'depends': ['base', 'sale', 'crm', 'stock', 'web', 'website_sale_stock', 'website_sale', 'check_management',
+                'account'],
     'data': [
         'security/real_estate_security.xml',
         'security/ir.model.access.csv',
@@ -69,6 +70,7 @@
         'report/ownership_contract_bi_report.xml',
         'report/rental_contract_bi_report.xml',
         'report/installments_report.xml',
+        'report/analytic_report.xml',
         'data/real_estate_demo.xml',
         'data/mail_template_data.xml',
     ],

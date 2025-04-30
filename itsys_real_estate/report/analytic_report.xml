@@ -1,0 +1,170 @@
+<odoo>
+
+    <template id="analytic_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout_standard">
+                <div class="page">
+                    <!-- CSS Styling for the table -->
+                    <style>
+                        .unit-installments-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                        font-size: 14px;
+                        }
+
+                        .unit-installments-table th {
+                        background-color: #f2f2f2;
+                        color: #212529;
+                        font-weight: bold;
+                        padding: 12px 8px;
+                        border: 1px solid #dee2e6;
+                        }
+
+                        .unit-installments-table td {
+                        padding: 10px 8px;
+                        border: 1px solid #dee2e6;
+                        vertical-align: middle;
+                        }
+
+                        .unit-installments-table tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                        }
+
+                        .unit-installments-table tr:hover {
+                        background-color: #f5f5f5;
+                        }
+
+                        .text-center {
+                        text-align: center;
+                        }
+
+                        .text-right {
+                        text-align: right;
+                        }
+
+                        .table-header {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 15px;
+                        }
+                    </style>
+
+                    <t t-set="company" t-value="docs.env.company"/>
+
+                    <!-- Table Header -->
+                    <div class="table-header">Projects Analytic Report</div>
+                    <br/>
+                    <br/>
+
+
+                    <table class="unit-installments-table">
+
+                        <tbody>
+
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>التاريخ</th>
+                                <th class="text-right">خزن مشاريع</th>
+                                <th class="text-right">مرحلة الإنشاء</th>
+                                <th class="text-right">Main Plan</th>
+                                <th class="text-right">Sub-plan</th>
+                                <th class="text-right">Amount</th>
+                            </tr>
+
+                            <t t-foreach="docs" t-as="doc">
+                                <t t-set="i" t-value="1"/>
+                                <tr>
+                                    <td class="text-center">
+                                        <span t-esc="i"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.x_plan2_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="doc.x_plan7_id"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.x_studio_main_plan"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.x_studio_sub_plan"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount"/>
+                                    </td>
+                                </tr>
+                                <t t-set="i" t-value="i + 1"/>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Styled Table -->
+                    <br/>
+
+                    <div style="page-break-inside: avoid !important;">
+                        <div class="table-header">Totals</div>
+                        <table class="unit-installments-table">
+                            <thead>
+                                <tr>
+                                    <td class="text-left">Plan</td>
+                                    <td class="text-right">Total Amount</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs.read_group(domain=[], fields=['x_studio_main_plan', 'amount:sum'], groupby=['x_studio_main_plan'])"
+                                   t-as="m_plan">
+
+                                    <tr>
+                                        <th>
+                                            <span t-esc="( m_plan.get('x_studio_main_plan') or 'None')"/>
+                                        </th>
+                                        <th class="text-right">
+                                            <span t-esc="m_plan.get('amount')"/>
+                                        </th>
+                                    </tr>
+
+                                    <t t-foreach="docs.read_group(domain=[('x_studio_main_plan','=',m_plan.get('x_studio_main_plan'))], fields=['x_studio_sub_plan', 'amount:sum'], groupby=['x_studio_sub_plan'])"
+                                       t-as="s_plan">
+
+                                        <tr>
+                                            <td>
+                                                <span t-esc="'\t>> ' +( m_plan.get('x_studio_sub_plan') or 'None')"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="s_plan.get('amount')"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="sum(docs.mapped('amount') + [0])"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="analytic_report_report" model="ir.actions.report">
+        <field name="name">Projects Analytic PDF</field>
+        <field name="model">account.analytic.line</field>
+        <field name="binding_model_id" ref="account.model_account_analytic_line"/>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">itsys_real_estate.analytic_report_template</field>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Projects Analytic Report'</field>
+        <field name="binding_view_types">list</field>
+    </record>
+
+
+</odoo>
