@@ -118,21 +118,23 @@
                                 <t t-foreach="docs.read_group(domain=[], fields=['x_studio_main_plan_1', 'amount:sum'], groupby=['x_studio_main_plan_1'])"
                                    t-as="m_plan">
 
+                                    <t t-set="m" t-value="m_plan.get('x_studio_main_plan_1')"/>
+
                                     <tr>
                                         <th>
-                                            <span t-esc="( m_plan.get('x_studio_main_plan_1') or 'None')"/>
+                                            <span t-esc="m or 'None'"/>
                                         </th>
                                         <th class="text-right">
                                             <span t-esc="m_plan.get('amount')"/>
                                         </th>
                                     </tr>
 
-                                    <t t-foreach="docs.read_group(domain=[('x_studio_main_plan_1','=',m_plan.get('x_studio_main_plan_1'))], fields=['x_studio_sub_plan_1', 'amount:sum'], groupby=['x_studio_sub_plan_1'])"
+                                    <t t-foreach="docs.read_group(domain=[('x_studio_main_plan_1','=',m)], fields=['x_studio_sub_plan_1', 'amount:sum'], groupby=['x_studio_sub_plan_1'])"
                                        t-as="s_plan">
 
                                         <tr>
                                             <td>
-                                                <span t-esc="'\t>> ' +( m_plan.get('x_studio_sub_plan_1') or 'None')"/>
+                                                <span t-esc="'\t >> ' +( s_plan.get('x_studio_sub_plan_1') or 'None')"/>
                                             </td>
                                             <td class="text-right">
                                                 <span t-esc="s_plan.get('amount')"/>
