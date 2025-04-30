@@ -115,7 +115,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="docs.read_group(domain=[], fields=['x_studio_main_plan_1', 'amount:sum'], groupby=['x_studio_main_plan_1'])"
+                                <t t-foreach="docs.read_group(domain=[('id', 'in', docs.ids)], fields=['x_studio_main_plan_1', 'amount:sum'], groupby=['x_studio_main_plan_1'])"
                                    t-as="m_plan">
 
                                     <t t-set="m" t-value="m_plan.get('x_studio_main_plan_1')"/>
@@ -129,7 +129,7 @@
                                         </th>
                                     </tr>
 
-                                    <t t-foreach="docs.read_group(domain=[('x_studio_main_plan_1','=',m)], fields=['x_studio_sub_plan_1', 'amount:sum'], groupby=['x_studio_sub_plan_1'])"
+                                    <t t-foreach="docs.read_group(domain=[('id', 'in', docs.ids), ('x_studio_main_plan_1','=',m)], fields=['x_studio_sub_plan_1', 'amount:sum'], groupby=['x_studio_sub_plan_1'])"
                                        t-as="s_plan">
 
                                         <tr>
