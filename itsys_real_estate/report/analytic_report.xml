@@ -141,14 +141,13 @@
                                             </td>
                                         </tr>
                                     </t>
-                                    <tr>
-                                        <td>
-                                        </td>
-                                        <td class="text-right">
-                                            <span t-esc="sum(docs.mapped('amount') + [0])"/>
-                                        </td>
-                                    </tr>
                                 </t>
+                                <tr>
+                                    <td class="text-right">Total</td>
+                                    <td class="text-right">
+                                        <span t-esc="sum(docs.mapped('amount') + [0])"/>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
