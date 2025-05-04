@@ -58,49 +58,46 @@
                     <br/>
 
 
-                    <table class="unit-installments-table">
+                    <!--                    <table class="unit-installments-table">-->
 
-                        <tbody>
+                    <!--                        <tbody>-->
 
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th>التاريخ</th>
-                                <th class="text-right">خزن مشاريع</th>
-                                <th class="text-right">مرحلة الإنشاء</th>
-                                <th class="text-right">Main Plan</th>
-                                <th class="text-right">Sub-plan</th>
-                                <th class="text-right">Amount</th>
-                            </tr>
+                    <!--                            <tr>-->
+                    <!--                                <th class="text-center">#</th>-->
+                    <!--                                <th>Date</th>-->
+                    <!--                                <th>Description</th>-->
+                    <!--                                <th class="text-right">Amount</th>-->
+                    <!--                            </tr>-->
 
-                            <t t-foreach="docs" t-as="doc">
-                                <t t-set="i" t-value="1"/>
-                                <tr>
-                                    <td class="text-center">
-                                        <span t-esc="i"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="doc.date"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="doc.x_plan2_id"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="doc.x_plan7_id"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.x_studio_main_plan_1"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.x_studio_sub_plan_1"/>
-                                    </td>
-                                    <td class="text-right">
-                                        <span t-field="doc.amount"/>
-                                    </td>
-                                </tr>
-                                <t t-set="i" t-value="i + 1"/>
-                            </t>
-                        </tbody>
-                    </table>
+                    <!--                            <t t-foreach="docs" t-as="doc">-->
+                    <!--                                <t t-set="i" t-value="1"/>-->
+                    <!--                                <tr>-->
+                    <!--                                    <td class="text-center">-->
+                    <!--                                        <span t-esc="i"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td>-->
+                    <!--                                        <span t-field="doc.date"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td>-->
+                    <!--                                        <span t-field="doc.x_plan2_id"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td>-->
+                    <!--                                        <span t-field="doc.x_plan7_id"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td class="text-right">-->
+                    <!--                                        <span t-field="doc.x_studio_main_plan_1"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td class="text-right">-->
+                    <!--                                        <span t-field="doc.x_studio_sub_plan_1"/>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td class="text-right">-->
+                    <!--                                        <span t-field="doc.amount"/>-->
+                    <!--                                    </td>-->
+                    <!--                                </tr>-->
+                    <!--                                <t t-set="i" t-value="i + 1"/>-->
+                    <!--                            </t>-->
+                    <!--                        </tbody>-->
+                    <!--                    </table>-->
 
                     <!-- Styled Table -->
                     <br/>
@@ -110,7 +107,8 @@
                         <table class="unit-installments-table">
                             <thead>
                                 <tr>
-                                    <td class="text-left">Plan</td>
+                                    <td class="text-left">Name</td>
+                                    <td class="text-left">Date</td>
                                     <td class="text-right">Total Amount</td>
                                 </tr>
                             </thead>
@@ -124,6 +122,7 @@
                                         <th>
                                             <span t-esc="m or 'None'"/>
                                         </th>
+                                        <th/>
                                         <th class="text-right">
                                             <span t-esc="m_plan.get('amount')"/>
                                         </th>
@@ -132,22 +131,64 @@
                                     <t t-foreach="docs.read_group(domain=[('id', 'in', docs.ids), ('x_studio_main_plan_1','=',m)], fields=['x_studio_sub_plan_1', 'amount:sum'], groupby=['x_studio_sub_plan_1'])"
                                        t-as="s_plan">
 
+                                        <t t-set="s" t-value="s_plan.get('x_studio_sub_plan_1')"/>
+
+
                                         <tr>
                                             <td>
-                                                <span t-esc="'\t >> ' +( s_plan.get('x_studio_sub_plan_1') or 'None')"/>
+                                                <span style="color: white" t-esc="' - '"/>
+                                                <span t-esc="s or 'None'"/>
                                             </td>
+                                            <td/>
                                             <td class="text-right">
                                                 <span t-esc="s_plan.get('amount')"/>
                                             </td>
                                         </tr>
                                     </t>
+                                    <t t-foreach="docs.read_group(domain=[('id', 'in', docs.ids), ('x_studio_main_plan_1','=',m), ('x_studio_sub_plan_1','=',s)], fields=['account_id', 'amount:sum'], groupby=['account_id'])"
+                                       t-as="account">
+                                        <t t-set="ac" t-value="account.get('account_id')"/>
+
+                                        <tr>
+                                            <td>
+                                                <span style="color: white" t-esc="' - - '"/>
+                                                <span t-esc="ac or 'None'"/>
+                                            </td>
+                                            <td/>
+                                            <td class="text-right">
+                                                <span t-esc="account.get('amount')"/>
+                                            </td>
+                                        </tr>
+
+                                        <t t-foreach="docs.read_group(domain=[('id', 'in', docs.ids), ('x_studio_main_plan_1','=',m), ('x_studio_sub_plan_1','=',s), ('account_id','=', ac)], fields=['account_id', 'amount:sum'], groupby=['partner_id'])"
+                                           t-as="partner">
+                                            <t t-set="p" t-value="account.get('partner_id')"/>
+                                            <tr>
+                                                <td>
+                                                    <span style="color: white" t-esc="' - - - '"/>
+                                                    <span t-esc="ac or 'None'"/>
+                                                </td>
+                                                <td/>
+                                                <td class="text-right">
+                                                    <span t-esc="account.get('amount')"/>
+                                                </td>
+                                            </tr>
+                                            <t t-foreach="docs.filtered_domain([('x_studio_main_plan_1','=',m), ('x_studio_sub_plan_1','=',s), ('account_id','=', ac)])" t-as="doc">
+                                                <tr>
+                                                    <td class="text-right">
+                                                        <span t-field="doc.name"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-field="doc.date"/>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span t-field="doc.amount"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </t>
                                 </t>
-                                <tr>
-                                    <td class="text-right">Total</td>
-                                    <td class="text-right">
-                                        <span t-esc="sum(docs.mapped('amount') + [0])"/>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
