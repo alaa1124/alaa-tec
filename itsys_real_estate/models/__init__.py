@@ -36,6 +36,7 @@ from . import unit_release
 from . import unit_reservation
 from . import configuration
 from . import account_voucher
+from . import account_analytic
 from . import countries
 from . import due_payments_notification
 from . import commission
