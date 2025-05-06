@@ -90,6 +90,13 @@ class installment_payment_check(models.TransientModel):
             installment.write({'total_paid_amount': installment.total_paid_amount+self.amount})
 
         voucher_id = voucher_obj.create(vals)
+
+        for line in voucher_id.move_id.line_ids:
+            if line.debit > 0:
+                line.analytic_distribution = self.analytic_distribution
+            else:
+                line.analytic_distribution = None
+
         voucher_id.action_post()
         return {
             'name': _('Voucher'),

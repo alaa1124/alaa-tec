@@ -224,7 +224,6 @@ class ownership_contract(models.Model):
                 'date': start_date,
                 'name': 'Advance Payment',
                 'npv': adv_pay,
-                'analytic_distribution': self.analytic_distribution,
             }),
         )
         if self.handover_seq:
@@ -275,7 +274,6 @@ class ownership_contract(models.Model):
                     'date': idate,
                     'name': name,
                     'npv': inpv,
-                    'analytic_distribution': self.analytic_distribution,
                 }),
             )
 
@@ -608,7 +606,6 @@ class ownership_contract(models.Model):
 
 class loan_line_rs_own(models.Model):
     _name = 'loan.line.rs.own'
-    _inherit = ['analytic.mixin']
     _order = 'date'
 
     def view_payments(self):
