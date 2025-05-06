@@ -40,6 +40,8 @@ class PDFReportWizard(models.TransientModel):
         record_ids = self.env.context.get('active_ids', [])
         record_model = self.env.context.get('active_model')
         pdf_report_id = self.env['report.pdf'].browse(self._context.get('pdf'))
+        pdf_report_header = self.env[record_model].browse(record_ids).mapped(pdf_report_id.header_field)
+
         for rec in pdf_report_id:
             domain = []
             if rec.date_field_id and rec.start_date:
@@ -178,7 +180,8 @@ class PDFReportWizard(models.TransientModel):
             ordered_field_heading = OrderedDict(
                 list(field_heading.items()))
             data = {
-                'report_name': rec.name,
+                # 'report_name': rec.name ,
+                'report_name': ' - '.join(pdf_report_header),
                 'model_name': rec.model_id.model,
                 'fields_name': rec.fields_ids.report_field_id.mapped('name'),
                 'field_label': ordered_field_heading,

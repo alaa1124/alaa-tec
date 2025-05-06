@@ -30,6 +30,8 @@ class ReportPDF(models.Model):
     _description = 'PDF Reports'
     _order = 'id DESC'
 
+    header_field = fields.Char()
+
     name = fields.Char(string='Name', help="Name of the report")
     model_id = fields.Many2one('ir.model', string='Model',
                                required=True,
@@ -280,7 +282,7 @@ class ReportPDF(models.Model):
                 'type': 'ir.actions.act_window',
                 'res_model': 'pdf.report',
                 'binding_model_id': binding_model_id,
-                'context': "{'pdf' : %d}" % rec.id,
+                'context': "{'pdf' : %d, 'header': rec.name}" % rec.id,
                 'view_mode': 'form,tree',
                 'view_id': res_id,
                 'target': 'new',
