@@ -131,7 +131,7 @@
                                 </group>
                                 <button name="print_installments" type="object" string="Print Installments"
                                         icon="fa-print"/>
-                                <field name="loan_line" readonly="0">
+                                <field name="loan_line" readonly="state != 'draft'">
                                     <tree string="Installments" editable="bottom" delete="0">
                                         <control>
                                             <create string=" "/>
