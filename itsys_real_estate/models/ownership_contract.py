@@ -114,7 +114,7 @@ class ownership_contract(models.Model):
             if not rec.loan_line:
                 continue
             if rec.total_amount != rec.pricing:
-                raise ValidationError(f'Total Amount must be {rec.pricing} the same as Home Pricing')
+                raise ValidationError(f'Total Amount must be {rec.pricing} the same as Home Pricing. Difference is {rec.pricing - rec.total_amount}')
 
     def action_draft(self):
         self.write({'state': 'draft'})
