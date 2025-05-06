@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 class ownership_contract(models.Model):
     _name = "ownership.contract"
     _description = "Ownership Contract"
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'analytic.mixin']
 
     def print_installments(self):
         return self.env.ref('itsys_real_estate.unit_installments_report_pdf').report_action(self)

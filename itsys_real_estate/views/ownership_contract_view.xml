@@ -108,6 +108,7 @@
                                 <!-- <field name="reservation_id" /> -->
                                 <field name="date" readonly="state !='draft'"/>
                                 <field name="origin" readonly="state !='draft'"/>
+                                <field name="analytic_distribution" widget="analytic_distribution"/>
                                 <field name="active" invisible="1"/>
                             </group>
 
