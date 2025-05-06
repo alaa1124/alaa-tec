@@ -145,7 +145,7 @@
                                         <field name="total_remaining_amount"/>
                                         <field name="npv"/>
                                         <button name="%(itsys_real_estate.action_installment_payment_check)d"
-                                                type="action" icon="fa-money" invisible="parent.state != 'confirmed'"
+                                                type="action" icon="fa-money" invisible="parent.state != 'confirmed'" context="{'default_analytic_distribution': analytic_distribution}"
                                                 groups="itsys_real_estate.group_payments"/>
                                         <field name="payment_count" invisible="1"/>
                                         <button name="view_payments" type="object" icon="fa-folder"

@@ -5,6 +5,7 @@ from odoo import api, fields, models, _
 
 class installment_payment_check(models.TransientModel):
     _name = 'installment.payment.check'
+    _inherit = ['analytic.mixin']
 
     payment_date = fields.Date(String="Payment Date", required=True,
         default=fields.Date.context_today)

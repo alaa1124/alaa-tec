@@ -579,7 +579,8 @@ class ownership_contract(models.Model):
                     'account_id': rec.partner_id.property_account_receivable_id.id,
                     'date_maturity': line.date,
                     'debit': round(line.amount, 2),
-                    'credit': 0.0
+                    'credit': 0.0,
+                    'analytic_distribution': self.analytic_distribution
                 }))
 
             amls.append((0, 0, {
@@ -587,7 +588,8 @@ class ownership_contract(models.Model):
                 'partner_id': rec.partner_id.id,
                 'account_id': rec.account_income.id,
                 'debit': 0.0,
-                'credit': round(sum(a[2]['debit'] for a in amls), 2)
+                'credit': round(sum(a[2]['debit'] for a in amls), 2),
+                'analytic_distribution': self.analytic_distribution
             }))
 
             am = account_move_obj.create({
