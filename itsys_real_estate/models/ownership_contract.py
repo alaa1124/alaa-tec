@@ -111,6 +111,8 @@ class ownership_contract(models.Model):
     @api.constrains('total_amount')
     def check_total_amount(self):
         for rec in self:
+            if not rec.loan_line:
+                continue
             if rec.total_amount != rec.pricing:
                 raise ValidationError(f'Total Amount must be {rec.pricing} the same as Home Pricing')
 
