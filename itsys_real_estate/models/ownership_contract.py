@@ -4,7 +4,7 @@ import calendar
 from odoo import api, fields, models
 from odoo.tools.translate import _
 from datetime import datetime, date, timedelta as td
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from dateutil.relativedelta import relativedelta as rd
 
 import logging
@@ -107,6 +107,12 @@ class ownership_contract(models.Model):
     inst_count = fields.Integer(string='Installments count', default=40,
                                 help="Total number of intallments \n ex. 40 means every 3 months for the 120 months plan")
     active = fields.Boolean('Active', default=True, tracking=True)
+
+    @api.constrains('total_amount')
+    def check_total_amount(self):
+        for rec in self:
+            if rec.total_amount != rec.pricing:
+                raise ValidationError(f'Total Amount must be {rec.pricing} the same as Home Pricing')
 
     def action_draft(self):
         self.write({'state': 'draft'})
