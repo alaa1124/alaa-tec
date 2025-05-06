@@ -134,12 +134,13 @@
                                 <field name="loan_line" readonly="0">
                                     <tree string="Installments" editable="bottom" delete="0">
                                         <control>
-                                                <create string=" "/>
+                                            <create string=" "/>
                                         </control>
                                         <field name="number"/>
                                         <field name="date"/>
                                         <field name="name"/>
                                         <field name="amount"/>
+                                        <field name="analytic_distribution" widget="analytic_distribution"/>
                                         <field name="total_paid_amount" readonly="1"/>
                                         <field name="total_remaining_amount"/>
                                         <field name="npv"/>

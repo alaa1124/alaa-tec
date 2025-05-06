@@ -224,6 +224,7 @@ class ownership_contract(models.Model):
                 'date': start_date,
                 'name': 'Advance Payment',
                 'npv': adv_pay,
+                'analytic_distribution': self.analytic_distribution,
             }),
         )
         if self.handover_seq:
@@ -231,7 +232,7 @@ class ownership_contract(models.Model):
         else:
             irng = range(1, int(inst_count) + 1)
 
-        print('irng', irng)
+        # print('irng', irng)
         for ili in irng:
             iseq = ili
             mns = iseq * inst_months
@@ -263,10 +264,10 @@ class ownership_contract(models.Model):
                 mns = iseq * inst_months
                 name = f'Inst # {str(iseq)} / {mns} months'
 
-            print('npv', npv)
-            print('amount', amount)
+            # print('npv', npv)
+            # print('amount', amount)
             inpv = amount / (1 + (npv / 12)) ** mns
-            print('name', self.name)
+            # print('name', self.name)
             inst_lines.append(
                 (0, 0, {
                     'number': (self.name + ' / ' + str(iseq)),
@@ -274,6 +275,7 @@ class ownership_contract(models.Model):
                     'date': idate,
                     'name': name,
                     'npv': inpv,
+                    'analytic_distribution': self.analytic_distribution,
                 }),
             )
 
@@ -604,6 +606,7 @@ class ownership_contract(models.Model):
 
 class loan_line_rs_own(models.Model):
     _name = 'loan.line.rs.own'
+    _inherit = ['analytic.mixin']
     _order = 'date'
 
     def view_payments(self):
