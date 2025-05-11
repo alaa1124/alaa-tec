@@ -282,7 +282,7 @@ class ReportPDF(models.Model):
                 'type': 'ir.actions.act_window',
                 'res_model': 'pdf.report',
                 'binding_model_id': binding_model_id,
-                'context': "{'pdf' : %d, 'header': %s}" % rec.id % rec.name,
+                'context': "{'pdf' : %d, 'header': %s}" % (rec.id, rec.name),
                 'view_mode': 'form,tree',
                 'view_id': res_id,
                 'target': 'new',
