@@ -92,7 +92,7 @@ class installment_payment_check(models.TransientModel):
         voucher_id = voucher_obj.create(vals)
 
         for line in voucher_id.move_id.line_ids:
-            if line.debit > 0:
+            if line.credit > 0:
                 line.analytic_distribution = self.analytic_distribution
             else:
                 line.analytic_distribution = None
