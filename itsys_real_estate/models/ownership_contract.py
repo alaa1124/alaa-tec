@@ -694,7 +694,7 @@ class AccountMoveLine(models.Model):
 
     building_unit = fields.Many2one(related='ownership_id.building_unit', store=True, domain="[('is_property','=',True)]")
 
-    unit_id = fields.Many2one(
-        'product.template', 'Unit RS', related="move_id.ownership_id.building_unit",
-        ondelete='cascade', readonly=True, store=True,
-    )
+    # unit_id = fields.Many2one(
+    #     'product.template', 'Unit RS', related="move_id.ownership_id.building_unit",
+    #     ondelete='cascade', readonly=True, store=True,
+    # )
