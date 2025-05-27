@@ -682,7 +682,9 @@ class AccountMove(models.Model):
     @api.constrains('building_unit')
     def onchange_building_unit(self):
         for rec in self:
-            rec.line_ids.write({'building_unit': rec.building_unit.id if rec.building_unit else None})
+            for line in rec.line_ids:
+                if not line.ownership_id:
+                    line.write({'building_unit': rec.building_unit.id if rec.building_unit else None})
 
 
 class AccountMoveLine(models.Model):
