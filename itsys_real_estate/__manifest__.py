@@ -36,6 +36,7 @@
         'wizard/rental_contract_renewal.xml',
         'wizard/realestate_refund.xml',
         'views/building_view.xml',
+        'views/account.xml',
         'views/real_estate_payment_view.xml',
         'views/cities.xml',
         'views/countries.xml',

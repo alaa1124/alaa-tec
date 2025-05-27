@@ -596,6 +596,7 @@ class ownership_contract(models.Model):
                 'journal_id': journal.id,
                 'ownership_id': rec.id,
                 'line_ids': amls,
+                'building_unit': rec.building_unit.id
             })
 
             am.action_post()
