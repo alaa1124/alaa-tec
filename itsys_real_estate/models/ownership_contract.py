@@ -114,7 +114,8 @@ class ownership_contract(models.Model):
             if not rec.loan_line:
                 continue
             if int(rec.total_amount) != int(rec.pricing):
-                raise ValidationError(f'Total Amount must be {rec.pricing} the same as Home Pricing. Difference is {rec.pricing - rec.total_amount}')
+                raise ValidationError(
+                    f'Total Amount must be {rec.pricing} the same as Home Pricing. Difference is {rec.pricing - rec.total_amount}')
 
     def action_draft(self):
         self.write({'state': 'draft'})
@@ -675,6 +676,12 @@ class loan_line_rs_own(models.Model):
 class AccountMove(models.Model):
     _inherit = 'account.move'
     ownership_id = fields.Many2one('ownership.contract', 'Unit Contract', ondelete='cascade', readonly=True)
+    building_unit = fields.Many2one('product.template')
+
+    @api.constrains('building_unit')
+    def onchange_building_unit(self):
+        for rec in self:
+            rec.line_ids.write({'building_unit': rec.building_unit.id if rec.building_unit else None})
 
 
 class AccountMoveLine(models.Model):
@@ -683,6 +690,8 @@ class AccountMoveLine(models.Model):
         'ownership.contract', 'Unit Contract', related="move_id.ownership_id",
         ondelete='cascade', readonly=True, store=True,
     )
+
+    building_unit = fields.Many2one(related='ownership_id.building_unit', store=True)
 
     unit_id = fields.Many2one(
         'product.template', 'Unit RS', related="move_id.ownership_id.building_unit",
