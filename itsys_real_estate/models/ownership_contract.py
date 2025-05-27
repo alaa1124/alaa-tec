@@ -677,7 +677,7 @@ class loan_line_rs_own(models.Model):
 class AccountMove(models.Model):
     _inherit = 'account.move'
     ownership_id = fields.Many2one('ownership.contract', 'Unit Contract', ondelete='cascade', readonly=True)
-    building_unit = fields.Many2one('product.template')
+    building_unit = fields.Many2one('product.template', domain="[('is_property','=',True)]")
 
     @api.constrains('building_unit')
     def onchange_building_unit(self):
@@ -692,7 +692,7 @@ class AccountMoveLine(models.Model):
         ondelete='cascade', readonly=True, store=True,
     )
 
-    building_unit = fields.Many2one(related='ownership_id.building_unit', store=True)
+    building_unit = fields.Many2one(related='ownership_id.building_unit', store=True, domain="[('is_property','=',True)]")
 
     unit_id = fields.Many2one(
         'product.template', 'Unit RS', related="move_id.ownership_id.building_unit",
