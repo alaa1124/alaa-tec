@@ -678,11 +678,11 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
     ownership_id = fields.Many2one('ownership.contract', 'Unit Contract', ondelete='cascade', readonly=True)
     building_unit = fields.Many2one('product.template', domain="[('is_property','=',True)]")
-    #
-    # @api.constrains('building_unit')
-    # def onchange_building_unit(self):
-    #     for rec in self:
-    #         rec.line_ids.write({'building_unit': rec.building_unit.id if rec.building_unit else None})
+
+    @api.constrains('building_unit')
+    def onchange_building_unit(self):
+        for rec in self:
+            rec.line_ids.write({'building_unit': rec.building_unit.id if rec.building_unit else None})
 
 
 class AccountMoveLine(models.Model):
