@@ -1,0 +1,218 @@
+<odoo>
+    <record id="paperformat_appointmentReport" model="report.paperformat">
+        <field name="name">Paperformat Engineer Template</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <template id="layout_engineer_template">
+        <div class="header">
+
+        </div>
+        <div class="article" style="padding-top:25px;">
+            <t t-raw="0"/>
+        </div>
+        <div class="footer">
+
+        </div>
+
+    </template>
+
+    <template id="engineer_temp_report">
+        <t t-call="web.html_container">
+            <t t-call="engineer_techincal.layout_engineer_template">
+                <style>
+                    .container{
+                    padding-bottom:25px;
+                    }
+                    .container > div {
+                    display: table-cell;
+                    padding: 0 5px ;
+                    border: 0.2px;
+                    text-align: right;
+                    border:solid
+                    }
+                    table {
+                    border-collapse: collapse;
+                    width: 100%;
+
+                    }
+                    .reportBody{
+                    margin-bottom:25px;
+                    border: 1px solid black !important;
+                    }
+                    .reportBody th,td{
+                    border:1px solid black;
+                    padding: 10px ;
+                    text-align: center;
+                    }
+
+                    .reportHead{
+                    margin-bottom: 4rem;
+                    border: none;
+                    }
+                    .reportHead,
+                    .reportHead * {
+                    border: none !important;
+                    border-width: 0 !important;
+                    }
+
+                </style>
+
+                <div class="reportPage" style="margin:25px">
+                    <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    مكتب البيت المعمارى للإستشارات
+                                </th>
+                                <th>مشروع
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].project_id.name"/>
+                                    </t>
+                                </th>
+                                <th>إسم المقاول:
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].contract_id.name"/>
+                                    </t>
+
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+
+
+                    <table style=" direction: rtl;" class="reportBody">
+                        <thead>
+
+                            <tr>
+                                <th>رقم البند</th>
+                                <th>بنود الأعمال</th>
+                                <th>الوحدة</th>
+                                <th>الكمية السابقة</th>
+                                <th>الكمية الحالية</th>
+                                <th>الكمية الإجمالية</th>
+                                <th>الفئة بالجنيه</th>
+                                <th>قيمة إجمالي للأعمال</th>
+                                <th>قيمة السابق صرفه</th>
+                                <th>المؤجل صرفه</th>
+                                <th>قيمة المستحق صرفه</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="total_amount_value" t-value="0"/>
+                            <t t-set="total_prev_amount_paid" t-value="0"/>
+                            <t t-set="total_deferred" t-value="0"/>
+                            <t t-set="total_deserved" t-value="0"/>
+                            <t t-set="order_count" t-value="0"/>
+
+
+                            <t t-foreach="docs" t-as="o">
+                                <t t-foreach="o.line_ids" t-as="line">
+
+                                    <t t-set="order_count" t-value="(order_count or 0)+ 1"/>
+                                    <t t-set="total_amount_value"
+                                       t-value="(total_amount_value or 0) + (line.amount or 0)"/>
+                                    <t t-set="total_prev_amount_paid"
+                                       t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
+                                    <t t-set="total_deferred"
+                                       t-value="(total_deferred or 0)+ (line.differance or 0)"/>
+                                    <t t-set="total_deserved"
+                                       t-value="(total_deserved or 0) + (line.amount or 0)"/>  <!--todo-->
+
+                                    <tr>
+
+                                        <td>
+                                            <t t-esc="order_count"/>
+                                        </td> <!--   sequence 1,2,3,.... -->
+
+                                        <td>
+                                            <t t-out="line.name"/>
+                                        </td>       <!--    رقم البند     -->
+                                        <td>
+                                            <t t-out="line.item.name"/>
+                                        </td>     <!--   بنود الأعمال -->
+
+                                        <td>
+                                            <t t-out="line.uom_id.name "/>
+                                        </td>    <!--   الوحدة -->
+
+                                        <td>
+                                            <t t-out="line.previous_quanity "/>
+                                        </td>   <!--   الكمية السابقة -->
+
+                                        <td>
+                                            <t t-out="line.qty"/>
+                                        </td>   <!--   الكمية الحالية -->
+
+                                        <td>
+                                            <t t-out="line.total_quanity"/>
+                                        </td>  <!-- الكمية الإجمالية -->
+
+                                        <td>
+                                            <t t-out="line.price_unit "/>
+                                        </td>    <!--  الفئة بالجنيه -->
+
+                                        <td>
+                                            <t t-out="line.amount"/>
+                                        </td> <!--  قيمة اجمالى الأعمال -->
+
+                                        <td>
+                                            <t t-out="line.previous_amount"/>
+                                        </td>  <!-- قيمة  السابق صرفه -->
+
+                                        <td>
+                                            <t t-out="line.differance"/>
+                                        </td>      <!-- قيمة المستحق صرفه -->
+
+
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td colspan="7">
+                                    <strong>إجمالى الأعمال</strong>
+                                </td>
+                                <td>
+                                    <t t-esc="total_amount_value"/>
+                                </td>
+                                <td>
+                                    <t t-esc="total_prev_amount_paid "/>
+                                </td>
+                                <td>
+                                    <t t-esc="total_deferred "/>
+                                </td>
+                                <td>
+                                    <t t-esc="total_deserved"/>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+
+        </t>
+
+    </template>
+
+    <record id="engineer_temp_report_action" model="ir.actions.report">
+        <field name="name">Engineer Template Report</field>
+        <field name="model">project.engineer.techincal</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_project_engineer_techincal"/>
+        <field name="binding_type">report</field>
+        <field name="report_name">engineer_techincal.engineer_temp_report</field>
+
+    </record>
+
+</odoo>

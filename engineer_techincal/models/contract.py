@@ -3,6 +3,18 @@ from odoo import fields, models, api,_
 from odoo.exceptions import UserError, ValidationError
 
 
+class fix(models.Model):
+    _name = 'account.bank.reconciliation.report.handler'
+
+
+class fix2(models.Model):
+    _name = 'starshipit.shipping.wizard'
+
+
+class fix3(models.Model):
+    _name = 'report.stock.label_lot_template_view'
+
+
 class Contract(models.Model):
     _inherit = 'project.contract'
     count_template = fields.Integer(compute='get_eng_template_id')
