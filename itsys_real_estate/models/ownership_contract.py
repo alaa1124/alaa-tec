@@ -325,7 +325,10 @@ class ownership_contract(models.Model):
     def _entry_count(self):
         move_obj = self.env['account.move']
         move_ids = move_obj.search([('ownership_id', 'in', self.ids)])
-        checks = self.env['account.payment'].search([('ownership_line_id', 'in', self.loan_line.ids)])
+        checks = self.env['account.payment'].search([
+            ('ownership_line_id', 'in', self.loan_line.ids),
+            ('is_cheque', '=', True)
+        ])
         self.entry_count = len(move_ids)
         self.check_count = len(checks)
 
