@@ -113,6 +113,7 @@ class ownership_contract(models.Model):
         for rec in self:
             if not rec.loan_line:
                 continue
+            print(rec.total_amount, rec.pricing)
             if int(rec.total_amount) != int(rec.pricing):
                 raise ValidationError(
                     f'Total Amount must be {rec.pricing} the same as Home Pricing. Difference is {rec.pricing - rec.total_amount}')
@@ -174,8 +175,11 @@ class ownership_contract(models.Model):
         self.loan_line = None
         self._cr.commit()
         loan_lines = self.compute_installments()
+
         total_npv = sum(l[2]['npv'] for l in loan_lines)
         npv = (100 * total_npv) / self.pricing
+        print(loan_lines)
+        # print(loan_lines.mapped('amount'))
         if npv < 10:
             raise UserError(f''' {npv}
             The Plan is invalid, Try to adjust it using below points:\n
@@ -204,10 +208,11 @@ class ownership_contract(models.Model):
         # g1_inst_amount = (rem_inst_amount*0.60) / round(inst_count/2)
         # g2_inst_amount = (rem_inst_amount*0.40) / round(inst_count/2)
 
-        g_inst_amount = rem_inst_amount * 0.5 / round(inst_count / 2)
+        # g_inst_amount = rem_inst_amount * 0.5 / round(inst_count / 2)
+        g_inst_amount = rem_inst_amount / inst_count
         print('g_inst_amount', g_inst_amount)
-        if inst_count % 2 > 0:
-            inst_count += 1
+        # if inst_count % 2 > 0:
+        #     inst_count += 1
             # self.inst_count = inst_count
             # self._cr.commit()
 
