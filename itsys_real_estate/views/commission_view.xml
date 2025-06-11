@@ -102,9 +102,7 @@
             <field name="model">ownership.contract</field>
             <field name="inherit_id" ref="itsys_real_estate.ownership_contract_form_view" />
             <field name="arch" type="xml">
-              <xpath expr="//field[@name='user_id']" position="after">
-                <field name="team_id"/>
-              </xpath>
+
                 <notebook position="inside">
                     <page string="Commission">
                         <group>

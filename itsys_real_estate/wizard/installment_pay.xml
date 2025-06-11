@@ -17,7 +17,7 @@
                             <group>
                                 <field name="discount_cash_total" readonly="discount_percent_total > 0"/>
                                 <field name="discount_percent_total" readonly="discount_percent_total > 0"/>
-                                <field name="analytic_distribution" widget="analytic_distribution"/>
+                                <field name="analytic_distribution" widget="analytic_distribution" required="True"/>
                             </group>
                         </group>
                         <footer>

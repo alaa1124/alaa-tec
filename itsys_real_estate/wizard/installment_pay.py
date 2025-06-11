@@ -90,6 +90,10 @@ class installment_payment_check(models.TransientModel):
             installment.write({'total_paid_amount': installment.total_paid_amount+self.amount})
 
         voucher_id = voucher_obj.create(vals)
+        active_model = self.env.context.get('active_model')
+        active_id = self.env.context.get('active_id')
+        active_rec = self.env[active_model].browse(active_id)
+        voucher_id.move_id.building_unit = active_rec.contract_building_unit
 
         for line in voucher_id.move_id.line_ids:
             if line.credit > 0:
