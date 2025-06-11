@@ -113,8 +113,9 @@ class ownership_contract(models.Model):
         for rec in self:
             if not rec.loan_line:
                 continue
-            print(rec.total_amount, rec.pricing)
-            if int(rec.total_amount) != int(rec.pricing):
+            # print(rec.total_amount, rec.pricing)
+            # print(round(rec.total_amount), round(rec.pricing))
+            if round(rec.total_amount) != round(rec.pricing) and int(rec.total_amount) != int(rec.pricing):
                 raise ValidationError(
                     f'Total Amount must be {rec.pricing} the same as Home Pricing. Difference is {rec.pricing - rec.total_amount}')
 
