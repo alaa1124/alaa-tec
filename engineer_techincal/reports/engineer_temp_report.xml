@@ -91,7 +91,7 @@
 
 
                     <table style=" direction: rtl;" class="reportBody">
-                        <thead>
+                      
 
                             <tr>
                                 <th>رقم البند</th>
@@ -107,7 +107,7 @@
                                 <th>قيمة المستحق صرفه</th>
 
                             </tr>
-                        </thead>
+                        
                         <tbody>
                             <t t-set="total_amount_value" t-value="0"/>
                             <t t-set="total_prev_amount_paid" t-value="0"/>
