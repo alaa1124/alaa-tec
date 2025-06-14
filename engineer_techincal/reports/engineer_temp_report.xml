@@ -187,10 +187,10 @@
                         </tbody>
                     </table>
                             <!-- Deductions  -->
-                     <table style=" direction: rtl;" class="reportBody">
+                     <table style=" direction: rtl; table-layout: fixed;" class="reportBody">
 
                           <tr>
-                              <th> <strong colspan="2" >الخصومات </strong></th>>
+                              <th colspan="2" >  الخصومات </th>
                               </tr>
                             <tr>
                                 <th>الإسم</th>
@@ -249,7 +249,7 @@
                         </tbody>
                     </table>
                           <!-- Allowance  -->
-                     <table style=" direction: rtl;" class="reportBody">
+                     <table style=" direction: rtl; table-layout: fixed;" class="reportBody">
 
                           <tr>
                               <th colspan="2"> Allowance </th>
