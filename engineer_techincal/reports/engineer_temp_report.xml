@@ -167,7 +167,7 @@
                                 </t>
                             </t>
                             <tr style="font-weight:bold; background:#f0f0f0;">
-                                <td colspan="7">
+                                <td colspan="8">
                                     <strong>إجمالى الأعمال</strong>
                                 </td>
                                 <td>
@@ -190,7 +190,7 @@
                      <table style=" direction: rtl;" class="reportBody">
 
                           <tr>
-                                <strong colspan="2" style="text-align: center;">الخصومات </strong>
+                              <th> <strong colspan="2" >الخصومات </strong></th>>
                               </tr>
                             <tr>
                                 <th>الإسم</th>
@@ -252,7 +252,7 @@
                      <table style=" direction: rtl;" class="reportBody">
 
                           <tr>
-                                <strong colspan="2" style="text-align: center;">Allowance </strong>
+                              <th colspan="2"> Allowance </th>
                               </tr>
                             <tr>
                                 <th>الإسم</th>
