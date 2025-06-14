@@ -126,7 +126,7 @@
                                         <td>
                                             <t t-out="line.name"/>
                                         </td>       <!--    رقم البند     -->
-                                        <td>
+                                        <td colspan="2">
                                             <t t-out="line.item.name"/>
                                         </td>     <!--   بنود الأعمال -->
 
@@ -277,7 +277,7 @@
                                     </tr>
                                 </t>
                             </t>
-                            
+
 
                                <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td>
