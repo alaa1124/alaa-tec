@@ -33,7 +33,7 @@
 
                     }
                     .reportBody{
-<!--                    margin-bottom:25px;-->
+                   margin-bottom:25px;
                     border: 1px solid black !important;
                     }
                     .reportBody th,td{
@@ -224,7 +224,7 @@
                                 </td>
 
                                 <td>
-                                     <t t-out="line.total_deduction "/>  <!--   إجمالى الخصم -->
+                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
                                  </td>
                             </tr>
 
@@ -234,7 +234,7 @@
                                 </td>
 
                                 <td>
-                                     <t t-out="line.total_allowance "/>  <!--   إجمالى البدل -->
+                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
                                  </td>
                             </tr>
                                 <tr style="font-weight:bold; background:#f0f0f0;">
@@ -243,7 +243,7 @@
                                 </td>
 
                                 <td>
-                                     <t t-out="line.amount_total "/>  <!--   المبلغ الإجمالى -->
+                                     <t t-out="o.amount_total "/>  <!--   المبلغ الإجمالى -->
                                  </td>
                             </tr>
                         </tbody>
@@ -285,7 +285,7 @@
                                 </td>
 
                                 <td>
-                                     <t t-out="line.total_allowance "/>  <!--   إجمالى البدل -->
+                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
                                  </td>
                             </tr>
                             <tr style="font-weight:bold; background:#f0f0f0;">
@@ -294,7 +294,7 @@
                                 </td>
 
                                 <td>
-                                     <t t-out="line.total_deduction "/>  <!--   إجمالى الخصم -->
+                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
                                  </td>
                             </tr>
                                 <tr style="font-weight:bold; background:#f0f0f0;">
@@ -303,7 +303,7 @@
                                 </td>
 
                                 <td>
-                                     <t t-out="line.amount_total "/>  <!--   المبلغ الإجمالى -->
+                                     <t t-out="o.amount_total "/>  <!--   المبلغ الإجمالى -->
                                  </td>
                             </tr>
                         </tbody>
@@ -319,7 +319,7 @@
     <record id="engineer_temp_report_action" model="ir.actions.report">
         <field name="name">Engineer Template Report</field>
         <field name="model">project.engineer.techincal</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="binding_model_id" ref="model_project_engineer_techincal"/>
         <field name="binding_type">report</field>
         <field name="report_name">engineer_techincal.engineer_temp_report</field>
