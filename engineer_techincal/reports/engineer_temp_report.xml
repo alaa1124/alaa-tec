@@ -33,7 +33,7 @@
 
                     }
                     .reportBody{
-                    margin-bottom:25px;
+<!--                    margin-bottom:25px;-->
                     border: 1px solid black !important;
                     }
                     .reportBody th,td{
@@ -54,7 +54,7 @@
 
                 </style>
 
-                <div class="reportPage" style="margin:25px">
+                <div class="reportPage" style="">
                     <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
                         <thead>
                             <tr>
@@ -190,7 +190,7 @@
                      <table style=" direction: rtl;" class="reportBody">
 
                           <tr>
-                                <th colspan="2">الخصومات </th>
+                                <strong colspan="2" style="text-align: center;">الخصومات </strong>
                               </tr>
                             <tr>
                                 <th>الإسم</th>
@@ -206,13 +206,7 @@
                             <t t-foreach="docs" t-as="o">
                                 <t t-foreach="o.deduction_ids" t-as="line">
 
-                                    <t t-set="order_count" t-value="(order_count or 0)+ 1"/>
-
                                     <tr>
-
-                                        <td>
-                                            <t t-esc="order_count"/>
-                                        </td> <!--   sequence 1,2,3,.... -->
 
                                         <td>
                                             <t t-out="line.name"/>
@@ -254,7 +248,66 @@
                             </tr>
                         </tbody>
                     </table>
+                          <!-- Allowance  -->
+                     <table style=" direction: rtl;" class="reportBody">
 
+                          <tr>
+                                <strong colspan="2" style="text-align: center;">Allowance </strong>
+                              </tr>
+                            <tr>
+                                <th>الإسم</th>
+                                <th> القيمة</th>
+
+                            </tr>
+
+                        <tbody>
+
+                            <t t-foreach="docs" t-as="o">
+                                <t t-foreach="o.allowance_ids" t-as="line">
+
+                                    <tr>
+
+                                        <td>
+                                            <t t-out="line.name"/>
+                                        </td>       <!--    الإسم     -->
+                                        <td>
+                                            <t t-out="line.value"/>
+                                        </td>     <!--  القيمة -->
+
+                                    </tr>
+                                </t>
+                            </t>
+                            
+
+                               <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td>
+                                    <strong>إجمالى البدل</strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="line.total_allowance "/>  <!--   إجمالى البدل -->
+                                 </td>
+                            </tr>
+                            <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td>
+                                    <strong>إجمالى الخصم</strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="line.total_deduction "/>  <!--   إجمالى الخصم -->
+                                 </td>
+                            </tr>
+                                <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td>
+                                    <strong> المبلغ الإجمالى </strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="line.amount_total "/>  <!--   المبلغ الإجمالى -->
+                                 </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </div>
             </t>
