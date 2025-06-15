@@ -189,7 +189,7 @@
                                     <strong>إجمالى الخصم</strong>
                                 </td>
 
-                                <td >
+                                <td colspan="4">
                                      <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
                                  </td>
                             </tr>
@@ -199,7 +199,7 @@
                                     <strong>إجمالى البدل</strong>
                                 </td>
 
-                                <td>
+                                <td colspan="4">
                                      <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
                                  </td>
                             </tr>
@@ -209,7 +209,7 @@
                                     <strong> المبلغ الإجمالى </strong>
                                 </td>
 
-                                <td>
+                                <td colspan="4">
                                      <t t-out="o.amount_total "/>  <!--   المبلغ الإجمالى -->
                                  </td>
                             </tr>
