@@ -184,18 +184,18 @@
                                 </td>
 
                             </tr>
-                             <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
-                                <td>
+                             <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td colspan="8">
                                     <strong>إجمالى الخصم</strong>
                                 </td>
 
-                                <td>
+                                <td >
                                      <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
                                  </td>
                             </tr>
 
                                <tr style="font-weight:bold; background:#f0f0f0;">
-                                <td>
+                                <td colspan="8">
                                     <strong>إجمالى البدل</strong>
                                 </td>
 
@@ -205,7 +205,7 @@
                             </tr>
 
                                 <tr style="font-weight:bold; background:#f0f0f0;">
-                                <td>
+                                <td colspan="8">
                                     <strong> المبلغ الإجمالى </strong>
                                 </td>
 
