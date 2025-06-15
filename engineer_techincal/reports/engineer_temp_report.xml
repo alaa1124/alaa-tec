@@ -166,7 +166,7 @@
                                     </tr>
                                 </t>
                             </t>
-                            <tr style="font-weight:bold; background:#f0f0f0;">
+                            <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td colspan="8">
                                     <strong>إجمالى الأعمال</strong>
                                 </td>
@@ -183,6 +183,35 @@
                                     <t t-esc="total_deserved"/>
                                 </td>
 
+                            </tr>
+                             <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
+                                <td>
+                                    <strong>إجمالى الخصم</strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
+                                 </td>
+                            </tr>
+
+                               <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td>
+                                    <strong>إجمالى البدل</strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
+                                 </td>
+                            </tr>
+
+                                <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td>
+                                    <strong> المبلغ الإجمالى </strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="o.amount_total "/>  <!--   المبلغ الإجمالى -->
+                                 </td>
                             </tr>
                         </tbody>
                     </table>
@@ -218,7 +247,7 @@
                                     </tr>
                                 </t>
                             </t>
-                            <tr style="font-weight:bold; background:#f0f0f0;">
+                            <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td>
                                     <strong>إجمالى الخصم</strong>
                                 </td>
@@ -237,6 +266,7 @@
                                      <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
                                  </td>
                             </tr>
+
                                 <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td>
                                     <strong> المبلغ الإجمالى </strong>
@@ -279,7 +309,7 @@
                             </t>
 
 
-                               <tr style="font-weight:bold; background:#f0f0f0;">
+                               <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td>
                                     <strong>إجمالى البدل</strong>
                                 </td>
