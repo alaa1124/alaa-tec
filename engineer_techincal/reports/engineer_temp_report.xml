@@ -29,11 +29,11 @@
                     table {
                     border-collapse: collapse;
                     width: 100%;
-                    margin-bottom:30px;
+
 
                     }
                     .reportBody{
-                   margin-bottom:25px;
+                   margin-bottom:55px;
                     border: 1px solid black !important;
                     }
                     .reportBody th,td{
@@ -349,7 +349,7 @@
     <record id="engineer_temp_report_action" model="ir.actions.report">
         <field name="name">Engineer Template Report</field>
         <field name="model">project.engineer.techincal</field>
-        <field name="report_type">qweb-html</field>
+        <field name="report_type">qweb-pdf</field>
         <field name="binding_model_id" ref="model_project_engineer_techincal"/>
         <field name="binding_type">report</field>
         <field name="report_name">engineer_techincal.engineer_temp_report</field>
