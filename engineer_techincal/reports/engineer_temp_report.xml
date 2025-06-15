@@ -16,16 +16,7 @@
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
                 <style>
-<!--                    .container{-->
-<!--                    padding-bottom:25px;-->
-<!--                    }-->
-<!--                    .container > div {-->
-<!--                    display: table-cell;-->
-<!--                    padding: 0 5px ;-->
-<!--                    border: 0.2px;-->
-<!--                    text-align: right;-->
-<!--                    border:solid-->
-<!--                    }-->
+
                     table {
                     border-collapse: collapse;
                     width: 100%;
@@ -196,7 +187,7 @@
 
                                <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td colspan="8">
-                                    <strong>إجمالى البدلات</strong>
+                                    <strong>إجمالى البدل</strong>
                                 </td>
 
                                 <td colspan="4">
