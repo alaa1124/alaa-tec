@@ -126,12 +126,14 @@
                                         </td>    <!--   الوحدة -->
 
                                         <td>
+                                            <t t-out="line.qty"/>
+                                        </td>   <!--   الكمية الحالية -->
+                                        
+                                        <td>
                                             <t t-out="line.previous_quanity "/>
                                         </td>   <!--   الكمية السابقة -->
 
-                                        <td>
-                                            <t t-out="line.qty"/>
-                                        </td>   <!--   الكمية الحالية -->
+
 
                                         <td>
                                             <t t-out="line.total_quanity"/>
