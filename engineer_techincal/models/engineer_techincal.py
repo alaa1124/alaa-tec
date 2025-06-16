@@ -237,7 +237,9 @@ class Lines(models.Model):
     @api.depends('amount', 'price')
     def get_deferred(self):
         for rec in self:
-            rec.deferred = round(rec.amount ,2) - round( rec.price , 2)
+            rec.deferred = rec.amount - rec.price
+
+
 
     # def write(self, vals):
     #     res =super(Lines,self).write(vals)
