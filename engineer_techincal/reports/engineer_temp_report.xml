@@ -105,7 +105,7 @@
                                     <t t-set="total_prev_amount_paid"
                                        t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
                                      <t t-set="total_deferred"
-                                       t-value="(total_deferred or 0) + ((line.amount or 0) - (line.price or 0))"/>
+                                       t-value="(total_deferred or 0) + (line.total_deferred or 0) "/>
 
                                     <t t-set="total_deserved"
                                        t-value="(total_deserved or 0) + (line.amount or 0)"/>
@@ -147,7 +147,7 @@
                                         </td>  <!-- قيمة  السابق صرفه -->
 
                                         <td>
-                                            <t t-out="(line.amount or 0) - (line.price or 0)"/>
+                                            <t t-out="line.total_deferred"/>
                                         </td>    <!-- قيمة الؤجل صرفه -->
 
                                         <td>
