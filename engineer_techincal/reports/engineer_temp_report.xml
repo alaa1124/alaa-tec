@@ -82,8 +82,9 @@
                                 <th>الفئة بالجنيه</th>
                                 <th>قيمة إجمالي للأعمال</th>
                                 <th>قيمة السابق صرفه</th>
-                                <th>قيمة المستحق صرفه</th>
                                 <th>المؤجل صرفه</th>
+                                <th>قيمة المستحق صرفه</th>
+
 
                             </tr>
 
@@ -103,10 +104,13 @@
                                        t-value="(total_amount_value or 0) + (line.amount or 0)"/>
                                     <t t-set="total_prev_amount_paid"
                                        t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
+                                     <t t-set="total_deferred"
+                                       t-value="(total_deferred or 0) + ((line.amount or 0) - (line.price or 0))"/>
+
                                     <t t-set="total_deserved"
                                        t-value="(total_deserved or 0) + (line.amount or 0)"/>
-<!--                                    <t t-set="total_deferred"-->
-<!--                                       t-value="(line.amount or 0) - (line.price or 0)"/> -->
+
+
 
                                     <tr>
 
@@ -143,11 +147,12 @@
                                         </td>  <!-- قيمة  السابق صرفه -->
 
                                         <td>
+                                            <t t-out="(line.amount or 0) - (line.price or 0)"/>
+                                        </td>    <!-- قيمة الؤجل صرفه -->
+
+                                        <td>
                                             <t t-out="line.differance"/>
                                         </td>      <!-- قيمة المستحق صرفه -->
-                                        <td>
-                                            <t t-out="(line.amount or 0) - (line.price or 0)"/>
-                                        </td>
 
                                     </tr>
                                 </t>
@@ -162,13 +167,13 @@
                                 <td>
                                     <t t-esc="total_prev_amount_paid "/>
                                 </td>
-
+                                      <td>
+                                    <t t-esc="total_deferred "/>
+                                </td>
                                 <td>
                                     <t t-esc="total_deserved"/>
                                 </td>
-<!--                                <td>-->
-<!--                                    <t t-esc="total_deferred "/>-->
-<!--                                </td>-->
+
 
                             </tr>
                              <tr style="font-weight:bold; background:#f0f0f0;">
