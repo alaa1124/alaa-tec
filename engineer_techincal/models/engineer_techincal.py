@@ -206,7 +206,7 @@ class Lines(models.Model):
     related_job_id = fields.Many2one("project.related.job")
     uom_id = fields.Many2one("uom.uom", related="item.uom_id")
     qty = fields.Float(string="current Quantity")
-    deferred=fields.Float(string='Deferred',digits=(9,2))
+    deferred=fields.Float(string='Deferred',compute='get_deferred' ,digits=(9,2))
     project_contract_line = fields.Many2one('project.contract.line')
 
     price_unit = fields.Float()
@@ -233,6 +233,11 @@ class Lines(models.Model):
     def get_diff(self):
         for rec in self:
             rec.differance = rec.price - rec.previous_amount
+
+    @api.depends('amount', 'price')
+    def get_deferred(self):
+        for rec in self:
+            rec.deferred = rec.amount -  rec.price
 
     # def write(self, vals):
     #     res =super(Lines,self).write(vals)
