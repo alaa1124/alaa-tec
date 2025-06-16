@@ -110,9 +110,9 @@
 
                                     <tr>
 
-                                        <td>
-                                            <t t-esc="order_count"/>
-                                        </td> <!--   sequence 1,2,3,.... -->
+<!--                                        <td>-->
+<!--                                            <t t-esc="order_count"/>-->
+<!--                                        </td> &lt;!&ndash;   sequence 1,2,3,.... &ndash;&gt;-->
 
                                         <td>
                                             <t t-out="line.name"/>
@@ -124,14 +124,14 @@
                                         <td>
                                             <t t-out="line.uom_id.name "/>
                                         </td>    <!--   الوحدة -->
-
+   <td>
+                                            <t t-out="line.previous_quanity "/>
+                                        </td>   <!--   الكمية السابقة -->
                                         <td>
                                             <t t-out="line.qty"/>
                                         </td>   <!--   الكمية الحالية -->
                                         
-                                        <td>
-                                            <t t-out="line.previous_quanity "/>
-                                        </td>   <!--   الكمية السابقة -->
+
 
 
 
