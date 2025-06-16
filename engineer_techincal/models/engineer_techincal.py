@@ -206,7 +206,7 @@ class Lines(models.Model):
     related_job_id = fields.Many2one("project.related.job")
     uom_id = fields.Many2one("uom.uom", related="item.uom_id")
     qty = fields.Float(string="current Quantity")
-    deferred=fields.Float(string='Deferred',compute='get_deferred' ,digits=(9,2))
+    deferred=fields.Float(string='Deferred',compute='get_deferred')
     project_contract_line = fields.Many2one('project.contract.line')
 
     price_unit = fields.Float()
