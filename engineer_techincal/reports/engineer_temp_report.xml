@@ -147,7 +147,7 @@
                                         </td>  <!-- قيمة  السابق صرفه -->
 
                                         <td>
-                                            <t t-out="line.deferred"/>
+                                            <t t-out="round(line.deferred,2)"/>
 
                                         </td>    <!-- قيمة الؤجل صرفه -->
 
