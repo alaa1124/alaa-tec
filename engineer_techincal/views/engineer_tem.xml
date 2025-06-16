@@ -103,7 +103,8 @@
                                            optional="show" width="100px" sum="total"/>
                                     <field name="differance"  required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-
+                                    <field name="Deferred"  required="display_type==False"
+                                           optional="show" width="100px"/>
 
                                 </tree>
                                 <form>
