@@ -147,7 +147,9 @@
                                         </td>  <!-- قيمة  السابق صرفه -->
 
                                         <td>
-                                            <t t-out="line.deferred"/>
+<!--                                            <t t-out="line.deferred"/>-->
+                                            <t t-esc="formatLang(line.deferred, digits=2)"/>
+
                                         </td>    <!-- قيمة الؤجل صرفه -->
 
                                         <td>
