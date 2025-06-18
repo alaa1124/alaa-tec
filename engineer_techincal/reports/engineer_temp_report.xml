@@ -148,7 +148,7 @@
 
                                         <td>
 <!--                                            <span t-esc="format_decimal(line.deferred,precision=2)"></span>-->
-                                            <t t-out="line.deferred"/>
+                                            <t t-out="round(line.deferred or 0, 2)"/>
 
                                         </td>    <!-- قيمة الؤجل صرفه -->
 
