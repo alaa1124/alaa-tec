@@ -147,8 +147,8 @@
                                         </td>  <!-- قيمة  السابق صرفه -->
 
                                         <td>
-                                            <span t-esc="format_decimal(line.deferred,precision=2)"></span>
-<!--                                            <t t-out="line.deferred"/>-->
+<!--                                            <span t-esc="format_decimal(line.deferred,precision=2)"></span>-->
+                                            <t t-out="line.deferred"/>
 
                                         </td>    <!-- قيمة الؤجل صرفه -->
 
