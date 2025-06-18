@@ -46,6 +46,11 @@
                 </style>
 
                 <div class="reportPage" style="">
+                           <t t-set="total_amount_value" t-value="0"/>
+                            <t t-set="total_prev_amount_paid" t-value="0"/>
+                            <t t-set="total_deferred" t-value="0"/>
+                            <t t-set="total_deserved" t-value="0"/>
+
                     <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
                         <thead>
                             <tr>
@@ -89,10 +94,7 @@
                             </tr>
 
                         <tbody>
-                            <t t-set="total_amount_value" t-value="0"/>
-                            <t t-set="total_prev_amount_paid" t-value="0"/>
-                            <t t-set="total_deferred" t-value="0"/>
-                            <t t-set="total_deserved" t-value="0"/>
+
                             <t t-set="order_count" t-value="0"/>
 
 
@@ -300,6 +302,36 @@
                         </tbody>
                     </table>
 
+                    <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td>مهندس المشروع</td>
+                                 <td>مهندس مكتب فنى</td>
+                                 <td>نائب مدير المشروعات </td>
+                                 <td>يُعتمد,,, </td>
+                            </tr>
+                                <tr>
+                                <td>م/ </td>
+                                 <td>م/</td>
+                                 <td>م/ ضياء عبد الكريم</td>
+                                 <td>مدير المشروعات م/</td>
+                            </tr>
+                              <tr>
+                                <td>التوقيع/ </td>
+                                   <td>التوقيع/ </td>
+                                  <td>التوقيع/ </td>
+                                  <td>التوقيع/ </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="direction:rtl">
+                        <br/>      أقر بصحة الحساب وأستلمت من شركة دى ايه للتطوير العقارى قيمة المستحق لى عن هذا العقد حتى هذا المستخلص
+                           <t t-out="line.differance"/>  صافى قيمة هذا المستخلص
+                        <br/>
+                        أستلمت القيمة نقدى بتاريخ     /     /
+                            <br/>
+                        أقر بصحة الكميات والفئاتالمدرجة بالمستخلص التى قمت بتنفيذها للشركة طبقا لما تم تنفيذه بالموقع
+                    </p>
                 </div>
             </t>
 
