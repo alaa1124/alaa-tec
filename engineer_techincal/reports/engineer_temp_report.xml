@@ -32,15 +32,24 @@
                     padding: 10px ;
                     text-align: center;
                     }
-
                     .reportHead{
                     margin-bottom: 4rem;
                     border: none;
+                    direction:rtl;
+                    table-layout: fixed;
+                    width: 100%;
+                    }
+                    .reportHead td{
+                    padding:10px 0px;
                     }
                     .reportHead,
                     .reportHead * {
                     border: none !important;
                     border-width: 0 !important;
+                    }
+                    .reportEnd table th{
+                    text-align:right;
+
                     }
 
                 </style>
@@ -51,7 +60,7 @@
                             <t t-set="total_deferred" t-value="0"/>
                             <t t-set="total_deserved" t-value="0"/>
 
-                    <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
+                    <table class="reportHead" >
                         <thead>
                             <tr>
                                 <th>
@@ -302,7 +311,8 @@
                         </tbody>
                     </table>
 
-                    <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
+                    <dvi class="reportEnd" style="  padding-right:20px;">
+                    <table class="reportHead">
                         <tbody>
                             <tr>
                                 <td>مهندس المشروع</td>
@@ -314,24 +324,37 @@
                                 <td>م/ </td>
                                  <td>م/</td>
                                  <td>م/ ضياء عبد الكريم</td>
-                                 <td>مدير المشروعات م/</td>
+                                   <td style=" padding-right:20px;"> مدير المشروعات
+                                 <br/>
+                                 <br/>
+                                 م/
+                                 </td>
                             </tr>
                               <tr>
                                 <td>التوقيع/ </td>
                                    <td>التوقيع/ </td>
                                   <td>التوقيع/ </td>
-                                  <td>التوقيع/ </td>
+                                  <td style=" padding-right:20px;">التوقيع/ </td>
                             </tr>
                         </tbody>
                     </table>
-                    <p style="direction:rtl">
-                        <br/>      أقر بصحة الحساب وأستلمت من شركة دى ايه للتطوير العقارى قيمة المستحق لى عن هذا العقد حتى هذا المستخلص
-                           <t t-out="line.differance"/>  صافى قيمة هذا المستخلص
+                    </dvi>
+                       <p style="direction:rtl; padding-bottom:30px;padding-top:30px;">
+                       أقر بصحة الحساب وأستلمت من شركة دى ايه للتطوير العقارى قيمة المستحق لى عن هذا العقد حتى هذا المستخلص .
+                              <br/>
+                         صافى قيمة هذا المستخلص
+                           <t t-esc="total_deserved"/>
+                           جم فقط لاغير .
                         <br/>
-                        أستلمت القيمة نقدى بتاريخ     /     /
+                          أستلمت القيمة نقدى بتاريخ
+                            <span style="display:inline-block; width:30px;"/>/<span style="display:inline-block; width:30px;"/>/<span style="display:inline-block; width:30px;"/>
+
                             <br/>
-                        أقر بصحة الكميات والفئاتالمدرجة بالمستخلص التى قمت بتنفيذها للشركة طبقا لما تم تنفيذه بالموقع
+
+                            أقر بصحة الكميات والفئات المدرجة بالمستخلصات التى قمت بتنفيذها للشركة طبقاً لما تم تنفيذه بالموقع .
+
                     </p>
+
                 </div>
             </t>
 
