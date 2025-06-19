@@ -55,10 +55,7 @@
                 </style>
 
                 <div class="reportPage" style="">
-                           <t t-set="total_amount_value" t-value="0"/>
-                            <t t-set="total_prev_amount_paid" t-value="0"/>
-                            <t t-set="total_deferred" t-value="0"/>
-                            <t t-set="total_deserved" t-value="0"/>
+
 
                     <table class="reportHead" >
                         <thead>
@@ -103,7 +100,10 @@
                             </tr>
 
                         <tbody>
-
+                            <t t-set="total_amount_value" t-value="0"/>
+                            <t t-set="total_prev_amount_paid" t-value="0"/>
+                            <t t-set="total_deferred" t-value="0"/>
+                            <t t-set="total_deserved" t-value="0"/>
                             <t t-set="order_count" t-value="0"/>
 
 
@@ -111,10 +111,13 @@
                                 <t t-foreach="o.line_ids" t-as="line">
 
                                     <t t-set="order_count" t-value="(order_count or 0)+ 1"/>
+
                                     <t t-set="total_amount_value"
                                        t-value="(total_amount_value or 0) + (line.amount or 0)"/>
+
                                     <t t-set="total_prev_amount_paid"
                                        t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
+
                                      <t t-set="total_deferred"
                                        t-value="(total_deferred or 0) + (line.deferred or 0) "/>
 
@@ -343,7 +346,7 @@
                        أقر بصحة الحساب وأستلمت من شركة دى ايه للتطوير العقارى قيمة المستحق لى عن هذا العقد حتى هذا المستخلص .
                               <br/>
                          صافى قيمة هذا المستخلص
-                           <t t-esc="total_deserved"/>
+                           <t t-esc="o.amount_total"/>
                            جم فقط لاغير .
                         <br/>
                           أستلمت القيمة نقدى بتاريخ
