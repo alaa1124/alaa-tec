@@ -34,7 +34,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
-    'depends': ['account', 'purchase', 'hr_expense', 'web'],
+    'depends': ['account', 'purchase', 'web'],
     'assets': {
         'web.assets_backend': [
             'list_view_sticky_header_and_column/static/src/js'
