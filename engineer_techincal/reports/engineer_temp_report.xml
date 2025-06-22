@@ -11,40 +11,20 @@
         <field name="dpi">90</field>
     </record>
 
-    <template id="layout_engineer_template">
-        <div class="header">
-
-        </div>
-        <div class="article" style="padding-top:25px;">
-            <t t-raw="0"/>
-        </div>
-        <div class="footer">
-
-        </div>
-
-    </template>
 
     <template id="engineer_temp_report">
         <t t-call="web.html_container">
-            <t t-call="engineer_techincal.layout_engineer_template">
+            <t t-call="web.external_layout">
                 <style>
-                    .container{
-                    padding-bottom:25px;
-                    }
-                    .container > div {
-                    display: table-cell;
-                    padding: 0 5px ;
-                    border: 0.2px;
-                    text-align: right;
-                    border:solid
-                    }
+
                     table {
                     border-collapse: collapse;
                     width: 100%;
 
+
                     }
                     .reportBody{
-                    margin-bottom:25px;
+                   margin-bottom:55px;
                     border: 1px solid black !important;
                     }
                     .reportBody th,td{
@@ -52,21 +32,32 @@
                     padding: 10px ;
                     text-align: center;
                     }
-
                     .reportHead{
                     margin-bottom: 4rem;
                     border: none;
+                    direction:rtl;
+                    table-layout: fixed;
+                    width: 100%;
+                    }
+                    .reportHead td{
+                    padding:10px 0px;
                     }
                     .reportHead,
                     .reportHead * {
                     border: none !important;
                     border-width: 0 !important;
                     }
+                    .reportEnd table th{
+                    text-align:right;
+
+                    }
 
                 </style>
 
-                <div class="reportPage" style="margin:25px">
-                    <table class="reportHead" style="direction:rtl;table-layout: fixed; width: 100%;">
+                <div class="reportPage" style="">
+
+
+                    <table class="reportHead" >
                         <thead>
                             <tr>
                                 <th>
@@ -89,13 +80,12 @@
                         </thead>
                     </table>
 
-
+                           <!-- Lines  -->
                     <table style=" direction: rtl;" class="reportBody">
-                        <thead>
 
                             <tr>
                                 <th>رقم البند</th>
-                                <th>بنود الأعمال</th>
+                                <th colspan="2">بنود الأعمال</th>
                                 <th>الوحدة</th>
                                 <th>الكمية السابقة</th>
                                 <th>الكمية الحالية</th>
@@ -106,8 +96,9 @@
                                 <th>المؤجل صرفه</th>
                                 <th>قيمة المستحق صرفه</th>
 
+
                             </tr>
-                        </thead>
+
                         <tbody>
                             <t t-set="total_amount_value" t-value="0"/>
                             <t t-set="total_prev_amount_paid" t-value="0"/>
@@ -120,41 +111,40 @@
                                 <t t-foreach="o.line_ids" t-as="line">
 
                                     <t t-set="order_count" t-value="(order_count or 0)+ 1"/>
+
                                     <t t-set="total_amount_value"
                                        t-value="(total_amount_value or 0) + (line.amount or 0)"/>
+
                                     <t t-set="total_prev_amount_paid"
                                        t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
-                                    <t t-set="total_deferred"
-                                       t-value="(total_deferred or 0)+ (line.differance or 0)"/>
+
+                                     <t t-set="total_deferred"
+                                       t-value="(total_deferred or 0) + (line.deferred or 0) "/>
+
                                     <t t-set="total_deserved"
-                                       t-value="(total_deserved or 0) + (line.amount or 0)"/>  <!--todo-->
+                                       t-value="(total_deserved or 0) + (line.differance or 0)"/>
+
+
 
                                     <tr>
 
                                         <td>
                                             <t t-esc="order_count"/>
-                                        </td> <!--   sequence 1,2,3,.... -->
-
-                                        <td>
-                                            <t t-out="line.name"/>
-                                        </td>       <!--    رقم البند     -->
-                                        <td>
+                                        </td>      <!--    رقم البند     -->
+                                        <td colspan="2">
                                             <t t-out="line.item.name"/>
                                         </td>     <!--   بنود الأعمال -->
 
                                         <td>
                                             <t t-out="line.uom_id.name "/>
                                         </td>    <!--   الوحدة -->
-
-                                        <td>
+                                         <td>
                                             <t t-out="line.previous_quanity "/>
                                         </td>   <!--   الكمية السابقة -->
-
                                         <td>
                                             <t t-out="line.qty"/>
                                         </td>   <!--   الكمية الحالية -->
-
-                                        <td>
+                                      <td>
                                             <t t-out="line.total_quanity"/>
                                         </td>  <!-- الكمية الإجمالية -->
 
@@ -171,15 +161,20 @@
                                         </td>  <!-- قيمة  السابق صرفه -->
 
                                         <td>
+<!--                                            <span t-esc="format_decimal(line.deferred,precision=2)"></span>-->
+                                            <t t-out="round(line.deferred or 0, 2)"/>
+
+                                        </td>    <!-- قيمة الؤجل صرفه -->
+
+                                        <td>
                                             <t t-out="line.differance"/>
                                         </td>      <!-- قيمة المستحق صرفه -->
-
 
                                     </tr>
                                 </t>
                             </t>
-                            <tr style="font-weight:bold; background:#f0f0f0;">
-                                <td colspan="7">
+                            <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
+                                <td colspan="8">
                                     <strong>إجمالى الأعمال</strong>
                                 </td>
                                 <td>
@@ -188,16 +183,181 @@
                                 <td>
                                     <t t-esc="total_prev_amount_paid "/>
                                 </td>
-                                <td>
-                                    <t t-esc="total_deferred "/>
+                                      <td>
+                                          <t t-esc="total_deferred"/>
+
                                 </td>
                                 <td>
                                     <t t-esc="total_deserved"/>
                                 </td>
 
+
+                            </tr>
+                             <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td colspan="8">
+                                    <strong>إجمالى الخصم</strong>
+                                </td>
+
+                                <td colspan="4">
+                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
+                                 </td>
+                            </tr>
+
+                               <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td colspan="8">
+                                    <strong>إجمالى البدل</strong>
+                                </td>
+
+                                <td colspan="4">
+                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
+                                 </td>
+                            </tr>
+
+                                <tr style="font-weight:bold; background:#f0f0f0;">
+                                <td colspan="8">
+                                    <strong> المبلغ الإجمالى </strong>
+                                </td>
+
+                                <td colspan="4">
+                                     <t t-out="o.amount_total "/>  <!--   المبلغ الإجمالى -->
+                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                            <!-- Deductions  -->
+                     <table style=" direction: rtl; table-layout: fixed;" class="reportBody">
+
+                          <tr>
+                              <th colspan="2" >  الخصومات </th>
+                              </tr>
+                            <tr>
+                                <th>الإسم</th>
+                                <th> القيمة</th>
+
+                            </tr>
+
+                        <tbody>
+
+                            <t t-set="order_count" t-value="0"/>
+
+
+                            <t t-foreach="docs" t-as="o">
+                                <t t-foreach="o.deduction_ids" t-as="line">
+
+                                    <tr>
+
+                                        <td>
+                                            <t t-out="line.name.name"/>
+                                        </td>       <!--    الإسم     -->
+                                        <td>
+                                            <t t-out="line.value"/>
+                                        </td>     <!--  القيمة -->
+
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
+                                <td>
+                                    <strong>إجمالى الخصم</strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
+                                 </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                          <!-- Allowance  -->
+                     <table style=" direction: rtl; table-layout: fixed;" class="reportBody">
+
+                          <tr>
+                              <th colspan="2"> البدلات </th>
+                              </tr>
+                            <tr>
+                                <th>الإسم</th>
+                                <th> القيمة</th>
+
+                            </tr>
+
+                        <tbody>
+
+                            <t t-foreach="docs" t-as="o">
+                                <t t-foreach="o.allowance_ids" t-as="line">
+
+                                    <tr>
+
+                                        <td>
+                                            <t t-out="line.name.name"/>
+                                        </td>       <!--    الإسم     -->
+                                        <td>
+                                            <t t-out="line.value"/>
+                                        </td>     <!--  القيمة -->
+
+                                    </tr>
+                                </t>
+                            </t>
+
+
+                               <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
+                                <td>
+                                    <strong>إجمالى البدلات</strong>
+                                </td>
+
+                                <td>
+                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
+                                 </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                    <dvi class="reportEnd" style="  padding-right:20px;">
+                    <table class="reportHead">
+                        <tbody>
+                            <tr>
+                                <td>مهندس المشروع</td>
+                                 <td>مهندس مكتب فنى</td>
+                                 <td>نائب مدير المشروعات </td>
+                                 <td>يُعتمد,,, </td>
+                            </tr>
+                                <tr>
+                                <td>م/ </td>
+                                 <td>م/</td>
+                                 <td>م/ ضياء عبد الكريم</td>
+                                   <td style=" padding-right:20px;"> مدير المشروعات
+                                 <br/>
+                                 <br/>
+                                 م/
+                                 </td>
+                            </tr>
+                              <tr>
+                                <td>التوقيع/ </td>
+                                   <td>التوقيع/ </td>
+                                  <td>التوقيع/ </td>
+                                  <td style=" padding-right:20px;">التوقيع/ </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </dvi>
+                       <p style="direction:rtl; padding-bottom:30px;padding-top:30px;line-height: 2;">
+                       أقر بصحة الحساب وأستلمت من شركة دى ايه للتطوير العقارى قيمة المستحق لى عن هذا العقد حتى هذا المستخلص .
+                              <br/>
+                         صافى قيمة هذا المستخلص
+                           <t t-esc="o.amount_total"/>
+                           جم فقط لاغير .
+                        <br/>
+                          أستلمت القيمة نقدى بتاريخ
+                            <span style="display:inline-block; width:30px;"/>/<span style="display:inline-block; width:30px;"/>/<span style="display:inline-block; width:30px;"/>
+
+                            <br/>
+
+                            أقر بصحة الكميات والفئات المدرجة بالمستخلصات التى قمت بتنفيذها للشركة طبقاً لما تم تنفيذه بالموقع .
+
+                    </p>
+
                 </div>
             </t>
 
