@@ -4,7 +4,7 @@
     'name': 'Account Bank Statement Customization',
     'version': '17.0.2.0.0',
     'category': 'Accounting',
-    'depends': ['base','om_account_bank_statement_import','account_accountant'],
+    'depends': ['base', 'account_accountant'],
     'author': 'Marwa Abouzaid',
     'maintainer': 'Odoo Mates',
     'license': 'LGPL-3',

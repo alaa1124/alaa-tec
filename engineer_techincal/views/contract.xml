@@ -12,8 +12,8 @@
 
                 <xpath expr="//button[@name='action_view_subcontract']" position="after">
                      <button name="action_view_Template" type="object" class="oe_stat_button">
-                                  <field name="count_template"/>   Engineer Template
-                              </button>
+                         Engineer Templates (<field name="count_template"/>)
+                     </button>
                     <!-- Add your fields or attributes here -->
                 </xpath>
 
@@ -29,7 +29,7 @@
 
                 <xpath expr="//button[@name='action_view_subcontract']" position="after">
                      <button name="action_view_Template" type="object" class="oe_stat_button">
-                                  <field name="count_template"/>   Engineer Template
+                                  Engineer Templates (<field name="count_template"/>)
                               </button>
                     <!-- Add your fields or attributes here -->
                 </xpath>

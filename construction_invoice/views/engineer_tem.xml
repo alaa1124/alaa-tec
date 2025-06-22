@@ -18,6 +18,10 @@
                           </div>
                 </xpath>
 
+                <xpath expr="//field[@name='sub_type']" position="after">
+                    <field name="analytic_distribution" widget="analytic_distribution"/>
+                </xpath>
+
             </field>
         </record>
     </data>

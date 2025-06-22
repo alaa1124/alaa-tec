@@ -99,9 +99,11 @@ class AccountMoveLine(models.Model):
     contract_type = fields.Selection([('owner', 'owner'), ('subconstructor', 'subconstructor')], default='owner',
                                      string="Type of Contract")
 
-    detailed_line = fields.Many2one('project.contract.stage.line', domain="[('contract_id','=',parent.contract_id)]")
-    item = fields.Many2one("project.item", related='detailed_line.item')
-    stage_id = fields.Many2one("project.stage", related='detailed_line.stage_id.stage_id')
+    detailed_line = fields.Many2one('project.contract.stage.line',
+                                    store=True, readonly=False)
+    item = fields.Many2one("project.item", store=True, readonly=False)
+    item_line = fields.Many2one("project.tender", store=True, readonly=False)
+    stage_id = fields.Many2one("project.stage", related='detailed_line.stage_id.stage_id', store=True, readonly=False)
 
     @api.onchange('detailed_line')
     def onchange_detailed_line(self):

@@ -86,7 +86,8 @@ class EngineerTemplate(models.Model):
         for record in self:
             # Find the record with the latest date in the model
             latest_record = self.search([('contract_id', '=', record.contract_id.id),
-                                         ('project_id', '=', record.project_id.id)], order='date desc', limit=1)
+                                         ('project_id', '=', record.project_id.id), ('state', '=', 'confirm')],
+                                        order='date desc', limit=1)
             print_log(latest_record)
             print_log(record)
             # Check if the current record is the one with the latest date
@@ -200,14 +201,16 @@ class Lines(models.Model):
     eng_id = fields.Many2one('project.engineer.techincal', ondelete='cascade')
     contract_id = fields.Many2one(related='eng_id.contract_id')
     name = fields.Char(required=True, string="Description")
-    item = fields.Many2one("project.item")
+    item = fields.Many2one(related='stage_line.item', store=True)
+    item_line = fields.Many2one(related='stage_line.item_line', store=True)
     stage_id = fields.Many2one("project.stage")
     sequence = fields.Integer(string='Sequence', default=10)
     related_job_id = fields.Many2one("project.related.job")
     uom_id = fields.Many2one("uom.uom", related="item.uom_id")
     qty = fields.Float(string="current Quantity")
-    deferred=fields.Float(string='Deferred',compute='get_deferred')
+
     project_contract_line = fields.Many2one('project.contract.line')
+
 
     price_unit = fields.Float()
     contract_quanity = fields.Float()
@@ -233,13 +236,6 @@ class Lines(models.Model):
     def get_diff(self):
         for rec in self:
             rec.differance = rec.price - rec.previous_amount
-
-    @api.depends('amount', 'price')
-    def get_deferred(self):
-        for rec in self:
-            rec.deferred = round(( rec.amount - rec.price),2)
-
-
 
     # def write(self, vals):
     #     res =super(Lines,self).write(vals)

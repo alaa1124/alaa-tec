@@ -2,7 +2,8 @@ from odoo import api, fields, models, _
 
 
 class BankStatementLine(models.Model):
-    _inherit = "account.bank.statement.line"
+    _name = "account.bank.statement.line"
+    _inherit = ['account.bank.statement.line', 'analytic.mixin']
 
     account_id = fields.Many2one('account.account', string='Account')
 

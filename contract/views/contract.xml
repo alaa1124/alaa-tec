@@ -50,8 +50,8 @@
                         <div class="oe_button_box" name="button_box">
                             <button name="action_view_subcontract" type="object"
                                     class="oe_stat_button">
-                                <field name="count_subcontract"/>
-                                Sub-contract
+                                Sub-Contracts
+                                (<field name="count_subcontract"/>)
                             </button>
                         </div>
                         <h2>
@@ -110,6 +110,8 @@
                                                optional="show" width="100px"/>
                                         <!--                            <field name="parent_item"/>-->
                                         <field name="item" required="display_type==False"
+                                               optional="show" width="100px"/>
+                                        <field name="item_line"
                                                optional="show" width="100px"/>
                                         <field name="name" required="display_type==False"
                                                widget="section_and_note_text"
@@ -175,6 +177,7 @@
                                         <field name="name"/>
                                         <field name="code"/>
                                         <field name="item"/>
+                                        <field name="item_line"/>
                                         <field name="description"/>
                                         <field name="related_job_id"/>
                                         <field name="qty"/>

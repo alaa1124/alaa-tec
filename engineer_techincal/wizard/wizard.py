@@ -10,12 +10,14 @@ class wizard(models.TransientModel):
 
     contract_id = fields.Many2one("project.contract", required=True)
     stage_lines = fields.One2many(related='contract_id.stage_lines')
+    stage_lines_sub = fields.One2many(related='contract_id.sub_contract_ids.stage_lines')
     eng_id = fields.Many2one("project.engineer.techincal")
     contract_items = fields.Many2many("project.item", "contract_items_lines", "item_id", "id")
     item_ids = fields.Many2many("project.item", "eng_contract_items_lines", "item_id", "id",
                                 domain="[('id','in',contract_items)]")
 
-    select_lines = fields.Many2many('project.contract.stage.line', store=True, domain="[('id', 'in', stage_lines)]")
+    select_lines = fields.Many2many('project.contract.stage.line', store=True,
+                                    domain="['|', ('id', 'in', stage_lines), ('id', 'in', stage_lines_sub)]")
 
     def save_payment(self):
         # for rec in self.item_ids:
@@ -57,14 +59,14 @@ class wizard(models.TransientModel):
             'name': line.name,
             'stage_id': line.stage_id.stage_id.id,
             'stage_prec': line.percent,
-            'item': line.item.id,
+            # 'item': line.item.id,
+            # 'item_line': line.item_line.id,
             'related_job_id': line.contract_line_id.related_job_id.id,
             'contract_quanity': line.qty,
             # 'price_unit':(stage.prec/100)*line.price_unit,
             'price_unit': line.price_unit,
             'stage_line': line.id,
         })
-
 
         if eng_line:
             # eng_line.previous_amount = eng_line.get_previous_amount(eng_line)

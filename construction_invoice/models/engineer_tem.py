@@ -5,7 +5,10 @@ from odoo.exceptions import UserError, ValidationError
 
 
 class EngineerTemplate(models.Model):
-    _inherit = 'project.engineer.techincal'
+    _name = 'project.engineer.techincal'
+    _inherit = ['project.engineer.techincal', 'analytic.mixin']
+
+    analytic_distribution = fields.Json(required=True)
 
     def action_draft(self):
         res = super().action_draft()
@@ -44,12 +47,12 @@ class EngineerTemplate(models.Model):
             action['domain'] = [('eng_id', '=', self.id)]
             return action
 
+
+
     def action_confirm(self):
         invoice_line_ids = []
         deduction_ids = []
         allowance_ids = []
-
-        print("=======================================", invoice_line_ids)
 
         for rec in self.deduction_ids:
             deduction_ids.append((0, 0, {
@@ -72,10 +75,11 @@ class EngineerTemplate(models.Model):
             }))
         for rec in self.line_ids:
             if rec.display_type == False:
-                print("=========================================3333")
                 invoice_line_ids.append((0, 0, {
 
-                    'item': rec.item.id,
+                    'detailed_line': rec.stage_line.id,
+                    'item': rec.stage_line.item.id,
+                    'item_line': rec.stage_line.item_line.id,
                     'stage_id': rec.stage_id.id,
                     'quantity': rec.qty,
                     'name': rec.name,
@@ -85,15 +89,17 @@ class EngineerTemplate(models.Model):
                     'display_type':'product' if not rec.display_type else rec.display_type
                 }))
 
-        partner_id = ''
-        if self.project_id.partner_id and self.type == 'owner':
+        partner_id = False
+        if self.contract_id.partner_id and self.type == 'owner':
 
-            partner_id = self.project_id.partner_id.id
-        elif self.contract_id.partner_id and self.type != 'owner':
-            partner_id = self.contract_id.subcontractor.id if self.contract_id.subcontractor else ''
+            partner_id = self.contract_id.partner_id.id
+        elif self.contract_id.subcontractor and self.type != 'owner':
+            partner_id = self.contract_id.subcontractor.id
+
+
         if partner_id:
-
-            move_id = self.env['account.move'].create({
+            print(self.analytic_distribution)
+            move_id = self.env['account.move'].with_context(analytic_distribution=True).create({
                 'partner_id': partner_id,
                 'project_id': self.project_id.id if self.project_id else '',
                 'contract_id': self.contract_id.id if self.contract_id else '',
@@ -101,12 +107,10 @@ class EngineerTemplate(models.Model):
                 'sub_type': self.sub_type,
                 'move_type': 'out_invoice' if self.type == 'owner' else 'in_invoice',
                 'eng_id': self.id,
-                'invoice_line_ids':invoice_line_ids,
-
+                'invoice_line_ids': invoice_line_ids,
+                'analytic_distribution': self.analytic_distribution,
                 'allowance_ids': allowance_ids,
                 'deduction_ids': deduction_ids,
-
             })
-            print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..",move_id.invoice_line_ids,invoice_line_ids)
 
         self.state = 'confirm'

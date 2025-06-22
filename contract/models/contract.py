@@ -40,6 +40,9 @@ class Contract(models.Model):
     description = fields.Text()
     is_subcontract = fields.Boolean(copy=False)
     parent_contract_id = fields.Many2one("project.contract", copy=False)
+
+    sub_contract_ids = fields.One2many('project.contract', 'parent_contract_id')
+
     count_subcontract = fields.Integer(compute='get_count_subcontract')
     subcontractor = fields.Many2one("res.partner", domain=[('supplier_rank', '!=', 0)])
 
@@ -61,7 +64,7 @@ class Contract(models.Model):
                 'default_parent_contract_id': self.id,
                 'default_contract': self.contract.id,
                 'default_project_id': self.project_id.id,
-                'default_partner_id': self.project_id.id,
+                'default_partner_id': self.partner_id.id,
 
             },
 
@@ -136,6 +139,7 @@ class Contract(models.Model):
                     'code': rec.code,
                     'name': rec.name,
                     'item': rec.item.id if rec.item else '',
+                    'item_line': rec.id,
                     'related_job_id': rec.related_job_id.id if rec.related_job_id else '',
                     'uom_id': rec.uom_id.id if rec.uom_id else '',
                     'qty': rec.qty,
@@ -184,8 +188,10 @@ class StageLines(models.Model):
 
     contract_line_id = fields.Many2one('project.contract.line', required=True, ondelete='cascade')
     code = fields.Char(related='contract_line_id.code')
-    item = fields.Many2one(related='contract_line_id.item')
-    description = fields.Char(related='contract_line_id.name')
+    item = fields.Many2one(related='contract_line_id.item', store=True)
+    item_line = fields.Many2one(related='contract_line_id.item_line', store=True)
+
+    description = fields.Char(related='contract_line_id.name', store=True)
 
     related_job_id = fields.Many2one(related='contract_line_id.related_job_id')
     qty = fields.Float(related='contract_line_id.qty')
@@ -205,14 +211,12 @@ class ContractLines(models.Model):
 
         for rec in self:
             global_stages = rec.contract_id.stage_ids
-            print(global_stages)
             if not rec.stage_ids:
                 rec.stage_ids = [(0, 0, {
                     'stage_id': stg.stage_id.id,
                     'prec': stg.prec,
                 }) for stg in global_stages]
 
-            print(rec.stage_ids)
             if rec.display_type:
                 continue
             res = self.env['project.contract.stage.line']
@@ -231,6 +235,7 @@ class ContractLines(models.Model):
     code = fields.Char()
     sequence = fields.Integer(string='Sequence', default=10)
     item = fields.Many2one("project.item")
+    item_line = fields.Many2one("project.tender")
     desc_item = fields.Char(string="وصف بند المقاول")
     item_sub_id = fields.Many2one("project.item", string="بند المقاول")
     related_job_id = fields.Many2one("project.related.job")
@@ -285,13 +290,13 @@ class ContractLines(models.Model):
         if not self.name and self.item:
             self.name = self.item.name
             self.related_job_id = self.item.related_job_id.id if self.item.related_job_id else ''
-        if self.subcontractor and self.contract_id.project_id and self.contract_id.partner_id:
-            item_ids = self.env['project.contract.line'] \
-                .search([ \
-                ('contract_id.project_id', '=', self.contract_id.project_id.id),
-                ('contract_id.partner_id', '=', self.contract_id.partner_id.id),
-            ])
-            return {'domain': {'item': [('id', 'in', item_ids.item.ids)]}}
+        # if self.subcontractor and self.contract_id.project_id and self.contract_id.partner_id:
+        #     item_ids = self.env['project.contract.line'] \
+        #         .search([ \
+        #         ('contract_id.project_id', '=', self.contract_id.project_id.id),
+        #         ('contract_id.partner_id', '=', self.contract_id.partner_id.id),
+        #     ])
+        #     return {'domain': {'item': [('id', 'in', item_ids.item.ids)]}}
 
     @api.onchange('item_sub_id')
     def _onchnage_item_sub_id(self):

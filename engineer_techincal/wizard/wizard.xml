@@ -14,6 +14,7 @@
                             <field name="contract_items" invisible="1"/>
 
                             <field name="stage_lines" invisible="1"/>
+                            <field name="stage_lines_sub" invisible="1"/>
 
 <!--                            <field name="item_ids">-->
 <!--                                <tree >-->
@@ -23,7 +24,17 @@
 
 <!--                                </tree>-->
 <!--                            </field>-->
-                            <field name="select_lines"/>
+
+                            <field name="select_lines">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="item"/>
+                                    <field name="item_line"/>
+                                    <field name="description"/>
+                                    <field name="percent"/>
+                                </tree>
+                            </field>
 
                         </group>
                     </sheet>

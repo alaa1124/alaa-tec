@@ -71,6 +71,8 @@
                                            widget="section_and_note_text" optional="show" width="100px"/>
                                     <field name="item"  required="display_type==False"
                                            optional="show" width="100px"/>
+                                    <field name="item_line"
+                                           optional="show" width="100px"/>
                                     <field name="stage_id"  required="display_type==False"
                                            optional="show" width="100px"/>
 
@@ -103,8 +105,7 @@
                                            optional="show" width="100px" sum="total"/>
                                     <field name="differance"  required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="deferred"  required="display_type==False"
-                                           optional="show" width="100px"/>
+
 
                                 </tree>
                                 <form>
