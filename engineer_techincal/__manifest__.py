@@ -30,6 +30,7 @@
         'views/engineer_tem.xml',
         'views/wbs.xml',
         'views/contract.xml',
+        'reports/engineer_temp_report.xml',
         'wizard/wizard.xml',
 
     ],
