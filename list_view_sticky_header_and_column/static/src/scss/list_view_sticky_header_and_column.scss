@@ -1,21 +1,17 @@
 .sticky-column {
     position: sticky !important;
-    background-color: white;
     z-index: 2;
 }
 .o_list_view .o_list_table td.sticky-column {
     z-index: 4;
-    background-color: white;
 }
 .o_list_view .o_list_table thead {
     position: sticky;
     top: 0;
     z-index: 3;
-    background-color: white;
 }
 .o_list_view .o_list_table th.sticky-column {
     z-index: 4;
-    background-color: white;
 }
 .o_account_reports_page .table-responsive {
     overflow-x: auto;
