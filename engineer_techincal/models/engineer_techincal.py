@@ -237,6 +237,11 @@ class Lines(models.Model):
         for rec in self:
             rec.differance = rec.price - rec.previous_amount
 
+    @api.depends('amount', 'price')
+    def get_deferred(self):
+        for rec in self:
+            rec.deferred = round((rec.amount - rec.price), 2)
+            
     # def write(self, vals):
     #     res =super(Lines,self).write(vals)
     #     if self.previous_amount > 0:
