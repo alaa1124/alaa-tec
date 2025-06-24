@@ -18,7 +18,7 @@
                 <field name="date"/>
                 <field name="sub_type"/>
                 <field name="type" invisible="1"/>
-                <field name="subcontractor"   invisible="type=='owner'"  optional="hide"/>
+                <field name="subcontractor" invisible="type=='owner'" optional="hide"/>
                 <field name="total_allowance" optional="show"/>
                 <field name="total_deduction" optional="show"/>
                 <field name="amount_total" optional="show"/>
@@ -32,8 +32,8 @@
         <field name="arch" type="xml">
             <form string="en_template_form">
                 <header>
-                    <button string="Confirm" name="action_confirm"  invisible="state!='draft'"  type="object"/>
-                    <button string="Set Draft" name="action_draft"  invisible="state!='confirm'"  type="object"/>
+                    <button string="Confirm" name="action_confirm" invisible="state!='draft'" type="object"/>
+                    <button string="Set Draft" name="action_draft" invisible="state!='confirm'" type="object"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
 
                 </header>
@@ -41,21 +41,21 @@
 
                     <field name="name" readonly="1"/>
                     <group>
-                        <field name="project_id"   readonly="state!='draft'"  required="1"/>
-                        <field name="contract_id"   readonly="state!='draft'"  required="1"/>
-                        <field name="subcontractor"  force_save="1"
-                                invisible="type=='owner'"  readonly="1"/>
-                        <field name="date"   readonly="state!='draft'"/>
-                        <field name="referance"   readonly="state!='draft'"/>
-                        <field name="sub_type"   readonly="state!='draft'"/>
+                        <field name="project_id" readonly="state!='draft'" required="1"/>
+                        <field name="contract_id" readonly="state!='draft'" required="1"/>
+                        <field name="subcontractor" force_save="1"
+                               invisible="type=='owner'" readonly="1"/>
+                        <field name="date" readonly="state!='draft'"/>
+                        <field name="referance" readonly="state!='draft'"/>
+                        <field name="sub_type" readonly="state!='draft'"/>
                         <field name="type" invisible="1"/>
 
 
                     </group>
-                    <button name="select_item" type="object" string="Select Item"  invisible="state!='draft'" />
+                    <button name="select_item" type="object" string="Select Item" invisible="state!='draft'"/>
                     <notebook>
                         <page string="lines">
-                            <field name="line_ids"  readonly="state!='draft'"
+                            <field name="line_ids" readonly="state!='draft'"
                                    widget="section_and_note_one2many">
                                 <tree editable="bottom">
                                     <control>
@@ -65,56 +65,58 @@
                                         <create name="add_note_control" string="Add a note"
                                                 context="{'default_display_type': 'line_note'}"/>
                                     </control>
-                                    <field name="display_type" invisible="1"  optional="hide"/>
-                                    <field name="type"  invisible="1" optional="hide"/>
+                                    <field name="display_type" invisible="1" optional="hide"/>
+                                    <field name="type" invisible="1" optional="hide"/>
                                     <field name="sequence" widget="handle" optional="show"/>
 
 
-                                    <field name="name"  required="display_type==False"
+                                    <field name="name" required="display_type==False"
                                            widget="section_and_note_text" optional="show" width="100px"/>
-                                    <field name="item"  required="display_type==False"
+                                    <field name="item" required="display_type==False"
                                            optional="show" width="100px"/>
                                     <field name="item_line"
                                            optional="show" width="100px"/>
-                                    <field name="stage_id"  required="display_type==False"
+                                    <field name="stage_id" required="display_type==False"
                                            optional="show" width="100px"/>
 
                                     <field name="related_job_id" optional="show" width="100px"/>
                                     <field name="uom_id" string="Unit Of Measure"
-                                            required="display_type==False"
+                                           required="display_type==False"
                                            optional="show" width="100px"/>
-                                    <field name="previous_quanity"  required="display_type==False"
+                                    <field name="previous_quanity" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
                                     <field name="contract_quanity"
-                                            readonly="1" required="display_type==False"
+                                           readonly="1" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="qty"  required="display_type==False"
+                                    <field name="qty" required="display_type==False"
                                            string="Current Qty" optional="show" width="100px" sum="total"/>
                                     <field name="stage_prec" force_save="1"
-                                            readonly="1" required="display_type==False"
+                                           readonly="1" required="display_type==False"
                                            optional="show" width="100px"/>
                                     <field name="price_unit" force_save="1"
-                                            readonly="1" required="display_type==False"
+                                           readonly="1" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="total_quanity"  required="display_type==False"
+                                    <field name="total_quanity" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="amount"  required="display_type==False"
+                                    <field name="amount" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="precentage"  required="display_type==False"
+                                    <field name="precentage" required="display_type==False"
                                            optional="show" width="100px"/>
-                                    <field name="price"  required="display_type==False"
+                                    <field name="price" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="previous_amount"  force_save="1"  readonly="1" required="display_type==False"
+                                    <field name="previous_amount" force_save="1" readonly="1"
+                                           required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-                                    <field name="differance"  required="display_type==False"
+                                    <field name="differance" required="display_type==False"
                                            optional="show" width="100px" sum="total"/>
-
+                                    <field name="deferred" required="display_type==False"
+                                           optional="show" width="100px"/>
 
                                 </tree>
                                 <form>
                                     <group>
                                         <field name="display_type"
-                                        invisible="1"/>
+                                               invisible="1"/>
                                         <field name="name"
                                         />
                                         <field name="item"
@@ -129,7 +131,7 @@
 
                                         />
                                         <field name="contract_quanity"
-                                                readonly="1" required="display_type==False"
+                                               readonly="1" required="display_type==False"
                                         />
                                         <field name="qty"
                                         />
@@ -150,7 +152,7 @@
                                         <field name="price" force_save="1" readonly="1"
                                         />
                                         <field name="previous_amount"
-                                   force_save="1" readonly="1"
+                                               force_save="1" readonly="1"
                                         />
                                         <field name="differance"
                                         />
@@ -161,7 +163,7 @@
                         </page>
 
                         <page string="Deduction">
-                            <field name="deduction_ids"  readonly="state!='draft'"
+                            <field name="deduction_ids" readonly="state!='draft'"
                                    context="{'default_contract_type':type}">
                                 <tree editable="bottom">
                                     <field name="name" required="1"/>
@@ -179,7 +181,7 @@
 
                         </page>
                         <page string="Allowance">
-                            <field name="allowance_ids"  readonly="state!='draft'"
+                            <field name="allowance_ids" readonly="state!='draft'"
                                    context="{'default_contract_type':type}">
                                 <tree editable="bottom">
                                     <field name="name" required="1"/>
