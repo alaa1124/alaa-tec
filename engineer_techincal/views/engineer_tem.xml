@@ -19,6 +19,9 @@
                 <field name="sub_type"/>
                 <field name="type" invisible="1"/>
                 <field name="subcontractor"   invisible="type=='owner'"  optional="hide"/>
+                <field name="total_allowance" optional="show"/>
+                <field name="total_deduction" optional="show"/>
+                <field name="amount_total" optional="show"/>
 
             </tree>
         </field>

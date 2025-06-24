@@ -40,7 +40,8 @@ class AccountMove(models.Model):
             res.analytic_distribution = stock_analytic or purchase_analytic
         if not res.analytic_distribution:
             res.analytic_distribution = analytic_distribution
-        res.line_ids.write({'analytic_distribution': res.analytic_distribution})
+
+        # res.line_ids.write({'analytic_distribution': res.analytic_distribution})
 
         return res
 

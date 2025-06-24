@@ -72,6 +72,8 @@ class wizard(models.TransientModel):
             # eng_line.previous_amount = eng_line.get_previous_amount(eng_line)
             eng_line.get_previous_qty()
 
+        return eng_line
+
         # eng_line = ''
         # if line.stage_ids:
         #     for stage in line.stage_ids:

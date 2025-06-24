@@ -4,6 +4,16 @@ from odoo import fields, models
 from odoo.exceptions import UserError, ValidationError
 
 
+class wizard(models.TransientModel):
+    _inherit = "eng.wizard"
+
+    def create_eng_line(self, line):
+        line = super().create_eng_line(line)
+        line.analytic_distribution = self.eng_id.analytic_distribution
+        print(line)
+        return line
+
+
 class EngineerTemplate(models.Model):
     _name = 'project.engineer.techincal'
     _inherit = ['project.engineer.techincal', 'analytic.mixin']
@@ -14,10 +24,12 @@ class EngineerTemplate(models.Model):
         res = super().action_draft()
         move_id = self.env['account.move'].search([('eng_id', '=', self.id)])
         for rec in move_id:
-
-                if rec.state != 'draft':
-                    raise ValidationError("You cann't reset template because have one of invoice")
+            if rec.state != 'draft':
+                raise ValidationError("You cann't reset template because have one of invoice")
+            else:
+                rec.unlink()
         return res
+
     def action_view_invoice(self):
         if self.type == 'owner':
             action = self.env['ir.actions.actions']._for_xml_id('account.action_move_line_form')
@@ -46,8 +58,6 @@ class EngineerTemplate(models.Model):
             }
             action['domain'] = [('eng_id', '=', self.id)]
             return action
-
-
 
     def action_confirm(self):
         invoice_line_ids = []
@@ -78,6 +88,7 @@ class EngineerTemplate(models.Model):
                 invoice_line_ids.append((0, 0, {
 
                     'detailed_line': rec.stage_line.id,
+                    'analytic_distribution': rec.analytic_distribution,
                     'item': rec.stage_line.item.id,
                     'item_line': rec.stage_line.item_line.id,
                     'stage_id': rec.stage_id.id,
@@ -114,3 +125,9 @@ class EngineerTemplate(models.Model):
             })
 
         self.state = 'confirm'
+
+
+class Lines(models.Model):
+    _name = "engineer.techincal.lines"
+    _inherit = ['engineer.techincal.lines', 'analytic.mixin']
+
