@@ -75,9 +75,10 @@
                                     <th>Due Date</th>
                                     <th>Name</th>
                                     <th class="text-right">Payment</th>
+                                    <th class="text-right">Payment Date</th>
                                     <th class="text-right">Paid Amount</th>
                                     <th class="text-right">Due Amount</th>
-                                    <th class="text-right">NPV</th>
+<!--                                    <th class="text-right">NPV</th>-->
                                 </tr>
 
                                 <t t-foreach="doc1.loan_line" t-as="doc">
@@ -98,14 +99,17 @@
                                             <span t-field="doc.amount"/>
                                         </td>
                                         <td class="text-right">
+                                            <span t-field="doc.payment_date"/>
+                                        </td>
+                                        <td class="text-right">
                                             <span t-field="doc.total_paid_amount"/>
                                         </td>
                                         <td class="text-right">
                                             <span t-field="doc.total_remaining_amount"/>
                                         </td>
-                                        <td class="text-right">
-                                            <span t-field="doc.npv"/>
-                                        </td>
+<!--                                        <td class="text-right">-->
+<!--                                            <span t-field="doc.npv"/>-->
+<!--                                        </td>-->
                                     </tr>
                                     <t t-set="i" t-value="i + 1"/>
                                 </t>

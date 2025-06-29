@@ -632,11 +632,6 @@ class loan_line_rs_own(models.Model):
             'target': 'current',
         }
 
-    def _count_payment(self):
-        for rec in self:
-            payments = self.env['account.payment'].sudo().search([('ownership_line_id', '=', rec.id)]).ids
-            rec.payment_count = len(payments)
-
     @api.model
     def create(self, vals):
         vals['number'] = self.env['ir.sequence'].get('loan.line.rs.own')
@@ -672,7 +667,19 @@ class loan_line_rs_own(models.Model):
     status = fields.Char('Status')
     company_id = fields.Many2one('res.company', readonly=True, default=lambda self: self.env.user.company_id.id)
 
+    payments = fields.One2many('account.payment', 'ownership_line_id')
+    payment_date = fields.Date(compute='_count_payment', store=True)
+
     payment_count = fields.Integer(compute='_count_payment', string='# Counts')
+
+    @api.depends('payments', 'payments.date')
+    def _count_payment(self):
+        for rec in self:
+            rec.payment_date = None
+            rec.payment_count = len(rec.payments)
+            payments = rec.payments.filtered(lambda p: p.date)
+            if payments:
+                rec.payment_date = max(payments.mapped('date'))
 
     def send_multiple_installments(self):
         ir_model_data = self.env['ir.model.data']
