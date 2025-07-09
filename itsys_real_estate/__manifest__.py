@@ -72,6 +72,7 @@
         'report/rental_contract_bi_report.xml',
         'report/installments_report.xml',
         'report/analytic_report.xml',
+        'report/analytic_fin_report.xml',
         'data/real_estate_demo.xml',
         'data/mail_template_data.xml',
     ],
