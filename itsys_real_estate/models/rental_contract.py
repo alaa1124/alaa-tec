@@ -24,7 +24,7 @@ from odoo.exceptions import UserError,ValidationError
 from odoo import api, fields, models
 from odoo.tools.translate import _
 from datetime import datetime, date
-import dateutil.relativedelta
+from dateutil.relativedelta import relativedelta
 import calendar
 
 class rental_contract(models.Model):
@@ -91,7 +91,6 @@ class rental_contract(models.Model):
     user_id= fields.Many2one('res.users','Salesman', default=lambda self: self.env.user,)
     partner_id= fields.Many2one('res.partner','Tenant', required=True)
     building_area= fields.Float ('Building Unit Area m²', digits=(12,3))
-    loan_line= fields.One2many('loan.line.rs.rent', 'loan_id')
     region= fields.Many2one('regions','Region', )
     country= fields.Many2one('countries','Country', )
     state= fields.Selection([('draft','Draft'),
@@ -362,6 +361,49 @@ class rental_contract(models.Model):
                         loan_date = self.add_months(loan_date,1)
                         i+=1
             self.write({'loan_line':rental_lines})
+
+    loan_line = fields.One2many('loan.line.rs.rent', 'loan_id')
+
+    def calculate_installments(self):
+        """
+        Calculates and generates installment lines for the loan_line One2many field.
+        It creates a new loan line for the beginning of each month
+        from the contract's date_from to date_to.
+        It also divides the total of rental_fee and insurance_fee equally
+        among the generated lines.
+        """
+        for contract in self:
+            # Clear existing loan lines to avoid duplicates on recalculation
+            # contract.loan_line = [(5, 0, 0)] # This command deletes all existing lines
+            contract.loan_line.unlink()
+            if not contract.date_from or not contract.date_to:
+                # Handle cases where dates are not set
+                self.env.user.notify_warning(message="Please set 'Start Date' and 'End Date' for the contract.")
+                continue
+
+            current_date = contract.date_from
+            lines_to_create = []
+
+            lines_to_create.append((0, 0, {
+                'date': current_date,
+                'name': 'Insurance: ' + current_date.strftime("%b/%Y"),
+                'amount': contract.insurance_fee,  # Assign the calculated amount
+            }))
+
+            # Create the actual installment lines
+            while current_date <= contract.date_to:
+                # Create a dictionary for the new loan line record
+                # 'date' is set to the first day of the current month
+                lines_to_create.append((0, 0, {
+                    'date': current_date,
+                    'name': 'Rent: ' + current_date.strftime("%b/%Y"),
+                    'amount': contract.rental_fee, # Assign the calculated amount
+                }))
+
+                current_date += relativedelta(months=1)
+                current_date = current_date.replace(day=1)
+
+            contract.loan_line = lines_to_create
 
 class loan_line_rs_rent(models.Model):
     _name = 'loan.line.rs.rent'
