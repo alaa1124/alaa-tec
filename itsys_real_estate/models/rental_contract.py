@@ -337,7 +337,7 @@ class rental_contract(models.Model):
             while  new_date < date_to:
                 new_date = self.add_months(new_date,1)
                 if new_date > date_to:# and date_from.month!=date_to.month:
-                    new_date = new_date - dateutil.relativedelta.relativedelta(months=1)
+                    new_date = new_date - relativedelta(months=1)
                     rental_fee = ((date_to-new_date).days+1)*(float(rental_fee)/30.0)
                     if first_line:
                         rental_lines.append((0,0,{'serial':i,'amount':rental_fee,'date': loan_date, 'name':_('Rental Fee')}))
