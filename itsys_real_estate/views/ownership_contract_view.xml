@@ -139,6 +139,7 @@
                                         <field name="number"/>
                                         <field name="date"/>
                                         <field name="name"/>
+                                        <field name="payment_date"/>
                                         <field name="amount"/>
                                         <field name="total_paid_amount" readonly="1"/>
                                         <field name="total_remaining_amount"/>
