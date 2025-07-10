@@ -55,7 +55,7 @@
                 </style>
 
                 <div class="reportPage" style="">
-
+               <t t-if="report_mode == 'owner'">
 
                     <table class="reportHead" >
                         <thead>
@@ -79,7 +79,36 @@
                             </tr>
                         </thead>
                     </table>
+</t>
+              <t t-if="report_mode == 'subcontractor'">
 
+                    <table class="reportHead" >
+                        <thead>
+                            <tr>
+                                 <th>إسم المقاول:
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].contract_id.name"/>
+                                    </t>
+
+
+                                </th>
+                                <th>مشروع
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].project_id.name"/>
+                                    </t>
+                                </th>
+                                <th>إسم العقد:
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].subcontractor.name"/>
+                                    </t>
+
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+</t>
                            <!-- Lines  -->
                     <table style=" direction: rtl;" class="reportBody">
 
@@ -359,20 +388,32 @@
                     </p>
 
                 </div>
+
             </t>
 
         </t>
 
     </template>
-
-    <record id="engineer_temp_report_action" model="ir.actions.report">
+<!--Engineer Template Owner Report Action-->
+    <record id="engineer_temp_owner_report_action" model="ir.actions.report">
         <field name="name">Engineer Template Report</field>
         <field name="model">project.engineer.techincal</field>
         <field name="report_type">qweb-pdf</field>
         <field name="binding_model_id" ref="model_project_engineer_techincal"/>
         <field name="binding_type">report</field>
         <field name="report_name">engineer_techincal.engineer_temp_report</field>
-
+<!--        <field name="context">{'report_source': 'owner'}</field>-->
     </record>
+
+    <!--Engineer Template Subcontractor  Report Action-->
+<!--    <record id="engineer_temp_subcontractor_report_action" model="ir.actions.report">-->
+<!--        <field name="name">Engineer Template Subcontractor Report</field>-->
+<!--        <field name="model">project.engineer.techincal</field>-->
+<!--        <field name="report_type">qweb-pdf</field>-->
+<!--        <field name="binding_model_id" ref="model_project_engineer_techincal"/>-->
+<!--        <field name="binding_type">report</field>-->
+<!--        <field name="report_name">engineer_techincal.engineer_temp_report</field>-->
+
+<!--    </record>-->
 
 </odoo>
