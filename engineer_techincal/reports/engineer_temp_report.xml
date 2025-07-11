@@ -55,9 +55,6 @@
                 </style>
 
         <div class="reportPage" style="">
-               <t t-if="report_type == 'owner'">
-                   <p>owneeeeeeeeeeeer</p>
-               </t>
                     <table class="reportHead" >
                         <thead>
                             <tr>
@@ -315,7 +312,7 @@
                         </tbody>
                     </table>
 
-                    <dvi class="reportEnd" style="  padding-right:20px;">
+                    <dvi class="reportEnd" style="  padding-right:20px;page-break-inside:avoid;">
                     <table class="reportHead">
                         <tbody>
                             <tr>
@@ -328,7 +325,7 @@
                                 <td>م/ </td>
                                  <td>م/</td>
                                  <td>م/ ضياء عبد الكريم</td>
-                                   <td style=" padding-right:20px;page-break-inside: avoid;"> مدير المشروعات
+                                   <td style=" padding-right:20px;"> مدير المشروعات
                                  <br/>
                                  <br/>
                                  م/ عبد الكريم السيد محمود
