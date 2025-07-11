@@ -54,61 +54,33 @@
 
                 </style>
 
-                <div class="reportPage" style="">
+        <div class="reportPage" style="">
                <t t-if="report_type == 'owner'">
                    <p>owneeeeeeeeeeeer</p>
-<!--                    <table class="reportHead" >-->
-<!--                        <thead>-->
-<!--                            <tr>-->
-<!--                                <th>-->
-<!--                                    مكتب البيت المعمارى للإستشارات-->
-<!--                                </th>-->
-<!--                                <th>مشروع-->
-<!--                                    <t t-if="docs">-->
-<!--                                        <t t-out="docs[0].project_id.name"/>-->
-<!--                                    </t>-->
-<!--                                </th>-->
-<!--                                <th>إسم المقاول:-->
-<!--                                    <t t-if="docs">-->
-<!--                                        <t t-out="docs[0].contract_id.name"/>-->
-<!--                                    </t>-->
+               </t>
+                    <table class="reportHead" >
+                        <thead>
+                            <tr>
+                                <th>
+                                    مكتب البيت المعمارى للإستشارات
+                                </th>
+                                <th>مشروع
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].project_id.name"/>
+                                    </t>
+                                </th>
+                                <th>إسم المقاول:
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].contract_id.name"/>
+                                    </t>
 
 
-<!--                                </th>-->
+                                </th>
 
-<!--                            </tr>-->
-<!--                        </thead>-->
-<!--                    </table>-->
-</t>
-              <t t-if="report_type == 'subcontractor'">
-<p>subcontractor</p>
-<!--                    <table class="reportHead" >-->
-<!--                        <thead>-->
-<!--                            <tr>-->
-<!--                                 <th>إسم المقاول:-->
-<!--                                    <t t-if="docs">-->
-<!--                                        <t t-out="docs[0].contract_id.name"/>-->
-<!--                                    </t>-->
+                            </tr>
+                        </thead>
+                    </table>
 
-
-<!--                                </th>-->
-<!--                                <th>مشروع-->
-<!--                                    <t t-if="docs">-->
-<!--                                        <t t-out="docs[0].project_id.name"/>-->
-<!--                                    </t>-->
-<!--                                </th>-->
-<!--                                <th>إسم العقد:-->
-<!--                                    <t t-if="docs">-->
-<!--                                        <t t-out="docs[0].subcontractor.name"/>-->
-<!--                                    </t>-->
-
-
-<!--                                </th>-->
-
-<!--                            </tr>-->
-<!--                        </thead>-->
-<!--                    </table>-->
-</t>
                            <!-- Lines  -->
                     <table style=" direction: rtl;" class="reportBody">
 
