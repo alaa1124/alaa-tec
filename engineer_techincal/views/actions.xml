@@ -8,7 +8,7 @@
            <field name="domain">[('type','=','owner') ]</field>
             <field name="context">{'default_type':'owner'}</field>
             <field name="view_mode">tree,form</field>
-<!--            <field name="context" eval="{'menu_source': 'owner'}"/>-->
+
         </record>
          <record id="action_engineer_template_subcontarctor" model="ir.actions.act_window">
             <field name="name">Engineer Template SubContarctor</field>
