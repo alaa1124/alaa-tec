@@ -55,59 +55,59 @@
                 </style>
 
                 <div class="reportPage" style="">
-               <t t-if="report_mode == 'owner'">
+               <t t-if="report_type == 'owner'">
+                   <p>owneeeeeeeeeeeer</p>
+<!--                    <table class="reportHead" >-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <th>-->
+<!--                                    مكتب البيت المعمارى للإستشارات-->
+<!--                                </th>-->
+<!--                                <th>مشروع-->
+<!--                                    <t t-if="docs">-->
+<!--                                        <t t-out="docs[0].project_id.name"/>-->
+<!--                                    </t>-->
+<!--                                </th>-->
+<!--                                <th>إسم المقاول:-->
+<!--                                    <t t-if="docs">-->
+<!--                                        <t t-out="docs[0].contract_id.name"/>-->
+<!--                                    </t>-->
 
-                    <table class="reportHead" >
-                        <thead>
-                            <tr>
-                                <th>
-                                    مكتب البيت المعمارى للإستشارات
-                                </th>
-                                <th>مشروع
-                                    <t t-if="docs">
-                                        <t t-out="docs[0].project_id.name"/>
-                                    </t>
-                                </th>
-                                <th>إسم المقاول:
-                                    <t t-if="docs">
-                                        <t t-out="docs[0].contract_id.name"/>
-                                    </t>
 
+<!--                                </th>-->
 
-                                </th>
-
-                            </tr>
-                        </thead>
-                    </table>
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                    </table>-->
 </t>
-              <t t-if="report_mode == 'subcontractor'">
-
-                    <table class="reportHead" >
-                        <thead>
-                            <tr>
-                                 <th>إسم المقاول:
-                                    <t t-if="docs">
-                                        <t t-out="docs[0].contract_id.name"/>
-                                    </t>
-
-
-                                </th>
-                                <th>مشروع
-                                    <t t-if="docs">
-                                        <t t-out="docs[0].project_id.name"/>
-                                    </t>
-                                </th>
-                                <th>إسم العقد:
-                                    <t t-if="docs">
-                                        <t t-out="docs[0].subcontractor.name"/>
-                                    </t>
+              <t t-if="report_type == 'subcontractor'">
+<p>subcontractor</p>
+<!--                    <table class="reportHead" >-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                 <th>إسم المقاول:-->
+<!--                                    <t t-if="docs">-->
+<!--                                        <t t-out="docs[0].contract_id.name"/>-->
+<!--                                    </t>-->
 
 
-                                </th>
+<!--                                </th>-->
+<!--                                <th>مشروع-->
+<!--                                    <t t-if="docs">-->
+<!--                                        <t t-out="docs[0].project_id.name"/>-->
+<!--                                    </t>-->
+<!--                                </th>-->
+<!--                                <th>إسم العقد:-->
+<!--                                    <t t-if="docs">-->
+<!--                                        <t t-out="docs[0].subcontractor.name"/>-->
+<!--                                    </t>-->
 
-                            </tr>
-                        </thead>
-                    </table>
+
+<!--                                </th>-->
+
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                    </table>-->
 </t>
                            <!-- Lines  -->
                     <table style=" direction: rtl;" class="reportBody">
@@ -356,10 +356,10 @@
                                 <td>م/ </td>
                                  <td>م/</td>
                                  <td>م/ ضياء عبد الكريم</td>
-                                   <td style=" padding-right:20px;"> مدير المشروعات
+                                   <td style=" padding-right:20px;page-break-inside: avoid;"> مدير المشروعات
                                  <br/>
                                  <br/>
-                                 م/
+                                 م/ عبد الكريم السيد محمود
                                  </td>
                             </tr>
                               <tr>
@@ -402,18 +402,9 @@
         <field name="binding_model_id" ref="model_project_engineer_techincal"/>
         <field name="binding_type">report</field>
         <field name="report_name">engineer_techincal.engineer_temp_report</field>
-<!--        <field name="context">{'report_source': 'owner'}</field>-->
+
     </record>
 
-    <!--Engineer Template Subcontractor  Report Action-->
-<!--    <record id="engineer_temp_subcontractor_report_action" model="ir.actions.report">-->
-<!--        <field name="name">Engineer Template Subcontractor Report</field>-->
-<!--        <field name="model">project.engineer.techincal</field>-->
-<!--        <field name="report_type">qweb-pdf</field>-->
-<!--        <field name="binding_model_id" ref="model_project_engineer_techincal"/>-->
-<!--        <field name="binding_type">report</field>-->
-<!--        <field name="report_name">engineer_techincal.engineer_temp_report</field>-->
 
-<!--    </record>-->
 
 </odoo>
