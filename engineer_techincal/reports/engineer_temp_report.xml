@@ -55,16 +55,13 @@
 
                 </style>
 
-<<<<<<< HEAD
          <div class="reportPage" style="">
 
                <t t-if="doc.type == 'owner'">
 
-                    <table class="reportHead">
-=======
-        <div class="reportPage" style="">
+
                     <table class="reportHead" >
->>>>>>> 4fc09f2c3290f78e48cb1b80a2fe554177daf137
+
                         <thead>
                             <tr>
                                 <th>
