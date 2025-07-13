@@ -14,6 +14,7 @@
 
     <template id="engineer_temp_report">
         <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
             <t t-call="web.external_layout">
                 <style>
 
@@ -54,11 +55,11 @@
 
                 </style>
 
-        <div class="reportPage" style="">
-               <t t-if="report_type == 'owner'">
-                   <p>owneeeeeeeeeeeer</p>
-               </t>
-                    <table class="reportHead" >
+         <div class="reportPage" style="">
+
+               <t t-if="doc.type == 'owner'">
+
+                    <table class="reportHead">
                         <thead>
                             <tr>
                                 <th>
@@ -80,6 +81,39 @@
                             </tr>
                         </thead>
                     </table>
+               </t>
+               <t t-if="doc.type == 'subconstructor'">
+
+                   <table class="reportHead">
+                        <thead>
+                            <tr>
+                                 <th>إسم المقاول:
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].contract_id.name"/>
+                                    </t>
+
+
+                                </th>
+                                <th>مشروع
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].project_id.name"/>
+                                    </t>
+                                </th>
+                                <th>إسم العقد:
+                                    <t t-if="docs">
+                                        <t t-out="docs[0].subcontractor.name"/>
+                                    </t>
+
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                    </table>
+               </t>
+
+
+
 
                            <!-- Lines  -->
                     <table style=" direction: rtl;" class="reportBody">
@@ -95,43 +129,37 @@
                                 <th>قيمة إجمالي للأعمال</th>
                                 <th>قيمة السابق صرفه</th>
                                 <th>المؤجل صرفه</th>
-                                <th>قيمة المستحق صرفه</th>
+                                  <th>قيمة المستحق صرفه</th>
+
 
 
                             </tr>
 
                         <tbody>
-                            <t t-set="total_amount_value" t-value="0"/>
+                             <t t-set="total_amount_value" t-value="0"/>
                             <t t-set="total_prev_amount_paid" t-value="0"/>
                             <t t-set="total_deferred" t-value="0"/>
                             <t t-set="total_deserved" t-value="0"/>
+
                             <t t-set="order_count" t-value="0"/>
 
 
-                            <t t-foreach="docs" t-as="o">
-                                <t t-foreach="o.line_ids" t-as="line">
+                            <!--<t t-foreach="docs" t-as="o">-->
+                                <t t-foreach="doc.line_ids" t-as="line">
 
                                     <t t-set="order_count" t-value="(order_count or 0)+ 1"/>
-
-                                    <t t-set="total_amount_value"
-                                       t-value="(total_amount_value or 0) + (line.amount or 0)"/>
-
-                                    <t t-set="total_prev_amount_paid"
-                                       t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
-
-                                     <t t-set="total_deferred"
-                                       t-value="(total_deferred or 0) + (line.deferred or 0) "/>
-
-                                    <t t-set="total_deserved"
-                                       t-value="(total_deserved or 0) + (line.differance or 0)"/>
-
-
+                                    <t t-set="total_amount_value" t-value="(total_amount_value or 0) + (line.amount or 0)"/>
+                                    <t t-set="total_prev_amount_paid" t-value="(total_prev_amount_paid or 0)+ (line.previous_amount or 0)"/>
+                                    <t t-set="total_deferred" t-value="(total_deferred or 0) + ((line.amount or 0) - (line.price or 0))"/>
+                                    <t t-set="total_deserved" t-value="(total_deserved or 0) + (line.amount or 0)"/>  <!--todo-->
 
                                     <tr>
 
                                         <td>
                                             <t t-esc="order_count"/>
-                                        </td>      <!--    رقم البند     -->
+                                        </td>
+
+                                        <!--    رقم البند     -->
                                         <td colspan="2">
                                             <t t-out="line.item.name"/>
                                         </td>     <!--   بنود الأعمال -->
@@ -139,13 +167,16 @@
                                         <td>
                                             <t t-out="line.uom_id.name "/>
                                         </td>    <!--   الوحدة -->
-                                         <td>
+
+                                        <td>
                                             <t t-out="line.previous_quanity "/>
                                         </td>   <!--   الكمية السابقة -->
+
                                         <td>
                                             <t t-out="line.qty"/>
                                         </td>   <!--   الكمية الحالية -->
-                                      <td>
+
+                                        <td>
                                             <t t-out="line.total_quanity"/>
                                         </td>  <!-- الكمية الإجمالية -->
 
@@ -160,20 +191,17 @@
                                         <td>
                                             <t t-out="line.previous_amount"/>
                                         </td>  <!-- قيمة  السابق صرفه -->
-
-                                        <td>
-<!--                                            <span t-esc="format_decimal(line.deferred,precision=2)"></span>-->
+                                         <td>
                                             <t t-out="round(line.deferred or 0, 2)"/>
-
-                                        </td>    <!-- قيمة الؤجل صرفه -->
-
+                                        </td>   <!-- قيمة المؤجل صرفه -->
                                         <td>
                                             <t t-out="line.differance"/>
                                         </td>      <!-- قيمة المستحق صرفه -->
 
+
                                     </tr>
                                 </t>
-                            </t>
+
                             <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td colspan="8">
                                     <strong>إجمالى الأعمال</strong>
@@ -184,14 +212,12 @@
                                 <td>
                                     <t t-esc="total_prev_amount_paid "/>
                                 </td>
-                                      <td>
-                                          <t t-esc="total_deferred"/>
-
+                                <td>
+                                    <t t-esc="total_deferred "/>
                                 </td>
                                 <td>
                                     <t t-esc="total_deserved"/>
                                 </td>
-
 
                             </tr>
                              <tr style="font-weight:bold; background:#f0f0f0;">
@@ -200,7 +226,7 @@
                                 </td>
 
                                 <td colspan="4">
-                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
+                                     <t t-out="doc.total_deduction "/>  <!--   إجمالى الخصم -->
                                  </td>
                             </tr>
 
@@ -210,7 +236,7 @@
                                 </td>
 
                                 <td colspan="4">
-                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
+                                     <t t-out="doc.total_allowance "/>  <!--   إجمالى البدل -->
                                  </td>
                             </tr>
 
@@ -220,16 +246,16 @@
                                 </td>
 
                                 <td colspan="4">
-                                     <t t-out="o.amount_total "/>  <!--   المبلغ الإجمالى -->
+                                     <t t-out="doc.amount_total "/>  <!--   المبلغ الإجمالى -->
                                  </td>
                             </tr>
                         </tbody>
                     </table>
                             <!-- Deductions  -->
-                     <table style=" direction: rtl; table-layout: fixed;" class="reportBody">
+                     <table style=" direction: rtl; table-layout: fixed;page-break-inside:avoid;" class="reportBody">
 
                           <tr>
-                              <th colspan="2" >  الخصومات </th>
+                              <th colspan="2">  الخصومات </th>
                               </tr>
                             <tr>
                                 <th>الإسم</th>
@@ -242,8 +268,8 @@
                             <t t-set="order_count" t-value="0"/>
 
 
-                            <t t-foreach="docs" t-as="o">
-                                <t t-foreach="o.deduction_ids" t-as="line">
+                            <!--<t t-foreach="docs" t-as="o">-->
+                                <t t-foreach="doc.deduction_ids" t-as="line">
 
                                     <tr>
 
@@ -256,22 +282,24 @@
 
                                     </tr>
                                 </t>
-                            </t>
+                            <!--</t>-->
                             <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td>
                                     <strong>إجمالى الخصم</strong>
                                 </td>
 
                                 <td>
-                                     <t t-out="o.total_deduction "/>  <!--   إجمالى الخصم -->
+                                     <t t-out="doc.total_deduction "/>  <!--   إجمالى الخصم -->
                                  </td>
                             </tr>
+
+
 
 
                         </tbody>
                     </table>
                           <!-- Allowance  -->
-                     <table style=" direction: rtl; table-layout: fixed;" class="reportBody">
+                     <table style=" direction: rtl; table-layout: fixed; page-break-inside:avoid;" class="reportBody">
 
                           <tr>
                               <th colspan="2"> البدلات </th>
@@ -284,8 +312,8 @@
 
                         <tbody>
 
-                            <t t-foreach="docs" t-as="o">
-                                <t t-foreach="o.allowance_ids" t-as="line">
+                            <!--<t t-foreach="docs" t-as="o">-->
+                                <t t-foreach="doc.allowance_ids" t-as="line">
 
                                     <tr>
 
@@ -298,37 +326,41 @@
 
                                     </tr>
                                 </t>
-                            </t>
+                            <!--</t>-->
 
 
                                <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td>
-                                    <strong>إجمالى البدلات</strong>
+                                    <strong>إجمالى البدل</strong>
                                 </td>
 
                                 <td>
-                                     <t t-out="o.total_allowance "/>  <!--   إجمالى البدل -->
+                                     <t t-out="doc.total_allowance "/>  <!--   إجمالى البدل -->
                                  </td>
                             </tr>
-
 
                         </tbody>
                     </table>
 
-                    <dvi class="reportEnd" style="  padding-right:20px;">
-                    <table class="reportHead">
+                    <div class="reportEnd" style="  padding-right:20px;page-break-inside:avoid;">
+
+  <table class="reportHead">
                         <tbody>
                             <tr>
-                                <td>مهندس المشروع</td>
-                                 <td>مهندس مكتب فنى</td>
-                                 <td>نائب مدير المشروعات </td>
-                                 <td>يُعتمد,,, </td>
+                                <th style=" ">مهندس المشروع</th>
+                                 <th style=" ">مهندس مكتب فنى</th>
+                                 <th style=" "> نائب مدير المشروعات
+                                </th>
+                                 <th style=" padding-right:20px;"> يُعتمد ,,,
+                                </th>
+
+
                             </tr>
                                 <tr>
                                 <td>م/ </td>
                                  <td>م/</td>
                                  <td>م/ ضياء عبد الكريم</td>
-                                   <td style=" padding-right:20px;page-break-inside: avoid;"> مدير المشروعات
+                                 <td style=" padding-right:20px;"> مدير المشروعات
                                  <br/>
                                  <br/>
                                  م/ عبد الكريم السيد محمود
@@ -342,12 +374,13 @@
                             </tr>
                         </tbody>
                     </table>
-                    </dvi>
-                       <p style="direction:rtl; padding-bottom:30px;padding-top:30px;line-height: 2;">
+                    </div>
+             <div style="page-break-inside:avoid;">
+                    <span style="direction:rtl; padding-bottom:30px;padding-top:30px; line-height: 2; display:block">
                        أقر بصحة الحساب وأستلمت من شركة دى ايه للتطوير العقارى قيمة المستحق لى عن هذا العقد حتى هذا المستخلص .
                               <br/>
                          صافى قيمة هذا المستخلص
-                           <t t-esc="o.amount_total"/>
+                           <t t-esc="doc.amount_total"/>
                            جم فقط لاغير .
                         <br/>
                           أستلمت القيمة نقدى بتاريخ
@@ -357,12 +390,12 @@
 
                             أقر بصحة الكميات والفئات المدرجة بالمستخلصات التى قمت بتنفيذها للشركة طبقاً لما تم تنفيذه بالموقع .
 
-                    </p>
-
+                    </span>
+             </div>
                 </div>
 
             </t>
-
+</t>
         </t>
 
     </template>
