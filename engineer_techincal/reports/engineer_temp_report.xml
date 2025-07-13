@@ -55,11 +55,16 @@
 
                 </style>
 
+<<<<<<< HEAD
          <div class="reportPage" style="">
 
                <t t-if="doc.type == 'owner'">
 
                     <table class="reportHead">
+=======
+        <div class="reportPage" style="">
+                    <table class="reportHead" >
+>>>>>>> 4fc09f2c3290f78e48cb1b80a2fe554177daf137
                         <thead>
                             <tr>
                                 <th>
@@ -342,9 +347,14 @@
                         </tbody>
                     </table>
 
+<<<<<<< HEAD
                     <div class="reportEnd" style="  padding-right:20px;page-break-inside:avoid;">
 
   <table class="reportHead">
+=======
+                    <dvi class="reportEnd" style="  padding-right:20px;page-break-inside:avoid;">
+                    <table class="reportHead">
+>>>>>>> 4fc09f2c3290f78e48cb1b80a2fe554177daf137
                         <tbody>
                             <tr>
                                 <th style=" ">مهندس المشروع</th>
@@ -360,7 +370,11 @@
                                 <td>م/ </td>
                                  <td>م/</td>
                                  <td>م/ ضياء عبد الكريم</td>
+<<<<<<< HEAD
                                  <td style=" padding-right:20px;"> مدير المشروعات
+=======
+                                   <td style=" padding-right:20px;"> مدير المشروعات
+>>>>>>> 4fc09f2c3290f78e48cb1b80a2fe554177daf137
                                  <br/>
                                  <br/>
                                  م/ عبد الكريم السيد محمود
