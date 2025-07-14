@@ -76,21 +76,23 @@
                         <table class="reportHead">
                             <thead>
                                 <tr>
-                                    <th>إسم المقاول:
-                                        <t t-if="docs">
-                                            <t t-out="docs[0].contract_id.name"/>
-                                        </t>
-                                    </th>
-                                    <th>مشروع
-                                        <t t-if="docs">
-                                            <t t-out="docs[0].project_id.name"/>
-                                        </t>
-                                    </th>
                                     <th>إسم العقد:
                                         <t t-if="docs">
                                             <t t-out="docs[0].subcontractor.name"/>
                                         </t>
                                     </th>
+
+                                    <th>مشروع
+                                        <t t-if="docs">
+                                            <t t-out="docs[0].project_id.name"/>
+                                        </t>
+                                    </th>
+                                    <th>إسم المقاول:
+                                        <t t-if="docs">
+                                            <t t-out="docs[0].contract_id.name"/>
+                                        </t>
+                                    </th>
+
                                 </tr>
                             </thead>
                         </table>
@@ -267,7 +269,7 @@
     </t>
 </template>
 
-<!--Engineer Template Owner Report Action-->
+<!--Engineer Template Report Action-->
     <record id="engineer_temp_owner_report_action" model="ir.actions.report">
         <field name="name">Engineer Template Report</field>
         <field name="model">project.engineer.techincal</field>
