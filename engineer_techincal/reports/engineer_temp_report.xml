@@ -76,7 +76,7 @@
                         <table class="reportHead">
                             <thead>
                                 <tr>
-                                    <th>إسم العقد:
+                                    <th>إسم المقاول:
                                         <t t-if="docs">
                                             <t t-out="docs[0].subcontractor.name"/>
                                         </t>
@@ -87,7 +87,7 @@
                                             <t t-out="docs[0].project_id.name"/>
                                         </t>
                                     </th>
-                                    <th>إسم المقاول:
+                                    <th>إسم العقد:
                                         <t t-if="docs">
                                             <t t-out="docs[0].contract_id.name"/>
                                         </t>
