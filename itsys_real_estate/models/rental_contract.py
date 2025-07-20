@@ -205,7 +205,8 @@ class rental_contract(models.Model):
         for contract_obj in self:
             unit = contract_obj.building_unit
             unit.write({'state': 'reserved'})
-        self.prepare_lines()
+        # self.prepare_lines()
+        self.calculate_installments()
         self.generate_entries()
         self.write({'state': 'confirmed'})
 
@@ -290,6 +291,7 @@ class rental_contract(models.Model):
         account_move_obj = self.env['account.move']
         total = 0
         for rec in self:
+            print(rec.loan_line)
             if not rec.partner_id.property_account_receivable_id:
                 raise UserError(_('Please set receivable account for partner!'))
             if not rec.account_income:
@@ -301,6 +303,7 @@ class rental_contract(models.Model):
                 total += line.amount
             if total <= 0:
                 raise UserError(_('Invalid Rental Amount!'))
+
             account_move_obj.create(
                 {'ref': rec.name, 'journal_id': journal.id, 'rental_id': rec.id, 'building_unit': rec.building_unit.id,
                  'line_ids': [(0, 0, {'name': rec.name,

@@ -127,19 +127,14 @@
 <!--                        </group>-->
                         <notebook colspan="2">
                             <page string="Installments">
-                                <field name="loan_line">
+                                <field name="loan_line" readonly="True">
                                     <tree string="Installments" editable="bottom">
+                                        <field name="id"/>
                                         <field widget="handle" name="serial" required="1" readonly="paid ==True"/>
                                         <field name="date" required="1" readonly="paid ==True"/>
                                         <field name="name" required="1" readonly="paid ==True"/>
                                         <field name="amount" required="1" readonly="paid ==True" sum="Total"/>
                                         <field name="paid" readonly="1"/>
-                                        <field name="empty_col"/>
-                                        <field name="empty_col"/>
-                                        <field name="empty_col"/>
-                                        <field name="empty_col"/>
-                                        <field name="empty_col"/>
-                                        <field name="empty_col"/>
                                         <field name="empty_col"/>
                                         <field name="empty_col"/>
                                     </tree>
