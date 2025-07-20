@@ -86,7 +86,8 @@
                                 <field name="user_id"/>
                                 <field name="team_id"/>
                                 <field name="partner_id" readonly="state !='draft'"/>
-                                <field name="account_analytic_id" readonly="state !='draft'"/>
+<!--                                <field name="account_analytic_id" readonly="state !='draft'"/>-->
+                                <field name="analytic_distribution" widget="analytic_distribution"/>
                                 <field name="origin" readonly="state !='draft'"/>
                             </group>
                             <group>
