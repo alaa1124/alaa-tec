@@ -65,6 +65,8 @@
                             <group>
                                 <field name="partner_id"/>
                                 <field name="active"/>
+                                <field name="active_contract"/>
+
 <!--                                <field name="multi_image"/>-->
 <!--                                <field name="website_published"/>-->
 <!--                                <field name="url" widget="url"/>-->
