@@ -25,6 +25,8 @@ from odoo import api, fields, models
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
 
+from odoo.odoo.tools.populate import compute
+
 
 class building_unit(models.Model):
     _inherit = ['product.template']
@@ -214,6 +216,30 @@ class building_unit(models.Model):
             'view_id': view_id.id,
             'context': ctx,
         }
+
+    rental_contracts=fields.One2many('rental.contract', 'building_unit',string='Rental Contracts')
+    active_contract= fields.Boolean(compute='_compute_active_contract', store=True, string='Active Contract')
+    @api.depends('rental_contracts.state', 'rental_contracts.date_from', 'rental_contracts.date_to')
+    def _compute_active_contract(self):
+        today = fields.Date.today()
+        for build in self:
+
+
+            for contract in build.rental_contracts:
+                print(contract.state)
+                if contract.state == 'confirmed' and contract.date_from <= today <= contract.date_to:
+
+                  build.active_contract = True
+                  print('confirm')
+                  break
+                else:
+                 build.active_contract = False
+
+
+
+
+
+
 
 
 class components_line(models.Model):
