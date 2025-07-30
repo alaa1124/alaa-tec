@@ -165,7 +165,7 @@
                         <page string="Deduction">
                             <field name="deduction_ids" readonly="state!='draft'"
                                    context="{'default_contract_type':type}">
-                                <tree editable="bottom">
+                                <tree editable="bottom" open_form_view="1">
                                     <field name="name" required="1"/>
                                     <field name="contract_type" invisible="1"/>
 

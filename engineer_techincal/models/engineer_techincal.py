@@ -46,7 +46,7 @@ class EngineerTemplate(models.Model):
     amount_total = fields.Float(compute='get_amount_total')
     amount_total_without_ded_allowance = fields.Float(compute='get_amount_total')
     line_ids = fields.One2many("engineer.techincal.lines", "eng_id")
-    total_deduction = fields.Float(compute='get_total_deduction')
+    total_deduction = fields.Float(compute='get_total_deduction', store=True)
     total_allowance = fields.Float(compute='get_total_allowance')
     subcontractor = fields.Many2one("res.partner")
 
@@ -60,9 +60,7 @@ class EngineerTemplate(models.Model):
     @api.depends('deduction_ids')
     def get_total_deduction(self):
         for rec in self:
-            rec.total_deduction = 0
-            for line in rec.deduction_ids:
-                rec.total_deduction += line.value
+            rec.total_deduction = sum(rec.deduction_ids.mapped('value'))
 
     @api.depends('allowance_ids')
     def get_total_allowance(self):
