@@ -111,10 +111,10 @@ class AccountMoveLine(models.Model):
     @api.depends('date','date_maturity')
     def _compute_available_date(self):
         for rec in self:
-            if rec.date:
-                rec.journal_available_date= rec.date
+            if rec.date_maturity:
+                rec.journal_available_date= rec.date_maturity
             else:
-                rec.journal_available_date = rec.date_maturity
+                rec.journal_available_date = rec.date
 
 
     @api.onchange('detailed_line')
