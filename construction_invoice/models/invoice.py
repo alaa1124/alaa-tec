@@ -6,6 +6,8 @@ from odoo import fields, models, api
 from odoo.exceptions import UserError, ValidationError
 
 
+
+
 class Account_move(models.Model):
     _inherit = "account.move"
 
@@ -104,6 +106,16 @@ class AccountMoveLine(models.Model):
     item = fields.Many2one("project.item", store=True, readonly=False)
     item_line = fields.Many2one("project.tender", store=True, readonly=False)
     stage_id = fields.Many2one("project.stage", related='detailed_line.stage_id.stage_id', store=True, readonly=False)
+
+    journal_available_date = fields.Date(string='Date', store=True , compute='_compute_available_date')
+    @api.depends('date','date_maturity')
+    def _compute_available_date(self):
+        for rec in self:
+            if rec.date_maturity:
+                rec.journal_available_date= rec.date_maturity
+            else:
+                rec.journal_available_date = rec.date
+
 
     @api.onchange('detailed_line')
     def onchange_detailed_line(self):

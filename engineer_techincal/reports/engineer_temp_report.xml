@@ -116,18 +116,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <t t-set="total_amount_value" t-value="0"/>
-                            <t t-set="total_prev_amount_paid" t-value="0"/>
-                            <t t-set="total_deferred" t-value="0"/>
-                            <t t-set="total_deserved" t-value="0"/>
-                            <t t-set="order_count" t-value="0"/>
+<!--                            <t t-set="total_amount_value" t-value="0"/>-->
+<!--                            <t t-set="total_prev_amount_paid" t-value="0"/>-->
+<!--                            <t t-set="total_deferred" t-value="0"/>-->
+<!--                            <t t-set="total_deserved" t-value="0"/>-->
+<!--                            <t t-set="order_count" t-value="0"/>-->
 
                             <t t-foreach="doc.line_ids" t-as="line">
                                 <t t-set="order_count" t-value="(order_count or 0) + 1"/>
                                 <t t-set="total_amount_value" t-value="(total_amount_value or 0) + (line.amount or 0)"/>
                                 <t t-set="total_prev_amount_paid" t-value="(total_prev_amount_paid or 0) + (line.previous_amount or 0)"/>
                                 <t t-set="total_deferred" t-value="(total_deferred or 0) + ((line.amount or 0) - (line.price or 0))"/>
-                                <t t-set="total_deserved" t-value="(total_deserved or 0) + (line.amount or 0)"/>
+                                <t t-set="total_deserved" t-value="(total_deserved or 0) + (line.differance or 0)"/>
 
                                 <tr>
                                     <td><t t-esc="order_count"/></td>
@@ -135,7 +135,7 @@
                                     <td><t t-out="line.uom_id.name"/></td>
                                     <td><t t-out="line.previous_quanity"/></td>
                                     <td><t t-out="line.qty"/></td>
-                                    <td><t t-out="line.total_quanity"/></td>
+                                    <td><t t-out="line.contract_quanity"/></td>
                                     <td><t t-out="line.price_unit"/></td>
                                     <td><t t-out="line.amount"/></td>
                                     <td><t t-out="line.previous_amount"/></td>
