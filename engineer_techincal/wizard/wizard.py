@@ -62,7 +62,7 @@ class wizard(models.TransientModel):
             # 'item': line.item.id,
             # 'item_line': line.item_line.id,
             'related_job_id': line.contract_line_id.related_job_id.id,
-            'contract_quanity': line.qty,
+            'contract_quanity': line.contract_quanity,
             # 'price_unit':(stage.prec/100)*line.price_unit,
             'price_unit': line.price_unit,
             'stage_line': line.id,
