@@ -11,7 +11,7 @@ class Deduction(models.Model):
                            domain="[('type','=',contract_type),('subtype','=','deduction')]")
     is_precentage = fields.Boolean(store=True)
     percentage = fields.Float(store=True)
-    value = fields.Float(store=True, compute="compute_value")
+    value = fields.Float(store=True, compute="onchange_is_precentage")
     counterpart_account_id = fields.Many2one("account.account", related='name.counterpart_account_id')
     amount_total_contract = fields.Float(related='engineer_id.amount_total_without_ded_allowance')
 
@@ -25,7 +25,7 @@ class Deduction(models.Model):
     #             self.percentage = (self.amount_total_contract * 100) / self.value if self.value > 0 else 0
 
     @api.depends('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
-    def compute_value(rec):
+    def onchange_is_precentage(rec):
         for self in rec:
             if self.is_precentage and self.name.calculation_type == 'percentage':
                 self.value = self.amount_total_contract * (self.percentage / 100)
