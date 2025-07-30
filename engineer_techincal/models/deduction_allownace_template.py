@@ -18,7 +18,7 @@ class Deduction(models.Model):
 
 
     @api.onchange('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
-    @api.depends('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
+    @api.constrains('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
     def onchange_is_precentage(rec):
         for self in rec:
             if self.name and self.percentage == 0:
