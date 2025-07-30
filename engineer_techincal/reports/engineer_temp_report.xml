@@ -135,7 +135,7 @@
                                     <td><t t-out="line.uom_id.name"/></td>
                                     <td><t t-out="line.previous_quanity"/></td>
                                     <td><t t-out="line.qty"/></td>
-                                    <td><t t-out="line.total_quanity"/></td>
+                                    <td><t t-out="line.contract_quanity"/></td>
                                     <td><t t-out="line.price_unit"/></td>
                                     <td><t t-out="line.amount"/></td>
                                     <td><t t-out="line.previous_amount"/></td>
