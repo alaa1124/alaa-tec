@@ -11,14 +11,14 @@ class Deduction(models.Model):
                            domain="[('type','=',contract_type),('subtype','=','deduction')]")
     is_precentage = fields.Boolean()
     percentage = fields.Float()
-    value = fields.Float(store=True, compute="onchange_is_precentage")
+    value = fields.Float(store=True)
     counterpart_account_id = fields.Many2one("account.account", related='name.counterpart_account_id')
     amount_total_contract = fields.Float(related='engineer_id.amount_total_without_ded_allowance')
 
 
 
     @api.onchange('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
-    @api.depends('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
+    @api.constrains('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
     def onchange_is_precentage(rec):
         for self in rec:
             if self.name and self.percentage == 0:
@@ -45,14 +45,14 @@ class Allownace(models.Model):
     ('subtype','=','allowance')]")
     is_precentage = fields.Boolean()
     percentage = fields.Float()
-    value = fields.Float(store=True, compute="onchange_is_precentage")
+    value = fields.Float(store=True)
     counterpart_account_id = fields.Many2one("account.account", related='name.counterpart_account_id')
 
     amount_total_contract = fields.Float(related='engineer_id.amount_total_without_ded_allowance')
 
 
     @api.onchange('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
-    @api.depends('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
+    @api.constrains('engineer_id', 'amount_total_contract', 'percentage', 'is_precentage', 'name')
     def onchange_is_precentage(rec):
         for self in rec:
             if self.name and self.percentage == 0:
