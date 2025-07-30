@@ -124,7 +124,8 @@ class EngineerTemplate(models.Model):
                 record.amount_total_without_ded_allowance = sum(
                     record.line_ids.mapped('differance'))
                 for ded in record.deduction_ids:
-                    ded.onchange_is_precentage()
+                    ded.compute_percentage()
+                    ded.compute_value()
                 for ded in record.allowance_ids:
                     ded.onchange_is_precentage()
 
