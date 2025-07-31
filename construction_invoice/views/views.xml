@@ -110,6 +110,10 @@
                 <field name="item" optional="show"/>
                 <field name="item_line" optional="show"/>
             </xpath>
+               <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="column_invisible">True</attribute>
+                </xpath>
+
 
         </field>
     </record>
