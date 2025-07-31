@@ -107,7 +107,7 @@ class AccountMoveLine(models.Model):
     item_line = fields.Many2one("project.tender", store=True, readonly=False)
     stage_id = fields.Many2one("project.stage", related='detailed_line.stage_id.stage_id', store=True, readonly=False)
 
-    journal_available_date = fields.Date(string='Date', store=True , compute='_compute_available_date')
+    journal_available_date = fields.Date(string='Available Date', store=True , compute='_compute_available_date')
     @api.depends('date','date_maturity')
     def _compute_available_date(self):
         for rec in self:
