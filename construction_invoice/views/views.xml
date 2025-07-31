@@ -114,6 +114,10 @@
                     <attribute name="column_invisible">True</attribute>
                 </xpath>
 
+             <xpath expr="//field[@name='move_name']" position="before">
+                <field name="journal_available_date" />
+
+            </xpath>
 
         </field>
     </record>
