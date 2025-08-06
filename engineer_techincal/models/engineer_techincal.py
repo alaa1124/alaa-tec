@@ -60,7 +60,7 @@ class EngineerTemplate(models.Model):
     @api.depends('deduction_ids')
     def get_total_deduction(self):
         for rec in self:
-            rec.total_deduction = sum(rec.deduction_ids.mapped('value'))
+            rec.total_deduction = round(sum(rec.deduction_ids.mapped('value')),2)
 
     @api.depends('allowance_ids')
     def get_total_allowance(self):
