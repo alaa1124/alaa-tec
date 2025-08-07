@@ -120,6 +120,7 @@ class ownership_contract(models.Model):
                     f'Total Amount must be {rec.pricing} the same as Home Pricing. Difference is {rec.pricing - rec.total_amount}')
 
     def action_draft(self):
+
         self.write({'state': 'draft'})
 
     def replace_unit(self):
@@ -418,6 +419,7 @@ class ownership_contract(models.Model):
         return self.building_unit.state
 
     def action_confirm(self):
+
         unit = self.building_unit
         unit.write({
             'state': 'sold',
@@ -572,6 +574,18 @@ class ownership_contract(models.Model):
             raise UserError(_('Please set sales accounting journal!'))
         account_move_obj = self.env['account.move']
         for rec in self:
+
+            existing_journal= account_move_obj.search([
+                ('ownership_id', '=', rec.id),('state', '!=' , 'cancel')
+            ])
+            for journ in existing_journal:
+                print(journ.state)
+                if journ.state == 'posted':
+                    journ.button_draft()
+                    journ.unlink()
+
+
+
             unit = rec.building_unit
             rec.account_income = unit.property_account_income_id or unit.categ_id.property_account_income_categ_id
             amls = []
