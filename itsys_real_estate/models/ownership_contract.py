@@ -108,6 +108,8 @@ class ownership_contract(models.Model):
                                 help="Total number of intallments \n ex. 40 means every 3 months for the 120 months plan")
     active = fields.Boolean('Active', default=True, tracking=True)
 
+
+
     @api.constrains('total_amount')
     def check_total_amount(self):
         for rec in self:
