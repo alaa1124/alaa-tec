@@ -133,12 +133,12 @@
                                     <td><t t-esc="order_count"/></td>
                                     <td colspan="2"><t t-out="line.item.name"/></td>
                                     <td><t t-out="line.uom_id.name"/></td>
-                                    <td><t t-out="line.previous_quanity"/></td>
-                                    <td><t t-out="line.qty"/></td>
-                                    <td><t t-out="line.contract_quanity"/></td>
-                                    <td><t t-out="line.price_unit"/></td>
-                                    <td><t t-out="line.amount"/></td>
-                                    <td><t t-out="line.previous_amount"/></td>
+                                    <td><t t-out="round(line.previous_quanity or 0,2)"/></td>
+                                    <td><t t-out="round(line.qty or 0,2)"/></td>
+                                    <td><t t-out="round(line.contract_quanity or 0,2)"/></td>
+                                    <td><t t-out="round(line.price_unit or 0,2)"/></td>
+                                    <td><t t-out="round(line.amount or 0 ,2)"/></td>
+                                    <td><t t-out="round(line.previous_amount or 0,2)"/></td>
                                     <td><t t-out="round(line.deferred or 0, 2)"/></td>
                                     <td><t t-out="line.differance"/></td>
                                 </tr>
@@ -154,18 +154,18 @@
 
                             <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td colspan="8"><strong>إجمالى الخصم</strong></td>
-<!--                                <td colspan="4"><t t-out="round(doc.total_deduction ,2)"/></td>-->
-                                 <td colspan="4"><span t-esc="doc.total_deduction" t-options='{"widget": "float", "precision": 2}'/></td>
+                                <td colspan="4"><t t-out="round(doc.total_deduction ,2)"/></td>
+
                             </tr>
 
                             <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td colspan="8"><strong>إجمالى البدل</strong></td>
-                                <td colspan="4"><t t-out="doc.total_allowance"/></td>
+                                <td colspan="4"><t t-out="round(doc.total_allowance or 0,2)"/></td>
                             </tr>
 
                             <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td colspan="8"><strong>المبلغ الإجمالى</strong></td>
-                                <td colspan="4"><t t-out="doc.amount_total"/></td>
+                                <td colspan="4"><t t-out="round(doc.amount_total or 0,2)"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -185,12 +185,12 @@
                             <t t-foreach="doc.deduction_ids" t-as="line">
                                 <tr>
                                     <td><t t-out="line.name.name"/></td>
-                                    <td><t t-out="line.value"/></td>
+                                    <td><t t-out="round(line.value or 0 ,2)"/></td>
                                 </tr>
                             </t>
                             <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td><strong>إجمالى الخصم</strong></td>
-                                <td><t t-out="doc.total_deduction"/></td>
+                                <td><t t-out="round(doc.total_deduction or 0,2)"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -210,12 +210,12 @@
                             <t t-foreach="doc.allowance_ids" t-as="line">
                                 <tr>
                                     <td><t t-out="line.name.name"/></td>
-                                    <td><t t-out="line.value"/></td>
+                                    <td><t t-out="round(line.value or 0, 2)"/></td>
                                 </tr>
                             </t>
                             <tr style="font-weight:bold; background:#f0f0f0;border-top: double">
                                 <td><strong>إجمالى البدل</strong></td>
-                                <td><t t-out="doc.total_allowance"/></td>
+                                <td><t t-out="round(doc.total_allowance or 0 ,2)"/></td>
                             </tr>
                         </tbody>
                     </table>
