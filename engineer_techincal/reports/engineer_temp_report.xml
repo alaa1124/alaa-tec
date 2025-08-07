@@ -154,7 +154,8 @@
 
                             <tr style="font-weight:bold; background:#f0f0f0;">
                                 <td colspan="8"><strong>إجمالى الخصم</strong></td>
-                                <td colspan="4"><t t-out="round(doc.total_deduction ,2)"/></td>
+<!--                                <td colspan="4"><t t-out="round(doc.total_deduction ,2)"/></td>-->
+                                 <td colspan="4"><span t-esc="doc.total_deduction" t-options='{"widget": "float", "precision": 2}'/></td>
                             </tr>
 
                             <tr style="font-weight:bold; background:#f0f0f0;">
