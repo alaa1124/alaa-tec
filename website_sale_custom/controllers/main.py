@@ -40,6 +40,7 @@ class WebsiteSaleFormCustom(WebsiteSaleForm):
 
     @http.route()
     def website_form_saleorder(self, **kwargs):
+
         model_record = request.env.ref('sale.model_sale_order')
         try:
             data = self.extract_data(model_record, kwargs)
@@ -61,9 +62,10 @@ class WebsiteSaleFormCustom(WebsiteSaleForm):
 
         if data['attachments']:
             self.insert_attachment(model_record, order.id, data['attachments'])
-
+        print(order)
         order.send_attachment()
 
+        order.order_line.create_reservation()
         order.order_line.write({'active': False})
 
         order.cart_quantity = 0

@@ -49,13 +49,13 @@ class SaleOrderLine(models.Model):
         #     'res_model': r._name,
         # })
 
-    @api.model
-    def create(self, vals):
-        res = super().create(vals)
-        if res.order_id.website_id:
-            res.create_reservation()
-
-        return res
+    # @api.model
+    # def create(self, vals):
+    #     res = super().create(vals)
+    #     if res.order_id.website_id:
+    #         res.create_reservation()
+    #
+    #     return res
 
 
 class SaleOrder(models.Model):
