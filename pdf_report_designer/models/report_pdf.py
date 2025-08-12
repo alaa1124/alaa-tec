@@ -31,6 +31,7 @@ class ReportPDF(models.Model):
     _order = 'id DESC'
 
     header_field = fields.Char()
+    group_by_field = fields.Char()
 
     name = fields.Char(string='Name', help="Name of the report")
     model_id = fields.Many2one('ir.model', string='Model',

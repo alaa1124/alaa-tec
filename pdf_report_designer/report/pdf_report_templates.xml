@@ -36,6 +36,7 @@
                         </t>
                     </t>
                     <t t-if="child_field_data">
+                        <span t-out="group_by_field"/>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>

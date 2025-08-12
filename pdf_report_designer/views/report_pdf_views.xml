@@ -38,6 +38,7 @@
                     <group>
                         <field name="model_id"/>
                         <field name="header_field"/>
+                        <field name="group_by_field"/>
                     </group>
 
                     <span>The column order will be as selected in the below

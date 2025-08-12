@@ -183,6 +183,7 @@ class PDFReportWizard(models.TransientModel):
                 # 'report_name': rec.name ,
                 'report_name': ' - '.join(pdf_report_header),
                 'model_name': rec.model_id.model,
+                'group_by_field': rec.group_by_field,
                 'fields_name': rec.fields_ids.report_field_id.mapped('name'),
                 'field_label': ordered_field_heading,
                 'date_field_id': rec.date_field_id.name,
