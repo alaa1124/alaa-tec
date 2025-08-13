@@ -69,27 +69,56 @@
                             <tbody>
                                 <t t-set="sl_no" t-value="1"/>
                                 <t t-foreach="table_data" t-as="rec">
-                                    <tr>
-                                        <td>
-                                            <t t-esc="sl_no"/>
-                                        </td>
-                                        <t t-foreach="rec" t-as="j">
-                                            <t t-if="isinstance(j, list)">
-                                                <t t-foreach="j" t-as="i">
+                                    <t t-if="rec[0] and rec[0].startswith('---')">
+                                        <!-- Group Header Row -->
+                                        <tr style="background-color: #f0f0f0; font-weight: bold; text-align: center;">
+                                            <td colspan="100%" style="text-align: center; font-weight: bold; padding: 10px;">
+                                                <t t-esc="rec[0].replace('--- ', '').replace(' ---', '')"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-elif="rec[0] == 'TOTAL'">
+                                        <!-- Summary Row -->
+                                        <tr style="background-color: #e8f4fd; font-weight: bold;">
+                                            <td style="font-weight: bold; text-align: center;">
+                                                <t t-esc="rec[0]"/>
+                                            </td>
+                                            <t t-foreach="rec" t-as="j" t-start="1">
+                                                <td style="font-weight: bold; text-align: center;">
+                                                    <t t-esc="j"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                    <t t-elif="rec[0] == '' and len(rec) > 1 and all(item == '' for item in rec)">
+                                        <!-- Separator Row -->
+                                        <tr style="height: 5px; background-color: #ffffff;">
+                                            <td colspan="100%" style="height: 5px; border: none;"></td>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                        <!-- Regular Data Row -->
+                                        <tr>
+                                            <td>
+                                                <t t-esc="sl_no"/>
+                                            </td>
+                                            <t t-foreach="rec" t-as="j">
+                                                <t t-if="isinstance(j, list)">
+                                                    <t t-foreach="j" t-as="i">
+                                                        <td align="center">
+                                                            <t t-esc="i"/>
+                                                        </td>
+                                                    </t>
+                                                </t>
+                                                <t t-if="not isinstance(j, list)">
                                                     <td align="center">
-                                                        <t t-esc="i"/>
+                                                        <span t-esc="j"/>
                                                     </td>
                                                 </t>
                                             </t>
-                                            <t t-if="not isinstance(j, list)">
-                                                <td align="center">
-                                                    <span t-esc="j"/>
-                                                </td>
-                                            </t>
-
-                                        </t>
-                                        <t t-set="sl_no" t-value="sl_no + 1"/>
-                                    </tr>
+                                            <t t-set="sl_no" t-value="sl_no + 1"/>
+                                        </tr>
+                                    </t>
                                 </t>
                             </tbody>
                         </table>
@@ -112,17 +141,47 @@
                                 <t t-set="slno" t-value="1"/>
                                 <t t-if="table_data">
                                     <t t-foreach="table_data" t-as="record">
-                                        <tr>
-                                            <td>
-                                                <t t-esc="slno"/>
-                                            </td>
-                                            <t t-foreach="record" t-as="rec">
-                                                <td>
-                                                    <span t-esc="rec"/>
+                                        <t t-if="record[0] and record[0].startswith('---')">
+                                            <!-- Group Header Row -->
+                                            <tr style="background-color: #f0f0f0; font-weight: bold; text-align: center;">
+                                                <td colspan="100%" style="text-align: center; font-weight: bold; padding: 10px;">
+                                                    <t t-esc="record[0].replace('--- ', '').replace(' ---', '')"/>
                                                 </td>
-                                            </t>
-                                            <t t-set="slno" t-value="slno + 1"/>
-                                        </tr>
+                                            </tr>
+                                        </t>
+                                        <t t-elif="record[0] == 'TOTAL'">
+                                            <!-- Summary Row -->
+                                            <tr style="background-color: #e8f4fd; font-weight: bold;">
+                                                <td style="font-weight: bold; text-align: center;">
+                                                    <t t-esc="record[0]"/>
+                                                </td>
+                                                <t t-foreach="record" t-as="rec" t-start="1">
+                                                    <td style="font-weight: bold; text-align: center;">
+                                                        <t t-esc="rec"/>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </t>
+                                        <t t-elif="record[0] == '' and len(record) > 1 and all(item == '' for item in record)">
+                                            <!-- Separator Row -->
+                                            <tr style="height: 5px; background-color: #ffffff;">
+                                                <td colspan="100%" style="height: 5px; border: none;"></td>
+                                            </tr>
+                                        </t>
+                                        <t t-else="">
+                                            <!-- Regular Data Row -->
+                                            <tr>
+                                                <td>
+                                                    <t t-esc="slno"/>
+                                                </td>
+                                                <t t-foreach="record" t-as="rec">
+                                                    <td>
+                                                        <span t-esc="rec"/>
+                                                    </td>
+                                                </t>
+                                                <t t-set="slno" t-value="slno + 1"/>
+                                            </tr>
+                                        </t>
                                     </t>
                                 </t>
                             </tbody>
