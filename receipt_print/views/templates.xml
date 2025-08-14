@@ -4,27 +4,27 @@
 
     <!-- ====================== External Layout (fixed for Odoo 18 + Arabic font) ====================== -->
     <template id="custom_external_layout_standard">
-      <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+             <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style" dir="rtl" t-lang="'ar_001'">
         <div class="row">
           <div class="col-9">
             <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 70px;" alt="Logo" dir="ltr"/>
           </div>
-          <div dir="rtl">
+          <div class="col-3" dir="rtl">
             <t t-if="o and o.amount > 0">
               <span class="text-right">إيصال استلام نقدية</span>
             </t><t t-else="">
               <span class="text-right">إيصال دفع نقدية</span>
             </t>
             <br/>
-            <span class="text-right"><t t-esc="o and o.date"/> اليوم</span>
+            <span class="text-right"><span t-field="o.date" t-options="{'widget':'date'}"/> اليوم</span>
           </div>
         </div>
       </div>
 
       <!-- مهم: في Odoo 18 لازم <main> + t-raw -->
-      <main t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{ 'o_layout_background' if company.layout_background in ['Geometric','Custom'] else '' }}"
-            t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else '' }});"
-            t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o">
+             <main t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{ 'o_layout_background' if company.layout_background in ['Geometric','Custom'] else '' }}"
+             t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else '' }});"
+             t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="'ar_001'" dir="rtl">
 
         <div class="pt-5">
           <t t-call="web.address_layout"/>
@@ -38,7 +38,7 @@
         <div class="text-center" style="border-top: 1px solid black;">
           <ul class="list-inline mb4"><div t-field="company.report_footer"/></ul>
           <div t-if="report_type == 'pdf'" class="text-muted">
-            Page: <span class="page"/> / <span class="topage"/>
+            الصفحة: <span class="page"/> / <span class="topage"/>
           </div>
         </div>
       </div>
@@ -47,8 +47,9 @@
     <!-- =========================== جزء مشترك لطباعة سطر واحد =========================== -->
     <template id="receipt_payment_line">
       <t t-set="currency" t-value="line.currency_id or line.company_id.currency_id"/>
+      <t t-set="ar_currency" t-value="currency.with_context(lang='ar_001')"/>
       <t t-call="receipt_print.custom_external_layout_standard">
-        <div class="page" dir="rtl">
+        <div class="page" dir="rtl" t-lang="'ar_001'">
           <style>
             .table{
               --bs-table-bg:transparent; --bs-table-accent-bg:transparent;
@@ -71,6 +72,9 @@
           <table class="table" dir="rtl">
             <tbody>
               <tr>
+                <td class="text-right" style="width:20%">
+                  <t t-if="line.amount > 0"><strong>وصلنا من السيد</strong></t><t t-else=""><strong>دفعنا إلى السيد</strong></t>
+                </td>
                 <td class="text-right" style="width:80%">
                   <strong>
                     <!-- استخدم recipient_id لو موجود؛ وإلا partner -->
@@ -81,53 +85,50 @@
                     </t>
                   </strong>
                 </td>
-                <td class="text-right" style="width:20%">
-                  <t t-if="line.amount > 0"><strong>وصلنا من السيد</strong></t><t t-else=""><strong>دفعنا إلى السيد</strong></t>
-                </td>
               </tr>
 
               <tr>
+                <td class="text-right" style="width:20%">المبلغ</td>
                 <td class="text-right" style="width:80%">
                   <span t-esc="abs(line.amount)"/><br/>
-                  <span t-esc="currency.amount_to_text(abs(line.amount))"/>
+                  <span t-esc="ar_currency.amount_to_text(abs(line.amount))"/>
                 </td>
-                <td class="text-right" style="width:20%">المبلغ</td>
               </tr>
 
               <tr>
-                <td class="text-right" style="width:80%"><span t-esc="line.payment_ref or ''"/></td>
                 <td class="text-right" style="width:20%">وذلك قيمة</td>
+                <td class="text-right" style="width:80%"><span t-esc="line.payment_ref or ''"/></td>
               </tr>
 
               <tr>
-                <td class="text-right" style="width:80%"><span t-field="line.date" t-options="{'widget':'date'}"/></td>
                 <td class="text-right" style="width:20%">تحريرًا في</td>
+                <td class="text-right" style="width:80%"><span t-field="line.date" t-options="{'widget':'date'}"/></td>
               </tr>
             </tbody>
           </table>
 
           <br/><br/><br/>
 
-          <center>
-            <table style="width:100%;border:0">
-              <thead>
-                <tr>
-                  <th style="width:25%;border:0">المستلم</th>
-                  <th style="width:25%;border:0">المدير المالي</th>
-                  <th style="width:25%;border:0">رئيس الحسابات</th>
-                  <th style="width:25%;border:0">أمين الخزينة</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="border:0">---------------</td>
-                  <td style="border:0">---------------</td>
-                  <td style="border:0">---------------</td>
-                  <td style="border:0">---------------</td>
-                </tr>
-              </tbody>
-            </table>
-          </center>
+                     <center>
+             <table style="width:100%;border:0" dir="rtl">
+               <thead>
+                 <tr>
+                   <th style="width:25%;border:0">المستلم</th>
+                   <th style="width:25%;border:0">المدير المالي</th>
+                   <th style="width:25%;border:0">رئيس الحسابات</th>
+                   <th style="width:25%;border:0">أمين الخزينة</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td style="border:0">---------------</td>
+                   <td style="border:0">---------------</td>
+                   <td style="border:0">---------------</td>
+                   <td style="border:0">---------------</td>
+                 </tr>
+               </tbody>
+             </table>
+           </center>
         </div>
       </t>
     </template>
