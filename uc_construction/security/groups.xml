@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="module_uc_construction" model="ir.module.category">
+            <field name="name">Uc Construction</field>
+             <field name="description">Uc Construction.</field>
+        <field name="sequence">7</field>
+        </record>
+
+        <record id="group_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="uc_construction.module_uc_construction"/>
+        </record>
+         <record id="group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="uc_construction.module_uc_construction"/>
+             <field name="implied_ids" eval="[(4, ref('uc_construction.group_user'))]"/>
+        </record>
+
+
+    </data>
+</odoo>

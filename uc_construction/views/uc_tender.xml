@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="uc_tender_form_view" model="ir.ui.view">
+            <field name="name">uc.tender.form</field>
+            <field name="model">uc.tender</field>
+            <field name="arch" type="xml">
+                <form string="Tender">
+                    <style>
+                        .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active,
+                        .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item >
+                        .nav-link.active:hover, .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs >
+                        .nav-item > .nav-link.active:focus, .o_form_view .o_notebook > .o_notebook_headers >
+                        .nav.nav-tabs > .nav-item > .nav-link.active:active{
+                        background-color:#017e84;
+                        }
+                    </style>
+
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" groups="base.group_user">
+                            <button class="oe_stat_button" name="open_tender_items" type="object" icon="fa-file-text-o">
+                                <field string="Tender Items Count" name="tender_items_count" widget="statinfo"/>
+                            </button>
+
+                            <button name="%(uc_construction.action_indirect_stamps)d"
+                                    groups="uc_construction.group_manager"
+                                    context="{'default_tender_id':id}"
+                                    type="action"
+                                    icon="fa-envelope-square">
+                                <field string="Stamps" name="stamp_fees" widget="statinfo"/>
+                            </button>
+                            <button name="%(uc_construction.action_indirect_taxes)d"
+                                    groups="uc_construction.group_manager"
+                                    type="action"
+                                    context="{'default_tender_id':id}"
+                                    icon="fa-tasks">
+                                <field string="Taxes" name="taxes_fees" widget="statinfo"/>
+                            </button>
+                            <button name="%(uc_construction.action_indirect_cars)d"
+                                    groups="uc_construction.group_manager"
+                                    type="action"
+                                    context="{'default_tender_id':id}"
+                                    icon="fa-car">
+                                <field string="Cars" name="total_cars" widget="statinfo"/>
+                            </button>
+                            <button name="%(uc_construction.action_indirect_travel)d"
+                                    groups="uc_construction.group_manager"
+                                    type="action"
+                                    context="{'default_tender_id':id}"
+                                    icon="fa-plane">
+                                <field string="Travel" name="total_travels" widget="statinfo"/>
+                            </button>
+
+                            <button name="%(uc_construction.action_sites_tec123)d"
+                                    groups="uc_construction.group_manager"
+                                    type="action"
+                                    context="{'default_tender_id':id}"
+                                    icon="fa-wrench">
+                                <field string="Technician" name="total_technician" widget="statinfo"/>
+
+                            </button>
+                            <button name="%(uc_construction.action_indirect_cleaning)d"
+                                    context="{'default_tender_id':id}" groups="uc_construction.group_manager"
+                                    type="action"
+                                    icon="fa-paint-brush">
+                                <field string="Sites Clearing" name="total_cleaning" widget="statinfo"/>
+
+                            </button>
+                            <button name="%(uc_construction.action_indirect_acc)d"
+                                    context="{'default_tender_id':id}" groups="uc_construction.group_manager"
+                                    type="action"
+                                    icon="fa-hotel">
+                                <field string="Accomodation" name="total_accomodation" widget="statinfo"/>
+
+                            </button>
+                            <button name="%(uc_construction.action_indirect_guard)d"
+                                    context="{'default_tender_id':id}" groups="uc_construction.group_manager"
+                                    type="action"
+                                    icon="fa-life-ring">
+                                <field string="Guard" name="total_guard" widget="statinfo"/>
+
+                            </button>
+                            <button name="%(uc_construction.action_indirect_others)d"
+                                    context="{'default_tender_id':id}" groups="uc_construction.group_manager"
+                                    type="action"
+                                    icon="fa-address-book">
+                                <field string="Other" name="other_fees" widget="statinfo"/>
+
+                            </button>
+
+
+                        </div>
+
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+
+                                <field name="description"/>
+                                <field name="consultant_id"/>
+                                <field name="customer_id"/>
+                                <field name="projectmanager_id"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="create_date"/>
+                                <field name="note"/>
+                                <field name="tag_ids" widget="many2many_tags"/>
+                                <field name="default_header_id" invisible="1"/>
+                                <field name="total_cost_indirect"/>
+                                <field name="total_cost_direct"/>
+                                <field name="total_cost_all"/>
+                            </group>
+                            <!--                            <group>-->
+                            <!--                                <field name="consultancy_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="taxes_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="stamp_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="bank_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="clearing_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="site_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="Project_fees" readonly="1" invisible="0"/>-->
+                            <!--                                <field name="other_fees" readonly="1" invisible="0"/>-->
+                            <!--                            </group>-->
+                        </group>
+                        <notebook>
+                            <page string="Tender Items">
+                                <field name="tender_items" widget="section_and_note_one2many"
+                                       context="{'default_header_id':default_header_id}">
+                                    <list editable="bottom">
+                                        <control>
+                                            <create name="add_product_control" string="Add a item"/>
+                                            <create name="add_section_control" string="Add a header"
+                                                    context="{'default_display_type': 'line_section'}"/>
+                                        </control>
+
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="display_type" invisible="1"/>
+                                        <field name="code" optional="show"/>
+                                        <field name="name" widget="section_and_note_text" optional="show"/>
+                                        <field name="header_id" options="{'no_open': True, 'no_create': True}"
+                                               optional="show"/>
+                                        <field name="product_id" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                        <field name="quantity" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                        <field name="uom_id" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                        <field name="unit_cost" optional="show"
+                                        />
+                                        <field name="currency_id" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                        <field name="total_cost" optional="show" readonly="1"/>
+                                        <field name="total_cost_with_indirect_cost" optional="show" readonly="1"
+                                               groups="uc_construction.group_manager"/>
+                                        <field name="infinancial" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                        <field name="note" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                        <field name="tag_ids" widget="many2many_tags" optional="show"
+                                               readonly="display_type=='line_section'"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <!--                            <page string="Tender Indirect Stamp" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_stamps">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field name="stamp_id" options="{'no_open': True, 'no_create': True}"-->
+                            <!--                                               optional="show"/>-->
+                            <!--                                        <field name="value" sum="Total" optional="show"/>-->
+                            <!--                                        <field name="currency_id" optional="show"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Taxes" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_taxes">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="tax_id"-->
+                            <!--                                               options="{'no_open': True, 'no_create': True}"/>-->
+                            <!--                                        <field optional="show" name="value" sum="Total"/>-->
+                            <!--                                        <field name="currency_id" optional="show"/>-->
+
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Cars" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_cars">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="car"/>-->
+                            <!--                                        <field optional="show" name="duration"/>-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="cost"/>-->
+                            <!--                                        <field optional="show" name="car_cost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="car_cost_egy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Travel" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_travel">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="trip"/>-->
+                            <!--                                        <field optional="show" name="engineer"/>-->
+                            <!--                                        <field optional="show" name="no_of_days"/>-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="air_ticket_cost"/>-->
+                            <!--                                        <field optional="show" name="accomodation_cost"/>-->
+                            <!--                                        <field optional="show" name="pirdeem_cost"/>-->
+                            <!--                                        <field optional="show" name="travel_cost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="travel_cost_egy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page-->
+                            <!--                                    groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_sites">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        &lt;!&ndash;                                        <field optional="show" name="site_service_type_id"/>&ndash;&gt;-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="storage_cost"/>-->
+                            <!--                                        <field optional="show" name="maintenanceCost"/>-->
+                            <!--                                        <field optional="show" name="total_cost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="total_cost_egy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Sites Technician" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_technician">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        &lt;!&ndash;                                        <field optional="show" name="site_service_type_id"&ndash;&gt;-->
+                            <!--                                        &lt;!&ndash;                                               options="{'no_open': True, 'no_create': True}"/>&ndash;&gt;-->
+                            <!--                                        <field optional="show" name="technician_number"/>-->
+                            <!--                                        <field optional="show" name="duration"/>-->
+                            <!--                                        <field optional="show" name="month_cost"/>-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="total_cost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="total_cost_egy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect  Sites Clearing" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_cleaning">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="containers_number"/>-->
+                            <!--                                        <field name="currency_id" optional="show"/>-->
+                            <!--                                        <field name="unload_days" optional="show"/>-->
+                            <!--                                        <field name="total_unload_cost" optional="show" sum="Total"/>-->
+                            <!--                                        <field name="storage_days" optional="show"/>-->
+                            <!--                                        <field name="storage_cost" optional="show"/>-->
+                            <!--                                        <field name="demurrages_days" optional="show"/>-->
+                            <!--                                        <field name="demurrages_cost" optional="show"/>-->
+                            <!--                                        <field name="total_clearing_cost" optional="show" sum="Total"/>-->
+                            <!--                                        <field name="cost_container_transportation" optional="show"/>-->
+                            <!--                                        <field name="cost_container_toll_station" optional="show"/>-->
+                            <!--                                        <field name="cost_container_toll_station_army" optional="show"/>-->
+                            <!--                                        <field optional="show" name="cost_container_clearing"/>-->
+                            <!--                                        &lt;!&ndash;                                        <field optional="show" name="site_service_type_id"&ndash;&gt;-->
+                            <!--                                        &lt;!&ndash;                                               options="{'no_open': True, 'no_create': True}"/>&ndash;&gt;-->
+                            <!--                                        <field optional="show" name="cost_container_load"/>-->
+                            <!--                                        <field name="total_cost" optional="show"/>-->
+
+
+                            <!--                                        <field name="total_cost_container_clearing" optional="show"/>-->
+                            <!--                                        <field name="total_cost_container_load" optional="show"/>-->
+                            <!--                                        <field name="total_cost_container_transportation" optional="show"/>-->
+                            <!--                                        <field name="total_cost_container_toll_station_army" optional="show"/>-->
+
+                            <!--                                        <field name="total_storage_cost_port" optional="show"/>-->
+
+                            <!--                                        <field name="total_demurrages_cost" optional="show"/>-->
+
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Accomodation" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_accomodation">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="flat"/>-->
+                            <!--                                        <field optional="show" name="duratation"/>-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="flat_cost"/>-->
+                            <!--                                        <field optional="show" name="accomodation_cost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="accomodation_cost_egy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Guard" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_guard">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="gurad"/>-->
+                            <!--                                        <field optional="show" name="duratation"/>-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="guard_salary"/>-->
+                            <!--                                        <field optional="show" name="guarding_cost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="guarding_cost_egy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                            <!--                            <page string="Tender Indirect Other" groups="uc_construction.group_manager">-->
+                            <!--                                <field name="tender_indirect_other">-->
+                            <!--                                    <tree editable="bottom">-->
+                            <!--                                        <field optional="show" name="name"/>-->
+                            <!--                                        <field optional="show" name="currency_id"/>-->
+                            <!--                                        <field optional="show" name="otherCost" sum="Total"/>-->
+                            <!--                                        <field optional="show" name="otherCostEgy" sum="Total"/>-->
+                            <!--                                    </tree>-->
+                            <!--                                </field>-->
+                            <!--                            </page>-->
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="uc_tender_tree_view" model="ir.ui.view">
+            <field name="name">uc.tender.tree</field>
+            <field name="model">uc.tender</field>
+            <field name="arch" type="xml">
+                <list string="Tender">
+                    <field optional="show" name="name"/>
+                    <field optional="show" name="description"/>
+                    <field optional="show" name="consultant_id"/>
+                    <field optional="show" name="customer_id"/>
+                    <field optional="show" name="projectmanager_id"/>
+                    <field optional="show" name="start_date"/>
+                    <field optional="show" name="end_date"/>
+                    <field optional="show" name="create_date"/>
+                    <field name="note" optional="show"/>
+                    <field name="tag_ids" widget="many2many_tags" optional="show"/>
+                    <field name="consultancy_fees" optional="show"/>
+                    <field name="taxes_fees" optional="show"/>
+                    <field name="bank_fees" optional="show"/>
+                    <field name="clearing_fees" optional="show"/>
+                    <field name="site_fees" optional="show"/>
+                    <field name="Project_fees" optional="show"/>
+                    <field name="other_fees" optional="show"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="uc_tender_act_window" model="ir.actions.act_window">
+            <field name="name">Tender</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">uc.tender</field>
+            <field name="view_mode">list,form,pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+        <record id="view_uc_tender_pivot" model="ir.ui.view">
+            <field name="name">Tender</field>
+            <field name="model">uc.tender</field>
+            <field name="arch" type="xml">
+                <pivot string="Tender">
+                    <field type="row" name="description"/>
+                    <field name="consultant_id"/>
+                    <field name="customer_id"/>
+                    <field name="projectmanager_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <!--                    <field name="consultancy_fees" type="measure"/>-->
+                    <!--                    <field name="taxes_fees" type="measure"/>-->
+                    <!--                    <field name="bank_fees" type="measure"/>-->
+                    <!--                    <field name="clearing_fees" type="measure"/>-->
+                    <!--                    <field name="site_fees" type="measure"/>-->
+                    <!--                    <field name="Project_fees" type="measure"/>-->
+                    <!--                    <field name="other_fees" type="measure"/>-->
+
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_headers" model="ir.actions.act_window">
+            <field name="name">Headers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">uc.header</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

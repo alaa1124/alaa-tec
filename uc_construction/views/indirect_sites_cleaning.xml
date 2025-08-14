@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="indirect_cleaning_tree" model="ir.ui.view">
+            <field name="name">indirect.cleaning.tree</field>
+            <field name="model">tender.indirect.sites.cleaning</field>
+            <field name="arch" type="xml">
+                <list string="">
+                    <field name="containers_number"/>
+                    <field name="cost_container_clearing"/>
+                    <field name="cost_container_load"/>
+                    <field name="cost_container_transportation"/>
+                    <field name="cost_container_toll_station"/>
+                    <field name="cost_container_toll_station_army"/>
+                    <field name="total_cost_container_clearing"/>
+                    <field name="total_cost_container_load"/>
+                    <field name="total_cost_container_transportation"/>
+                    <field name="total_cost_container_toll_station"/>
+                    <field name="total_cost_container_toll_station_army"/>
+                    <field name="storage_days"/>
+                    <field name="currency_id"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="storage_cost"/>
+                    <field name="total_storage_cost_port"/>
+                    <field name="demurrages_days"/>
+                    <field name="demurrages_cost"/>
+                    <field name="total_demurrages_cost"/>
+                    <field name="unload_days"/>
+                    <field name="unload_cost"/>
+                    <field name="total_unload_cost"/>
+                    <field name="other_clear_cost"/>
+                    <field name="total_clearing_cost"/>
+                    <field name="total_clearing_cost_eg"/>
+                    <field name="currency_id"/>
+
+                </list>
+            </field>
+        </record>
+        <record id="indirect_cleaning_form" model="ir.ui.view">
+            <field name="name">indirect.cleaning.form</field>
+            <field name="model">tender.indirect.sites.cleaning</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group name="Main" string="Clear Costs">
+                                <field name="currency_id"/>
+                                <field name="company_currency" invisible="1"/>
+                                <field name="containers_number"/>
+                                <field name="cost_container_clearing"/>
+                                <field name="cost_container_load"/>
+                                <field name="cost_container_transportation"/>
+                                <field name="cost_container_toll_station"/>
+                                <field name="cost_container_toll_station_army"/>
+                            </group>
+                            <group name="cal_main" string= "Clear Main costs">
+                                <field name="total_cost_container_clearing"/>
+                                <field name="total_cost_container_load"/>
+                                <field name="total_cost_container_transportation"/>
+                                <field name="total_cost_container_toll_station"/>
+                                <field name="total_cost_container_toll_station_army"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group name="storage" string="Storage">
+                                <field name="storage_days"/>
+                                <field name="storage_cost"/>
+                                <field name="total_storage_cost_port"/>
+                            </group>
+                            <group name="demurrages" string="Demurrages">
+                                <field name="demurrages_days"/>
+                                <field name="demurrages_cost"/>
+                                <field name="total_demurrages_cost"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group name="unload" string="Unloading">    
+                                <field name="unload_days"/>
+                                <field name="unload_cost"/>
+                                <field name="total_unload_cost"/>
+                            </group>
+                            <group name="others" string="Other Clear Cost">
+                                <field name="other_clear_cost"/>
+                            </group>
+                        </group>
+                        <group name="total" string="Total Clearing">
+                            <field name="total_clearing_cost"/>
+                            <field name="total_clearing_cost_eg"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_indirect_cleaning" model="ir.actions.act_window">
+            <field name="name">Indirect Sites Cleaning</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tender.indirect.sites.cleaning</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

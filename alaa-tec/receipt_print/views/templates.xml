@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+
+    <!-- ====================== External Layout (fixed for Odoo 18 + Arabic font) ====================== -->
+    <template id="custom_external_layout_standard">
+      <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+        <div class="row">
+          <div class="col-9">
+            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 70px;" alt="Logo" dir="ltr"/>
+          </div>
+          <div dir="rtl">
+            <t t-if="o and o.amount > 0">
+              <span class="text-right">إيصال استلام نقدية</span>
+            </t><t t-else="">
+              <span class="text-right">إيصال دفع نقدية</span>
+            </t>
+            <br/>
+            <span class="text-right"><t t-esc="o and o.date"/> اليوم</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- مهم: في Odoo 18 لازم <main> + t-raw -->
+      <main t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{ 'o_layout_background' if company.layout_background in ['Geometric','Custom'] else '' }}"
+            t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else '' }});"
+            t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o">
+
+        <div class="pt-5">
+          <t t-call="web.address_layout"/>
+        </div>
+
+        <!-- هنا يتحقن جسم التقرير -->
+        <t t-raw="0"/>
+      </main>
+
+      <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+        <div class="text-center" style="border-top: 1px solid black;">
+          <ul class="list-inline mb4"><div t-field="company.report_footer"/></ul>
+          <div t-if="report_type == 'pdf'" class="text-muted">
+            Page: <span class="page"/> / <span class="topage"/>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- =========================== جزء مشترك لطباعة سطر واحد =========================== -->
+    <template id="receipt_payment_line">
+      <t t-set="currency" t-value="line.currency_id or line.company_id.currency_id"/>
+      <t t-call="receipt_print.custom_external_layout_standard">
+        <div class="page" dir="rtl">
+          <style>
+            .table{
+              --bs-table-bg:transparent; --bs-table-accent-bg:transparent;
+              --bs-table-striped-color:#212529; --bs-table-striped-bg:rgba(0,0,0,.05);
+              --bs-table-active-color:#212529; --bs-table-active-bg:rgba(0,0,0,.1);
+              --bs-table-hover-color:#212529; --bs-table-hover-bg:rgba(0,0,0,.075);
+              width:100%; margin-bottom:1rem; color:#212529; vertical-align:top;
+              border-color:#dee2e6; border:3px solid #000; border-collapse:collapse;
+            }
+            .table td{ padding:6px 10px; }
+            .text-right{ text-align:right; }
+          </style>
+
+          <t t-if="line.amount > 0">
+            <center><span t-esc="line.move_id.name"/> إيصال استلام نقدية رقم</center>
+          </t><t t-else="">
+            <center><span t-esc="line.move_id.name"/> إيصال دفع نقدية رقم</center>
+          </t>
+
+          <table class="table" dir="rtl">
+            <tbody>
+              <tr>
+                <td class="text-right" style="width:80%">
+                  <strong>
+                    <!-- استخدم recipient_id لو موجود؛ وإلا partner -->
+                    <t t-if="'recipient_id' in line._fields and line.recipient_id">
+                      <span t-field="line.recipient_id"/>
+                    </t><t t-else="">
+                      <span t-esc="(line.partner_id and line.partner_id.display_name) or ''"/>
+                    </t>
+                  </strong>
+                </td>
+                <td class="text-right" style="width:20%">
+                  <t t-if="line.amount > 0"><strong>وصلنا من السيد</strong></t><t t-else=""><strong>دفعنا إلى السيد</strong></t>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="text-right" style="width:80%">
+                  <span t-esc="abs(line.amount)"/><br/>
+                  <span t-esc="currency.amount_to_text(abs(line.amount))"/>
+                </td>
+                <td class="text-right" style="width:20%">المبلغ</td>
+              </tr>
+
+              <tr>
+                <td class="text-right" style="width:80%"><span t-esc="line.payment_ref or ''"/></td>
+                <td class="text-right" style="width:20%">وذلك قيمة</td>
+              </tr>
+
+              <tr>
+                <td class="text-right" style="width:80%"><span t-field="line.date" t-options="{'widget':'date'}"/></td>
+                <td class="text-right" style="width:20%">تحريرًا في</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br/><br/><br/>
+
+          <center>
+            <table style="width:100%;border:0">
+              <thead>
+                <tr>
+                  <th style="width:25%;border:0">المستلم</th>
+                  <th style="width:25%;border:0">المدير المالي</th>
+                  <th style="width:25%;border:0">رئيس الحسابات</th>
+                  <th style="width:25%;border:0">أمين الخزينة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border:0">---------------</td>
+                  <td style="border:0">---------------</td>
+                  <td style="border:0">---------------</td>
+                  <td style="border:0">---------------</td>
+                </tr>
+              </tbody>
+            </table>
+          </center>
+        </div>
+      </t>
+    </template>
+
+    <!-- =========================== تقرير سطور الخزينة/البنك =========================== -->
+    <template id="receipt_payment_temp2">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="line">
+          <t t-set="company" t-value="line.company_id"/>
+          <t t-set="o" t-value="line"/>
+          <t t-call="receipt_print.receipt_payment_line"/>
+        </t>
+      </t>
+    </template>
+
+    <!-- (اختياري) تقرير على مستوى الـ Statement كله -->
+    <template id="receipt_payment_temp">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="st">
+          <t t-foreach="st.line_ids" t-as="line">
+            <t t-set="company" t-value="line.company_id"/>
+            <t t-set="o" t-value="line"/>
+            <t t-call="receipt_print.receipt_payment_line"/>
+          </t>
+        </t>
+      </t>
+    </template>
+
+    <!-- =============================== Actions =============================== -->
+    <record id="receipt_payment_action2" model="ir.actions.report">
+      <field name="name">استلام/دفع نقدية</field>
+      <field name="model">account.bank.statement.line</field>
+      <field name="report_type">qweb-html</field>
+      <field name="report_name">receipt_print.receipt_payment_temp2</field>
+      <field name="report_file">receipt_print.receipt_payment_temp2</field>
+      <field name="print_report_name">'استلام/دفع نقدية - ' + (object.move_id.name or '')</field>
+      <field name="binding_model_id" ref="account.model_account_bank_statement_line"/>
+      <field name="binding_type">report</field>
+    </record>
+
+    <record id="receipt_payment_action" model="ir.actions.report">
+      <field name="name">استلام/دفع نقدية (Statement)</field>
+      <field name="model">account.bank.statement</field>
+      <field name="report_type">qweb-html</field>
+      <field name="report_name">receipt_print.receipt_payment_temp</field>
+      <field name="report_file">receipt_print.receipt_payment_temp</field>
+      <field name="print_report_name">'استلام/دفع نقدية - ' + (object.name or '')</field>
+      <field name="binding_model_id" ref="account.model_account_bank_statement"/>
+      <field name="binding_type">report</field>
+    </record>
+
+  </data>
+</odoo>

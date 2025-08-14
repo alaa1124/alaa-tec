@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="tender_item_material_form_view" model="ir.ui.view">
+            <field name="name">tender.item.material</field>
+            <field name="model">tender.item.material</field>
+            <field name="arch" type="xml">
+                <form string="Material">
+                    <sheet>
+
+                        <div class="oe_title">
+                            <label for="description"/>
+                            <h1>
+                                <field name="description" placeholder="Description"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <!--                            <group>-->
+                            <!--                                <field name="product_id"/>-->
+                            <!--                                <field name="uom_id"/>-->
+                            <!--                                <field name="initial_quantity"/>-->
+                            <!--                                <field name="final_quantity"/>-->
+                            <!--                                <field name="waste"/>-->
+                            <!--                            </group>-->
+                            <group>
+                                <field name="isImported"/>
+                                <field name="custom_tax"
+                                       invisible="isImported==False"/>
+                                <field name="custom_tax_value"
+                                       invisible="isImported==False"/>
+                                <field name="vat_tax"
+                                       invisible="isImported==False"/>
+                                <field name="vat_tax_value"
+                                       invisible="isImported==False"/>
+                                <field name="comm_tax"
+                                       invisible="isImported==False"/>
+                                <field name="comm_tax_value"
+                                       invisible="isImported==False"/>
+                                <field name="administration_fees"
+                                       invisible="isImported==False"/>
+                                <!--                                <field  name="unitcost" invisible="isImported==False"/>-->
+                                <!--                                <field  name="subcost" invisible="isImported==False"/>-->
+                                <!--                                <field  name="material_total_unit"-->
+                                <!--                                       invisible="isImported==False"/>-->
+                                <!--                                <field  name="material_total_cost"-->
+                                <!--                                       invisible="isImported==False"/>-->
+                                <!--                                <field  name="material_total_cost_egy"-->
+                                <!--                                       invisible="isImported==False"/>-->
+                                <!--                                <field  name="note" invisible="isImported==False"/>-->
+                                <!--                                <field  name="tax_ids" widget="many2many_tags"-->
+                                <!--                                       invisible="isImported==False"/>-->
+                                <!--                                <field  name="tag_ids" widget="many2many_tags"-->
+                                <!--                                       invisible="isImported==False"/>-->
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tender_item_material_tree_view" model="ir.ui.view">
+            <field name="name">tender.item.material</field>
+            <field name="model">tender.item.material</field>
+            <field name="arch" type="xml">
+                <list string="Material">
+                    <field optional="show" name="product_id"/>
+                    <field optional="show" name="description"/>
+                    <field optional="show" name="uom_id"/>
+                    <field optional="show" name="initial_quantity"/>
+                    <field optional="show" name="final_quantity"/>
+                    <field optional="show" name="waste"/>
+                    <field optional="show" name="currency_id"/>
+                    <field optional="show" name="isImported"/>
+                    <field optional="hide" name="custom_tax"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="custom_tax_value"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="vat_tax"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="vat_tax_value"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="comm_tax"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="comm_tax_value"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="administration_fees"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="unitcost" invisible="isImported==False"/>
+                    <field optional="hide" name="subcost" invisible="isImported==False"/>
+                    <field optional="hide" name="material_total_unit"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="material_total_cost"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="material_total_cost_egy"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="note" invisible="isImported==False"/>
+                    <field optional="hide" name="tax_ids" widget="many2many_tags"
+                           invisible="isImported==False"/>
+                    <field optional="hide" name="tag_ids" widget="manymany_tags"
+                           invisible="isImported==False"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="tender_item_material_act_window" model="ir.actions.act_window">
+            <field name="name">Tender Item Material</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tender.item.material</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_uc_construction"
+                  web_icon="uc_construction,static/description/icon.png"
+                  name="Construction"
+                  groups="uc_construction.group_user,uc_construction.group_manager"
+
+        />
+
+        <!-- Master Data        -->
+        <menuitem id="menu_uc_construction_master" name="Master Data" parent="menu_uc_construction" sequence="1"/>
+         <menuitem id="menu_uc_projects" name="Projects" parent="menu_uc_construction_master" action="project.open_view_project_all" sequence="1"/>
+        <menuitem name="Tender" id="uc_tender_menu" parent="menu_uc_construction_master" action="uc_tender_act_window" sequence="2"/>
+
+
+        <!-- Configuration        -->
+        <menuitem id="menu_uc_construction_configuration" name="Configuration" parent="menu_uc_construction" sequence="2" groups="uc_construction.group_manager"/>
+        <menuitem id="menu_uc_tags" name="Tags" parent="menu_uc_construction_configuration" action="project.project_tags_action" sequence="1"/>
+        <menuitem id="menu_uc_taxs" name="Taxes" parent="menu_uc_construction_configuration" action="account.action_tax_form" sequence="2"/>
+        <menuitem name="Stamps" id="uc_stamps_menu" parent="menu_uc_construction_configuration" action="uc_stamps_act_window2" sequence="3"/>
+<!--        <menuitem name="SiteService Type" id="site_service_type_menu" parent="menu_uc_construction_configuration" action="site_service_type_act_window"  sequence="4"/>-->
+        <menuitem name="Headers" id="headers_menu" parent="menu_uc_construction_configuration" action="action_headers"  sequence="5"/>
+
+
+    </data>
+</odoo>

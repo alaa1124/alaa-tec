@@ -1,0 +1,62 @@
+<odoo>
+    <record id="ks_res_config_settings_moddele_account" model="ir.ui.view">
+        <field name="name">ks.res.config.settings.view.form.inherit.account.middle</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="50"/>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='has_accounting_entries']" position="after">
+
+                <block title="Cheques Setting" name="cheques_setting"
+                       invisible="not is_root_company">
+                    <setting string="Cheques Setting" company_dependent="1">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="middle_account"
+                                       class="col-md-3 o_light_label"/>
+                                <field name="middle_account"/>
+                            </div>
+                            <div class="row mt16">
+                                <label for="ks_middle_account"
+                                       class="col-md-3 o_light_label"/>
+                                <field name="ks_middle_account"/>
+                            </div>
+                            <div class="row mt16">
+                                <label for="ks_payment_cash"
+                                       class="col-md-3 o_light_label"/>
+                                <field name="ks_payment_cash"/>
+                                <label for="ks_payment_return_cash"
+                                       class="col-md-3 o_light_label"
+                                       invisible="ks_payment_cash==False"/>
+                                <field name="ks_payment_return_cash"
+                                       invisible="ks_payment_cash==False"/>
+                            </div>
+
+                            <div class="row mt16">
+                                <label for="ks_middle_account_send"
+                                       class="col-md-3 o_light_label"/>
+                                <field name="ks_middle_account_send" string=" Middle Account Send"/>
+                            </div>
+                            <div class="row mt16">
+                                <label for="ks_payment_vendor"
+                                       class="col-md-3 o_light_label"/>
+                                <field name="ks_payment_vendor"/>
+                            </div>
+
+                            <div class="row mt16">
+                                <label for="ks_payment_cash_send"
+                                       class="col-md-3 o_light_label"/>
+                                <field name="ks_payment_cash_send"/>
+                                <label for="ks_payment_return_cash_send"
+                                       class="col-md-3 o_light_label"
+                                       invisible="ks_payment_cash_send==False"/>
+                                <field name="ks_payment_return_cash_send"
+                                       invisible="ks_payment_cash_send==False"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_create_product" model="res.groups">
+            <field name="name">Create Product</field>
+        </record>
+          <record id="group_reset_to_process" model="res.groups">
+            <field name="name">Show statement reset to process</field>
+        </record>
+         <record id="group_reset_draft" model="res.groups">
+            <field name="name">statement set To Draft </field>
+        </record>
+        <record id="group_statement_validate" model="res.groups">
+            <field name="name">statement Validate </field>
+        </record>
+    </data>
+</odoo>

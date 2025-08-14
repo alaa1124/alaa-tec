@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="indirect_travel_tree" model="ir.ui.view">
+            <field name="name">indirect_travel_tree</field>
+            <field name="model">tender.indirect.travel</field>
+            <field name="arch" type="xml">
+                <list string="">
+                    <field name="trip"/>
+                    <field name="engineer"/>
+                    <field name="no_of_days"/>
+                    <field name="air_ticket_cost"/>
+                    <field name="accomodation_cost"/>
+                    <field name="pirdeem_cost"/>
+                    <field name="currency_id"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="travel_cost"/>
+                    <field name="travel_cost_egy"/>
+                </list>
+            </field>
+        </record>
+        <record id="indirect_travel_form" model="ir.ui.view">
+            <field name="name">indirect_travel_form</field>
+            <field name="model">tender.indirect.travel</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="trip"/>
+                            <field name="engineer"/>
+                            <field name="no_of_days"/>
+                            <field name="air_ticket_cost"/>
+                            <field name="accomodation_cost"/>
+                            <field name="pirdeem_cost"/>
+                            <field name="currency_id"/>
+                            <field name="company_currency" invisible="1"/>
+                            <field name="travel_cost"/>
+                            <field name="travel_cost_egy"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_indirect_travel" model="ir.actions.act_window">
+            <field name="name">Indirect Travel</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tender.indirect.travel</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

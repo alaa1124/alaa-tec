@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="uc_tender_items_form_view" model="ir.ui.view">
+            <field name="name">Tender Items</field>
+            <field name="model">uc.tender.item</field>
+            <field name="arch" type="xml">
+                <form string="Tender Items">
+                    <style>
+                        .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active,
+                        .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item >
+                        .nav-link.active:hover, .o_form_view .o_notebook > .o_notebook_headers > .nav.nav-tabs >
+                        .nav-item > .nav-link.active:focus, .o_form_view .o_notebook > .o_notebook_headers >
+                        .nav.nav-tabs > .nav-item > .nav-link.active:active{
+                        background-color:#017e84;
+                        }
+                    </style>
+                    <sheet>
+
+                        <div class="oe_button_box" name="button_box" groups="base.group_user">
+                            <button class="oe_stat_button" name="open_item_materials" type="object"
+                                    icon="fa-file-text-o" invisible="display_type=='line_section'">
+                                <field string="Tender Item  Imported Material  Count" name="tender_item_materials_count"
+                                       widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="display_type" invisible="1"/>
+                                <field name="code" readonly="1"/>
+                                <field name="product_id" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="quantity" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="uom_id" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="unit_cost" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="total_cost_before_overhead" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="total_cost" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="total_cost_with_indirect_cost" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                                <field name="currency_id" readonly="1"
+                                       invisible="display_type=='line_section'"/>
+                            </group>
+                            <group invisible="display_type=='line_section'">
+                                <field name="infinancial" readonly="1"/>
+                                <field name="note" readonly="1"/>
+                                <field name="tag_ids" widget="many2many_tags" readonly="0"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tender Products" invisible="display_type=='line_section'">
+                                <field name="tender_item_materials">
+                                    <list editable="bottom">
+                                        <field optional="show" name="product_id"/>
+                                        <field optional="show" name="description"/>
+                                        <field optional="show" name="initial_quantity"/>
+                                        <field optional="show" name="waste"/>
+                                        <field optional="show" name="final_quantity"/>
+
+                                        <field optional="show" name="currency_id"/>
+                                        <field optional="show" name="isImported"/>
+                                        <button name="%(uc_construction.action_edit_imported_material)d"
+                                                context="{'default_material_id': id}"
+                                                invisible="isImported==False" type="action"
+                                                string="Edit Imported Item" class="oe_highlight"
+                                        />
+                                        <field optional="show" name="uom_id" readonly="0"/>
+                                        <!--                                            <field optional="hide" name="custom_tax_percentage"-->
+                                        <!--                                                   readonly="isImported==False"/>-->
+                                        <!--                                            <field optional="hide" name="custom_tax_value"-->
+                                        <!--                                                   readonly="isImported==False"/>-->
+                                        <!--                                            <field optional="hide" name="vat_tax_percentage"-->
+                                        <!--                                                   readonly="isImported==False"/>-->
+                                        <!--                                            <field optional="hide" name="vat_tax_value"-->
+                                        <!--                                                   readonly="isImported==False"/>-->
+                                        <!--                                            <field optional="hide" name="comm_tax_percentage"-->
+                                        <!--                                                   readonly="isImported==False"/>-->
+                                        <!--                                            <field optional="hide" name="comm_tax_value"-->
+                                        <!--                                                   readonly="isImported==False"/>-->
+                                        <!--                                            <field optional="hide" name="administration_fees"-->
+                                        <!--                                                   invisible="isImported==False"/>-->
+                                        <field optional="hide" name="unitcost"/>
+                                        <field optional="hide" name="subcost"/>
+                                        <field optional="hide" name="material_total_unit" sum="Total"
+                                        />
+                                        <field optional="hide" name="material_total_cost" sum="Total"
+                                        />
+                                        <field optional="hide" name="material_total_cost_egy" sum="Total"
+                                        />
+                                        <field optional="hide" name="note"/>
+                                        <!--                                            <field optional="hide" name="tax_ids" widget="many2many_tags"-->
+                                        <!--                                                   />-->
+                                        <field name="tag_ids" widget="many2many_tags"
+                                        />
+
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Unit Equipment" invisible="display_type=='line_section'">
+                                <field name="tender_item_equipments">
+                                    <list editable="bottom">
+                                        <field optional="show" name="product_id" domain="[('uc_rent_ok','=',True)]"/>
+                                        <field optional="show" name="description"/>
+                                        <field optional="show" name="uom_id" readonly="0"/>
+                                        <field optional="show" name="quantity"/>
+                                        <field optional="show" name="currency_id"/>
+                                        <field optional="show" name="total_cost_with_indirect_cost"/>
+                                        <field optional="show" name="unitcost"/>
+                                        <field optional="show" name="subcost"/>
+                                        <field optional="show" name="equipment_total_unit" sum="Total"/>
+                                        <field optional="show" name="equipment_total_cost" sum="Total"/>
+                                        <field optional="show" name="equipment_total_cost_eg" sum="Total"/>
+                                        <field optional="show" name="note"/>
+                                        <field optional="show" name="tag_ids" widget="many2many_tags"/>
+
+
+                                    </list>
+                                </field>
+
+                            </page>
+                            <page string="Unit Epenses" invisible="display_type=='line_section'">
+                                <field name="tender_item_expenses">
+                                    <list editable="bottom">
+                                        <field optional="show" name="product_id"
+                                               domain="[('type','=','consu')]"/>
+                                        <field optional="show" name="description"/>
+                                        <field optional="show" name="uom_id" readonly="0"/>
+                                        <field optional="show" name="quantity"/>
+                                        <field optional="show" name="currency_id"/>
+                                        <field optional="show" name="unitcost"/>
+                                        <field optional="show" name="subcost"/>
+                                        <field optional="show" name="expense_total_unit" sum="Total"/>
+                                        <field optional="show" name="expense_total_cost" sum="Total"/>
+                                        <field optional="show" name="espense_total_cost_eg" sum="Total"/>
+                                        <field optional="show" name="note"/>
+                                        <field optional="show" name="tag_ids" widget="many2many_tags"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Unit Labours" invisible="display_type=='line_section'">
+                                <field name="tender_item_labour">
+                                    <list editable="bottom">
+                                        <field optional="show" name="product_id"
+                                               domain="[('type','=','service')]"/>
+                                        <field optional="show" name="description"/>
+                                        <field optional="show" name="uom_id" readonly="0"/>
+                                        <field optional="show" name="quantity"/>
+                                        <field optional="show" name="currency_id"/>
+                                        <field optional="show" name="unitcost"/>
+                                        <field optional="show" name="subcost"/>
+                                        <field optional="show" name="labour_total_unit" sum="Total"/>
+                                        <field optional="show" name="labour_total_cost" sum="Total"/>
+                                        <field optional="show" name="labour_total_cost_eg" sum="Total"/>
+                                        <field optional="show" name="note"/>
+                                        <field optional="show" name="tag_ids" widget="many2many_tags"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Lump Sum Items" invisible="display_type=='line_section'">
+                                <field name="tender_item_lumps">
+                                    <list editable="bottom">
+                                        <field name="name"/>
+                                        <field name="currency_id"/>
+                                        <field name="value" sum="Total"/>
+                                        <field name="value_egy" sum="Total"/>
+
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Item Overhead" invisible="display_type=='line_section'">
+                                <field name="tender_item_overhead">
+                                    <list editable="bottom">
+                                        <field optional="show" name="currency_id"/>
+                                        <field optional="show" name="overhead_type"/>
+                                        <field optional="show" name="overhead_value"/>
+                                        <field optional="show" name="profit_type"/>
+                                        <field optional="show" name="profit_value"/>
+                                        <field optional="show" name="tax_type"/>
+                                        <field optional="show" name="tax_value"/>
+                                        <field optional="show" name="overhead_total_cost" sum="Total"/>
+                                        <field optional="show" name="overhead_total_cost_egy" sum="Total"/>
+                                        <field optional="show" name="note"/>
+                                        <!--                                        <field optional="show" name="tax_ids" widget="many2many_tags"/>-->
+                                        <field optional="show" name="tag_ids" widget="many2many_tags"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Tender Subcontractors"
+                                  invisible="display_type=='line_section'">
+                                <field name="tender_item_subcontractor">
+                                    <list editable="bottom">
+                                        <field optional="show" name="product_id" domain="[('subcontracted','=',True)]"/>
+                                        <field optional="show" name="description"/>
+                                        <field optional="show" name="uom_id" readonly="0"/>
+                                        <field optional="show" name="quantity"/>
+                                        <field optional="show" name="currency_id"/>
+                                        <field optional="show" name="unitcost"/>
+                                        <field optional="show" name="subcost"/>
+                                        <field optional="show" name="subcontractor_total_unit" sum="Total"/>
+                                        <field optional="show" name="subcontractor_total_cost" sum="Total"/>
+                                        <field optional="show" name="subcontractor_total_cost_egy" sum="Total"/>
+                                        <field optional="show" name="note"/>
+                                        <field optional="show" name="tag_ids" widget="many2many_tags" readonly="1"/>
+                                    </list>
+                                </field>
+                            </page>
+
+                        </notebook>
+
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="uc_tender_items_tree_view" model="ir.ui.view">
+            <field name="name">Tender Items</field>
+            <field name="model">uc.tender.item</field>
+            <field name="arch" type="xml">
+                <list string="Tender Items">
+                    <field optional="show" name="sequence" widget="handle"/>
+                    <field optional="show" name="display_type" invisible="1"/>
+                    <field optional="show" name="code" widget="account_hierarchy_selection"/>
+                    <field optional="show" name="name"/>
+                    <field optional="show" name="product_id"/>
+                    <field optional="show" name="quantity"/>
+                    <field optional="show" name="uom_id" readonly="0"/>
+                    <field optional="show" name="unit_cost"/>
+                    <field optional="show" name="total_cost"/>
+                    <field optional="show" name="currency_id"/>
+                    <field optional="show" name="total_cost_with_indirect_cost"/>
+                    <field name="infinancial" optional="show"/>
+                    <field name="note" optional="show"/>
+                    <field name="tag_ids" widget="many2many_tags" optional="show"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="uc_tender_items_act_window" model="ir.actions.act_window">
+            <field name="name">Tender Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">uc.tender.item</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <record id="uc_tender_items_search" model="ir.ui.view">
+            <field name="name">Tender Items</field>
+            <field name="model">uc.tender.item</field>
+            <field name="arch" type="xml">
+                <search string="Accounts">
+                    <field name="code" widget="account_hierarchy_selection"/>
+                    <field name="name"/>
+                    <filter string="Items" name="items"
+                            domain="[('display_type', 'not in', ['line_section','line_note'])]"/>
+                    <filter string="Headers" name="headers" domain="[('display_type', '=', 'line_section')]"/>
+
+                    <searchpanel class="account_root">
+                        <field name="root_id" icon="fa-filter" limit="0"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

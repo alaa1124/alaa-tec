@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+<!--    <record id="view_bank_statement_form_reset" model="ir.ui.view">-->
+<!--        <field name="name">view_bank_statement_form_reset</field>-->
+<!--        <field name="model">account.bank.statement</field>-->
+<!--        <field name="inherit_id" ref="account.view_bank_statement_form"/>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--            <xpath expr="//button[@name='button_reprocess']" position="attributes">-->
+<!--                <attribute name="groups">tec_custom.group_reset_to_process</attribute>-->
+
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='button_validate_or_action']" position="attributes">-->
+<!--                <attribute name="groups">tec_custom.group_statement_validate</attribute>-->
+
+<!--            </xpath>-->
+<!--             <xpath expr="//button[@name='button_reopen']" position="attributes">-->
+<!--                <attribute name="groups">tec_custom.group_reset_draft</attribute>-->
+
+<!--            </xpath>-->
+
+<!--        </field>-->
+<!--    </record>-->
+</odoo>

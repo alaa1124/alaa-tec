@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="outstanding_view_account_journal_form" model="ir.ui.view">
+            <field name="name">account.journal</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="check_management.view_journal_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='transfer']/.." position="after">
+                    <group>
+                        <group>
+                            <field name="use_outstanding"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

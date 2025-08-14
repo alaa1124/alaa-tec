@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="indirect_acc_tree" model="ir.ui.view">
+            <field name="name">indirect_acc_tree</field>
+            <field name="model">uc.indirect.accomodation</field>
+            <field name="arch" type="xml">
+                <list string="">
+                    <field name="flat"/>
+                    <field name="duratation"/>
+                    <field name="flat_cost"/>
+
+                     <field name="currency_id"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="accomodation_cost"/>
+                    <field name="accomodation_cost_egy"/>
+                </list>
+            </field>
+        </record>
+        <record id="indirect_acc_form" model="ir.ui.view">
+            <field name="name">indirect_acc_form</field>
+            <field name="model">uc.indirect.accomodation</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="flat"/>
+                            <field name="duratation"/>
+                            <field name="flat_cost"/>
+                             <field name="currency_id"/>
+                    <field name="company_currency" invisible="1"/>
+                            <field name="accomodation_cost"/>
+                            <field name="accomodation_cost_egy"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_indirect_acc" model="ir.actions.act_window">
+            <field name="name">Indirect Accomodation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">uc.indirect.accomodation</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

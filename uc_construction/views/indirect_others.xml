@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="indirect_others_tree" model="ir.ui.view">
+            <field name="name">indirect_others_tree</field>
+            <field name="model">uc.indirect.other</field>
+            <field name="arch" type="xml">
+                <list string="">
+                    <field name="name"/>
+                    <field name="company_currency" invisible="1"/>
+                    <field name="otherCost"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="otherCostEgy"/>
+                </list>
+            </field>
+        </record>
+        <record id="indirect_others_form" model="ir.ui.view">
+            <field name="name">indirect_others_form</field>
+            <field name="model">uc.indirect.other</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_currency" invisible="1"/>
+                            <field name="otherCost"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="otherCostEgy"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_indirect_others" model="ir.actions.act_window">
+            <field name="name">Indirect Other</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">uc.indirect.other</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

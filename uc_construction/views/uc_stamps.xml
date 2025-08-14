@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="uc_stamps_form_view" model="ir.ui.view">
+            <field name="name">Stamps</field>
+            <field name="model">uc.stamps</field>
+            <field name="arch" type="xml">
+                <form string="Stamps">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Stamp Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="is_ordinary_stamps"/>
+                                <field name="is_additional_stamps"/>
+                                <field name="value" readonly="is_ordinary_stamps==True"/>
+                                <field name="company_currency" invisible="1"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="uc_stamps_tree_view" model="ir.ui.view">
+            <field name="name">Stamps</field>
+            <field name="model">uc.stamps</field>
+            <field name="arch" type="xml">
+                <list string="Stamps">
+                    <field name="name"/>
+                    <field name="value" widget="monetary"/>
+                    <field name="company_currency" invisible="1"/>
+                </list>
+            </field>
+        </record>
+
+
+        <record id="uc_stamps_act_window2" model="ir.actions.act_window">
+            <field name="name">Stamps</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">uc.stamps</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Stamps.
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

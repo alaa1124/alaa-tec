@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="external_layout_boxed_editing" inherit_id="web.external_layout_boxed">
+        <xpath expr="//div[@class='row mb8']" position="replace">
+
+<!--            <div class="o_boxed_header">-->
+                <div class="row mb8">
+                    <div class="col-6">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                    </div>
+                    <div class="col-6 text-left mb4">
+                        <h4 class="mt0" t-field="company.report_header"/>
+                        <div name="company_address" class="float-right mb4">
+                            <span t-if="company.company_details" t-field="company.company_details"/>
+                        </div>
+                    </div>
+                </div>
+<!--            </div>-->
+
+
+        </xpath>
+
+    </template>
+</odoo>

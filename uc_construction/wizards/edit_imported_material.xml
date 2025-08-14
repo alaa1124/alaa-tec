@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+            <record model="ir.ui.view" id="edit_imported_material_wiz">
+            <field name="name">Imported Item Material</field>
+            <field name="model">imported.material.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Imported Item Material">
+                    <group>
+                        <group>
+                            <field name="material_id"/>
+                            <field name="isImported"/>
+                            <field name="custom_tax"/>
+                            <field name="custom_tax_value"/>
+                            <field name="vat_tax"/>
+                            <field name="vat_tax_value"/>
+                            <field name="comm_tax"/>
+                            <field name="comm_tax_value"/>
+                            <field name="administration_fees"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="edit_item" string="Ok" type="object" default_focus="1" class="oe_highlight"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_edit_imported_material" model="ir.actions.act_window">
+            <field name="name">Imported Item Material</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">imported.material.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="edit_imported_material_wiz"/>
+            <field name="target">new</field>
+        </record>
+
+
+
+    </data>
+</odoo>

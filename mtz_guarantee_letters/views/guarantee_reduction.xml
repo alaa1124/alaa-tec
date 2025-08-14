@@ -1,0 +1,105 @@
+<odoo>
+    <data>
+        <record id="down_guarantee_tree_view" model="ir.ui.view">
+            <field name="name">down Gurantee</field>
+            <field name="model">guarantee.reduction</field>
+            <field name="arch" type="xml">
+                <list string="down Gurantee">
+                    <field name="number"/>
+                    <field name="letter_guarantee_id"/>
+                    <field name="partner_id"/>
+                    <field name="journal_id"/>
+                    <field name="letter_type"/>
+                    <field name="letter_amount"/>
+                    <field name="transaction_date"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="down_amount"/>
+                    <field name="extend_start_date"/>
+                    <field name="extend_end_date"/>
+                </list>
+            </field>
+        </record>
+        <record id="down_guarantee_form_view" model="ir.ui.view">
+            <field name="name">down Gurantee</field>
+            <field name="model">guarantee.reduction</field>
+            <field name="arch" type="xml">
+                <form string="down Gurantee">
+                    <header>
+                        <button name="confirm_button" string="Confirm" type="object"
+                                class="oe_highlight" invisible="state!='draft'"/>
+                        <button name="cancel_button" string="Cancel" type="object"
+                                class="oe_highlight"
+                                invisible="state!='confirm' or is_close==True"/>
+                        <button name="action_draft" type="object" string="Set Draft"
+                                invisible="state!='cancel'"
+                        />
+                        <field name="state" widget="statusbar"
+                               statusbar_colors='{"confirm":"blue"}'/>
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="number" readonly="True"/>
+                                <field name="letter_guarantee_id" required="True"/>
+                                <field name="transaction_date" readonly="True"/>
+                                <field name="start_date" readonly="True"/>
+                                <field name="date"/>
+                                <field name="end_date" readonly="True"/>
+                                <field name="extend_start_date" invisible="False"/>
+                                <field name="extend_end_date" invisible="False"/>
+                                <field name="is_expenses"/>
+                                <field name="expenses_amount" readonly="is_expenses=='False'"/>
+                                <field name="analytic_id" readonly="is_expenses=='False'"/>
+                                <field name="move_id" readonly="True"/>
+                                <field name="expenses_id" readonly="True"/>
+
+                                <field name="is_close" invisible="False"/>
+
+
+                            </group>
+                            <group>
+                                <field name="partner_id" readonly="True"/>
+                                <field name="journal_id" readonly="True"/>
+                                <field name="letter_raise_amount" readonly="True"/>
+                                <field name="raise_amount" required="True"/>
+                                <field name="down_amount_total" required="True"/>
+                                <field name="letter_amount" readonly="True"/>
+                                <field name="down_amount" required="True"/>
+                                <field name="cover_amount_percentage" required="True"
+                                       readonly="state=='confirm'"/>
+                                <field name="cover_amount" required="True"
+                                       readonly="state=='confirm'"/>
+
+                                <field name="letter_type" readonly="True"/>
+                                <field name="config_id"/>
+
+                            </group>
+                        </group>
+                        <group>
+                            <field name="note"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="reduce_guarantee_action_view" model="ir.actions.act_window">
+            <field name="name">Down Gurantee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guarantee.reduction</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <menuitem id="reduce_guarantee_act_menu" name="Reduce Gurantee" parent="letter_guarantee_categ_menu"
+                  action="reduce_guarantee_action_view"/>
+
+        <record id="extend_guarantee_sequence" model="ir.sequence">
+            <field name="name">reduce guarantee</field>
+            <field name="code">guarantee.reduction</field>
+            <field name="prefix">GR</field>
+            <field name="padding">0</field>
+        </record>
+
+
+    </data>
+</odoo>

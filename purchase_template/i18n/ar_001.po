@@ -1,0 +1,335 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_template
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-26 19:51+0000\n"
+"PO-Revision-Date: 2022-11-26 19:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_template
+#: model:ir.actions.report,print_report_name:purchase_template.action_purchaseorder_po_draft
+msgid "'Draft Po - %s' % (object.name)"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.actions.report,print_report_name:purchase_template.action_purchaseorder_po_draft_en
+msgid "'Draft Po EN- %s' % (object.name)"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.actions.report,print_report_name:purchase_template.action_purchaseorder_purchase_order_ar
+msgid "'Purchase Order AR  - %s' % (object.name)"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.actions.report,print_report_name:purchase_template.action_purchaseorder_purchase_order_en
+msgid "'Purchase order EN - %s' % (object.name)"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid ":أمر توريد"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+msgid ":أمر توريد مبدئ"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong class=\"mr16\">Subtotal</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Amount</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Delivery Date</strong>"
+msgstr "تاريخ التسليم"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>Delivery Period:</strong>"
+msgstr "فتره التسليم"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Delivery Period</strong>"
+msgstr "فتره التسليم"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Description</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>End Period:</strong>"
+msgstr "انهاء فتره التسليم"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Order Date:</strong>"
+msgstr "تاريخ الامر"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>Order Date</strong>"
+msgstr "تاريخ الامر"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Purchase Representative:</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Qty</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Shipping address:</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Taxes</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "<strong>Unit Price</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>الضرائب</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>الكميه</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>المبــلغ</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>الوصف</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>تاريخ التسليم</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>سعر الوحده</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>عنوان الشحن:</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "<strong>مندوب الشراء:</strong>"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Approved By"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Company Stamp"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.model,name:purchase_template.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+msgid "Draft PO"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.actions.report,name:purchase_template.action_purchaseorder_po_draft
+msgid "Draft PO AR"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.actions.report,name:purchase_template.action_purchaseorder_po_draft_en
+msgid "Draft PO EN"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Financial Revision"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.model.fields,field_description:purchase_template.field_purchase_order__project_label
+msgid "Label"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Location :"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.external_layout_boxed_editing
+msgid "Logo"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.model.fields,field_description:purchase_template.field_purchase_order__project_note
+msgid "Note"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Prepared By"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.model.fields,field_description:purchase_template.field_purchase_order__project_name
+msgid "Project Name"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.model,name:purchase_template.model_purchase_order
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Purchase Order"
+msgstr "أمر شراء"
+
+#. module: purchase_template
+#: model:ir.actions.report,name:purchase_template.action_purchaseorder_purchase_order_ar
+msgid "Purchase Order AR"
+msgstr ""
+
+#. module: purchase_template
+#: model:ir.actions.report,name:purchase_template.action_purchaseorder_purchase_order_en
+msgid "Purchase Order EN"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Supplier Stamp"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "Supplier approval"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.purchase_order_form_custom
+msgid "project Information"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_en_draft
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_po_draft_purchase_order_en_template
+msgid "week"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "الاعداد"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "الموقع:"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "ختم الشركه"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "ختم المورد"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "مراجعه ماليه"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "موافقه المورد"
+msgstr ""
+
+#. module: purchase_template
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_po
+#: model_terms:ir.ui.view,arch_db:purchase_template.report_purchaseorder_document_purchase_order_ar
+msgid "يعتمد"
+msgstr ""
