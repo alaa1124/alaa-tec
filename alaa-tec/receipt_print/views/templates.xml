@@ -9,7 +9,7 @@
           <div class="col-9">
             <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 70px;" alt="Logo" dir="ltr"/>
           </div>
-          <div dir="rtl">
+          <div class="col-3" dir="rtl">
             <t t-if="o and o.amount > 0">
               <span class="text-right">إيصال استلام نقدية</span>
             </t><t t-else="">
@@ -71,6 +71,9 @@
           <table class="table" dir="rtl">
             <tbody>
               <tr>
+                <td class="text-right" style="width:20%">
+                  <t t-if="line.amount > 0"><strong>وصلنا من السيد</strong></t><t t-else=""><strong>دفعنا إلى السيد</strong></t>
+                </td>
                 <td class="text-right" style="width:80%">
                   <strong>
                     <!-- استخدم recipient_id لو موجود؛ وإلا partner -->
@@ -81,53 +84,50 @@
                     </t>
                   </strong>
                 </td>
-                <td class="text-right" style="width:20%">
-                  <t t-if="line.amount > 0"><strong>وصلنا من السيد</strong></t><t t-else=""><strong>دفعنا إلى السيد</strong></t>
-                </td>
               </tr>
 
               <tr>
+                <td class="text-right" style="width:20%">المبلغ</td>
                 <td class="text-right" style="width:80%">
                   <span t-esc="abs(line.amount)"/><br/>
                   <span t-esc="currency.amount_to_text(abs(line.amount))"/>
                 </td>
-                <td class="text-right" style="width:20%">المبلغ</td>
               </tr>
 
               <tr>
-                <td class="text-right" style="width:80%"><span t-esc="line.payment_ref or ''"/></td>
                 <td class="text-right" style="width:20%">وذلك قيمة</td>
+                <td class="text-right" style="width:80%"><span t-esc="line.payment_ref or ''"/></td>
               </tr>
 
               <tr>
-                <td class="text-right" style="width:80%"><span t-field="line.date" t-options="{'widget':'date'}"/></td>
                 <td class="text-right" style="width:20%">تحريرًا في</td>
+                <td class="text-right" style="width:80%"><span t-field="line.date" t-options="{'widget':'date'}"/></td>
               </tr>
             </tbody>
           </table>
 
           <br/><br/><br/>
 
-          <center>
-            <table style="width:100%;border:0">
-              <thead>
-                <tr>
-                  <th style="width:25%;border:0">المستلم</th>
-                  <th style="width:25%;border:0">المدير المالي</th>
-                  <th style="width:25%;border:0">رئيس الحسابات</th>
-                  <th style="width:25%;border:0">أمين الخزينة</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="border:0">---------------</td>
-                  <td style="border:0">---------------</td>
-                  <td style="border:0">---------------</td>
-                  <td style="border:0">---------------</td>
-                </tr>
-              </tbody>
-            </table>
-          </center>
+                     <center>
+             <table style="width:100%;border:0" dir="rtl">
+               <thead>
+                 <tr>
+                   <th style="width:25%;border:0">المستلم</th>
+                   <th style="width:25%;border:0">المدير المالي</th>
+                   <th style="width:25%;border:0">رئيس الحسابات</th>
+                   <th style="width:25%;border:0">أمين الخزينة</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td style="border:0">---------------</td>
+                   <td style="border:0">---------------</td>
+                   <td style="border:0">---------------</td>
+                   <td style="border:0">---------------</td>
+                 </tr>
+               </tbody>
+             </table>
+           </center>
         </div>
       </t>
     </template>
