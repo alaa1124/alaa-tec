@@ -79,9 +79,7 @@
                                     <t t-elif="rec[0] == 'TOTAL'">
                                         <!-- Summary Row -->
                                         <tr style="background-color: #e8f4fd; font-weight: bold;">
-                                            <td style="font-weight: bold; text-align: center;">
-                                                <t t-esc="rec[0]"/>
-                                            </td>
+                                            <td style="font-weight: bold; text-align: center;"></td>
                                             <t t-foreach="rec" t-as="j" t-start="1">
                                                 <td style="font-weight: bold; text-align: center;">
                                                     <t t-esc="j"/>
@@ -151,9 +149,7 @@
                                         <t t-elif="record[0] == 'TOTAL'">
                                             <!-- Summary Row -->
                                             <tr style="background-color: #e8f4fd; font-weight: bold;">
-                                                <td style="font-weight: bold; text-align: center;">
-                                                    <t t-esc="record[0]"/>
-                                                </td>
+                                                <td style="font-weight: bold; text-align: center;"></td>
                                                 <t t-foreach="record" t-as="rec" t-start="1">
                                                     <td style="font-weight: bold; text-align: center;">
                                                         <t t-esc="rec"/>
