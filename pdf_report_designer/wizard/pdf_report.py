@@ -173,7 +173,7 @@ class PDFReportWizard(models.TransientModel):
                 if rec.group_by_field and len(grouped_data) > 1:
                     summary_row = ["TOTAL"]
                     # Calculate totals for all numeric fields (monetary, integer, float)
-                    for field_id in order[1:]:  # Skip first field (SL.No)
+                    for field_id in order:  # Sum aligned to each data column
                         field_obj = self.env['ir.model.fields'].browse(int(field_id))
                         if field_obj.ttype in ['monetary', 'integer', 'float']:
                             total = sum(record[field_obj.name] for record in group_records if record[field_obj.name])
