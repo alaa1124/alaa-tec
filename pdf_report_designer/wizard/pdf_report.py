@@ -51,124 +51,153 @@ class PDFReportWizard(models.TransientModel):
             if rec.date_field_id and (rec.start_date and rec.end_date):
                 domain = [(rec.date_field_id.name, '>=', rec.start_date),
                           (rec.date_field_id.name, '<=', rec.end_date)]
+
             model_records = self.env[record_model].browse(record_ids)
             model_data = model_records.filtered_domain(domain)
+
             table_data = []
             child_table_data = []
-            for record in model_data:
-                data_list = []
-                list_b = []
-                order = rec.field_order.strip('][').split(', ')
-                for field_id in order:
-                    field_obj = self.env['ir.model.fields'].browse(
-                        int(field_id))
-                    field_name = field_obj.name
-                    if field_obj.ttype == 'datetime':
-                        field_data = record[field_name].strftime("%d/%m/%Y")
-                    elif field_obj.ttype == 'boolean':
-                        if not record[field_name]:
-                            field_data = "No"
-                        else:
-                            field_data = "Yes"
-                    elif field_obj.ttype == 'monetary':
-                        if record.currency_id.position == 'before':
-                            field_data = record.currency_id.symbol+str(record[field_name])
-                        else:
-                            field_data = str(record[field_name])+record.currency_id.symbol
-                    elif field_obj.ttype == 'many2one' or field_obj.ttype == 'many2one_reference':
-                        if record[field_name]:
-                            field_data = record[field_name].name_get()[0][1]
-                        else:
-                            field_data = "Null"
-                    elif field_obj.ttype == 'many2many':
-                        if record[field_name]:
-                            field_data = ""
-                            for count, value in enumerate(record[field_name]):
-                                if not count == len(record[field_name]) - 1:
-                                    field_data += value.name_get()[0][1] + ", "
-                                else:
-                                    field_data += value.name_get()[0][1]
-                        else:
-                            field_data = "Null"
-                    elif field_obj.ttype == 'one2many':
-                        if record[field_name]:
-                            child_fields = rec.fields_ids.one2many_model_field_ids
-                            if child_fields:
-                                field_data = "one2many"
-                                list_b = []
-                                for o2m_c_field in record[field_name]:
-                                    list_a = []
-                                    for c_field in child_fields:
-                                        c_field_name = c_field.name
-                                        if c_field.ttype == 'datetime':
-                                            child_field_data = o2m_c_field[
-                                                c_field_name].strftime(
-                                                "%d/%m/%Y")
-                                        elif c_field.ttype == 'boolean':
-                                            if o2m_c_field[c_field_name]:
-                                                child_field_data = "Yes"
-                                            else:
-                                                child_field_data = "No"
-                                        elif c_field.ttype in (
-                                                'many2one',
-                                                'many2one_reference'):
-                                            if o2m_c_field[c_field_name]:
-                                                child_field_data = o2m_c_field[
-                                                    c_field_name].name_get()[0][
-                                                    1]
-                                            else:
-                                                child_field_data = "Null"
-                                        elif c_field.ttype in (
-                                                'many2one',
-                                                'many2one_reference'):
-                                            if o2m_c_field[c_field_name]:
-                                                child_field_data = o2m_c_field[
-                                                    c_field_name].name_get()[0][
-                                                    1]
-                                            else:
-                                                child_field_data = "Null"
-                                        elif c_field.ttype in (
-                                                'many2many', 'one2many'):
-                                            if o2m_c_field[c_field_name]:
-                                                child_field_data = ""
-                                                for c_count, c_value in enumerate(
-                                                        o2m_c_field[
-                                                            c_field_name]):
-                                                    if not c_count == len(
-                                                            o2m_c_field[
-                                                                c_field_name]) - 1:
-                                                        child_field_data += \
-                                                            c_value.name_get()[
-                                                                0][
-                                                                1] + ", "
-                                                    else:
-                                                        child_field_data += \
-                                                            c_value.name_get()[
-                                                                0][1]
-                                            else:
-                                                child_field_data = "Null"
-                                        else:
-                                            child_field_data = o2m_c_field[
-                                                c_field_name]
-                                        list_a.append(child_field_data)
-                                        field_data = list_a
-                                    list_b.append(list_a)
+            rec_currency_symbol = ''
+
+            # Group data by group_by_field if specified
+            grouped_data = {}
+            if rec.group_by_field:
+                for record in model_data:
+                    group_value = record.mapped(rec.group_by_field)
+                    if group_value:
+                        group_key = group_value[0].name_get()[0][1] if hasattr(group_value[0], 'name_get') else str(group_value[0])
+                    else:
+                        group_key = "Unknown"
+                    if group_key not in grouped_data:
+                        grouped_data[group_key] = []
+                    grouped_data[group_key].append(record)
+            else:
+                # If no grouping, treat all records as one group
+                grouped_data = {"All Records": model_data}
+
+            # Process each group
+            for group_name, group_records in grouped_data.items():
+                group_table_data = []
+                group_child_table_data = []
+
+                for record in group_records:
+                    # Capture currency symbol (if any) for totals formatting
+                    rec_currency_symbol = getattr(record, 'currency_id', False) and record.currency_id.symbol or ''
+
+                    data_list = []
+                    list_b = []
+                    order = rec.field_order.strip('][').split(', ')
+                    for field_id in order:
+                        field_obj = self.env['ir.model.fields'].browse(int(field_id))
+                        field_name = field_obj.name
+                        if field_obj.ttype == 'datetime':
+                            field_data = record[field_name].strftime("%d/%m/%Y")
+                        elif field_obj.ttype == 'boolean':
+                            field_data = "Yes" if record[field_name] else "No"
+                        elif field_obj.ttype == 'monetary':
+                            if record.currency_id.position == 'before':
+                                field_data = record.currency_id.symbol + str(record[field_name])
                             else:
+                                field_data = str(record[field_name]) + record.currency_id.symbol
+                        elif field_obj.ttype == 'many2one' or field_obj.ttype == 'many2one_reference':
+                            field_data = record[field_name].name_get()[0][1] if record[field_name] else "Null"
+                        elif field_obj.ttype == 'many2many':
+                            if record[field_name]:
                                 field_data = ""
-                                for count, value in enumerate(
-                                        record[field_name]):
+                                for count, value in enumerate(record[field_name]):
                                     if not count == len(record[field_name]) - 1:
-                                        field_data += value.name_get()[0][
-                                                          1] + ", "
+                                        field_data += value.name_get()[0][1] + ", "
                                     else:
                                         field_data += value.name_get()[0][1]
+                            else:
+                                field_data = "Null"
+                        elif field_obj.ttype == 'one2many':
+                            if record[field_name]:
+                                child_fields = rec.fields_ids.one2many_model_field_ids
+                                if child_fields:
+                                    field_data = "one2many"
+                                    list_b = []
+                                    for o2m_c_field in record[field_name]:
+                                        list_a = []
+                                        for c_field in child_fields:
+                                            c_field_name = c_field.name
+                                            if c_field.ttype == 'datetime':
+                                                child_field_data = o2m_c_field[c_field_name].strftime("%d/%m/%Y")
+                                            elif c_field.ttype == 'boolean':
+                                                child_field_data = "Yes" if o2m_c_field[c_field_name] else "No"
+                                            elif c_field.ttype in ('many2one', 'many2one_reference'):
+                                                child_field_data = o2m_c_field[c_field_name].name_get()[0][1] if o2m_c_field[c_field_name] else "Null"
+                                            elif c_field.ttype in ('many2many', 'one2many'):
+                                                if o2m_c_field[c_field_name]:
+                                                    child_field_data = ""
+                                                    for c_count, c_value in enumerate(o2m_c_field[c_field_name]):
+                                                        if not c_count == len(o2m_c_field[c_field_name]) - 1:
+                                                            child_field_data += c_value.name_get()[0][1] + ", "
+                                                        else:
+                                                            child_field_data += c_value.name_get()[0][1]
+                                                else:
+                                                    child_field_data = "Null"
+                                            else:
+                                                child_field_data = o2m_c_field[c_field_name]
+                                            list_a.append(child_field_data)
+                                            field_data = list_a
+                                        list_b.append(list_a)
+                                else:
+                                    field_data = ""
+                                    for count, value in enumerate(record[field_name]):
+                                        if not count == len(record[field_name]) - 1:
+                                            field_data += value.name_get()[0][1] + ", "
+                                        else:
+                                            field_data += value.name_get()[0][1]
+                            else:
+                                field_data = "Null"
                         else:
-                            field_data = "Null"
-                    else:
-                        field_data = record[field_name]
-                    data_list.append(field_data)
-                table_data.append(data_list)
-                child_table_data.append(list_b)
+                            field_data = record[field_name]
+                        data_list.append(field_data)
+                    group_table_data.append(data_list)
+                    group_child_table_data.append(list_b)
+
+                # Add group header row
+                if rec.group_by_field and len(grouped_data) > 1:
+                    group_header = [f"--- {group_name} ---"]
+                    for i in range(len(group_table_data[0]) - 1):
+                        group_header.append("")
+                    table_data.append(group_header)
+                    child_table_data.append([])
+
+                # Add group data
+                table_data.extend(group_table_data)
+                child_table_data.extend(group_child_table_data)
+
+                # Add group summary row if grouping is enabled
+                if rec.group_by_field and len(grouped_data) > 1:
+                    summary_row = ["TOTAL"]
+                    # Calculate totals for all numeric fields (monetary, integer, float)
+                    for field_id in order[1:]:  # Skip first field (SL.No)
+                        field_obj = self.env['ir.model.fields'].browse(int(field_id))
+                        if field_obj.ttype in ['monetary', 'integer', 'float']:
+                            total = sum(record[field_obj.name] for record in group_records if record[field_obj.name])
+                            if field_obj.ttype == 'monetary' and rec_currency_symbol:
+                                first_record = group_records[0] if group_records else None
+                                if first_record and first_record.currency_id:
+                                    if first_record.currency_id.position == 'before':
+                                        summary_row.append(f"{first_record.currency_id.symbol}{total}")
+                                    else:
+                                        summary_row.append(f"{total}{first_record.currency_id.symbol}")
+                                else:
+                                    summary_row.append(str(total))
+                            else:
+                                summary_row.append(str(total))
+                        else:
+                            summary_row.append("")
+                    table_data.append(summary_row)
+                    child_table_data.append([])
+
+                    # Add separator row
+                    separator_row = [""] * len(group_table_data[0])
+                    table_data.append(separator_row)
+                    child_table_data.append([])
+
             child_label = rec.fields_ids.one2many_model_field_ids
             child_field_label = ""
             if child_label:

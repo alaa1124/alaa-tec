@@ -340,21 +340,20 @@ class ReportPDF(models.Model):
         """ Create a contextual action for each server action."""
         self.action_button = True
         windowaction = self.env['ir.actions.act_window']
-        data = self.env['ir.model.data']
+        # Use correct view reference for the wizard form
+        wizard_view = self.env.ref('pdf_report_designer.pdf_report_view_form', raise_if_not_found=False)
         for rec in self.browse(self._ids):
             binding_model_id = rec.model_id.id
-            model_data_id = data._load_xmlid('pdf_report_designer')
-            res_id = data.browse(model_data_id).res_id
             button_name = _('Print Report (%s)') % rec.name
             act_id = windowaction.create({
                 'name': button_name,
-                'is_action_created_from_pdf_report':True,
+                'is_action_created_from_pdf_report': True,
                 'type': 'ir.actions.act_window',
                 'res_model': 'pdf.report',
                 'binding_model_id': binding_model_id,
                 'context': "{'pdf' : %d, 'header': '%s'}" % (rec.id, rec.name),
                 'view_mode': 'form,tree',
-                'view_id': res_id,
+                'view_id': wizard_view.id if wizard_view else False,
                 'target': 'new',
             })
             rec.write({
