@@ -258,16 +258,21 @@ class ReportPDF(models.Model):
                 # Add group summary row if grouping is enabled
                 if rec.group_by_field and len(grouped_data) > 1:
                     summary_row = ["TOTAL"]
-                    # Calculate totals for monetary fields
+                    # Calculate totals for all numeric fields (monetary, integer, float)
                     for field_id in order[1:]:  # Skip first field (SL.No)
                         field_obj = self.env['ir.model.fields'].browse(int(field_id))
-                        if field_obj.ttype == 'monetary':
+                        if field_obj.ttype in ['monetary', 'integer', 'float']:
                             total = sum(record[field_obj.name] for record in group_records if record[field_obj.name])
-                            if rec_currency_symbol:
-                                if record.currency_id.position == 'before':
-                                    summary_row.append(f"{rec_currency_symbol}{total}")
+                            if field_obj.ttype == 'monetary' and rec_currency_symbol:
+                                # Get currency from the first record in the group
+                                first_record = group_records[0] if group_records else None
+                                if first_record and first_record.currency_id:
+                                    if first_record.currency_id.position == 'before':
+                                        summary_row.append(f"{first_record.currency_id.symbol}{total}")
+                                    else:
+                                        summary_row.append(f"{total}{first_record.currency_id.symbol}")
                                 else:
-                                    summary_row.append(f"{total}{rec_currency_symbol}")
+                                    summary_row.append(str(total))
                             else:
                                 summary_row.append(str(total))
                         else:

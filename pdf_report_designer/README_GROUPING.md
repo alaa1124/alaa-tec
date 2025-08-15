@@ -39,9 +39,30 @@ TOTAL    3052500.0LE    3052500.0LE
 - Each group is clearly separated with headers and totals
 
 ### Smart Totals
-- Monetary fields are automatically summed for each group
-- Currency symbols are preserved in totals
-- Non-monetary fields show empty values in summary rows
+- **Group Totals**: All numeric fields (monetary, integer, float) are automatically summed for each group
+- **Single Group Support**: Totals are shown even when there's only one group
+- **Excluded Columns**: Only the first column (SL.No) is never included in totals
+- **Included Columns**: Second column onwards can have totals if they are numeric fields
+- **Currency Support**: Preserves currency symbols for monetary fields
+- **Non-numeric fields show empty values in summary rows
+
+### Field Detection Logic
+The system automatically identifies meaningful fields by checking:
+1. **Field Names**: Contains keywords like 'amount', 'price', 'quantity', 'total', etc.
+2. **Field Descriptions**: Human-readable labels that indicate summable values
+3. **Field Types**: Only numeric fields (monetary, integer, float) are considered
+
+**Examples of fields that WILL have totals:**
+- `amount_total` → ✅ Will sum
+- `product_qty` → ✅ Will sum  
+- `unit_price` → ✅ Will sum
+- `discount_amount` → ✅ Will sum
+
+**Examples of fields that WON'T have totals:**
+- `customer_age` → ❌ Won't sum (not meaningful)
+- `order_date` → ❌ Won't sum (date field)
+- `product_name` → ❌ Won't sum (text field)
+- `employee_id` → ❌ Won't sum (identifier)
 
 ### Visual Styling
 - Group headers have gray background (`#f0f0f0`)
